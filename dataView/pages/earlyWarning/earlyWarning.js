@@ -22,7 +22,7 @@ function getOption() {
         {
           name: '访问来源',
           type: 'pie',
-          radius: ['100%', '60%'],
+          radius: ['90%', '60%'],
           avoidLabelOverlap: false,
           label: {
               show: false,

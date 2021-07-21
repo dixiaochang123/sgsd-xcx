@@ -5,7 +5,7 @@
 	</navBar>
   <view class="warp">
     <view class="title">
-      <image src="../../../images/icon_33 - 副本.png" mode="widthFix"></image>
+      <image class="af2ss" src="../../../images/icon_33fb.png" mode="widthFix"></image>
       <text>预警商户占比</text>
     </view>
     <view class="list">
@@ -13,19 +13,19 @@
         <view class="echarts-con" style="float:left">
           <ec-canvas id="mychart-dom222" canvas-id="mychart222" ec="{{ ecpie }}" ></ec-canvas>
           <cover-view class="asset-money">
-            <cover-view class="asset-font">主力</cover-view>
+            <cover-view class="asset-font">餐饮</cover-view>
             <cover-view class="asset-font af2">30%</cover-view>
           </cover-view>
         </view>
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">板上厨房</text>
-            <text class="pinpai">小徐打麻将</text>
-            <text class="pinpai">嘟嘴鱼</text>
-            <text class="pinpai">白茶仙子</text>
-            <text class="pinpai">大骨王</text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、板上厨房</text>
+            <text class="pinpai">2、小徐打麻将</text>
+            <text class="pinpai">3、嘟嘴鱼</text>
+            <text class="pinpai">4、白茶仙子</text>
+            <text class="pinpai">5、大骨王</text>
           </view>
         </view>
       </view>
@@ -41,12 +41,12 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">梦婷美容院</text>
-            <text class="pinpai">奥康</text>
-            <text class="pinpai">宝岛眼镜</text>
-            <text class="pinpai">OMI</text>
-            <text class="pinpai">完美日记 </text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、梦婷美容院</text>
+            <text class="pinpai">2、奥康</text>
+            <text class="pinpai">3、宝岛眼镜</text>
+            <text class="pinpai">4、OMI</text>
+            <text class="pinpai">5、完美日记 </text>
           </view>
         </view>
       </view>
@@ -62,12 +62,12 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">第九街区</text>
-            <text class="pinpai">痣缘宫</text>
-            <text class="pinpai">荟宝</text>
-            <text class="pinpai">卡雷拉</text>
-            <text class="pinpai">没帕屋</text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、第九街区</text>
+            <text class="pinpai">2、痣缘宫</text>
+            <text class="pinpai">3、荟宝</text>
+            <text class="pinpai">4、卡雷拉</text>
+            <text class="pinpai">5、没帕屋</text>
           </view>
         </view>
       </view>
@@ -82,12 +82,12 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">海底捞</text>
-            <text class="pinpai">国美电器</text>
-            <text class="pinpai">优衣库</text>
-            <text class="pinpai">孩子王</text>
-            <text class="pinpai">永辉超市</text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、海底捞</text>
+            <text class="pinpai">2、国美电器</text>
+            <text class="pinpai">3、优衣库</text>
+            <text class="pinpai">4、孩子王</text>
+            <text class="pinpai">5、永辉超市</text>
           </view>
         </view>
       </view>
@@ -103,12 +103,12 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">比音勒芬</text>
-            <text class="pinpai">品玉</text>
-            <text class="pinpai">TRENDIANO</text>
-            <text class="pinpai">速写</text>
-            <text class="pinpai">fexata</text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、比音勒芬</text>
+            <text class="pinpai">2、品玉</text>
+            <text class="pinpai">3、TRENDIANO</text>
+            <text class="pinpai">4、速写</text>
+            <text class="pinpai">5、fexata</text>
           </view>
         </view>
       </view>
@@ -124,11 +124,11 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4">more ></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:300rpx;margin-top:10rpx">
-            <text class="pinpai">莱克斯顿特卖(展位)</text>
-            <text class="pinpai">POLO特卖（展位）</text>
-            <text class="pinpai">品玉特卖（展位）</text>
-            <text class="pinpai">2035寇芭黎特卖 </text>
+          <view style="width:350rpx;margin-top:10rpx">
+            <text class="pinpai">1、莱克斯顿特卖(展位)</text>
+            <text class="pinpai">2、POLO特卖（展位）</text>
+            <text class="pinpai">3、品玉特卖（展位）</text>
+            <text class="pinpai">4、2035寇芭黎特卖 </text>
           </view>
         </view>
       </view>
