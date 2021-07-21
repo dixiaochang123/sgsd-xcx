@@ -2,8 +2,5 @@
 	"usingComponents": {
 		"ec-canvas": "../../../ec-canvas/ec-canvas"
 	},
-  "backgroundTextStyle": "light",
-	"navigationBarBackgroundColor": "#233440",
-	"navigationBarTitleText": "收入统计",
-	"navigationBarTextStyle": "white"
+	"navigationBarTitleText": "收入统计"
 }

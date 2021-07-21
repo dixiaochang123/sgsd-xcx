@@ -45,6 +45,7 @@ page {
 }
 .lxy-nav-bar__inner .lxy-nav-bar__left {
   position: relative;
+  z-index: 9999999999999999;
   width: var(--right);
   height: 32px;
   /*  padding-left: 10px; */
@@ -96,6 +97,7 @@ page {
   text-align: center;
   position: relative;
   flex: 1;
+  z-index: 999999999999999999999999999999999999;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

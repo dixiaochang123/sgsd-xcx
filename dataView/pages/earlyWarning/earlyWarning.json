@@ -2,5 +2,6 @@
   "usingComponents": {
     "ec-canvas": "../../../ec-canvas/ec-canvas",
     "component": "../../../components/component/component"
-  }
+  },
+	"navigationBarTitleText": "业态预警"
 }
