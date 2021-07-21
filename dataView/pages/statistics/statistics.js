@@ -39,7 +39,22 @@ function initOption() {
 				radius: ["40%", "60%"],
 				data: resultData,
 				label: {
-					show: false
+					show: true
+				},
+				itemStyle : {
+					normal : {
+						label : {
+						position : 'inner',
+						formatter : function (params){
+							return params.percent + '%';},
+							textStyle: {
+										color: '#fff'
+						}
+						},
+						labelLine : {
+							show : false
+						}
+					}
 				},
 			},
 			{
@@ -48,34 +63,37 @@ function initOption() {
 				radius: [0, "60%"],
 				data: [{
 						value: rentedAreaTotal,
-						name: '已租面积' + rentedAreaTotal,
-						// itemStyle: {
-						// 	normal: {
-						// 		opacity: 0
-						// 	},
-						// 	emphasis: {
-						// 		opacity: 1
-						// 	}
-						// }
+						name: '已租面积',
+						itemStyle: {
+							normal: {
+								opacity: 1
+							},
+							emphasis: {
+								opacity: 1
+							}
+						}
 					},
 					{
 						value: num,
-						name: "未租面积" + num,
-						// itemStyle: {
-						// 	normal: {
-						// 		opacity: 0
-						// 	},
-						// 	emphasis: {
-						// 		opacity: 1
-						// 	}
-						// }
+						name: "未租面积",
+						itemStyle: {
+							normal: {
+								opacity: 1
+							},
+							emphasis: {
+								opacity: 1
+							}
+						}
 					},
 				],
 				label: {
 					textStyle: {
 						color: '#000'
 					},
-					formatter: '{b}({d}%)\n{c}m²'
+					// formatter: '{b}\n{c}m²'
+					formatter: function(pram){
+						return pram.name+'\n'+'   '+pram.value+'m²'
+				},
 				},
 				labelLine: {
 					lineStyle: {
@@ -205,6 +223,7 @@ Page({
 				if (res.data.success) {
 					areaTotal = res.data.data.areaTotal,
 						rentedAreaTotal = res.data.data.rentedAreaTotal,
+						console.log(areaTotal,rentedAreaTotal)
 						this.setData({
 							areaTotal: res.data.data.areaTotal,
 							rentedAreaTotal: res.data.data.rentedAreaTotal
