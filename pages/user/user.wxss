@@ -1,0 +1,86 @@
+/* pages/user/user.wxss */
+page {
+	width: 100%;
+	height: 100%;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	background-color: #e3e7f5;
+}
+.warp {
+	width: 88%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.banner {
+	width: 100%;
+	border-radius: 5px;
+	position: relative;
+	height: 330rpx;
+	margin-top: 30rpx;
+}
+.banner .bg {
+	width: 100%;
+}
+.banner-txt {
+	width: 90%;
+	height: 270rpx;
+	padding: 30rpx 5%;
+	position: absolute;
+	left: 28rpx;
+	top: 28rpx;
+	z-index: 1;
+	color: #040000;
+}
+.banner-dl {
+	width: 100%;
+	height: 150rpx;
+	display: flex;
+	align-items: center;
+	color: #040000;
+}
+.banner-dt {
+	width: 170rpx;
+	height: 150rpx;
+	margin-right: 30rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	color: #040000;
+}
+.banner-dd {
+	width: 400rpx;
+	height: 150rpx;
+	color: #040000;
+	font-size: 26rpx;
+}
+.banner-dd text {
+	display: block;
+	width: 100%;
+	margin-top: 30rpx;
+}
+.banner-dd text:first-child {
+	font-size: 30rpx;
+	margin-top: 30rpx;
+}
+.banner-name {
+	width: 100%;
+	font-size: 28rpx;
+	margin-top: 60rpx;
+	text-align: center;
+	color: #040000;
+}
+.out button {
+	width: 85%;
+	margin: 300rpx auto 0;
+	height: 90rpx;
+	background-color: #e5004f;
+	font-size: 28rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* border-radius: 5px; */
+	color: #fff;
+	
+}

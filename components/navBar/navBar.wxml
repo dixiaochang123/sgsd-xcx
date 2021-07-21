@@ -1,0 +1,43 @@
+<cover-view class="lxy-nav-bar {{extClass}}" style="background: {{backgroundColorTop}};height: {{navBarHeight+ navBarExtendHeight}}px;">
+    <cover-view class="lxy-nav-bar__placeholder {{ios ? 'ios' : 'android'}}" style="padding-top: {{navBarHeight+ navBarExtendHeight}}px;visibility: hidden;"></cover-view>
+    <cover-view class="lxy-nav-bar__inner {{ios ? 'ios' : 'android'}}" style="{{navigationbarinnerStyle}}{{displayStyle}}">
+        <cover-view class='lxy-nav-bar__left' style="{{navBarLeft}}">
+            <cover-view wx:if="{{back&&!home}}">
+                <cover-view bindtap="back" class="lxy-nav-bar__button lxy-nav-bar__btn_goback {{iconTheme}}">
+                    <cover-image class="leftgo" mode="widthFix" src="../../images/goback.png"></cover-image>
+                </cover-view>
+            </cover-view>
+            <cover-view wx:if="{{!back&&home}}">
+                <cover-view bindtap="home" class="lxy-nav-bar__button lxy-nav-bar__btn_gohome {{iconTheme}}"></cover-view>
+            </cover-view>
+            <cover-view wx:elif="{{back&&home}}">
+                <cover-view class="lxy-nav-bar__buttons {{ios ? 'ios' : 'android'}}" wx:if="{{home}}">
+                    <cover-view bindtap="back" class="lxy-nav-bar__button lxy-nav-bar__btn_goback {{iconTheme}}" wx:if="{{back}}"></cover-view>
+                    <cover-view bindtap="home" class="lxy-nav-bar__button lxy-nav-bar__btn_gohome {{iconTheme}}"></cover-view>
+                </cover-view>
+            </cover-view>
+            <cover-view wx:else>
+                <cover-view name="left"></cover-view>
+            </cover-view>
+        </cover-view>
+        <cover-view class='lxy-nav-bar__center'>
+            <cover-view wx:if="{{title}}">
+                <cover-view class='lxy-nav-bar__center-title'>{{title}}</cover-view>
+            </cover-view>
+            <cover-view class='lxy-nav-bar-search' style="height:{{capsulePosition.height}}px;" wx:elif="{{searchBar}}" bindtap="search">
+                <cover-view class='lxy-nav-bar-search__icon' />
+                <cover-view class='lxy-nav-bar-search__input'>{{searchText}}</cover-view>
+            </cover-view>
+            <!-- 暂时不开发标题loading. 看后期需要 -->
+            <!-- <cover-view wx:if="{{loading}}" class="lxy-nav-bar__loading">
+                <cover-view class="lxy-loading" style="width:{{size.width}}rpx;height:{{size.height}}rpx;"></cover-view>
+            </cover-view> -->
+            <cover-view wx:else>
+                <cover-view name="center"></cover-view>
+            </cover-view>
+        </cover-view>
+        <cover-view class='lxy-nav-bar__right'>
+            <cover-view name="right"></cover-view>
+        </cover-view>
+    </cover-view>
+</cover-view>

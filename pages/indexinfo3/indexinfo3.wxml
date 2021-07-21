@@ -1,0 +1,110 @@
+<!--pages/indexinfo3/indexinfo3.wxml-->
+<wxs module="filters" src="../../utils/utils.wxs"></wxs>
+<view class="content">
+	<navBar title='车场数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
+	<view class="top">
+		<view class="top-title">
+			<view class="before"></view>
+			<view class="top-title-con">车位收益</view>
+			<view class="after"></view>
+		</view>
+		<view class="warp">
+			<view class="banner">
+				<image src="../../images/img_03.png" mode="widthFix"></image>
+				<view class="banner-txt">
+					<view class="banner-top">车位总数</view>
+					<view class="banner-num"><text>{{totalSpace}}</text>个</view>
+				</view>
+			</view>
+			<view class="revenue">
+				<view class="title">
+					<image src="../../images/icon_23.png" mode="widthFix"></image>
+					<text>收益情况</text>
+				</view>
+				<view class="revenue-list">
+					<view class="revenue-top">
+						<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick">
+							<text>本月</text>
+						</view>
+						<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick">
+							<text>本年</text>
+						</view>
+					</view>
+					<view class="circle">
+						<image src="../../images/img_02.png" mode="widthFix"></image>
+						<view class="circle-txt">
+							<view><text>{{total}}</text>元</view>
+							<view>总收益</view>
+						</view>
+					</view>
+					<view data-num = "1" class="charts-con">
+						<view class="charts-tm">收益金额（元）</view>
+						<view data-num = "1" class="echarts-con">
+							<ec-canvas id="mychart-dom-bar" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="top">
+		<view class="top-title">
+			<view class="before"></view>
+			<view class="top-title-con">车辆</view>
+			<view class="after"></view>
+		</view>
+		<view class="warp">
+			<view class="lease">
+				<view class="title">
+					<image src="../../images/icon_27.png" mode="widthFix"></image>
+					<text>车辆出入</text>
+				</view>
+				<view class="lease-con">
+					<view class="echarts-com">
+						<view class="left">
+							<view class="left_item">
+								<view class="left_item_color2"></view>
+								<view class="left_item_con_right">车辆入
+									<view class="carcount">
+										<text space='nbsp'>{{dayEntryData}}辆  </text>
+									
+									</view>
+								</view>
+							</view>
+							<view class="left_item">
+								<view class="left_item_color1"></view>
+								<view class="left_item_con_right">车辆出
+									<view class="carcount">
+										<text space='nbsp'>{{dayAppearanceData}}辆  </text>
+									
+									</view>
+								</view>
+							</view>
+							
+						
+						</view>
+						<image src="../../images/car.png" mode="widthFix"></image>
+					</view>
+				</view>
+			</view>
+			<view class="revenue">
+				<view class="title">
+					<image src="../../images/icon_28.png" mode="widthFix"></image>
+					<text>车流量</text>
+				</view>
+				<view class="revenue-list">
+					<view class="revenue-top">
+						<view class="top-li {{nums==1?'cur':''}}" data-nums="1" bindtap="chartsClicka"><text>本月</text></view>
+						<view class="top-li {{nums==2?'cur':''}}" data-nums="2" bindtap="chartsClicka"><text>本年</text></view>
+					</view>
+					<view class="charts-con">
+						<view class="charts-tm">车流量（辆）</view>
+						<view class="echarts-con">
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

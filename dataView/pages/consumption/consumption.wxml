@@ -1,0 +1,228 @@
+<!--pages/consumption/consumption.wxml-->
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+<view class="content">
+  <navBar title='收银数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+  <view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本周销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比20年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ztb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上周</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{zhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本月销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比20年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ytb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上月</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{yhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本年销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比19年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ntb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>同比20年</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{nhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+  <view class="warp">
+    <view class="circle">
+			<image src="../../../images/shabi.png" mode="widthFix"></image>
+			<view class="circle-txt">
+				<view>今日销售额</view>
+				<view><text>{{todaySales}}</text>万分</view>
+			</view>
+		</view>
+  </view>
+  <view class="warp warpflex">
+    <view class="flex">
+      <view><text class="maxtext">{{weekSales}}</text><text>万元</text></view>
+      <view>本周销售额</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{monthSales}}</text><text>万元</text></view>
+      <view>本月销售额</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{yearSales}}</text><text>万元</text></view>
+      <view>今年累计总和</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{weekCustomerPrice}}</text><text>万元</text></view>
+      <view>本周客单价</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{monthCustomerPrice}}</text><text>万元</text></view>
+      <view>本月客单价</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{yearCustomerPrice}}</text><text>万元</text></view>
+      <view>本年客单价</view>
+		</view>
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <view class="top">
+    <view class="top-banner">
+      <image src="../../images/img_01.png" mode="widthFix"></image>
+      <view class="top-txt">
+        <view class="txt-one"><text>{{todaySales}}</text>元</view>
+        <view class="txt-two"><text>今日销售额</text></view>
+      </view>
+    </view>
+    <view class="top-nav">
+      <view class="nav-li">
+        <view><text>{{weekSales}}</text></view>
+        <view>本周销售额</view>
+      </view>
+      <view class="nav-li">
+        <view><text>{{monthSales}}</text></view>
+        <view>本月销售额</view>
+      </view>
+      <view class="nav-li">
+        <view><text>{{customerPrice}}</text></view>
+        <view>客单价</view>
+      </view>
+    </view>
+  </view>
+  <view class="consumption">
+    <view class="title">
+      <text>今年销售额统计</text>
+    </view>
+    <view class="revenue-list">
+      <view class="charts-con">
+        <view class="charts-tm">销售额（万元）</view>
+        <view class="echarts-com">
+          <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="consumption">
+    <view class="title">
+      <text>楼层销售额占比</text>
+    </view>
+    <view class="revenue-list">
+      <view class="echarts-con">
+        <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec1 }}"></ec-canvas>
+      </view>
+      <view class="tabel">
+        <view class="tabel-th">
+          <view class="tabel-tt">楼层</view>
+          <view class="tabel-tts">销售额(元)</view>
+        </view>
+        <view class="tabel-tb">
+          <view class="tabel-tr" wx:for="{{floorList}}">
+            <view class="table-td">
+              <text>{{filters.substring(item.floor,4,6)}}F</text>
+            </view>
+            <view class="table-tds">{{item.sales}}</view>
+          </view>
+        </view>
+      </view>
+		</view>
+  </view>
+  <view class="consumption">
+    <view class="title">
+      <text>业态销售额占比</text>
+    </view>
+    <view class="revenue-list">
+      <view class="echarts-con">
+        <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+      </view>
+      <view class="tabel">
+        <view class="tabel-th">
+          <view class="tabel-tt">业态</view>
+          <view class="tabel-tts">销售额(元)</view>
+        </view>
+        <view class="tabel-tb">
+          <view class="tabel-tr" wx:for="{{formatList}}">
+            <view class="table-td">{{item.operationType}}</view>
+            <view class="table-tds">{{item.sales}}</view>
+          </view>
+        </view>
+      </view>
+		</view>
+  </view>
+  <view class="consumption">
+    <view class="title">
+      <text>会员消费占比</text>
+    </view>
+    <view class="revenue-list">
+			<view class="lease-con">
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec3 }}"></ec-canvas>
+					<canvas canvas-id="lease-pie" class="lease_pie"></canvas>
+				</view>
+			</view>
+    </view>
+  </view> -->
+</view>

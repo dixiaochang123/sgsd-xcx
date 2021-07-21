@@ -1,0 +1,75 @@
+<!--pages/groundTop/groundTop.wxml-->
+<view class="content">
+	<navBar title='坪效' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
+		extClass="lxy-navbar-extclass">
+	</navBar>
+	<!--顶部导航栏-->
+	<view class="swiper-tab">
+		<view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">排名前十</view>
+		<view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">排名后十</view>
+		<view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">更多</view>
+	</view>
+	<view style="height:20rpx;"></view>
+	<!--内容主体-->
+	<view>
+		<view>
+			<view class="warp">
+				<view class="list" wx:if="{{ currentTab == 0}}">
+					<view class="list-li" wx:for="{{groundList}}" wx:key="index">
+						<view class="li-bd">
+							<text>{{index+1}}</text>
+							<view class="bd-name">{{item.storeName}}</view>
+						</view>
+						<view class="li-hd">
+							{{item.salesPerSquareMeter}}元/平方米
+						</view>
+					</view>
+				</view>
+
+				<view class="list" wx:if="{{ currentTab == 1}}">
+					<view class="list-li" wx:for="{{groundList}}" wx:key="index">
+						<view class="li-bd">
+							<text>{{index+1}}</text>
+							<view class="bd-name">{{item.storeName}}</view>
+						</view>
+						<view class="li-hd">
+							{{item.salesPerSquareMeter}}元/平方米
+						</view>
+					</view>
+				</view>
+
+				<view class="list" wx:if="{{ currentTab == 2}}">
+					<view class="tab">
+						<view class="swiper-tab">
+							<view class="tab-item1 {{currentTab1==0 ? 'on1' : ''}}" data-current="0" bindtap="swichNav1" wx:if="{{0<=currentMonth}}">一月</view>
+							<view class="tab-item1 {{currentTab1==1 ? 'on1' : ''}}" data-current="1" bindtap="swichNav1" wx:if="{{1<=currentMonth}}">二月</view>
+							<view class="tab-item1 {{currentTab1==2 ? 'on1' : ''}}" data-current="2" bindtap="swichNav1" wx:if="{{2<=currentMonth}}">三月</view>
+							<view class="tab-item1 {{currentTab1==3 ? 'on1' : ''}}" data-current="3" bindtap="swichNav1" wx:if="{{3<=currentMonth}}">四月</view>
+							<view class="tab-item1 {{currentTab1==4 ? 'on1' : ''}}" data-current="4" bindtap="swichNav1" wx:if="{{4<=currentMonth}}">五月</view>
+							<view class="tab-item1 {{currentTab1==5 ? 'on1' : ''}}" data-current="5" bindtap="swichNav1" wx:if="{{5<=currentMonth}}">六月</view>
+							<view class="tab-item1 {{currentTab1==6 ? 'on1' : ''}}" data-current="6" bindtap="swichNav1" wx:if="{{6<=currentMonth}}">七月</view>
+							<view class="tab-item1 {{currentTab1==7 ? 'on1' : ''}}" data-current="7" bindtap="swichNav1" wx:if="{{7<=currentMonth}}">八月</view>
+							<view class="tab-item1 {{currentTab1==8 ? 'on1' : ''}}" data-current="8" bindtap="swichNav1" wx:if="{{8<=currentMonth}}">九月</view>
+							<view class="tab-item1 {{currentTab1==9 ? 'on1' : ''}}" data-current="9" bindtap="swichNav1" wx:if="{{9<=currentMonth}}">十月</view>
+							<view class="tab-item1 {{currentTab1==10 ? 'on1' : ''}}" data-current="10" bindtap="swichNav1" wx:if="{{10<=currentMonth}}">十一月</view>
+							<view class="tab-item1 {{currentTab1==11 ? 'on1' : ''}}" data-current="11" bindtap="swichNav1" wx:if="{{11<=currentMonth}}">十二月</view>
+						</view>
+					</view>
+					<view style="height:20rpx;"></view>
+					<view class="list-li" wx:for="{{groundList}}" wx:key="index">
+						<view class="li-bd">
+							<text wx:if="{{currentTab == 2 && page}}">{{(index + 1) + (page - 1) * 10}}</text>
+							<text wx:else>{{index+1}}</text>
+							<view class="bd-name">{{item.storeName}}</view>
+						</view>
+						<view class="li-hd">
+							{{item.salesPerSquareMeter}}元/平方米
+						</view>
+					</view>
+					<pagination wx:if="{{currentTab == 2 && page}}" bind:pageChange="pageChange" page="{{page}}" total="{{total}}" size="{{10}}"></pagination>
+				</view>
+
+			</view>
+		</view>
+	</view>
+</view>

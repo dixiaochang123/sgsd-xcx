@@ -1,0 +1,33 @@
+<!--pages/indexinfo4/indexinfo4.wxml-->
+<view class="content">
+	<view class="warp">
+		<view class="warp-list">
+			<view class="warp-ul">
+				<navigator class="warp-li" url="/pages/statistics/statistics" hover-class="none">
+					<image src="../../images/icon_02.png" mode="widthFix"></image>
+					<text>商铺统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/pages/distribution/distribution" hover-class="none">
+					<image src="../../images/icon_03.png" mode="widthFix"></image>
+					<text>商铺业态分布</text>
+				</navigator>
+				<navigator class="warp-li" url="/pages/income/income" hover-class="none">
+					<image src="../../images/icon_04.png" mode="widthFix"></image>
+					<text>收入统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/pages/rentTop/rentTop" hover-class="none">
+					<image src="../../images/icon_05.png" mode="widthFix"></image>
+					<text>租售比</text>
+				</navigator>
+				<navigator class="warp-li" url="/pages/groundTop/groundTop" hover-class="none">
+					<image src="../../images/icon_13.png" mode="widthFix"></image>
+					<text>坪效</text>
+				</navigator>
+					<navigator class="warp-li" url="/pages/fee/fee" hover-class="none">
+					<image src="../../images/icon_14.png" mode="widthFix"></image>
+					<text>租金收缴率</text>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>

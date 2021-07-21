@@ -1,0 +1,9 @@
+{
+	"usingComponents": {
+		"ec-canvas": "../../../ec-canvas/ec-canvas"
+	},
+  "backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "#233440",
+	"navigationBarTitleText": "商铺业态分布",
+	"navigationBarTextStyle": "white"
+}

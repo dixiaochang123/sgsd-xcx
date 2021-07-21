@@ -1,0 +1,53 @@
+<!--pages/statistics/statistics.wxml-->
+<view class="content">
+	<navBar title='商铺统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
+	<view class="warp">
+		<view class="banner shangguan">
+			<image src="../../../images/ban.png" mode="widthFix"></image>
+			<view class="banner-txt">
+				<view class="banner-top">总面积</view>
+				<view class="banner-num"><text>{{areaTotal}}</text>m<sub>2</sub></view>
+				<view class="banner-bottom">已租面积：{{rentedAreaTotal}}m<sub>2</sub></view>
+			</view>
+		</view>
+		<view class="lease">
+			<view class="title">
+				<image src="../../../images/icon_21.png" mode="widthFix"></image>
+				<text>出租面积统计</text>
+			</view>
+			<view class="lease-con">
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+					<!-- <canvas canvas-id="lease-pie" class="lease_pie"></canvas> -->
+				</view>
+			</view>
+		</view>
+		<view class="lease" style="margin-bottom: 60rpx;">
+			<view class="title">
+				<image src="../../../images/icon_22.png" mode="widthFix"></image>
+				<text>铺位数统计</text>
+			</view>
+			<view class="lease-con sss">
+				<view class="echarts-com">
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec1 }}"></ec-canvas>
+				</view>
+				<view class="right">
+					<view class="right_item">
+						<view class="right_item_color1" ></view>
+						<view class="right_item_con">
+							<view>空铺位</view>
+							<view>{{nullCount}}户  {{nullRate}}</view>
+						</view>
+					</view>
+					<view class="right_item">
+						<view class="right_item_color2"></view>
+						<view class="right_item_con">
+							<view>已租铺位</view>
+							<view>{{rentCount}}户  {{rentRate}}%</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

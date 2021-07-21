@@ -1,0 +1,147 @@
+<!--pages/memData/memData.wxml-->
+<wxs module="filters" src="../../utils/utils.wxs"></wxs>
+<view class="content">
+	<view class="warp">
+		<view class="lease">
+			<view class="title">
+				<image src="../../images/icon_24.png" mode="widthFix"></image>
+				<text>会员情况</text>
+			</view>
+			<view class="lease-con">
+				<view class="echarts-com">
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+					<view class="right">
+						<view class="right_item">
+							<view class="right_item1"><view></view></view>
+							<view class="right_item_con">
+								<view></view>
+								<view>男性会员</view>
+								<view>{{totalNumberOfMaleMembers}}人 {{proportionOfMaleMembers}}%</view>
+							</view>
+						</view>
+						<view class="right_item">
+							<view class="right_item2"><view></view></view>
+							<view class="right_item_con">
+								<view></view>
+								<view>女性会员</view>
+								<view>{{totalNumberOfFemaleMembers}}人 {{proportionOfFemaleMembers}}%</view>
+							</view>
+						</view>
+						<view class="right_item">
+							<view class="right_item3"><view></view></view>
+							<view class="right_item_con">
+								<view></view>
+								<view>其他会员</view>
+								<view>{{totalNumberOfOtherMembers}}人 {{proportionOfOtherMembers}}%</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="revenue">
+			<view class="title">
+				<image src="../../images/icon_25.png" mode="widthFix"></image>
+				<text>新增会员</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+				</view>
+				<view class="circle">
+					<image src="../../images/img_02.png" mode="widthFix"></image>
+					<view class="circle-txt">
+						<view><text>{{totalMember}}</text>人</view>
+						<view>新增总数</view>
+					</view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="number">
+			<view class="number-li">
+				<view class="number-dl">
+					<view class="number-dt">本{{flag}}新增男性会员</view>
+					<view class="number-dd">{{presentNumberOfMaleMembers}}人</view>
+				</view>
+				<view class="number-img">
+					<view wx:if="{{presentNumberOfMaleMembers>=previousPeriodTotalNumberOfMaleMembers}}">
+						<image src="../../images/u_jt_02.png" mode="widthFix" ></image>
+						<text>{{maleMembersYearOnYear}}</text>
+					</view>
+					<view wx:if="{{presentNumberOfMaleMembers<previousPeriodTotalNumberOfMaleMembers}}">	
+						<image src="../../images/u_jt_01.png" mode="widthFix" ></image>
+						<text>{{filters.substring(maleMembersYearOnYear,1,8)}}</text>
+				</view>
+				</view>
+			</view>
+			<view class="number-li">
+				<view class="number-dl">
+					<view class="number-dt">本{{flag}}新增女性会员</view>
+					<view class="number-dd">{{presentNumberOfFemaleMembers}}人</view>
+				</view>
+				<view class="number-img">
+					<view wx:if="{{presentNumberOfFemaleMembers>=previousPeriodTotalNumberOfFemaleMembers}}">
+						<image src="../../images/u_jt_02.png" mode="widthFix" ></image>
+						<text>{{femaleMembersYearOnYear}}</text>
+					</view>
+					<view wx:if="{{presentNumberOfFemaleMembers<previousPeriodTotalNumberOfFemaleMembers}}">	
+						<image src="../../images/u_jt_01.png" mode="widthFix" ></image>
+						<text>{{filters.substring(femaleMembersYearOnYear,1,8)}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="number-li">
+				<view class="number-dl">
+					<view class="number-dt">本{{flag}}新增其他会员</view>
+					<view class="number-dd">{{presentNumberOfOtherMembers}}人</view>
+				</view>
+				<view class="number-img">
+					<view wx:if="{{presentNumberOfOtherMembers>=previousPeriodTotalNumberOfOtherMembers}}">
+						<image src="../../images/u_jt_02.png" mode="widthFix" ></image>
+						<text>{{otherMembersYearOnYear}}</text>
+					</view>
+					<view wx:if="{{presentNumberOfOtherMembers<previousPeriodTotalNumberOfOtherMembers}}">	
+						<image src="../../images/u_jt_01.png" mode="widthFix" ></image>
+						<text>{{filters.substring(otherMembersYearOnYear,1,8)}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="lease">
+			<view class="title">
+				<image src="../../images/icon_26.png" mode="widthFix"></image>
+				<text>年龄段分布</text>
+			</view>
+			<view class="lease-con">
+				<view class='lease-title'>
+					男性
+				</view>
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec2 }}"></ec-canvas>
+				</view>
+			</view>
+			<view class="lease-con">
+				<view class='lease-title'>
+					女性
+				</view>
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-graph2" canvas-id="mychart-graph2" ec="{{ ec3 }}"></ec-canvas>
+				</view>
+			</view>
+			<view class="lease-con">
+				<view class='lease-title'>
+					其他
+				</view>
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-graph3" canvas-id="mychart-graph3" ec="{{ ec4 }}"></ec-canvas>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

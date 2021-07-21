@@ -1,0 +1,35 @@
+<!--pages/distribution/distribution.wxml-->
+<view class="content">
+	<navBar title='商铺统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+	<view class="warp">
+		<view class="revenue">
+			<view class="title">
+				<text>商铺数量占比</text>
+			</view>
+			<view class="revenue-list">
+				<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar11" canvas-id="mychart-bar11" ec="{{ ec }}"></ec-canvas>
+				</view>
+			</view>
+		</view>
+		<view class="number">
+			<view class="number-li" wx:for="{{operationList}}" wx:key="index">
+				<view class="number-dl">
+					<view class="number-dt">{{item.operationType}}</view>
+					<view class="number-dd" style="color:#000;">{{item.storeCount}}户</view>
+				</view>
+				<view class="number-img">
+					<image src="../../../images/qx_1.png" mode="widthFix" wx:if="{{index == 0}}"></image>
+					<image src="../../../images/qx_2.png" mode="widthFix" wx:if="{{index == 1}}"></image>
+					<image src="../../../images/qx_3.png" mode="widthFix" wx:if="{{index == 2}}"></image>
+					<image src="../../../images/qx_4.png" mode="widthFix" wx:if="{{index == 3}}"></image>
+					<image src="../../../images/qx_5.png" mode="widthFix" wx:if="{{index == 4}}"></image>
+					<image src="../../../images/qx_6.png" mode="widthFix" wx:if="{{index == 5}}"></image>
+					<image src="../../../images/qx_7.png" mode="widthFix" wx:if="{{index == 6}}"></image>
+					<image src="../../../images/qx_7.png" mode="widthFix" wx:if="{{index > 7}}"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

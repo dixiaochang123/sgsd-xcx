@@ -1,0 +1,175 @@
+<!--pages/number/number.wxml-->
+<view class="content">
+	<navBar title='客流数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
+	<view class="number">
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">当前客流量</view>
+				<view class="number-dd">{{currentPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_1.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">近一小时客流量</view>
+				<view class="number-dd">{{hourPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_2.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">今日累计客流量</view>
+				<view class="number-dd">{{dayPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_3.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本周累计客流量</view>
+				<view class="number-dd">{{weekPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_4.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本月累计客流量</view>
+				<view class="number-dd">{{monthPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_5.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本年累计客流量</view>
+				<view class="number-dd">{{yearPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_6.png" mode="widthFix"></image>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>出入口客流占比</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==0?'cur':''}}" data-num="0" bindtap="chartsClick"><text>本日</text></view>
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本周</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本月</text></view>
+					<view class="top-li {{num==3?'cur':''}}" data-num="3" bindtap="chartsClick"><text>本年</text></view>
+		  	</view>
+				<view hidden="{{ imgSrc }}" class="echarts-con" >
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+				</view>
+				<image wx:if="{{ imgSrc }}" src="{{ imgSrc }}" style="width:100%;height:600rpx" />
+
+				<view class="tabel">
+					<view class="tabel-th">
+						<view class="tabel-tt">出入口</view>
+						<view class="tabel-tts">客流</view>
+					</view>
+					<view class="tabel-tb">
+						<view class="tabel-tr" wx:for="{{flowList}}" wx:key="item">
+							<view class="table-td">{{item.channelName}}</view>
+							<view class="table-tds">{{item.currentPassengerFlow}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>周环同比</text>
+			</view>
+			<view class="echarts-con">
+					<view hidden="{{ imgSrc1 }}" class="echarts-con" >
+						<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
+					</view>
+					<image wx:if="{{ imgSrc1 }}" src="{{ imgSrc1 }}" style="width:100%;height:600rpx" />
+					<!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas> -->
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比20年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ztb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上周</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{zhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>月环同比</text>
+			</view>
+			<view class="echarts-con">
+				<view hidden="{{ imgSrc2 }}" class="echarts-con" >
+						<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
+					</view>
+					<image wx:if="{{ imgSrc2 }}" src="{{ imgSrc2 }}" style="width:100%;height:600rpx" />
+					<!-- <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas> -->
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比20年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ytb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上月</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{yhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>年环同比</text>
+			</view>
+			<view class="echarts-con">
+				<view hidden="{{ imgSrc3 }}" class="echarts-con" >
+						<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
+					</view>
+					<image wx:if="{{ imgSrc3 }}" src="{{ imgSrc3 }}" style="width:100%;height:600rpx" />
+					<!-- <ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas> -->
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比19年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> {{ntb}}%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>同比20年</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{nhb}}%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+
+	
+</view>

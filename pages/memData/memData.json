@@ -1,0 +1,9 @@
+{
+	"usingComponents": {
+		"ec-canvas": "../../ec-canvas/ec-canvas"
+	},
+	"backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "#233440",
+	"navigationBarTitleText": "会员数据统计",
+	"navigationBarTextStyle": "white"
+}

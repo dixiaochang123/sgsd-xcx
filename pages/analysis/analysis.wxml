@@ -1,0 +1,98 @@
+<!--pages/analysis/analysis.wxml-->
+<view class="content">
+	<navBar title='商铺统计' background='#e3e7f5' back="{{false}}"></navBar>
+	<view class="warp">
+		<view class="warp-list">
+			<view class="warp-tit">
+				<image src="../../images/icon_15.png" mode="widthFix"></image>商管数据
+			</view>
+			<view class="warp-ul">
+				<navigator class="warp-li" url="/dataView/pages/statistics/statistics" hover-class="none">
+					<image src="../../images/icon_02.png" mode="widthFix"></image>
+					<text>商铺统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/distribution/distribution" hover-class="none">
+					<image src="../../images/icon_03.png" mode="widthFix"></image>
+					<text>商铺业态分布</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
+					<image src="../../images/icon_04.png" mode="widthFix"></image>
+					<text>收入统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/rentTop/rentTop" hover-class="none">
+					<image src="../../images/icon_05.png" mode="widthFix"></image>
+					<text>租售比</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/groundTop/groundTop" hover-class="none">
+					<image src="../../images/icon_13.png" mode="widthFix"></image>
+					<text>坪效</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/fee/fee" hover-class="none">
+					<image src="../../images/icon_14.png" mode="widthFix"></image>
+					<text>租金收缴率</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
+					<image src="../../images/icon_33.png" mode="widthFix"></image>
+					<text>业态预警</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="warp-list">
+			<view class="warp-tit">
+				<image src="../../images/icon_16.png" mode="widthFix"></image>停车场数据
+			</view>
+			<view class="warp-ul">
+				<navigator class="warp-li" url="/dataView/pages/revenue/revenue" hover-class="none">
+					<image src="../../images/icon_06.png" mode="widthFix"></image>
+					<text>收益</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/carGout/carGout" hover-class="none">
+					<image src="../../images/icon_07.png" mode="widthFix"></image>
+					<text>车辆</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="warp-list">
+			<view class="warp-tit">
+				<image src="../../images/icon_17.png" mode="widthFix"></image>会员情况
+			</view>
+			<view class="warp-ul">
+				<!-- <navigator class="warp-li" url="/pages/memData/memData" hover-class="none"> -->
+				<navigator class="warp-li" url="/dataView/pages/indexInfo/indexInfo" hover-class="none">
+					<image src="../../images/icon_08.png" mode="widthFix"></image>
+					<text>会员数据统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/memNum/memNum" hover-class="none">
+					<image src="../../images/icon_09.png" mode="widthFix"></image>
+					<text>会员信息统计</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="warp-list">
+			<view class="warp-tit">
+				<image src="../../images/icon_18.png" mode="widthFix"></image>收银数据
+			</view>
+			<view class="warp-ul">
+				<navigator class="warp-li" url="/dataView/pages/consumption/consumption" hover-class="none">
+					<image src="../../images/icon_10.png" mode="widthFix"></image>
+					<text>收银数据统计</text>
+				</navigator>
+				<navigator class="warp-li" url="/dataView/pages/consumptionTop/consumptionTop" hover-class="none">
+					<image src="../../images/icon_11.png" mode="widthFix"></image>
+					<text>收银TOP10商铺</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="warp-list">
+			<view class="warp-tit">
+				<image src="../../images/icon_19.png" mode="widthFix"></image>客流数据
+			</view>
+			<view class="warp-ul">
+				<navigator class="warp-li" url="/dataView/pages/monitor/monitor" hover-class="none">
+					<image src="../../images/icon_12.png" mode="widthFix"></image>
+					<text>客流数据统计</text>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>

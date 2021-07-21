@@ -1,0 +1,142 @@
+/* pages/statistics/statistics.wxss */
+page {
+	width: 100%;
+	background-color: #e3e7f5;}
+.content {
+	width: 100%;
+}
+.warp {
+	width: 90%;
+	margin: 0 auto;
+}
+.banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-top: 20rpx;
+	
+}
+.banner image {
+	width: 100%;
+}
+.banner-txt {
+	width: 90%;
+	padding: 100rpx 10%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 28rpx;
+	color: #010101;
+}
+sub {
+	font-size: 20rpx;
+	vertical-align: text-top;
+}
+.banner-top {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 32rpx;
+}
+.banner-top text {
+	font-size: 28rpx;
+}
+.banner-num {
+	width: 100%;
+	margin-top: 30rpx;
+}
+.banner-num text {
+	font-size: 50rpx;
+}
+.banner-bottom {
+	width: 100%;
+	margin-top: 100rpx;
+}
+.title {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
+}
+.title image {
+	width: 50rpx;
+	margin-right: 20rpx;
+}
+.title text {
+	font-size: 30rpx;
+	color: #010101;
+}
+.lease {
+	width: 100%;
+	margin-top: 30rpx;
+}
+.echarts-con {
+	width: 100%;
+	height: 500rpx;
+}
+.lease_pie{
+	width: 100%;
+	height: 100%;
+}
+.lease-con {
+	width: 100%;
+	min-height: 200rpx;
+	/* background-color: #293c4b; */
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 30rpx 4%;
+	position: relative;
+	display: flex;
+}
+.sss {
+	background-color: #afb7c6;
+}
+#mychart-dom-bar{
+	width: 100%;
+}
+.echarts-com {
+	width: 100%;
+	height: 400rpx;
+	display: flex;
+}
+.right{
+	width: 40%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-top: 20%;
+}
+.right_item{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 20rpx;
+}
+.right_item_color1{
+	background-color: #e5004f;
+	width: 30rpx;
+	height: 20rpx;
+	margin-top: -30rpx;
+	border-radius: 5rpx;
+}
+.right_item_color2{
+	background-color:#4d5063;
+	width: 30rpx;
+	height: 20rpx;
+	margin-top: -30rpx;
+	border-radius: 5rpx;
+}
+.right_item_con{
+	display: flex;
+	flex-direction: column;
+	margin-left: 10rpx;
+}
+.right_item_con view{
+	/* margin-right: 15rpx; */
+	color: white;
+	font-size: 20rpx;
+}

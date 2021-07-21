@@ -1,0 +1,32 @@
+<!--pages/consumptionTop/consumptionTop.wxml-->
+<view class="content">
+  <navBar title='收银TOP10商铺' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+  <view>
+    <view class="banner">
+      <image src="../../../images/bg1.png" mode="widthFix"></image>
+      <view class="banner-content">
+					<view class="banner-title">
+						<view class="title" >收银TOP10商铺</view>
+						<view class="des">排行榜</view>
+					</view>
+				</view>
+    </view>
+    <view class="warp">
+      <view class="list">
+        <view class="list-li" wx:for="{{salesList}}">
+          <view class="li-bd">
+            <!-- <image src="../../images/lv1.png" mode="widthFix" wx:if="{{index == 0}}"></image>
+            <image src="../../images/lv2.png" mode="widthFix" wx:if="{{index == 1}}"></image>
+            <image src="../../images/lv3.png" mode="widthFix" wx:if="{{index == 2}}"></image> -->
+            <text>{{index+1}}</text>
+            <view class="bd-name">{{item.storeName}}</view>
+          </view>
+          <view class="li-hd">
+            {{item.salesPerSquareMeter}}元
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

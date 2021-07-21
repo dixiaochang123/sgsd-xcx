@@ -1,0 +1,167 @@
+<!--pages/income/income.wxml-->
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+<view class="content">
+	<navBar title='收入统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本周销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec2 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比19年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> 20%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上周</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本月销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec3 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比19年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> 20%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上周</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<view class="consumption">
+			<view class="title">
+				<text>本年销售环同比</text>
+			</view>
+			<view class="echarts-con">
+					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec4 }}"></ec-canvas>
+					<view class="rightInfo">
+							<view class="right_child right_child1">
+								<view>同比19年</view>
+								<view>
+									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+								<text class="right_child1_text"> 20%</text></view>
+							</view>
+							<view style="height:40rpx;"></view>
+							<view class="right_child right_child2">
+								<view>环比上周</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+							</view>
+					</view>
+			</view>
+		</view>
+	</view>
+  <view class="warp">
+    <view class="circle">
+			<image src="../../../images/shabi.png" mode="widthFix"></image>
+			<view class="circle-txt">
+				<view><text>{{totalIncome}}</text>万元</view>
+				<view>总收入</view>
+			</view>
+		</view>
+  </view>
+	<view class="warp">
+		<!-- <view class="revenue">
+			<view class="title">
+				<image src="../../images/icon_31.png" mode="widthFix"></image>
+				<text>收入种类分布</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+						<view class="right">
+						<view class="right_item" wx:for="{{incomeList}}" wx:key="index">
+							<view class="right_item_color">
+								<view class="right_item_color1" wx:if="{{index == 0}}"></view>
+								<view class="right_item_color2" wx:if="{{index == 1}}"></view>
+								<view class="right_item_color3" wx:if="{{index == 2}}"></view>
+								<view class="right_item_color4" wx:if="{{index == 3}}"></view>
+								<view class="right_item_color5" wx:if="{{index == 4}}"></view>
+								<view class="right_item_color6" wx:if="{{index == 5}}"></view>
+							</view>
+							<view class="right_item_con_right">
+								<view>{{item.category}}</view>
+								<view>{{item.ratio}}%</view>
+							</view>
+						</view>
+					</view>
+					</view>
+				</view>
+			</view>
+		</view> -->
+		<view class="number">
+			<view class="number-li" wx:for="{{incomeList}}" wx:key="index">
+				<view class="number-dl">
+					<view class="number-dt">{{item.category}}</view>
+					<view class="number-dd"><text>¥{{item.value}}</text><text>{{item.ratio}}%</text> </view>
+				</view>
+				<!-- <view class="number-img">
+					<image src="../../images/qx_1.png" mode="widthFix" wx:if="{{index == 0}}"></image>
+					<image src="../../images/qx_2.png" mode="widthFix" wx:if="{{index == 1}}"></image>
+					<image src="../../images/qx_3.png" mode="widthFix" wx:if="{{index == 2}}"></image>
+					<image src="../../images/qx_4.png" mode="widthFix" wx:if="{{index == 3}}"></image>
+					<image src="../../images/qx_5.png" mode="widthFix" wx:if="{{index == 4}}"></image>
+					<image src="../../images/qx_6.png" mode="widthFix" wx:if="{{index == 5}}"></image>
+					<image src="../../images/qx_6.png" mode="widthFix" wx:if="{{index > 5}}"></image>
+				</view> -->
+			</view>
+		</view>
+		<view class="bottle">
+			<view class="bt-left">
+				<image src="../../../images/index_08.png" mode="widthFix"></image>
+				商场
+			</view>
+			<view class="bt-right"><text>{{marketRevenue}}</text>元</view>
+		</view>
+		<view class="bottle">
+			<view class="bt-left">
+				<image src="../../../images/index_07.png" mode="widthFix"></image>
+				街区
+			</view>
+			<view class="bt-right"><text>{{blockIncome}}</text>元</view>
+		</view>
+		<view class="revenue">
+			<!-- <view class="title">
+				<text>应交已付统计</text>
+			</view> -->
+			<view class="revenue-list">
+				<view class="revenue-top" wx:if="false">
+					<view class="top-li {{nums==1?'cur':''}}" data-nums="1" bindtap="chartsClicka"><text>本月</text></view>
+					<view class="top-li {{nums==2?'cur':''}}" data-nums="2" bindtap="chartsClicka"><text>本年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="charts-tm">应付已付系统</view>
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

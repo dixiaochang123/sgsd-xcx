@@ -1,0 +1,48 @@
+
+/************分页样式****************/
+.page_div {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding:20rpx;
+  /* background-color: #fff; */
+}
+.page_div .page_sum, .page_div .page_prev, .page_div .page_number_div, .page_div .page_next {
+  height: 50rpx;
+  min-width: 50rpx;
+  line-height: 50rpx;
+  font-size:24rpx;
+  color: #333;
+}
+.page_div .page_prev, .page_div .page_next {
+  background-color: #eee;
+  padding:0 10rpx;
+  margin:0 10rpx;
+}
+.page_div .page_number_div .pageGo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50rpx;
+  box-sizing: border-box;
+  background-color: #eee;
+  text-align: center;
+  margin:0 10rpx;
+}
+/* .page_div .page_number_div input {
+  width: 100rpx;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  border:1px solid #eee;
+} */
+.page_div .page_number_div .pageGo.active{
+  background-color: #606a8b!important;
+  color: #ffffff;
+}
+.page_first,.page_last {
+  background: transparent;
+  border:solid 1rpx #ccc;
+  border-radius: 10rpx;
+}
+/************分页样式结束************/

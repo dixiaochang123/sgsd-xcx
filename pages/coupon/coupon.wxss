@@ -1,0 +1,76 @@
+/* pages/coupon/coupon.wxss */
+page {
+	width: 100%;
+	background-color: #e3e7f5;
+}
+.content {
+	width: 100%;
+}
+.warp {
+	width: 90%;
+	margin: 0 auto;
+}
+.title {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}
+.jsjsjs {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+.title image {
+	width: 50rpx;
+	margin-right: 20rpx;
+}
+.title text {
+	font-size: 30rpx;
+	color: #433f7b;
+}
+.ticket {
+  margin-left: 40rpx;
+}
+.select-wrap {
+  width: 300rpx;
+}
+
+.selected {
+  margin-top: 50%;
+}
+.listmain {
+  width: 100%;
+}
+.list {
+  width: 100%;
+  height: 290rpx;
+  background-color: #fff;
+  border-radius: 5rpx;
+  margin-top: 23rpx;
+  box-shadow:2rpx 2rpx 5rpx #abacb8;
+  padding:20rpx;
+}
+.gjsgk {
+  display: flex;
+  justify-content: start;
+  font-size: 20rpx;
+
+}
+.gjsgk image {
+  /* height: 115rpx !important; */
+  width: 125rpx!important;
+}
+.hlkgdlk {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 40rpx;
+}
+.hjk {
+  font-size: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-top: 45rpx;
+}

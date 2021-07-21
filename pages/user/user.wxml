@@ -1,0 +1,25 @@
+	
+<!--pages/user/user.wxml-->
+<view class="content">
+	<navBar title='个人中心' background='#e3e7f5' back="{{false}}"></navBar>
+	<view class="warp">
+		<view class="banner">
+			<image src="../../images/user_bg.png" class="bg" mode="widthFix"></image>
+			<view class="banner-txt">
+				<view class="banner-dl">
+					<view class="banner-dt">
+						<open-data type="userAvatarUrl"></open-data>
+					</view>
+					<view class="banner-dd">
+						<open-data type="userNickName"></open-data>
+						<text>ID:{{id}}</text>
+					</view>
+				</view>
+				<view class="banner-name">所属商业体：硕果时代</view>
+			</view>
+		</view>
+		<view class="out">
+			<button class="button_update" bindtap="logOut">退出账号</button>
+		</view>
+	</view>
+</view>

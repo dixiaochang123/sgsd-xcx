@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+
+  },
+	"backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "#e4e7f6",
+	"navigationBarTitleText": "商铺统计",
+	"navigationBarTextStyle": "black"
+}

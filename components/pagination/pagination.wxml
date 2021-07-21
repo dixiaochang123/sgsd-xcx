@@ -1,0 +1,17 @@
+<!-- wxml分页组件 -->
+<view class="page_div">
+	<view class="page_sum">共{{pagetotal}}页
+	 <!-- 当前{{currentPage}}页 -->
+	 </view>
+	<view class="page_prev page_first" bindtap="firstFn">首页</view>
+	<text decode='true' class="page_prev" bindtap="prevFn">&lt;</text>
+	<view class="page_number_div">
+    <view class="pageGo" bindtap="prevFn" wx:if="{{currentPage>1}}">{{currentPage-1}}</view>
+    <view class="pageGo active" bindtap="pageGo" >{{currentPage}}</view>
+    <view class="pageGo" bindtap="nextFn"  wx:if="{{currentPage+1<=pagetotal}}">{{currentPage+1}}</view>
+    <!-- <input value="{{currentPage}}" bindinput="inputValue" data-name="currentPage"></input> -->
+		<!-- <view class="pageGo" bindtap="pageGo">Go</view> -->
+	</view>
+	<text decode='true' class="page_next" bindtap="nextFn">&gt;</text>
+	<view class="page_next page_last" bindtap="lastFn">尾页</view>
+</view>

@@ -1,0 +1,28 @@
+<!--pages/revenue/revenue.wxml-->
+<view class="content">
+	<navBar title='车辆' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
+	<view class="warp">
+		<view class="revenue">
+			<view class="title">
+				<text>收益情况</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick">
+						<text>本月</text>
+					</view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick">
+						<text>本年</text>
+					</view>
+				</view>
+				<view class="circle">
+					<image src="../../../images/shabi.png" mode="widthFix"></image>
+					<view class="circle-txt">
+						<view><text>{{totalSpace}}</text>万元</view>
+						<view>总收益</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

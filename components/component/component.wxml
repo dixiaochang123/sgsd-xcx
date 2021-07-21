@@ -1,0 +1,8 @@
+ <cover-view class='status-bar'>
+    <cover-view class='goBack' bindtap='goBack' style="padding-top:{{bar_Height}}px;"  hidden='{{show_bol}}'>	
+      <cover-image src='https://cdn.petlemon.com/static/images/back.png'></cover-image>
+    </cover-view>
+    <cover-view class="tabar {{my_class ? 'tabar2':''}}" style="padding-top:{{bar_Height}}px;">
+      <cover-view class="red">{{title}}</cover-view>
+    </cover-view>
+</cover-view>

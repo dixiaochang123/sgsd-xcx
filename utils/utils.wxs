@@ -1,0 +1,20 @@
+var filters = {
+  /**
+ * 参数1: 要截取的字符串
+ * 参数2: 开始截取的index
+ * 参数3: 结束截取的index
+ */
+  substring:function(val,start,end){
+        if (val.length == 0 || val == undefined) {
+              return;
+        }
+        return val.substring(start,end);
+   },
+    toFix2: function (value) {
+      return parseFloat(value).toFixed(2)//此处2为保留两位小数
+    }
+  }
+  module.exports = {
+  substring:filters.substring,
+  toFix2: filters.toFix2
+}

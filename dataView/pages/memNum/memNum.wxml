@@ -1,0 +1,57 @@
+<!--pages/memNum/memNum.wxml-->
+<view class="content">
+	<navBar title='会员信息统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
+		extClass="lxy-navbar-extclass"></navBar>
+	<view class="warp">
+		<view class="circle">
+			<image src="../../../images/shabi.png" mode="widthFix"></image>
+			<view class="circle-txt">
+				<view>会员当前积分</view>
+				<view><text>{{totalScore}}</text>万分</view>
+			</view>
+		</view>
+
+		<view class="lease">
+			<view class="title">
+				<view class="jsjsjs">
+					<image src="../../../images/icon_29.png" mode="widthFix"></image>
+					<text>优惠券</text>
+				</view>
+				<text class="ticket" bindtap="handleticket">more ></text>
+			</view>
+			<view class="lease-con-parent">
+				<view class="lease-con">
+
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+					<view class="right">
+						<!--view class="right_item">
+						<view class="right_item1"><view></view></view>
+						<view>领取数量</view>
+						<view>{{GainCount}}</view>
+					</view-->
+						<view class="right_item">
+							<view class="right_item2">
+								<view></view>
+							</view>
+							<view>使用数量</view>
+							<view>{{UsedCount}}</view>
+						</view>
+						<view class="right_item">
+							<view class="right_item3">
+								<view></view>
+							</view>
+							<view>领取数量</view>
+							<view>{{UsedRatio}}%</view>
+						</view>
+					</view>
+				</view>
+				<view class="gfsgdgv">
+					<view><text>转化率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

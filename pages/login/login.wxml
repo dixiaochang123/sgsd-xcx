@@ -1,0 +1,15 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+    <view class="title">
+        <view class="title1">欢迎使用</view>
+        <view class="title2">硕果时代管理层看板</view>
+    </view>
+    <view class="login-form">
+        <image src="../../images/logo.png"></image>
+        <view class="title3">硕果时代管理层看板申请获得以下权限</view>
+        <view class="title4">获得您的手机号码</view>
+        <view>
+            <button open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber" style="position: relative; left: 0rpx; top: -20rpx">授权登录</button>
+        </view>
+    </view>
+</view>

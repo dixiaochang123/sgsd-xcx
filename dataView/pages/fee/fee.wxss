@@ -1,0 +1,194 @@
+/* pages/fee/fee.wxss */
+page {
+	width: 100%;
+	background-color: #e3e7f5;}
+.content {
+	width: 100%;
+}
+.warp {
+	width: 90%;
+	margin: 0 auto;
+}
+.banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-top: 20rpx;
+	margin-bottom: 40rpx;
+}
+.banner image {
+	width: 100%;
+}
+.banner-txt {
+	width: 90%;
+	padding: 30rpx 5%;
+	position: absolute;
+	left: 350rpx;
+	top: 100rpx;
+	font-size: 28rpx;
+	color: #000;
+}
+.banner-txt1 {
+	width: 90%;
+	padding: 30rpx 5%;
+	position: absolute;
+	left: 20rpx;
+	top: 100rpx;
+	font-size: 28rpx;
+	color: #000;
+}
+sub {
+	font-size: 20rpx;
+	vertical-align: text-top;
+}
+.banner-top {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 32rpx;
+}
+.banner-top text {
+	font-size: 28rpx;
+}
+.banner-num {
+	width: 100%;
+	margin-top: 30rpx;
+}
+.banner-num text {
+	font-size: 50rpx;
+}
+.banner-bottom {
+	width: 100%;
+	margin-top: 100rpx;
+}
+.banner-bottom image {
+	width: 20rpx;
+	margin-right: 10rpx;
+	margin-left: 60rpx;
+
+}
+.consumption {
+	width: 100%;
+	min-height: 200rpx;
+	margin: 0 auto;
+}
+.title {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.title text {
+	font-size: 30rpx;
+	color: #000;
+}
+.revenue-list {
+	width: 100%;
+	/* background-color: #2a3e4d; */
+	min-height: 200rpx;
+	border-radius: 5px;
+	overflow: hidden;
+	/* margin-top: 40rpx;
+	margin-bottom: 40rpx; */
+	/* padding: 30rpx 0; */
+}
+.tabel {
+	width: 100%;
+	overflow: hidden;
+	/* margin:30rpx 60rpx; */
+	margin: 0 auto;
+	background-color: #0566E8;
+}
+.tabel-th {
+	width: 100%;
+	height: 80rpx;
+	background-color: #d1d6e8;
+	font-size: 28rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	color: #27435d;
+}
+.tabel-tt {
+	width: 60%;
+	line-height: 80rpx;
+	border-right: 1px solid #293c4b;}
+.tabel-tts {
+	width: 40%;
+	line-height: 80rpx;
+}
+.tabel-tb {
+	width: 100%;
+	background-color: #223B54;
+	overflow: hidden;
+}
+.tabel-tr {
+	width: 100%;
+	height: 70rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #1BE6DA;
+	text-align: center;
+}
+.table-td {
+	width: 60%;
+	line-height: 70rpx;
+	border-right: 1px solid #293c4b;}
+.table-tds {
+	width: 40%;
+	line-height: 80rpx;
+}
+.tabel {
+	width: 100%;
+	margin: 40rpx auto;
+	overflow: hidden;
+	background-color: #0566E8;
+}
+.tabel-th {
+	width: 100%;
+	height: 80rpx;
+	background-color: #d1d6e8;
+	font-size: 28rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	color: #243441;
+}
+.tabel-tt {
+	width: 60%;
+	line-height: 80rpx;
+	border-right: 1px solid #e6e9f6;}
+.tabel-tts {
+	width: 40%;
+	line-height: 80rpx;
+}
+.tabel-tb {
+	width: 100%;
+	background-color: #fff;
+	/* border-right: 1px solid #e6e9f6;
+	border-top: 1px solid #e6e9f6; */
+	overflow: hidden;
+}
+.tabel-tr {
+	width: 100%;
+	height: 70rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #636262;
+	text-align: center;
+}
+.table-td {
+	width: 60%;
+	line-height: 70rpx;
+	border-right: 1px solid #e3e7f5;
+	border-top: 1px solid #e3e7f5;
+}
+.table-tds {
+	width: 40%;
+	line-height: 70rpx;
+	border-top: 1px solid #e3e7f5;
+}

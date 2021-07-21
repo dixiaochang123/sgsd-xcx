@@ -1,0 +1,58 @@
+<!--pages/rentTop/rentTop.wxml-->
+<view class="content">
+	<navBar title='租售比' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+	<view style="height:20rpx;"></view>
+	<!--顶部导航栏-->
+	<view class="swiper-tab">
+		<view class="tab-item {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">排名前十</view>
+		<view class="tab-item {{currentTab==5 ? 'on' : ''}}" data-current="5" bindtap="swichNav">排名后十</view>
+		<view class="tab-item {{currentTab==6 ? 'on' : ''}}" data-current="6" bindtap="swichNav">更多</view>
+	</view>
+	<!-- <view class="swiper-tab swiper-tab1" wx:if="{{currentTab == 6}}">
+		<view class="tab-item1 {{currentTab1==25 ? 'on1' : ''}}" data-current="3" bindtap="swichNav1">0%-25%</view>
+		<view class="tab-item1 {{currentTab1==50 ? 'on1' : ''}}" data-current="2" bindtap="swichNav1">25%-50%</view>
+		<view class="tab-item1 {{currentTab1==75 ? 'on1' : ''}}" data-current="1" bindtap="swichNav1">50%-75%</view>
+		<view class="tab-item1 {{currentTab1==100 ? 'on1' : ''}}" data-current="0" bindtap="swichNav1">75%-100%</view>
+	</view> -->
+	<view style="height:20rpx;"></view>
+	<view class="swiper-tab" wx:if="{{currentTab == 6}}">
+		<view class="tab-item1 {{currentTab1==3 ? 'on1' : ''}}" data-current="3" bindtap="swichNav1">0%-25%</view>
+		<view class="tab-item1 {{currentTab1==2 ? 'on1' : ''}}" data-current="2" bindtap="swichNav1">25%-50%</view>
+		<view class="tab-item1 {{currentTab1==1 ? 'on1' : ''}}" data-current="1" bindtap="swichNav1">50%-75%</view>
+		<view class="tab-item1 {{currentTab1==0 ? 'on1' : ''}}" data-current="0" bindtap="swichNav1">75%-100%</view>
+	</view>
+	<view style="height:20rpx;"></view>
+	<!--内容主体-->
+	<view >
+		<view>
+			<!-- <view class="banner">
+				<image src="../../images/bg1.png" mode="widthFix"></image>
+				<view class="banner-content">
+					<view class="banner-title">
+						<view class="title" wx:if="{{currentTab == 4}}">租售比前十商铺</view>
+						<view class="title"  wx:else >租售比后十商铺</view>
+						<view class="des">排行榜</view>
+					</view>
+					<view class="more" bindtap="showMore">更多 > </view>
+				</view>
+			</view> -->
+			<view class="warp">
+				<view class="list">
+					<view class="list-li" wx:for="{{rentList}}" wx:key="index">
+						<view class="li-bd">
+							<text wx:if="{{currentTab == 6 && page}}">{{(index + 1) + (page - 1) * 10}}</text>
+							<text wx:else>{{index+1}}</text>
+							<view class="bd-name">{{item.storeName}}</view>
+						</view>
+						<view class="li-hd">
+							{{item.value}}%
+						</view>
+					</view>
+				</view>
+			</view>
+			<pagination wx:if="{{currentTab == 6 && page}}" bind:pageChange="pageChange" page="{{page}}" total="{{total}}" size="{{10}}"></pagination>
+		</view>
+	</view>
+
+</view>

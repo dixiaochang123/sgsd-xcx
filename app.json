@@ -1,0 +1,71 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/coupon/coupon",
+		"pages/login/login",
+		"pages/user/user",
+		"pages/analysis/analysis",
+		"pages/memData/memData",
+		"pages/indexinfo1/indexinfo1",
+		"pages/indexinfo3/indexinfo3",
+		"pages/indexinfo4/indexinfo4"
+	],
+	"subpackages": [
+		{
+			"root": "dataView",
+			"pages": [
+				"pages/statistics/statistics",
+				"pages/distribution/distribution",
+				"pages/income/income",
+				"pages/rentTop/rentTop",
+				"pages/groundTop/groundTop",
+				"pages/fee/fee",
+				"pages/earlyWarning/earlyWarning",
+				"pages/revenue/revenue",
+				"pages/carGout/carGout",
+				"pages/indexInfo/indexInfo",
+				"pages/memNum/memNum",
+				"pages/consumption/consumption",
+				"pages/consumptionTop/consumptionTop",
+				"pages/monitor/monitor"
+			]
+		}
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "Weixin",
+		"navigationBarTextStyle": "white",
+		"navigationStyle": "custom"
+	},
+	"usingComponents": {
+		"navBar": "/components/navBar/navBar"
+	},
+	"tabBar": {
+		"color": "#a09f9f",
+		"selectedColor": "#000000",
+		"backgroundColor": "#f1f2f7",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/images/f_01.png",
+				"selectedIconPath": "/images/f_01g.png"
+			},
+			{
+				"pagePath": "pages/analysis/analysis",
+				"text": "数据分析",
+				"iconPath": "/images/f_02.png",
+				"selectedIconPath": "/images/f_02g.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "个人中心",
+				"iconPath": "/images/f_03.png",
+				"selectedIconPath": "/images/f_03g.png"
+			}
+		]
+	},
+	"sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,52 @@
+/* pages/earlyWarning/earlyWarning.wxss */
+page {
+  width: 100%;
+  background-color: #e3e7f5;
+}
+.warp {
+	width: 90%;
+	margin: 0 auto;
+}
+.title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.title image {
+  width: 50rpx;
+  margin-right: 20rpx;
+}
+
+.title text {
+  font-size: 30rpx;
+  color: #010101;
+}
+
+.echarts-con {
+	width: 50%;
+	height:300rpx;
+	position: relative;
+	/* display: flex;
+	align-items: center; */
+}
+
+.pinpai{display: inline-block;width:50%}
+.item{width:100%;display: inline-block;margin-top:50rpx}
+.asset-money{
+  position: absolute;
+  top:45%;
+  left:28%;
+  width:150rpx;
+  text-align: center;
+}
+.asset-money .asset-font{
+  color:#333;
+  z-index:9999 !important;
+  font-size:30rpx;
+}
+.asset-money .af2{
+  color:red;
+}

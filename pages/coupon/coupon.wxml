@@ -1,0 +1,47 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="content">
+  <navBar title='优惠券' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+  </navBar>
+  <view class="warp">
+    <view class="title">
+      <view class="jsjsjs">
+        <image src="../../images/icon_29.png" mode="widthFix"></image>
+        <text>优惠券</text>
+      </view>
+      <view class="ticket" bindtap="handleticket">
+        <view class="container" bindtap="close">
+          <view class="select-wrap">
+            <select id="select" options="{{options}}" key="city_id" text="city_name" bind:change="change"></select>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="listmain">
+      <view class="list" wx:for="{{list}}" wx:key="index">
+        <view class="gjsgk">
+          <image src="../../images/xyx.png" mode="widthFix"></image>
+          <view class="hlkgdlk">
+            <view>001_鲜芋仙5元代金券2020-12-01至2020-12-30</view>
+            <view style="height:37rpx;"></view>
+            <view>
+              <text>发放 100 </text>
+              <text>领取 70 </text>
+              <text style="color:#e5004f;">使用 50 </text>
+
+            </view>
+          </view>
+        </view>
+        <view class="hjk">
+          <text>转化率 50%</text>
+          <text>核销率  71%</text>
+          <text>购买率 50%</text>
+          <text>退款率 50%</text>
+        </view>
+
+      </view>
+
+    </view>
+    <pagination bind:pageChange="pageChange" page="{{1}}" total="{{30}}" size="{{7}}"></pagination>
+
+  </view>
+</view>

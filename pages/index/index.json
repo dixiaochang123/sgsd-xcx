@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "mp-tabs": "../../components/tabs/index"
+  },
+  "backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "#e3e7f5",
+	"navigationBarTitleText": "首页",
+  "navigationBarTextStyle": "black",
+  "navigationBarBorder": false
+}

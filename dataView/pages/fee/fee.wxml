@@ -1,0 +1,57 @@
+<!--pages/fee/fee.wxml-->
+<view class="content">
+	<navBar title='租金收缴率' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
+		extClass="lxy-navbar-extclass">
+	</navBar>
+	<view class="warp">
+		<view class="banner">
+			<image src="../../../images/sjl.png" mode="widthFix"></image>
+			<view class="banner-txt banner-txt1">
+				<view class="banner-top">实时租金收缴率</view>
+				<view class="banner-num"><text>{{ratio}}%</text></view>
+			</view>
+			<view class="banner-txt banner-txt2">
+				<view class="banner-top">租金收缴率</view>
+				<view class="banner-num"><text>{{ratio}}%</text></view>
+			</view>
+		</view>
+    <view class="consumption">
+			<view class="title">
+				<text>各楼层租金收缴率</text>
+			</view>
+			<view class="revenue-list">
+				<view class="tabel">
+					<view class="tabel-th">
+						<view class="tabel-tt">楼层</view>
+						<view class="tabel-tts">租金收缴率</view>					
+					</view>
+					<view class="tabel-tb">
+						<view class="tabel-tr" wx:for="{{floorData}}" wx:key="index">
+							<view class="table-td">{{item.name}}</view>
+							<view class="table-tds">{{item.value}}%</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="consumption">
+      <view class="title">
+				<text>各业态租金收缴率</text>
+			</view>
+			<view class="revenue-list">
+				<view class="tabel">
+					<view class="tabel-th">
+						<view class="tabel-tt">业态</view>
+						<view class="tabel-tts">租金收缴率</view>					
+					</view>
+					<view class="tabel-tb">
+						<view class="tabel-tr" wx:for="{{operationTypeData}}" wx:key="index">
+							<view class="table-td">{{item.name}}</view>
+							<view class="table-tds">{{item.value}}%</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
