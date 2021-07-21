@@ -6,7 +6,7 @@ page {
 	width: 100%;
 }
 .warp {
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 }
 .revenue {
@@ -15,9 +15,10 @@ page {
 	margin: 20rpx auto 50rpx;
 }
 .title {
-	width: 100%;
+	width: 90%;
 	display: flex;
 	align-items: center;
+	margin:0 auto;
 }
 .title image {
 	width: 50rpx;
@@ -46,7 +47,7 @@ page {
 	height: 95%;
 }
 .number {
-	width: 100%;
+	width: 90%;
 	min-height: 200rpx;
 	margin: 50rpx auto 0;
 	display: flex;
@@ -55,7 +56,7 @@ page {
 	flex-wrap: wrap;
 }
 .number-li {
-	width: 47%;
+	width: 30%;
 	background-color: #293c4b;
 	border-radius: 5px;
 	overflow: hidden;

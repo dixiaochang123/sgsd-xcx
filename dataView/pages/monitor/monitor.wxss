@@ -19,7 +19,7 @@ page {
 	flex-wrap: wrap;
 }
 .number-li {
-	width: 47%;
+	width: 32%;
 	/* background-color: #293c4b; */
 	border-radius: 5px;
 	overflow: hidden;

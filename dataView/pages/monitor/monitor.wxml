@@ -69,11 +69,11 @@
 					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本月</text></view>
 					<view class="top-li {{num==3?'cur':''}}" data-num="3" bindtap="chartsClick"><text>本年</text></view>
 		  	</view>
-				<view hidden="{{ imgSrc }}" class="echarts-con" >
+				<view class="echarts-con" >
 					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
 				</view>
-				<image wx:if="{{ imgSrc }}" src="{{ imgSrc }}" style="width:100%;height:600rpx" />
-
+				<!-- <image wx:if="{{ imgSrc }}" src="{{ imgSrc }}" style="width:100%;height:600rpx" /> -->
+				<!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas> -->
 				<view class="tabel">
 					<view class="tabel-th">
 						<view class="tabel-tt">出入口</view>
@@ -95,11 +95,11 @@
 				<text>周环同比</text>
 			</view>
 			<view class="echarts-con">
-					<view hidden="{{ imgSrc1 }}" class="echarts-con" >
+					<!-- <view hidden="{{ imgSrc1 }}" class="echarts-con" >
 						<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
 					</view>
-					<image wx:if="{{ imgSrc1 }}" src="{{ imgSrc1 }}" style="width:100%;height:600rpx" />
-					<!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas> -->
+					<image wx:if="{{ imgSrc1 }}" src="{{ imgSrc1 }}" style="width:100%;height:600rpx" /> -->
+					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
 								<view>同比20年</view>
@@ -122,11 +122,11 @@
 				<text>月环同比</text>
 			</view>
 			<view class="echarts-con">
-				<view hidden="{{ imgSrc2 }}" class="echarts-con" >
+				<!-- <view hidden="{{ imgSrc2 }}" class="echarts-con" >
 						<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
 					</view>
-					<image wx:if="{{ imgSrc2 }}" src="{{ imgSrc2 }}" style="width:100%;height:600rpx" />
-					<!-- <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas> -->
+					<image wx:if="{{ imgSrc2 }}" src="{{ imgSrc2 }}" style="width:100%;height:600rpx" /> -->
+					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
 								<view>同比20年</view>
@@ -149,11 +149,11 @@
 				<text>年环同比</text>
 			</view>
 			<view class="echarts-con">
-				<view hidden="{{ imgSrc3 }}" class="echarts-con" >
+				<!-- <view hidden="{{ imgSrc3 }}" class="echarts-con" >
 						<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
 					</view>
-					<image wx:if="{{ imgSrc3 }}" src="{{ imgSrc3 }}" style="width:100%;height:600rpx" />
-					<!-- <ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas> -->
+					<image wx:if="{{ imgSrc3 }}" src="{{ imgSrc3 }}" style="width:100%;height:600rpx" /> -->
+					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
 								<view>同比19年</view>

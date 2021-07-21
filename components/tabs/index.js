@@ -139,10 +139,11 @@ Component({
         num2:1,
         activecar:"本周车流",
         thisPeriodOfData:'',
-        profit:'',
+        profit:'0',
+        totalSpaceas:0,
 
         activeSales:"本周销售额",
-        salesdata:'',
+        salesdata:'0',
         monthCustomerPrice:'',
 
         ftl:0
@@ -188,6 +189,9 @@ Component({
                 shoundAmount:this.data.dataAllMarket.shoundAmount,
                 receivableAmount:this.data.dataAllMarket.receivableAmount
             })
+        },
+        totalSpace: function totalSpace(val) {
+            
         },
     },
     lifetimes: {
@@ -244,6 +248,18 @@ Component({
                     })
                     
                     break;
+                case '商管':
+                    wx.navigateTo({
+                        url: '/dataView/pages/statistics/statistics'
+                    })
+                    
+                    break;
+                case '商管1':
+                    wx.navigateTo({
+                        url: '/dataView/pages/distribution/distribution'
+                    })
+                    
+                    break;
             
                 default:
                     break;
@@ -273,7 +289,7 @@ Component({
             let obj3={
                 '本周销售额':this.data.dataAllSales.weekSales,
                 '本月销售额':this.data.dataAllSales.monthSales,
-                '本年销售额':this.data.dataAllSales.monthSales
+                '本年销售额':this.data.dataAllSales.yearSales
             }
             let obj4={
                 '本周车流':1,
@@ -380,11 +396,13 @@ Component({
                 method: "POST",
                 success: res => {
                     if (res.success) {
+                        // 当天车流量入的/总车位数
                         let ftl = ((res.data.dayEntryData/this.data.totalSpace)*100).toFixed(2);
+                        console.log('ftl',res.data.dayEntryData,this.data.totalSpace)
                         ftl = isNaN(ftl)?0:ftl;
                         this.setData({
                             dayAppearanceData: res.data.dayAppearanceData, //今日出
-                            dayEntryData: res.data.dayEntryData, //今日入
+                            dayEntryData: parseFloat(res.data.dayEntryData).toLocaleString(), //今日入
                             ftl
                         })
                     }
@@ -422,7 +440,7 @@ Component({
                     if (res.success) {
                         console.log(res.data)
                         this.setData({
-                            thisPeriodOfData: res.data.thisPeriodOfData
+                            thisPeriodOfData: parseFloat(res.data.thisPeriodOfData).toLocaleString()
                         })
                     }
                     wx.hideLoading();
@@ -438,10 +456,10 @@ Component({
                 method: "POST",
                 success: res => {
                     if (res.success) {
-                        console.log(res.data)
-                        // this.setData({
-                        //     profit: res.data.thisPeriodOfData
-                        // })
+                        console.log('今日收益',res.data)
+                        this.setData({
+                            profit: res.data>10000?(res.data/10000):res.data
+                        })
                     }
                     wx.hideLoading();
                 },

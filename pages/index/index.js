@@ -402,7 +402,18 @@ Page({
 		dataAllFlow:{},//人流
 		dataAllMember:{},//会员
 		dataAllSales:{},//收银
-		dataAllMarket:{}
+		dataAllMarket:{},
+
+		swiperClass:'weui-tabs-swiper'
+	},
+	onChange(e) {
+		let arr = ['weui-tabs-swiper','weui-tabs-swiper1','weui-tabs-swiper1','weui-tabs-swiper2','weui-tabs-swiper']
+		let i = e.detail.index
+		console.log(e.detail.index)
+		this.setData({
+			swiperClass:arr[i]
+		})
+
 	},
 
 	/**
@@ -422,10 +433,10 @@ Page({
 		this.getMemberData1();
 		this.getMonitorData();
 		this.getMonitorData1();
-		// this.getCarData();
+		this.getCarData();
 		// this.getCarData1();
 		// this.getBMData();
-		// this.getBMData1();
+		this.getBMData1();
 		// this.getLineData();
 		// this.getLineData1();
 		// this.drawLeasePie();
@@ -450,7 +461,7 @@ Page({
 				if (res.success) {
 					let data = res.data;
 					this.setData({
-						todaySales: data.todaySales,
+						todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
 						weekSales: data.weekSales,
 						monthSales: data.monthSales
 					})
@@ -460,6 +471,7 @@ Page({
 							weekSales: data.weekSales > 10000? (res.data.weekSales/10000).toFixed(2):res.data.weekSales,
 							monthSales: data.monthSales > 10000? (res.data.monthSales/10000).toFixed(2):res.data.monthSales,
 							monthCustomerPrice:data.monthSales > 10000? (res.data.monthSales/10000).toFixed(2):res.data.monthSales,
+							yearSales:data.yearSales > 10000? (res.data.yearSales/10000).toFixed(2):res.data.yearSales,
 						}
 					})
 				}
@@ -484,7 +496,7 @@ Page({
 					})
 					this.setData({
 						dataAllMember:{
-							totalNumberOfMembers: res.data.totalNumberOfMembers,
+							totalNumberOfMembers: parseFloat(res.data.totalNumberOfMembers).toLocaleString(),
 							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers > 10000? (res.data.totalNumberOfMaleMembers/10000).toFixed(2):res.data.totalNumberOfMaleMembers,
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers > 10000? (res.data.totalNumberOfFemaleMembers/10000).toFixed(2):res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers > 10000? (res.data.totalNumberOfOtherMembers/10000).toFixed(2):res.data.totalNumberOfOtherMembers,
@@ -505,7 +517,7 @@ Page({
 			success: res => {
 				if (res.success) {
 					this.setData({
-						totalNewMumber: res.data.totalNumberOfMembers
+						totalNewMumber:  res.data.totalNumberOfMembers
 					})
 					console.log(3333333333,res.data.totalNumberOfMembers)
 				}
@@ -530,7 +542,7 @@ Page({
 					})
 					this.setData({
 						dataAllFlow:{
-							dayPassengerFlow: res.data.dayPassengerFlow,
+							dayPassengerFlow: parseFloat(res.data.dayPassengerFlow).toLocaleString(),
 							weekPassengerFlow: res.data.weekPassengerFlow,
 							monthPassengerFlow: res.data.monthPassengerFlow,
 							yearPassengerFlow: res.data.yearPassengerFlow,
@@ -568,6 +580,7 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
+					console.log('总车位：'+res.data.totalSpace)
 					this.setData({
 						totalSpace: res.data.totalSpace
 					})

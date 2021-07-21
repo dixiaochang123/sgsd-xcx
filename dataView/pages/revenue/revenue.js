@@ -39,7 +39,7 @@ Page({
 			success:res=>{
 				if(res.success){
 					this.setData({
-						totalSpace: res.data
+						totalSpace: res.data>10000?(res.data/10000).toFixed(2):res.data
 					})
 				}
 				wx.hideLoading();

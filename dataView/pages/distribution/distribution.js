@@ -21,7 +21,7 @@ function initOption() {
 			name: '商铺数量',
 			type: 'pie',
 			radius: ['40%', '70%'],
-			center: ['50%', '50%'],
+			center: ['47%', '50%'],
 			// roseType: 'radius',
 			// roseType: false ,
 			startAngle:180,

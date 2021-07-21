@@ -331,6 +331,18 @@ page{
 
 .weui-tabs-swiper {
 	width: 100%;
+	height:550px;
+}
+.weui-tabs-swiper1 {
+	width: 100%;
+	height: 1020px;
+}
+.weui-tabs-swiper2 {
+	width: 100%;
+	height: 600px;
+}
+.weui-tabs-swiper3 {
+	width: 100%;
 	height: 1020px;
 }
 
