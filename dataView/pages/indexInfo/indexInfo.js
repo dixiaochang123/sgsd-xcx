@@ -86,7 +86,7 @@ function initOption() {
 function initOption1() {
 	return {
 		grid: {
-			left: '2%',
+			left: 0,
 			right: '3%',
 			top: '10%',
 			bottom: '5%',
