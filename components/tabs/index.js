@@ -153,6 +153,7 @@ Component({
     attached() {
         
     },
+    // parseFloat(res.data.dayPassengerFlow).toLocaleString()
     observers: {
         activeTab: function activeTab(_activeTab) {
             var len = this.data.tabs.length;
@@ -169,7 +170,7 @@ Component({
         },
         dataAllMember: function dataAllMember(val) {
             this.setData({
-                memberdata:this.data.dataAllMember.totalNumberOfMaleMembers >10000?(this.data.dataAllMember.totalNumberOfMaleMembers/10000).toFixed(2):this.data.dataAllMember.totalNumberOfMaleMembers
+                memberdata:parseFloat(this.data.dataAllMember.totalNumberOfMaleMembers).toLocaleString()
             })
             this.getMemberData1()
             this.getMemberData2()
@@ -309,7 +310,7 @@ Component({
                     this.setData({ activeMember });
                     this.setData({
                         // memberdata:obj1[activeMember]
-                        memberdata:obj1[activeMember] >10000?(obj1[activeMember]/10000).toFixed(2):obj1[activeMember]
+                        memberdata:parseFloat(obj1[activeMember]).toLocaleString()
                     })
                     break;
                 case "会员1":
@@ -360,7 +361,8 @@ Component({
                 success: res => {
                     if (res.success) {
                         this.setData({
-                            totalNewMumber: res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
+                            // totalNewMumber: res.data.totalNumberOfMembers
+                            totalNewMumber: parseFloat(res.data.totalNumberOfMembers).toLocaleString()
                         })
                         console.log(3333333333,res.data.totalNumberOfMembers)
                     }
@@ -458,7 +460,8 @@ Component({
                     if (res.success) {
                         console.log('今日收益',res.data)
                         this.setData({
-                            profit: res.data>10000?(res.data/10000):res.data
+                            // profit: res.data>10000?(res.data/10000):res.data
+                            profit: parseFloat(res.data).toLocaleString()
                         })
                     }
                     wx.hideLoading();

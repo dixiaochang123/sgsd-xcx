@@ -7,7 +7,7 @@ var chart1 = null;
 var areaTotal = 0;
 var rentedAreaTotal = 0;
 let chartData = {
-	Count:0,
+	Count: 0,
 	nullCount: 0,
 	rentCount: 0,
 	nullRate: 0
@@ -15,9 +15,14 @@ let chartData = {
 
 function initOption() {
 	let num = (areaTotal - rentedAreaTotal).toFixed(2)
-	var resultData = [
-		{ value: rentedAreaTotal, name: "已租面积"},
-		{ value: num, name: "未租面积" }
+	var resultData = [{
+			value: rentedAreaTotal,
+			name: "已租面积"
+		},
+		{
+			value: num,
+			name: "未租面积"
+		}
 	];
 	return {
 		// tooltip: {
@@ -27,64 +32,66 @@ function initOption() {
 		legend: {
 			show: false,
 		},
-		color: ['#e5004f','#4d5063'],
-		series: [
-			{
+		color: ['#e5004f', '#4d5063'],
+		series: [{
 				name: "",
 				type: "pie",
 				radius: ["40%", "60%"],
 				data: resultData,
-				label:{
-					show:false
+				label: {
+					show: false
 				},
 			},
 			{
 				name: "",
 				type: "pie",
 				radius: [0, "60%"],
-				data: [
-					{ value: rentedAreaTotal, 
-						name: '已租面积' ,
-						itemStyle:{
-						normal:{
-							opacity : 0
-						},
-						emphasis:{
-							opacity : 1
-						}
-					}},
-					{ value: num,
-						name: "未租面积",
-						itemStyle:{
-						normal:{
-							opacity : 0
-						},
-						emphasis:{
-							opacity : 1
-						}
-					}
+				data: [{
+						value: rentedAreaTotal,
+						name: '已租面积' + rentedAreaTotal,
+						// itemStyle: {
+						// 	normal: {
+						// 		opacity: 0
+						// 	},
+						// 	emphasis: {
+						// 		opacity: 1
+						// 	}
+						// }
+					},
+					{
+						value: num,
+						name: "未租面积" + num,
+						// itemStyle: {
+						// 	normal: {
+						// 		opacity: 0
+						// 	},
+						// 	emphasis: {
+						// 		opacity: 1
+						// 	}
+						// }
 					},
 				],
-				label:{
-					textStyle:{
-						color:'#FFF'
+				label: {
+					textStyle: {
+						color: '#000'
 					},
 					formatter: '{b}({d}%)\n{c}m²'
 				},
-				labelLine:{
-					lineStyle:{
-						color:'#2e2f39'
+				labelLine: {
+					lineStyle: {
+						color: '#2e2f39'
 					},
-					showAbove:true
+					showAbove: true
 				}
 			},
 		],
 	};
 }
+
 function initOption1() {
 	return {
 		title: {
-			text: chartData.Count+'户',
+			text: chartData.Count + '户',
 			subtext: '总铺位数',
 			left: 'center',
 			right: 'center',
@@ -95,13 +102,13 @@ function initOption1() {
 			}
 		},
 		legend: {
-			show:false
+			show: false
 		},
 		// tooltip: {
 		// 	trigger: 'item',
 		// 	formatter: '{b}\n{c}户 ({d}%)'
 		// },
-		color: ['#e5004f','#4d5063'],
+		color: ['#e5004f', '#4d5063'],
 		series: [{
 			name: '总铺位',
 			type: 'pie',
@@ -112,12 +119,12 @@ function initOption1() {
 			},
 			data: [{
 					value: chartData.nullCount,
-					name: '空铺位',
+					name: '空铺位' + chartData.nullCount,
 					selected: true
 				},
 				{
 					value: chartData.rentCount,
-					name: '已租铺位',
+					name: '已租铺位' + chartData.nullCount,
 
 				}
 			]
@@ -132,7 +139,7 @@ Page({
 	 */
 	data: {
 		ec: {
-			onInit: (canvas, width, height, dpr) =>{
+			onInit: (canvas, width, height, dpr) => {
 				chart = echarts.init(canvas, null, {
 					width: width,
 					height: height,
@@ -143,7 +150,7 @@ Page({
 			}
 		},
 		ec1: {
-			onInit: (canvas, width, height, dpr) =>{
+			onInit: (canvas, width, height, dpr) => {
 				chart1 = echarts.init(canvas, null, {
 					width: width,
 					height: height,
@@ -162,107 +169,107 @@ Page({
 		rentRate: 0
 	},
 	handlerGobackClick(delta) {
-    const pages = getCurrentPages();
-    if (pages.length >= 2) {
-      wx.navigateBack({
-        delta: delta
-      });
-    } else {
-      wx.switchTab({
-        url: '/pages/index/index'
-      });
-    }
-  },
+		const pages = getCurrentPages();
+		if (pages.length >= 2) {
+			wx.navigateBack({
+				delta: delta
+			});
+		} else {
+			wx.switchTab({
+				url: '/pages/index/index'
+			});
+		}
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function(options) {
+	onLoad: function (options) {
 		wx.showLoading();
 		this.getData();
 		this.getPieChartData();
 		this.drawLeasePie();
 	},
-	getData: function(e){
+	getData: function (e) {
 		wx.request({
-			url: app.globalData.baseUrlOP+'rest/sgsdbi/countrentarea',
+			url: app.globalData.baseUrlOP + 'rest/sgsdbi/countrentarea',
 			dataType: 'json',
 			data: JSON.stringify({
 				apiKey: "STANDRAD"
 			}),
 			header: {
-				"content-type":'application/json'
+				"content-type": 'application/json'
 			},
-			method:"POST",
-			success:res=>{
-				if(res.data.success){
+			method: "POST",
+			success: res => {
+				if (res.data.success) {
 					areaTotal = res.data.data.areaTotal,
-					rentedAreaTotal = res.data.data.rentedAreaTotal,
-					this.setData({
-						areaTotal: res.data.data.areaTotal,
-						rentedAreaTotal: res.data.data.rentedAreaTotal
-					})
+						rentedAreaTotal = res.data.data.rentedAreaTotal,
+						this.setData({
+							areaTotal: res.data.data.areaTotal,
+							rentedAreaTotal: res.data.data.rentedAreaTotal
+						})
 				}
-				let chartSet = function (){
-					if(chart){
+				let chartSet = function () {
+					if (chart) {
 						console.log(chart)
 						chart.setOption(initOption())
 						console.log('set piechart')
-					}else{
-						setTimeout(()=>{
+					} else {
+						setTimeout(() => {
 							console.log("piechart is null")
 							chartSet();
-						},1000)
+						}, 1000)
 					}
 				}
 				chartSet();
 				wx.hideLoading();
 			},
-			fail:error=>{
+			fail: error => {
 				wx.hideLoading();
 			}
 		})
 	},
-	getPieChartData: function(e){
+	getPieChartData: function (e) {
 		wx.request({
-			url: app.globalData.baseUrlOP+'rest/sgsdbi/countlocation',
+			url: app.globalData.baseUrlOP + 'rest/sgsdbi/countlocation',
 			dataType: 'json',
 			data: JSON.stringify({
 				apiKey: "STANDRAD"
 			}),
 			header: {
-				"content-type":'application/json'
+				"content-type": 'application/json'
 			},
-			method:"POST",
-			success:res=>{
-				if(res.data.success){
+			method: "POST",
+			success: res => {
+				if (res.data.success) {
 					chartData.Count = res.data.data.shopBunkCount,
-					chartData.nullCount = res.data.data.shopBunkNullCount,
-					chartData.rentCount = res.data.data.shopBunkRentedCount,
-					chartData.nullRate = res.data.data.shopBunkNullRate,
-					this.setData({
+						chartData.nullCount = res.data.data.shopBunkNullCount,
+						chartData.rentCount = res.data.data.shopBunkRentedCount,
+						chartData.nullRate = res.data.data.shopBunkNullRate,
+						this.setData({
 							nullCount: res.data.data.shopBunkNullCount,
 							rentCount: res.data.data.shopBunkRentedCount,
 							nullRate: res.data.data.shopBunkNullRate,
-							rentRate: (res.data.data.shopBunkRentedCount/res.data.data.shopBunkCount*100).toFixed(2)
-					})
+							rentRate: (res.data.data.shopBunkRentedCount / res.data.data.shopBunkCount * 100).toFixed(2)
+						})
 				}
-				let chartSet1 = function (){
-					if(chart1){
+				let chartSet1 = function () {
+					if (chart1) {
 						console.log(chart1)
 						chart1.setOption(initOption1())
 						console.log('set chart')
-					}else{
-						setTimeout(()=>{
+					} else {
+						setTimeout(() => {
 							console.log("chart is null")
 							chartSet1();
-						},500)
+						}, 500)
 					}
 				}
 				chartSet1();
 				wx.hideLoading();
 			},
-			fail:error=>{
+			fail: error => {
 				wx.hideLoading();
 			}
 		})
@@ -299,28 +306,28 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function() {
-		
+	onReady: function () {
+
 	},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function() {
+	onShow: function () {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function() {
+	onHide: function () {
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function() {
+	onUnload: function () {
 		chart = null;
 		chart1 = null;
 	},
@@ -328,21 +335,21 @@ Page({
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: function() {
+	onPullDownRefresh: function () {
 
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function() {
+	onReachBottom: function () {
 
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function() {
+	onShareAppMessage: function () {
 
 	}
 })

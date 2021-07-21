@@ -497,9 +497,9 @@ Page({
 					this.setData({
 						dataAllMember:{
 							totalNumberOfMembers: parseFloat(res.data.totalNumberOfMembers).toLocaleString(),
-							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers > 10000? (res.data.totalNumberOfMaleMembers/10000).toFixed(2):res.data.totalNumberOfMaleMembers,
-							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers > 10000? (res.data.totalNumberOfFemaleMembers/10000).toFixed(2):res.data.totalNumberOfFemaleMembers,
-							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers > 10000? (res.data.totalNumberOfOtherMembers/10000).toFixed(2):res.data.totalNumberOfOtherMembers,
+							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
+							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
+							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers,
 						}
 					})
 				}
