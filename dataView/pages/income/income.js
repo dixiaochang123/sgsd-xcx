@@ -483,6 +483,9 @@ Page({
 					if (chart) {
 						console.log(chart)
 						chart.setOption(initOption())
+						chart2.setOption(initOptions1())
+						chart3.setOption(initOptions2())
+						chart4.setOption(initOptions3())
 						console.log('set piechart')
 					} else {
 						setTimeout(() => {

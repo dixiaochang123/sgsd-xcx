@@ -52,7 +52,7 @@
 	<view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本年销售环同比</text>
+				<text>本年收入环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec4 }}"></ec-canvas>

@@ -37,6 +37,7 @@ function initOption() {
 				name: "",
 				type: "pie",
 				radius: ["40%", "60%"],
+				center: ['50%', '50%'] ,
 				data: resultData,
 				label: {
 					show: true
@@ -60,7 +61,8 @@ function initOption() {
 			{
 				name: "",
 				type: "pie",
-				radius: [0, "60%"],
+				radius: ['40%', "60%"],
+				center: ['50%', '50%'] ,
 				data: [{
 						value: rentedAreaTotal,
 						name: '已租面积',
