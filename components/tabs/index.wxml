@@ -60,7 +60,7 @@
         </view>
         <view class="money">
           <image class="money_img" src="../../images/f_05.png" mode="widthFix"></image>
-          <text class="money_text1">{{memberdata}}<text class="money_text2">万人</text></text>
+          <text class="money_text1">{{memberdata}}<text class="money_text2">人</text></text>
         </view>
         <view style="height:45rpx;"></view>
         <view class="tabss">
@@ -73,7 +73,7 @@
         </view>
         <view class="money">
           <image class="money_img" src="../../images/f_04.png" mode="widthFix"></image>
-          <text class="money_text1">{{totalNewMumber}}<text class="money_text2">万人</text></text>
+          <text class="money_text1">{{totalNewMumber}}<text class="money_text2">人</text></text>
         </view>
         <!-- <view style="height:45rpx;"></view> -->
         <view class="jinrikliu_parent">
