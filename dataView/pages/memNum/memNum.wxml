@@ -41,15 +41,15 @@
 								<view></view>
 							</view>
 							<view>领取数量</view>
-							<view>{{UsedRatio}}%</view>
+							<view>{{GainCount}}</view>
 						</view>
 					</view>
 				</view>
 				<view class="gfsgdgv">
 					<view><text>转化率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>核销率</text><text class="hhhk">{{'76%'}}</text></view>
 					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
-					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
-					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>退款率</text><text class="hhhk">{{'76%'}}</text></view>
 				</view>
 			</view>
 		</view>

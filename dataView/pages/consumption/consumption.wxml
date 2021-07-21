@@ -77,7 +77,7 @@
 			<image src="../../../images/shabi.png" mode="widthFix"></image>
 			<view class="circle-txt">
 				<view>今日销售额</view>
-				<view><text>{{todaySales}}</text>万分</view>
+				<view><text>{{todaySales}}</text>万元</view>
 			</view>
 		</view>
   </view>

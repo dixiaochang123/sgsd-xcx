@@ -141,6 +141,8 @@ Page({
   getData1: function (e) {
     this.getInfo1().then(res => {
       let list = res.data.data;
+      list = list.filter(item=>item.value!=0)
+      console.log('更多原始数据', list)
       // this.setData({
       //   total: list.length
       // })
@@ -156,7 +158,8 @@ Page({
         }
       }
       let list1 = this.chunk(list, 10)
-      console.log('list', list, this.data.page)
+      // list1 = list1.filter(item=>!!item.value)
+      console.log('list11', list, this.data.page)
       this.setData({
         rentList: list1[this.data.page - 1],
         total: list.length,
@@ -193,6 +196,7 @@ Page({
   getData: function (e) {
     this.getInfo(this.data.currentTab == 5 ? false : true).then(res => {
       let list = res.data.data;
+      console.log('获取的原始数据',list)
       let num = 0
       if (this.data.currentTab == 5) { //后十
         list.sort((a, b) => {

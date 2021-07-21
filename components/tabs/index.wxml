@@ -9,7 +9,7 @@
             bindtap="handleTabClick" data-index="{{index}}">
             <view class="weui-tabs-bar__title {{tabClass}} {{activeTab === index ? activeClass : ''}}">
               <view>
-                <image style="width: 30px; height: 30px;" src="{{activeTab === index ? item.url1 : item.url}}" mode="widthFix"></image>
+                <image style="width: 30px; height: 30px;" src="{{activeTab === index ? item.url1 : item.url}}" ></image>
               </view>
               <text class="">{{item.title}}</text>
             </view>
@@ -59,7 +59,9 @@
           </view>
         </view>
         <view class="money">
-          <image class="money_img" src="../../images/f_05.png" mode="widthFix"></image>
+          <image wx:if="{{activeMember=='男性'}}" class="money_img" src="../../images/f_05.png" mode="widthFix"></image>
+          <image wx:if="{{activeMember=='女性'}}" class="money_img" src="../../images/f_051.png" mode="widthFix"></image>
+          <image wx:if="{{activeMember=='其他'}}" class="money_img" src="../../images/f_052.png" mode="widthFix"></image>
           <text class="money_text1">{{memberdata}}<text class="money_text2">人</text></text>
         </view>
         <view style="height:45rpx;"></view>
@@ -171,12 +173,12 @@
           <!-- <view class="zj">租金（本月）</view> -->
           <view class="flexs">
             <view class="ys">
-              <text class="txtxxx">已收</text>
-              <text>78 <text>万元</text></text>
+              <text class="txtxxx">实时租金收缴率</text>
+              <text>{{ratio}} <text>%</text></text>
             </view>
             <view class="ys1">
-              <text class="txtxxx">应收</text>
-              <text>178 <text>万元</text></text>
+              <text class="txtxxx">租金收缴率</text>
+              <text>{{ratio}}  <text>%</text></text>
             </view>
           </view>
           <text class="jinrikliu_text_4 jinrikliu_text_5" id="商管1" bindtap="handleTabClickflow">more ></text>

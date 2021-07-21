@@ -3,24 +3,24 @@
 <view class="content">
 	<navBar title='收入统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
   </navBar>
-	<view class="warp">
+	<!-- <view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本周销售环同比</text>
+				<text>周环同比</text>
 			</view>
 			<view class="echarts-con">
-					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec2 }}"></ec-canvas>
+					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
-								<view>同比19年</view>
+								<view>同比20年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-								<text class="right_child1_text"> 20%</text></view>
+								<text class="right_child1_text"> {{ztb}}%</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
 								<view>环比上周</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{zhb}}%</text></view>
 							</view>
 					</view>
 			</view>
@@ -29,21 +29,21 @@
 	<view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本月销售环同比</text>
+				<text>月环同比</text>
 			</view>
 			<view class="echarts-con">
-					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec3 }}"></ec-canvas>
+					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2}}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
-								<view>同比19年</view>
+								<view>同比20年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-								<text class="right_child1_text"> 20%</text></view>
+								<text class="right_child1_text"> {{ytb}}%</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
-								<view>环比上周</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+								<view>环比上月</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{yhb}}%</text></view>
 							</view>
 					</view>
 			</view>
@@ -52,32 +52,32 @@
 	<view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本年收入环同比</text>
+				<text>年环同比</text>
 			</view>
 			<view class="echarts-con">
-					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec4 }}"></ec-canvas>
+					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
 								<view>同比19年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-								<text class="right_child1_text"> 20%</text></view>
+								<text class="right_child1_text"> {{ntb}}%</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
-								<view>环比上周</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
+								<view>同比20年</view>
+								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{nhb}}%</text></view>
 							</view>
 					</view>
 			</view>
 		</view>
-	</view>
+	</view> -->
   <view class="warp">
     <view class="circle">
 			<image src="../../../images/shabi.png" mode="widthFix"></image>
 			<view class="circle-txt">
-				<view><text>{{totalIncome}}</text>万元</view>
-				<view>总收入</view>
+				<view><text>{{totalIncome}}</text></view>
+				<view>总收入（万元）</view>
 			</view>
 		</view>
   </view>
@@ -118,8 +118,8 @@
 		<view class="number">
 			<view class="number-li" wx:for="{{incomeList}}" wx:key="index">
 				<view class="number-dl">
-					<view class="number-dt">{{item.category}}</view>
-					<view class="number-dd"><text>¥{{item.value}}</text><text>{{item.ratio}}%</text> </view>
+					<view class="number-dt"><text>{{item.category}}</text><text> {{item.ratio}}%</text></view>
+					<view class="number-dd"><text>¥{{item.value}}万元</text></view>
 				</view>
 				<!-- <view class="number-img">
 					<image src="../../images/qx_1.png" mode="widthFix" wx:if="{{index == 0}}"></image>
@@ -137,20 +137,20 @@
 				<image src="../../../images/index_08.png" mode="widthFix"></image>
 				商场
 			</view>
-			<view class="bt-right"><text>{{marketRevenue}}</text>元</view>
+			<view class="bt-right"><text>{{marketRevenue}}</text>万元</view>
 		</view>
 		<view class="bottle">
 			<view class="bt-left">
 				<image src="../../../images/index_07.png" mode="widthFix"></image>
 				街区
 			</view>
-			<view class="bt-right"><text>{{blockIncome}}</text>元</view>
+			<view class="bt-right"><text>{{blockIncome}}</text>万元</view>
 		</view>
 		<view class="revenue">
 			<!-- <view class="title">
 				<text>应交已付统计</text>
 			</view> -->
-			<view class="revenue-list">
+			<!-- <view class="revenue-list">
 				<view class="revenue-top" wx:if="false">
 					<view class="top-li {{nums==1?'cur':''}}" data-nums="1" bindtap="chartsClicka"><text>本月</text></view>
 					<view class="top-li {{nums==2?'cur':''}}" data-nums="2" bindtap="chartsClicka"><text>本年</text></view>
@@ -159,6 +159,18 @@
 					<view class="charts-tm">应付已付系统</view>
 					<view class="echarts-con">
 						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+					</view>
+				</view>
+			</view> -->
+			<view class="revenue-list">
+				<!-- <view class="revenue-top">
+					<view class="top-li {{nums==1?'cur':''}}" data-nums="1" bindtap="chartsClicka"><text>本月</text></view>
+					<view class="top-li {{nums==2?'cur':''}}" data-nums="2" bindtap="chartsClicka"><text>本年</text></view>
+				</view> -->
+				<view class="charts-con">
+					<view class="charts-tm">应交已付统计</view>
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec4 }}"></ec-canvas>
 					</view>
 				</view>
 			</view>

@@ -452,7 +452,7 @@ function initOptions6() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本周', '上周', '19年同期'],
+			data: ['本月', '上月', '20年同期'],
 			axisLine: {
 				show: false
 			},
@@ -633,14 +633,17 @@ Page({
 		previousPeriodTotalNumberOfOtherMembers: [],
 		presentNumberOfOtherMembers: [],
 
-		activeflow: '本周',
-		flowdata: '', //客流  本周/本月/本年
+		activeflow: '点击率',
+		flowdata: 0, //客流  本周/本月/本年
 
 		activeMember: "男会员",
+		activeMember1: "点击率",
 		memberdata: '',
 		dataAllMember:{},
+		dataAllMember1:{},
 
-		flowList: []
+		flowList: [],
+		activeUserStatistics:''
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();
@@ -667,7 +670,29 @@ Page({
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
 						},
-						memberdata:res.data.totalNumberOfMembers,
+						memberdata:res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
+					})
+				}
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getMemberData1: function (e) {
+		util.ajax({
+			url: "data-analysis/api/general/member/newMemberStatistics?type=2",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					this.setData({
+						dataAllMember1:{
+							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
+							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
+							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
+						},
+						memberdata:res.data.totalNumberOfMaleMembers
 					})
 				}
 				wx.hideLoading();
@@ -690,7 +715,24 @@ Page({
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
 						},
-						memberdata:res.data.totalNumberOfMembers,
+						memberdata:res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
+					})
+				}
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	gethydata(num) {
+		util.ajax({
+			url: "data-analysis/api/general/member/activeUserStatistics?type="+num,
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					this.setData({
+						activeUserStatistics:res.data
 					})
 				}
 				wx.hideLoading();
@@ -707,35 +749,37 @@ Page({
 		// this.setData({
 		// 	activeflow
 		// });
-		let obj = {
-			'本周': 11111111,
-			'本月': 11111111,
-			'本年': 11111111
+		let obj1 = {
+			'点击率': 0,
+			'日活跃': 2,
+			'月活跃': 3
 		}
-		let obj1={
-			'男会员':this.data.dataAllMember.totalNumberOfMaleMembers,
-			'女会员':this.data.dataAllMember.totalNumberOfFemaleMembers,
-			'其他':this.data.dataAllMember.totalNumberOfOtherMembers
+		let obj={
+			'男会员':this.data.dataAllMember1.totalNumberOfMaleMembers,
+			'女会员':this.data.dataAllMember1.totalNumberOfFemaleMembers,
+			'其他':this.data.dataAllMember1.totalNumberOfOtherMembers
 	}
 		switch (dataval) {
 			case "客流":
-				var activeflow = event.target.id;
-				this.setData({
-					activeflow
-				});
-				this.setData({
-					flowdata: obj[activeflow]
-				})
-				break;
-			case "会员":
 				var activeMember = event.target.id;
 				this.setData({
 					activeMember
 				});
 				this.setData({
-					memberdata: obj1[activeMember]
+					// memberdata: obj[activeMember]>10000?(obj[activeMember]/10000).toFixed(2):obj[activeMember]
+					memberdata: obj[activeMember]
+				})
+				break;
+			case "会员":
+				var activeMember1 = event.target.id;
+				this.setData({
+					activeMember1
+				});
+				this.setData({
+					flowdata: obj1[activeMember1]
 
 				})
+				this.gethydata(obj1[activeMember1])
 				break;
 
 			default:
@@ -771,6 +815,8 @@ Page({
 		this.getData1();
 		this.getCouponData();
 		this.getMemberData();
+		this.getMemberData1();
+		this.gethydata(0)
 	},
 	getData: function (e) {
 		util.ajax({

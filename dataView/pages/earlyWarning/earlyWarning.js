@@ -39,7 +39,7 @@ function getOption() {
               show: false
           },
           data: [
-              {value: 30, name: '主力'},
+              {value: 30, name: '餐饮'},
               {value: 100, name: ''},
           ]
         }

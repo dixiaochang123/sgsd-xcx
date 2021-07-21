@@ -367,6 +367,7 @@ page{
 }
 .tab-bar-title__selected text {
 	position: relative;
+	display: inline-block;
 }
 .tab-bar-title__selected text::after {
 	content: "";

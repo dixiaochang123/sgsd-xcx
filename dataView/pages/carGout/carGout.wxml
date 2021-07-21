@@ -58,14 +58,14 @@
 					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
 					<view class="rightInfo">
 							<view class="right_child right_child1">
-								<view>同比20年</view>
+								<view>同比19年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 								<text class="right_child1_text"> 20%</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
-								<view>环比上周</view>
+								<view>同比20年</view>
 								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> 10%</text></view>
 							</view>
 					</view>

@@ -161,7 +161,7 @@ function initOption() {
 function initOptions1(){
 	return  {
 		grid: {
-			left: 60 ,
+			left: 80 ,
 			right: 90 ,
 		},
     xAxis: {
@@ -227,7 +227,7 @@ function initOptions1(){
 function initOptions2(){
 	return  {
 		grid: {
-			left: 60 ,
+			left: 80 ,
 			right: 90 ,
 		},
     xAxis: {
@@ -291,7 +291,7 @@ function initOptions2(){
 function initOptions3(){
 	return  {
 		grid: {
-			left: 60 ,
+			left: 80 ,
 			right: 90 ,
 		},
     xAxis: {
@@ -483,12 +483,12 @@ Page({
 					let data = res.data;
 					this.setData({
 						todaySales: data.todaySales,
-						weekSales: data.weekSales,
-						monthSales: data.monthSales,
-						customerPrice: data.customerPrice,
+						weekSales: data.weekSales >10000 ? (data.weekSales/10000).toFixed(2):data.weekSales,
+						monthSales: data.monthSales >10000 ? (data.monthSales/10000).toFixed(2):data.monthSales,
+						customerPrice: data.customerPrice >10000 ? (data.customerPrice/10000).toFixed(2):data.customerPrice,
 						yearSales: data.yearSales >10000 ? (data.yearSales/10000).toFixed(2):data.yearSales,
-						weekCustomerPrice: data.weekCustomerPrice,
-						monthCustomerPrice: data.monthCustomerPrice,
+						weekCustomerPrice: data.weekCustomerPrice >10000 ? (data.weekCustomerPrice/10000).toFixed(2):data.weekCustomerPrice,
+						monthCustomerPrice: data.monthCustomerPrice >10000 ? (data.monthCustomerPrice/10000).toFixed(2):data.monthCustomerPrice,
 						yearCustomerPrice: data.yearCustomerPrice>10000 ? (data.yearCustomerPrice/10000).toFixed(2):data.yearCustomerPrice,
 					})
 				}

@@ -62,16 +62,20 @@
 				<view class="tabss">
 					<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
 					<view class="tabss_text" bindtap="handleclickTab">
-						<view class="tabss_text_1 {{activeMember=='男会员'?'activetab':''}}" id="男会员" data-val='会员'>男会员</view>
-						<view class="tabss_text_2 {{activeMember=='女会员'?'activetab':''}}" id="女会员" data-val='会员'>女会员</view>
-						<view class="tabss_text_3 {{activeMember=='其他'?'activetab':''}}" id="其他" data-val='会员'>其他</view>
+						<view class="tabss_text_1 {{activeMember=='男会员'?'activetab':''}}" id="男会员" data-val='客流'>男会员</view>
+						<view class="tabss_text_2 {{activeMember=='女会员'?'activetab':''}}" id="女会员" data-val='客流'>女会员</view>
+						<view class="tabss_text_3 {{activeMember=='其他'?'activetab':''}}" id="其他" data-val='客流'>其他</view>
 					</view>
 					<view class="money">
-						<image class="money_img" src="../../../images/f_05.png" mode="widthFix"></image>
-						<text class="money_text1">{{memberdata}} <text class="money_text2">万人</text></text>
+						<!-- <image class="money_img" src="../../../images/f_05.png" mode="widthFix"></image> -->
+						<image wx:if="{{activeMember=='男会员'}}" class="money_img" src="../../../images/f_05.png" mode="widthFix"></image>
+          <image wx:if="{{activeMember=='女会员'}}" class="money_img" src="../../../images/f_051.png" mode="widthFix"></image>
+          <image wx:if="{{activeMember=='其他'}}" class="money_img" src="../../../images/f_052.png" mode="widthFix"></image>
+						<text class="money_text1">{{memberdata}} <text class="money_text2">人</text></text>
 					</view>
 				</view>
 			</view>
+			<view style="height:50rpx;"></view>
 			<view class="warp">
 				<view class="consumption">
 					<view class="title">
@@ -107,20 +111,20 @@
 				<view class="tabss">
 					<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
 					<view class="tabss_text" bindtap="handleclickTab">
-						<view class="tabss_text_1 {{activeMember=='点击率'?'activetab':''}}" id="点击率" data-val='会员'>点击率</view>
-						<view class="tabss_text_2 {{activeMember=='日活跃'?'activetab':''}}" id="日活跃" data-val='会员'>日活跃</view>
-						<view class="tabss_text_3 {{activeMember=='月活跃'?'activetab':''}}" id="月活跃" data-val='会员'>月活跃</view>
+						<view class="tabss_text_1 {{activeMember1=='点击率'?'activetab':''}}" id="点击率" data-val='会员'>日活</view>
+						<view class="tabss_text_2 {{activeMember1=='日活跃'?'activetab':''}}" id="日活跃" data-val='会员'>月活</view>
+						<view class="tabss_text_3 {{activeMember1=='月活跃'?'activetab':''}}" id="月活跃" data-val='会员'>年活</view>
 					</view>
 					<view class="money">
 						<image class="money_img" src="../../../images/click.png" mode="widthFix"></image>
-						<text class="money_text1">{{'flowdata'}} <text class="money_text2">万人</text></text>
+						<text class="money_text1">{{activeUserStatistics}} <text class="money_text2">人</text></text>
 					</view>
 				</view>
 			</view>
 			<view style="height:50rpx;"></view>
 			<view class="revenue">
 				<view class="title">
-					<text>会员登录</text>
+					<text>页面点击</text>
 				</view>
 				<view style="height:20rpx;"></view>
 				<view class="tabel">
@@ -130,24 +134,24 @@
 					</view>
 					<view class="tabel-tb">
 						<view class="tabel-tr">
-							<view class="table-td">{{"item.channelName"}}</view>
-							<view class="table-tds">{{"item.currentPassengerFlow"}}</view>
+							<view class="table-td">{{"主页"}}</view>
+							<view class="table-tds">{{"线上商城"}}</view>
 						</view>
 						<view class="tabel-tr">
-							<view class="table-td">{{"item.channelName"}}</view>
-							<view class="table-tds">{{"item.currentPassengerFlow"}}</view>
+							<view class="table-td">{{"停车尊享"}}</view>
+							<view class="table-tds">{{"团购秒杀"}}</view>
 						</view>
 						<view class="tabel-tr">
-							<view class="table-td">{{"item.channelName"}}</view>
-							<view class="table-tds">{{"item.currentPassengerFlow"}}</view>
+							<view class="table-td">{{"停车缴费"}}</view>
+							<view class="table-tds">{{"会员二维码"}}</view>
 						</view>
 						<view class="tabel-tr">
-							<view class="table-td">{{"item.channelName"}}</view>
-							<view class="table-tds">{{"item.currentPassengerFlow"}}</view>
+							<view class="table-td">{{"会员注册"}}</view>
+							<view class="table-tds">{{"我的订单"}}</view>
 						</view>
 						<view class="tabel-tr">
-							<view class="table-td">{{"item.channelName"}}</view>
-							<view class="table-tds">{{"item.currentPassengerFlow"}}</view>
+							<view class="table-td">{{"会员中心"}}</view>
+							<view class="table-tds">{{"我的券包"}}</view>
 						</view>
 					</view>
 				</view>

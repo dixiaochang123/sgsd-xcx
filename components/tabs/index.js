@@ -91,7 +91,7 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+const app = getApp();
 const util = require('../../utils/util');
 Component({
     options: {
@@ -146,7 +146,8 @@ Component({
         salesdata:'0',
         monthCustomerPrice:'',
 
-        ftl:0
+        ftl:0,
+        ratio:''//实时租金收缴率
 
 
     },
@@ -187,18 +188,43 @@ Component({
         },
         dataAllMarket: function dataAllMarket(val) {
             this.setData({
-                shoundAmount:this.data.dataAllMarket.shoundAmount,
-                receivableAmount:this.data.dataAllMarket.receivableAmount
+                shoundAmount:this.data.dataAllMarket.shoundAmount>10000?(this.data.dataAllMarket.shoundAmount/10000).toFixed(2):this.data.dataAllMarket.shoundAmount,
+                receivableAmount:this.data.dataAllMarket.receivableAmount>10000?(this.data.dataAllMarket.receivableAmount/10000).toFixed(2):this.data.dataAllMarket.receivableAmount,
             })
         },
         totalSpace: function totalSpace(val) {
-            
+            this.getData()
         },
     },
     lifetimes: {
         created: function created() {}
     },
     methods: {
+        getData: function(e){
+            wx.request({
+                    url: app.globalData.baseUrlOP+'rest/sgsdbi/countrentcollect',
+              dataType: 'json',
+              data: JSON.stringify({
+                apiKey: "STANDRAD",
+                    }),
+                    header: {
+                        "content-type":'application/json',
+                        "Cookie":app.globalData.sessionid
+                    },
+                    method:"POST",
+                    success:res=>{
+                        if(res.data.success){
+                            this.setData({
+                    ratio: res.data.ratio,
+                  })
+                }
+                wx.hideLoading();
+                    },
+                    fail:error=>{
+                        wx.hideLoading();
+                    }
+                })
+          },
         handleTabClick: function handleTabClick(e) {
             var index = e.currentTarget.dataset.index;
             this.setData({ activeTab: index });
@@ -251,13 +277,13 @@ Component({
                     break;
                 case '商管':
                     wx.navigateTo({
-                        url: '/dataView/pages/statistics/statistics'
+                        url: '/dataView/pages/income/income'
                     })
                     
                     break;
                 case '商管1':
                     wx.navigateTo({
-                        url: '/dataView/pages/distribution/distribution'
+                        url: '/dataView/pages/fee/fee'
                     })
                     
                     break;

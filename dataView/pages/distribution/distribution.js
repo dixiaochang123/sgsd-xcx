@@ -60,7 +60,8 @@ Page({
 				return chart;
 			},
 		},
-		operationList: []
+		operationList: [],
+		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3']
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();

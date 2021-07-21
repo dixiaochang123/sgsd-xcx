@@ -167,7 +167,7 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAAByCAYAAAClQb
 }
 .flexs {
   padding:0 80rpx;
-  padding-right: 180rpx;
+  padding-right: 160rpx;
   padding-top: 50rpx;
   display: flex;
   justify-content: space-between;
