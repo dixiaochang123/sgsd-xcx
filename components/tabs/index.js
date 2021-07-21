@@ -163,7 +163,7 @@ Component({
         },
         dataAllFlow: function dataAllFlow(val) {
             this.setData({
-                flowdata:this.data.dataAllFlow.weekPassengerFlow
+                flowdata:this.data.dataAllFlow.weekPassengerFlow>10000?(this.data.dataAllFlow.weekPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.weekPassengerFlow
             })
         },
         dataAllMember: function dataAllMember(val) {
@@ -179,7 +179,7 @@ Component({
         dataAllSales: function dataAllSales(val) {
             this.setData({
                 salesdata:this.data.dataAllSales.weekSales,
-                totalNewMumber:this.data.dataAllSales.totalNewMumber,
+                // totalNewMumber:this.data.dataAllSales.totalNewMumber,
                 monthCustomerPrice:this.data.dataAllSales.monthCustomerPrice
             })
         },
@@ -256,9 +256,9 @@ Component({
             // var activeflow = event.target.id;
             // this.setData({ activeflow });
             let obj={
-                '本周':this.data.dataAllFlow.weekPassengerFlow,
-                '本月':this.data.dataAllFlow.monthPassengerFlow,
-                '本年':this.data.dataAllFlow.yearPassengerFlow
+                '本周':this.data.dataAllFlow.weekPassengerFlow>10000?(this.data.dataAllFlow.weekPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.weekPassengerFlow,
+                '本月':this.data.dataAllFlow.monthPassengerFlow>10000?(this.data.dataAllFlow.monthPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.monthPassengerFlow,
+                '本年':this.data.dataAllFlow.yearPassengerFlow>10000?(this.data.dataAllFlow.yearPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.yearPassengerFlow,
             }
             let obj1={
                 '男性':this.data.dataAllMember.totalNumberOfMaleMembers,
@@ -344,7 +344,7 @@ Component({
                 success: res => {
                     if (res.success) {
                         this.setData({
-                            totalNewMumber: res.data.totalNumberOfMembers
+                            totalNewMumber: res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
                         })
                         console.log(3333333333,res.data.totalNumberOfMembers)
                     }

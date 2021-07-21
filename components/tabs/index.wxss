@@ -40,11 +40,11 @@
   width: 690rpx;
   height: 584rpx;
   margin:0 auto;
-  padding-left: 110rpx;
+  padding-left: 65rpx;
 }
 .jinrikliu_text {
   position: absolute;
-  top: 218rpx;
+  top: 300rpx;
   left: 0;
   right: 0;
   margin:auto;
@@ -67,7 +67,7 @@
 }
 .jinrikliu_text_4 {
   position: absolute;
-  top: 490rpx;
+  top: 590rpx;
   right: 50rpx;
 }
 .tabss {
@@ -178,5 +178,5 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAAByCAYAAAClQb
 -moz-transform:rotate(180deg); 	/* Firefox */
 -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
 -o-transform:rotate(180deg); 	/* Opera */
-margin-left: 30px;
+/* margin-left: 30px; */
 }

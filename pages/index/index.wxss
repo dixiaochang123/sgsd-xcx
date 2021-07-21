@@ -331,7 +331,7 @@ page{
 
 .weui-tabs-swiper {
 	width: 100%;
-	height: 850px;
+	height: 1020px;
 }
 
 .tab-content {

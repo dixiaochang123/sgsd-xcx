@@ -484,7 +484,7 @@ Page({
 					})
 					this.setData({
 						dataAllMember:{
-							totalNumberOfMembers: res.data.totalNumberOfMembers > 10000? (res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers,
+							totalNumberOfMembers: res.data.totalNumberOfMembers,
 							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers > 10000? (res.data.totalNumberOfMaleMembers/10000).toFixed(2):res.data.totalNumberOfMaleMembers,
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers > 10000? (res.data.totalNumberOfFemaleMembers/10000).toFixed(2):res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers > 10000? (res.data.totalNumberOfOtherMembers/10000).toFixed(2):res.data.totalNumberOfOtherMembers,
@@ -530,10 +530,10 @@ Page({
 					})
 					this.setData({
 						dataAllFlow:{
-							dayPassengerFlow: res.data.dayPassengerFlow > 10000? (res.data.dayPassengerFlow/10000).toFixed(2):res.data.dayPassengerFlow,
-							weekPassengerFlow: res.data.weekPassengerFlow > 10000? (res.data.weekPassengerFlow/10000).toFixed(2):res.data.weekPassengerFlow,
-							monthPassengerFlow: res.data.monthPassengerFlow > 10000? (res.data.monthPassengerFlow/10000).toFixed(2):res.data.monthPassengerFlow,
-							yearPassengerFlow: res.data.yearPassengerFlow> 10000? (res.data.yearPassengerFlow/10000).toFixed(2):res.data.yearPassengerFlow,
+							dayPassengerFlow: res.data.dayPassengerFlow,
+							weekPassengerFlow: res.data.weekPassengerFlow,
+							monthPassengerFlow: res.data.monthPassengerFlow,
+							yearPassengerFlow: res.data.yearPassengerFlow,
 						}
 					})
 					console.log(444444444,this.data.dataAllFlow,this.dataAllFlow)

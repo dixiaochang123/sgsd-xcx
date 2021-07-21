@@ -47,7 +47,7 @@
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">会员总数</text>
-          <text class="jinrikliu_text_2">{{totalNewMumber}}<text class="jinrikliu_text_3">人</text></text>
+          <text class="jinrikliu_text_2">{{dataAllMember.totalNumberOfMembers}}<text class="jinrikliu_text_3">人</text></text>
         </view>
         <text class="jinrikliu_text_4" id="会员" bindtap="handleTabClickflow">more ></text>
         <view class="tabss">
