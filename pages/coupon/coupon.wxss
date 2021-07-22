@@ -78,3 +78,9 @@ page {
 .images {
   border-radius: 50%;
 }
+.gjhjk {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  flex-wrap: nowrap;
+}

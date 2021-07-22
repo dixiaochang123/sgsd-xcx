@@ -482,7 +482,7 @@ Page({
 				if(res.success){
 					let data = res.data;
 					this.setData({
-						todaySales: data.todaySales,
+						todaySales: data.todaySales >10000 ? (data.todaySales/10000).toFixed(2):data.todaySales,
 						weekSales: data.weekSales >10000 ? (data.weekSales/10000).toFixed(2):data.weekSales,
 						monthSales: data.monthSales >10000 ? (data.monthSales/10000).toFixed(2):data.monthSales,
 						customerPrice: data.customerPrice >10000 ? (data.customerPrice/10000).toFixed(2):data.customerPrice,
@@ -557,26 +557,26 @@ Page({
 				if(res.success){
 					if(num==1) {
 
-						seriesData.data1 = Object.values(res.data) 
+						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							zhb:hb,
-							ztb:tb
+							zhb:res.data.ringRatio,
+							ztb:res.data.coRate   
 						})
 					}
 					if(num==2) {
 
-						seriesData.data2 = Object.values(res.data) 
+						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							yhb:hb,
-							ytb:tb
+							yhb:res.data.ringRatio,
+							ytb:res.data.coRate,
 						})
 					}
 					if(num==3) {
 
-						seriesData.data3 = Object.values(res.data) 
+						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							nhb:hb,
-							ntb:tb
+							nhb:res.data.ringRatio,
+							ntb:res.data.coRate,
 						})
 					}
 				}

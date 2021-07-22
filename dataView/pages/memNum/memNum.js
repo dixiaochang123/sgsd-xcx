@@ -138,7 +138,15 @@ Page({
 		GainRatio: [],
 		GivenCount: [],
 		UsedCount: [],
-		UsedRatio: []
+		UsedRatio: [],
+
+		couponDischarge: '',
+		couponUsage: '',
+		couponReceive: '',
+		conversionRate: '',
+		verify: '',
+		purchaseRate: '',
+		refundRate: '',
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -165,6 +173,7 @@ Page({
 		wx.showLoading();
 		this.getData();
 		this.getCouponData();
+		this.getCouponData1();
 	},
 	getData: function(e){
 		util.ajax({
@@ -182,6 +191,31 @@ Page({
 				wx.hideLoading();
 			}
 		})			
+	},
+	getCouponData1: function(e){
+		util.ajax({
+			url:"data-analysis/api/general/member/allCouponStatistics",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					this.setData({
+						couponDischarge: res.data.couponDischarge,
+						couponUsage: res.data.couponUsage,
+						couponReceive: res.data.couponReceive,
+						conversionRate: res.data.conversionRate,
+						verify: res.data.verify,
+						purchaseRate: res.data.purchaseRate,
+						refundRate: res.data.refundRate,
+					})
+				}
+
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})
+
 	},
 	getCouponData: function(e){
 		util.ajax({

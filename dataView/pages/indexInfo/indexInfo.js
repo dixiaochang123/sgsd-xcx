@@ -654,14 +654,14 @@ Page({
 			success: res => {
 				if (res.success) {
 					console.log(444444,res)
-					initOptions6data = Object.values(res.data) 
+					initOptions6data = Object.values(res.data).filter(item=>typeof(item)=="number")  
 					// 环比增长率=（本期数-上期数）/上期数×100%
 						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
 						let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
 						let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
 						this.setData({
-							tb,
-							hb
+							tb:res.data.coRate,
+							hb:res.data.ringRatio,
 						})
 					let chartSet = function () {
 						if (chart6) {
@@ -1183,6 +1183,12 @@ Page({
 		that.setData({
 			num: e.currentTarget.dataset.num
 		})
+	},
+	handleclickTop5() {
+
+	},
+	handleclickTop10() {
+
 	},
 
 	/**

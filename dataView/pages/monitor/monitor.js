@@ -112,7 +112,7 @@ function initOptions1() {
 	return {
 		grid: {
 			left: 60,
-			right: 90,
+			right: 100,
 		},
 		xAxis: {
 			type: 'category',
@@ -138,7 +138,7 @@ function initOptions1() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 35,
+			barWidth: 30,
 			itemStyle: {
 				borderRadius: 5,
 				borderColor: 'transparent',
@@ -184,7 +184,7 @@ function initOptions2() {
 	return {
 		grid: {
 			left: 60,
-			right: 90,
+			right: 100,
 		},
 		xAxis: {
 			type: 'category',
@@ -210,7 +210,7 @@ function initOptions2() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 35,
+			barWidth: 30,
 			itemStyle: {
 				borderRadius: 5,
 				color: '#7a819e'
@@ -254,7 +254,7 @@ function initOptions3() {
 	return {
 		grid: {
 			left: 60,
-			right: 90,
+			right: 100,
 		},
 		xAxis: {
 			type: 'category',
@@ -280,7 +280,7 @@ function initOptions3() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 35,
+			barWidth: 30,
 			itemStyle: {
 				borderRadius: 5,
 				color: '#7a819e'
@@ -484,26 +484,26 @@ Page({
 					let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
 					if(num==1) {
 
-						seriesData.data1 = Object.values(res.data) 
+						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number")
 						this.setData({
-							zhb:hb,
-							ztb:tb
+							zhb:res.data.ringRatio,
+							ztb:res.data.coRate
 						})
 					}
 					if(num==2) {
 
-						seriesData.data2 = Object.values(res.data) 
+						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							yhb:hb,
-							ytb:tb
+							yhb:res.data.ringRatio,
+							ytb:res.data.coRate
 						})
 					}
 					if(num==3) {
 
-						seriesData.data3 = Object.values(res.data) 
+						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							nhb:hb,
-							ntb:tb
+							nhb:res.data.ringRatio,
+							ntb:res.data.coRate
 						})
 					}
 					let chartSet = function () {

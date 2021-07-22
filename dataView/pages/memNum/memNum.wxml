@@ -34,22 +34,22 @@
 								<view></view>
 							</view>
 							<view>使用数量</view>
-							<view>{{UsedCount}}</view>
+							<view>{{couponUsage}}</view>
 						</view>
 						<view class="right_item">
 							<view class="right_item3">
 								<view></view>
 							</view>
 							<view>领取数量</view>
-							<view>{{GainCount}}</view>
+							<view>{{couponReceive}}</view>
 						</view>
 					</view>
 				</view>
 				<view class="gfsgdgv">
-					<view><text>转化率</text><text class="hhhk">{{'76%'}}</text></view>
-					<view><text>核销率</text><text class="hhhk">{{'76%'}}</text></view>
-					<view><text>购买率</text><text class="hhhk">{{'76%'}}</text></view>
-					<view><text>退款率</text><text class="hhhk">{{'76%'}}</text></view>
+					<view><text>转化率</text><text class="hhhk">{{conversionRate}}</text></view>
+					<view><text>核销率</text><text class="hhhk">{{verify}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{purchaseRate}}</text></view>
+					<view><text>退款率</text><text class="hhhk">{{refundRate}}</text></view>
 				</view>
 			</view>
 		</view>

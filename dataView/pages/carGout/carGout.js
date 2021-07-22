@@ -422,26 +422,26 @@ Page({
 					let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
 					if(num==1) {
 
-						seriesData.data1 = Object.values(res.data) 
+						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							zhb:hb,
-							ztb:tb
+							zhb:res.data.ringRatio,
+							ztb:res.data.coRate
 						})
 					}
 					if(num==2) {
 
-						seriesData.data2 = Object.values(res.data) 
+						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							yhb:hb,
-							ytb:tb
+							yhb:res.data.ringRatio,
+							ytb:res.data.coRate
 						})
 					}
 					if(num==3) {
 
-						seriesData.data3 = Object.values(res.data) 
+						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							nhb:hb,
-							ntb:tb
+							nhb:res.data.ringRatio,
+							ntb:res.data.coRate
 						})
 					}
 					let chartSet = function () {
@@ -460,9 +460,6 @@ Page({
 					}
 					chartSet();
 					wx.hideLoading();
-					setTimeout(()=>{
-						that.handleCanvarToImg();
-					},2000)
 				}
 			},
 			fail: error => {

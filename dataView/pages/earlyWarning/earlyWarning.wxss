@@ -63,3 +63,13 @@ page {
 .asset-money .af2{
   color:red;
 }
+.titless {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.imagess {
+  margin-top: 5rpx;
+  width: 100rpx !important;
+  height: 45rpx !important;
+}

@@ -31,10 +31,10 @@ function initOption4() {
 					color: "#fff"
 				}
 
-			},
+			}
 		},
 		legend: {
-			data: [ "应付","已付", "未付"],
+			data: [ "应交","已付", "未付"],
 			textStyle: {
 				color: '#2d3450'
 			},
@@ -92,15 +92,18 @@ function initOption4() {
 
 		}],
 		"series": [ {
-			"name": "应付",
+			"name": "应交",
 			"type": "bar",
-			"stack": "总量",
+			"barGap": "-100%",
+			"barWidth": 20,
+			// "stack": "总量",
 			// symbolSize: 8,
 			// symbol: 'circle',
 			"itemStyle": {
 				"normal": {
 					"color": '#c4c9d9',
-					"barBorderRadius": 0,
+					"barBorderRadius": 2,
+					borderWidth: 1 
 				}
 			},
 			lineStyle: {
@@ -115,7 +118,7 @@ function initOption4() {
 				"type": "bar",
 				"stack": "总量",
 				"barWidth": 20,
-				"barGap": "10%",
+				"barGap": "-100%",
 				"itemStyle": {
 					"normal": {
 						"color": '#7a819e',
@@ -127,6 +130,7 @@ function initOption4() {
 			{
 				"name": "未付",
 				"type": "bar",
+				"barGap": "-100%",
 				"stack": "总量",
 				"itemStyle": {
 					"normal": {

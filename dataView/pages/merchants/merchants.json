@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pagination": "../../../components/pagination/pagination"
+  },
+  "navigationBarTitleText": "预警商户"
+}

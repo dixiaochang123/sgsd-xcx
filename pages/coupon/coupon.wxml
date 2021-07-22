@@ -23,7 +23,7 @@
           <view class="hlkgdlk">
             <view>{{item.couponName}}</view>
             <view style="height:37rpx;"></view>
-            <view>
+            <view class="gjhjk">
               <text>发放 {{item.couponDischarge}} </text>
               <text>领取 {{item.couponReceive}} </text>
               <text style="color:#e5004f;">使用 {{item.couponUsage}} </text>

@@ -86,7 +86,7 @@
 								<view>同比20年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-									<text class="right_child1_text"> {{tb}}%</text>
+									<text class="right_child1_text"> {{tb}}</text>
 								</view>
 							</view>
 							<view style="height:40rpx;"></view>
@@ -94,7 +94,7 @@
 								<view>环比上月</view>
 								<view>
 									<image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text
-										class="right_child1_text"> {{tb}}%</text>
+										class="right_child1_text"> {{hb}}</text>
 								</view>
 							</view>
 						</view>
@@ -127,8 +127,8 @@
 				<view style="height:20rpx;"></view>
 				<view class="tabel">
 					<view class="tabel-th">
-						<view class="tabel-tt">前五</view>
-						<view class="tabel-tts">后五</view>
+						<view class="tabel-tt" bindtap="handleclickTop5">前五</view>
+						<view class="tabel-tts" bindtap="handleclickTop10">后五</view>
 					</view>
 					<view class="tabel-tb">
 						<view class="tabel-tr">

@@ -21,6 +21,7 @@
 				"pages/groundTop/groundTop",
 				"pages/fee/fee",
 				"pages/earlyWarning/earlyWarning",
+				"pages/merchants/merchants",
 				"pages/revenue/revenue",
 				"pages/carGout/carGout",
 				"pages/indexInfo/indexInfo",
