@@ -2,5 +2,5 @@
 	"usingComponents": {
 		"ec-canvas": "../../../ec-canvas/ec-canvas"
 	},
-	"navigationBarTitleText": "车辆"
+	"navigationBarTitleText": "车场数据统计"
 }

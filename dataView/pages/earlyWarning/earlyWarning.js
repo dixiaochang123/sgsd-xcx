@@ -67,21 +67,25 @@ function getOption() {
         // return chart;
       },
     },
+    lastTapTime:0,
     
   },
-  handlerGobackClick(delta) {
-    const pages = getCurrentPages();
-    if (pages.length >= 2) {
-      wx.navigateBack({
-        delta: delta
-      });
-    } else {
-      wx.switchTab({
-        url: 'pages/index/index'
-      });
+  doubleClick(e){
+    var curTime = e.timeStamp
+    var lastTime = e.currentTarget.dataset.time  // 通过e.currentTarget.dataset.time 访问到绑定到该组件的自定义数据
+    console.log("上一次点击时间："+lastTime)
+    console.log("这一次点击时间：" + curTime)
+    console.log('------------------------------');
+    if (curTime - lastTime > 0) {
+      if (curTime - lastTime < 300) {//是双击事件
+        console.log("挺快的双击，用了：" + (curTime - lastTime))
+      }
+      
     }
+    this.setData({
+      lastTapTime: curTime
+    })
   },
-  
   /**
    * 生命周期函数--监听页面加载
    */

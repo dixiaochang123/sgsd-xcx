@@ -8,6 +8,9 @@ Page({
    */
   data: {
     list:[1,2,3],
+    currPage:1,
+    totalCount:1,
+    time:2021,
     options: [{
       city_id: '2021',
       city_name: '2021'
@@ -20,45 +23,54 @@ Page({
     }],
     selected: {}
   },
-  formdata (obj = {}) {
-    let result = ''
-    for (let name of Object.keys(obj)) {
-      let value = obj[name];
-      result += 
-      '\r\n--XXX' +
-      '\r\nContent-Disposition: form-data; name="'+name+'”'+ 
-      '\r\n' +
-      '\r\n' + value
-    }
-    return result+'\r\n--XXX--'
+  pageChange(e) {
+    let currPage = e.detail
+    console.log(currPage)
+    this.setData({
+      currPage
+    })
+    this.getConsumptionData()
   },
   getConsumptionData: function (e) {
-    var formdata = new window.FormData();
-    formdata.append(time, 2019);
-    formdata.append(currPage, 1);
-    formdata.append(pageSize, 5);
-    // console.log(formdata)
-    // let obj = {
-    //   time:2019,
-    //   currPage: 1,
-    //   pageSize: 5
-    // }
-    // let data = this.formdata(obj)
-    
-		util.ajax({
-      // url: "data-analysis/api/general/member/everyCouponStatistics?time=2019&currPage=1&pageSize=5",
-      url: "data-analysis/api/general/member/everyCouponStatistics",
-      // dataType: 'json',
-			data: formdata,
-			header: {
-        'content-type':'multipart/form-data; boundary=XXX'
-      },
+    let obj = {
+      time:this.data.time,
+      currPage: this.data.currPage,
+      pageSize:3
+    }
+    let num="?";
+    for (const i in obj) {
+      if (Object.hasOwnProperty.call(obj, i)) {
+        num+=i+'='+obj[i]+'&'
+        
+      }
+    }
+    num = num.substring(0, num.length - 1);
+    console.log(99999999,num)
+
+    util.ajax({
+      url: "data-analysis/api/general/member/everyCouponStatistics"+num,
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					let data = res.data;
+          let data = res.data;
+          // 退款率 退款的除以购买的
+          // 转化率 使用的除以购买的
+          // 核销率 使用的除以发放的
+          // 组合券以每张券形式计算
+          // 购买率 购买的除以发放的
+          data.list.map(item=>{
+            item['zhl'] = (item.couponUsage/item.couponPurchase)*100
+            item['tkl'] = (item.couponNumberOfRefunds/item.couponPurchase)*100
+            item['hxl'] = (item.couponUsage/item.couponDischarge)*100
+            item['gml'] = (item.couponPurchase/item.couponDischarge)*100
+          })
+          
+          console.log(data.list)
+
 					this.setData({
-						
+            list:data.list,
+            currPage:data.currPage,
+            totalCount:data.totalCount
 					})
 				}
 				wx.hideLoading();
@@ -70,9 +82,12 @@ Page({
 	},
   change (e) {
     this.setData({
-      selected: { ...e.detail }
+      selected: { ...e.detail },
+      time:e.detail.name,
+      currPage:1
     })
     console.log(this.data.selected.name)
+    this.getConsumptionData()
     wx.showToast({
       title: ` ${this.data.selected.name}`,
       icon: 'success',
@@ -82,18 +97,6 @@ Page({
   close () {
     // 关闭select
     this.selectComponent('#select').close()
-  },
-  handlerGobackClick(delta) {
-    const pages = getCurrentPages();
-    if (pages.length >= 2) {
-      wx.navigateBack({
-        delta: delta
-      });
-    } else {
-      wx.switchTab({
-        url: 'pages/index/index'
-      });
-    }
   },
 
   /**

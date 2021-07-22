@@ -1,8 +1,5 @@
 <!--pages/earlyWarning/earlyWarning.wxml-->
 <view class="content">
-  <navBar title='业态预警' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
-		extClass="lxy-navbar-extclass">
-	</navBar>
   <view class="warp">
     <view class="title">
       <image class="af2ss" src="../../../images/icon_33fb.png" mode="widthFix"></image>
@@ -12,7 +9,7 @@
       <view class="item">
         <view class="echarts-con" style="float:left">
           <ec-canvas id="mychart-dom222" canvas-id="mychart222" ec="{{ ecpie }}" ></ec-canvas>
-          <cover-view class="asset-money">
+          <cover-view class="asset-money" bindtap="doubleClick">
             <cover-view class="asset-font">餐饮</cover-view>
             <cover-view class="asset-font af2">30%</cover-view>
           </cover-view>

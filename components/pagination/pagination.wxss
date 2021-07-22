@@ -14,6 +14,7 @@
   line-height: 50rpx;
   font-size:24rpx;
   color: #333;
+  white-space: nowrap
 }
 .page_div .page_prev, .page_div .page_next {
   background-color: #eee;
@@ -46,3 +47,7 @@
   border-radius: 10rpx;
 }
 /************分页样式结束************/
+.page_prev1 ,.page_next1{
+  padding:0 !important;
+  text-align: center;
+}

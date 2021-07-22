@@ -4,7 +4,7 @@
 	 <!-- 当前{{currentPage}}页 -->
 	 </view>
 	<view class="page_prev page_first" bindtap="firstFn">首页</view>
-	<text decode='true' class="page_prev" bindtap="prevFn">&lt;</text>
+	<text decode='true' class="page_prev page_prev1" bindtap="prevFn">&lt;</text>
 	<view class="page_number_div">
     <view class="pageGo" bindtap="prevFn" wx:if="{{currentPage>1}}">{{currentPage-1}}</view>
     <view class="pageGo active" bindtap="pageGo" >{{currentPage}}</view>
@@ -12,6 +12,6 @@
     <!-- <input value="{{currentPage}}" bindinput="inputValue" data-name="currentPage"></input> -->
 		<!-- <view class="pageGo" bindtap="pageGo">Go</view> -->
 	</view>
-	<text decode='true' class="page_next" bindtap="nextFn">&gt;</text>
+	<text decode='true' class="page_next page_next1" bindtap="nextFn">&gt;</text>
 	<view class="page_next page_last" bindtap="lastFn">尾页</view>
 </view>

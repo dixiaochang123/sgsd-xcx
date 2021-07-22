@@ -1,8 +1,6 @@
 <!--pages/indexInfo/indexInfo.wxml-->
 <wxs module="filters" src="../../../utils/utils.wxs"></wxs>
 <view class="content">
-	<navBar title='会员数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
-		extClass="lxy-navbar-extclass"></navBar>
 	<view class="top">
 		<view class="warp">
 			<view class="lease">
@@ -88,7 +86,7 @@
 								<view>同比20年</view>
 								<view>
 									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-									<text class="right_child1_text"> 20%</text>
+									<text class="right_child1_text"> {{tb}}%</text>
 								</view>
 							</view>
 							<view style="height:40rpx;"></view>
@@ -96,7 +94,7 @@
 								<view>环比上月</view>
 								<view>
 									<image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text
-										class="right_child1_text"> 10%</text>
+										class="right_child1_text"> {{tb}}%</text>
 								</view>
 							</view>
 						</view>

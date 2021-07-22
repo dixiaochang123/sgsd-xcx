@@ -34,7 +34,7 @@ function initOption4() {
 			},
 		},
 		legend: {
-			data: ["已付", "未付", "应付"],
+			data: [ "应付","已付", "未付"],
 			textStyle: {
 				color: '#2d3450'
 			},
@@ -91,7 +91,26 @@ function initOption4() {
 			},
 
 		}],
-		"series": [{
+		"series": [ {
+			"name": "应付",
+			"type": "bar",
+			"stack": "总量",
+			// symbolSize: 8,
+			// symbol: 'circle',
+			"itemStyle": {
+				"normal": {
+					"color": '#c4c9d9',
+					"barBorderRadius": 0,
+				}
+			},
+			lineStyle: {
+				normal: {
+					width: 2,
+					color: '#18e8d7',
+				}
+			},
+			"data": lineChartData.shoundAmount
+		},{
 				"name": "已付",
 				"type": "bar",
 				"stack": "总量",
@@ -116,25 +135,6 @@ function initOption4() {
 					}
 				},
 				"data": lineChartData.outstandingAmount
-			}, {
-				"name": "应付",
-				"type": "bar",
-				"stack": "总量",
-				// symbolSize: 8,
-				// symbol: 'circle',
-				"itemStyle": {
-					"normal": {
-						"color": '#c4c9d9',
-						"barBorderRadius": 0,
-					}
-				},
-				lineStyle: {
-					normal: {
-						width: 2,
-						color: '#18e8d7',
-					}
-				},
-				"data": lineChartData.shoundAmount
 			},
 		]
 	}
@@ -250,8 +250,9 @@ Page({
 							}
 							return item
 						}),
-						marketRevenue:mallShoundAmount>10000?(mallShoundAmount/10000).toFixed(2):mallShoundAmount,
-						blockIncome:squareShoundAmount>10000?(squareShoundAmount/10000).toFixed(2):squareShoundAmount,
+						
+						marketRevenue:res.data.mallTotal>10000?(res.data.mallTotal/10000).toFixed(2):res.data.mallTotal,
+						blockIncome:res.data.squareTotal>10000?(res.data.squareTotal/10000).toFixed(2):res.data.squareTotal,
 						totalIncome:totalIncome>10000?(totalIncome/10000).toFixed(2):totalIncome
 					})
 				}

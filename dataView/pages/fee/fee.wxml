@@ -15,6 +15,14 @@
 				<view class="banner-num"><text>{{ratio}}%</text></view>
 			</view>
 		</view>
+		<view class="consumption">
+			<view class="title">
+				<text>当年租金收缴率</text>
+			</view>
+			<view class="revenue-list">
+				
+			</view>
+		</view>
     <view class="consumption">
 			<view class="title">
 				<text>各楼层租金收缴率</text>

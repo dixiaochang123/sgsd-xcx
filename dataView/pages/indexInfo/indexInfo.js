@@ -33,7 +33,7 @@ let chartData = {
 	couponGainRatio: 0,
 	couponUsedRatio: 0
 }
-
+let initOptions6data =[120, 180, 150]
 function initOption() {
 	return {
 		tooltip: {
@@ -467,7 +467,7 @@ function initOptions6() {
 			type: 'value'
 		},
 		series: [{
-			data: [120, 180, 150],
+			data: initOptions6data,
 			label: {
 				show: true,
 				position: 'top',
@@ -643,37 +643,41 @@ Page({
 		dataAllMember1:{},
 
 		flowList: [],
-		activeUserStatistics:''
-	},
-	handlerGobackClick(delta) {
-		const pages = getCurrentPages();
-		if (pages.length >= 2) {
-			wx.navigateBack({
-				delta: delta
-			});
-		} else {
-			wx.switchTab({
-				url: '/pages/index/index'
-			});
-		}
+		activeUserStatistics:'',
+		tb:'',
+		hb:''
 	},
 	memberIsMoreThanYearOnYear: function (e) {
 		util.ajax({
-			url: "data-analysis/api/general/member/memberIsMoreThanYearOnYear",
+			url: "data-analysis/api/general/member/memberIsMoreThanYearOnYear?type=2",
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					this.setData({
-						dataAllMember:{
-							totalNumberOfMembers: res.data.totalNumberOfMembers,
-							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
-							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
-							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
-						},
-						memberdata:res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
-					})
+					console.log(444444,res)
+					initOptions6data = Object.values(res.data) 
+					// 环比增长率=（本期数-上期数）/上期数×100%
+						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
+						let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
+						let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
+						this.setData({
+							tb,
+							hb
+						})
+					let chartSet = function () {
+						if (chart6) {
+							chart6.setOption(initOptions6())
+							console.log('set chart')
+							
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
 				}
-				wx.hideLoading();
 			},
 			fail: error => {
 				wx.hideLoading();
@@ -817,6 +821,7 @@ Page({
 		this.getMemberData();
 		this.getMemberData1();
 		this.gethydata(0)
+		this.memberIsMoreThanYearOnYear()
 	},
 	getData: function (e) {
 		util.ajax({
@@ -1147,7 +1152,6 @@ Page({
 			if (chart) {
 				console.log(chart)
 				chart.setOption(initOption())
-				chart6.setOption(initOptions6())
 				console.log('set chart')
 			} else {
 				setTimeout(() => {

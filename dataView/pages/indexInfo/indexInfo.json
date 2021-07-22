@@ -2,5 +2,5 @@
   "usingComponents": {
     "ec-canvas": "../../../ec-canvas/ec-canvas"
   },
-	"navigationBarTitleText": "会员数据"
+	"navigationBarTitleText": "会员数据统计"
 }
