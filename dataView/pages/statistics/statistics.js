@@ -39,6 +39,7 @@ function initOption() {
 				radius: ["40%", "60%"],
 				center: ['50%', '50%'] ,
 				data: resultData,
+				silent:true,
 				label: {
 					show: true
 				},
@@ -61,6 +62,7 @@ function initOption() {
 			{
 				name: "",
 				type: "pie",
+				silent:true,
 				radius: ['40%', "60%"],
 				center: ['50%', '50%'] ,
 				data: [{

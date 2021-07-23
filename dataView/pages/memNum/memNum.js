@@ -223,6 +223,7 @@ Page({
 			method:"POST",
 			success:res=>{
 				if(res.success){
+					console.log(res.data)
 					chartData.couponGivenCount = res.data.couponGivenCount
 					chartData.couponGainRatio = res.data.couponGainRatio/100;
 					chartData.couponUsedRatio = res.data.couponUsedRatio/100;

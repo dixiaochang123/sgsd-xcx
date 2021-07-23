@@ -6,7 +6,7 @@
   <view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本周销售环同比</text>
+				<text>本周销售额环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
@@ -14,13 +14,17 @@
 							<view class="right_child right_child1">
 								<view>同比20年</view>
 								<view>
-									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:if="{{ztbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 								<text class="right_child1_text"> {{ztb}}</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
 								<view>环比上周</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{zhb}}</text></view>
+								<view>
+                  <image wx:if="{{zhbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+                <text class="right_child1_text"> {{zhb}}</text></view>
 							</view>
 					</view>
 			</view>
@@ -29,7 +33,7 @@
 	<view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本月销售环同比</text>
+				<text>本月销售额环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
@@ -37,13 +41,17 @@
 							<view class="right_child right_child1">
 								<view>同比20年</view>
 								<view>
-									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:if="{{ytbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 								<text class="right_child1_text"> {{ytb}}</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
 								<view>环比上月</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{yhb}}</text></view>
+								<view>
+                <image wx:if="{{yhbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+                  <text class="right_child1_text"> {{yhb}}</text></view>
 							</view>
 					</view>
 			</view>
@@ -52,7 +60,7 @@
 	<view class="warp">
 		<view class="consumption">
 			<view class="title">
-				<text>本年销售环同比</text>
+				<text>本年销售额环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
@@ -60,13 +68,15 @@
 							<view class="right_child right_child1">
 								<view>同比19年</view>
 								<view>
-									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 								<text class="right_child1_text"> {{ntb}}</text></view>
 							</view>
 							<view style="height:40rpx;"></view>
 							<view class="right_child right_child2">
 								<view>同比20年</view>
-								<view><image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{nhb}}</text></view>
+								<view><image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text"> {{nhb}}</text></view>
 							</view>
 					</view>
 			</view>
@@ -92,7 +102,7 @@
 		</view>
     <view class="flex">
       <view><text class="maxtext">{{yearSales}}</text><text>万元</text></view>
-      <view>今年累计总和</view>
+      <view>本年销售额</view>
 		</view>
     <view class="flex">
       <view><text class="maxtext">{{weekCustomerPrice}}</text><text>万元</text></view>
@@ -103,7 +113,10 @@
       <view>本月客单价</view>
 		</view>
     <view class="flex">
-      <view><text class="maxtext">{{yearCustomerPrice}}</text><text>万元</text></view>
+      <view><text class="maxtext">{{yearCustomerPrice}}</text>
+      <text wx:if="{{yearCustomerPrice>10000}}">万元</text>
+      <text wx:else>元</text>
+      </view>
       <view>本年客单价</view>
 		</view>
   </view>

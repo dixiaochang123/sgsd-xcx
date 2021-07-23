@@ -12,6 +12,9 @@
           <cover-view class="asset-money" bindtap="doubleClick">
             <cover-view class="asset-font">餐饮</cover-view>
             <cover-view class="asset-font af2">30%</cover-view>
+            <!-- <cover-view class="asset-font af2">
+              <input class="input" name="userName" placeholder="请输入用户名" bindinput="userNameInput"/>
+            </cover-view> -->
           </cover-view>
         </view>
         <view style="display:inline-block;float:right">

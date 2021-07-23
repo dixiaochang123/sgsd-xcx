@@ -32,10 +32,10 @@
           </view>
         </view>
         <view class="hjk">
-          <text>转化率 50%</text>
-          <text>核销率 71%</text>
-          <text>购买率 50%</text>
-          <text>退款率 50%</text>
+          <text>转化率 {{item.conversionRate}}</text>
+          <text>核销率 {{item.verify}}</text>
+          <text>购买率 {{item.purchaseRate}}</text>
+          <text>退款率 {{item.refundRate}}</text>
         </view>
 
       </view>

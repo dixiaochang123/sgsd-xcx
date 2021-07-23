@@ -470,7 +470,7 @@ Page({
 							todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
 							weekSales: data.weekSales > 10000? (res.data.weekSales/10000).toFixed(2):res.data.weekSales,
 							monthSales: data.monthSales > 10000? (res.data.monthSales/10000).toFixed(2):res.data.monthSales,
-							monthCustomerPrice:data.monthSales > 10000? (res.data.monthSales/10000).toFixed(2):res.data.monthSales,
+							monthCustomerPrice:data.monthCustomerPrice > 10000? (res.data.monthCustomerPrice/10000).toFixed(2):res.data.monthCustomerPrice,
 							yearSales:data.yearSales > 10000? (res.data.yearSales/10000).toFixed(2):res.data.yearSales,
 						}
 					})

@@ -14,13 +14,17 @@ Page({
     },
     
     getPhoneNumber(e){
-      wx.showLoading({
-        title: '登录中',
-        icon: 'loading',
-      })
+      // wx.showLoading({
+      //   title: '登录中',
+      //   icon: 'loading',
+      // })
       if(e.detail.errMsg == "getPhoneNumber:fail user deny"){
         return false;
       }else if(e.detail.errMsg == 'getPhoneNumber:ok'){
+        wx.showLoading({
+          title: '登录中',
+          icon: 'loading',
+        })
         ajax({
           url: "data-analysis/api/v1/decrypt", 
           method: "POST",

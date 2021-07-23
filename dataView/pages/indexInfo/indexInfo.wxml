@@ -77,7 +77,7 @@
 			<view class="warp">
 				<view class="consumption">
 					<view class="title">
-						<text>本月环同比</text>
+						<text>本月会员环同比</text>
 					</view>
 					<view class="echarts-con">
 						<ec-canvas id="mychart-dom-bar6" canvas-id="mychart-bar6" ec="{{ ec6 }}"></ec-canvas>
@@ -85,7 +85,8 @@
 							<view class="right_child right_child1">
 								<view>同比20年</view>
 								<view>
-									<image class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:if="{{tbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 									<text class="right_child1_text"> {{tb}}</text>
 								</view>
 							</view>
@@ -93,7 +94,8 @@
 							<view class="right_child right_child2">
 								<view>环比上月</view>
 								<view>
-									<image class="rise" src="../../../images/decline.png" mode="widthFix"></image><text
+									<image wx:if="{{hbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image><text
 										class="right_child1_text"> {{hb}}</text>
 								</view>
 							</view>

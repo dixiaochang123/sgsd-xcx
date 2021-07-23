@@ -111,7 +111,7 @@ function initOptions() {
 function initOptions1() {
 	return {
 		grid: {
-			left: 60,
+			left: 70,
 			right: 100,
 		},
 		xAxis: {
@@ -183,7 +183,7 @@ function initOptions1() {
 function initOptions2() {
 	return {
 		grid: {
-			left: 60,
+			left: 70,
 			right: 100,
 		},
 		xAxis: {
@@ -253,7 +253,7 @@ function initOptions2() {
 function initOptions3() {
 	return {
 		grid: {
-			left: 60,
+			left: 70,
 			right: 100,
 		},
 		xAxis: {
@@ -384,10 +384,16 @@ Page({
 		flowList: [],
 		zhb:'',
 		ztb:'',
+		ztbisadd:true,
+		zhbisadd:true,
 		yhb:'',
 		ytb:'',
+		ytbisadd:true,
+		yhbisadd:true,
 		nhb:'',
 		ntb:'',
+		ntbisadd:true,
+		nhbisadd:true,
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();
@@ -486,24 +492,34 @@ Page({
 
 						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number")
 						this.setData({
-							zhb:res.data.ringRatio,
-							ztb:res.data.coRate
+							zhb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							ztb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ztbisadd:res.data.coRate.search("-") != -1?false:true,
+							zhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 					if(num==2) {
 
 						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							yhb:res.data.ringRatio,
-							ytb:res.data.coRate
+							// yhb:res.data.ringRatio,
+							// ytb:res.data.coRate,
+							ytb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							yhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ytbisadd:res.data.coRate.search("-") != -1?false:true,
+							yhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 					if(num==3) {
 
 						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							nhb:res.data.ringRatio,
-							ntb:res.data.coRate
+							// nhb:res.data.ringRatio,
+							// ntb:res.data.coRate,
+							ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ntbisadd:res.data.coRate.search("-") != -1?false:true,
+							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 					let chartSet = function () {
@@ -542,9 +558,9 @@ Page({
 						currentPassengerFlow: res.data.currentPassengerFlow,
 						hourPassengerFlow: res.data.hourPassengerFlow,
 						dayPassengerFlow: res.data.dayPassengerFlow,
-						weekPassengerFlow: res.data.weekPassengerFlow,
-						monthPassengerFlow: res.data.monthPassengerFlow,
-						yearPassengerFlow: res.data.yearPassengerFlow,
+						weekPassengerFlow: res.data.weekPassengerFlow>10000?(res.data.weekPassengerFlow/10000).toFixed(2):res.data.weekPassengerFlow,
+						monthPassengerFlow: res.data.monthPassengerFlow>10000?(res.data.monthPassengerFlow/10000).toFixed(2):res.data.monthPassengerFlow,
+						yearPassengerFlow: res.data.yearPassengerFlow>10000?(res.data.yearPassengerFlow/10000).toFixed(2):res.data.yearPassengerFlow,
 					})
 				}
 				wx.hideLoading();

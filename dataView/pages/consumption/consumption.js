@@ -419,6 +419,12 @@ Page({
 		ytb:'',
 		nhb:'',
 		ntb:'',
+		ztbisadd:true,
+		zhbisadd:true,
+		ytbisadd:true,
+		yhbisadd:true,
+		ntbisadd:true,
+		nhbisadd:true,
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -481,6 +487,7 @@ Page({
 			success:res=>{
 				if(res.success){
 					let data = res.data;
+					console.log(data.yearCustomerPrice>10000)
 					this.setData({
 						todaySales: data.todaySales >10000 ? (data.todaySales/10000).toFixed(2):data.todaySales,
 						weekSales: data.weekSales >10000 ? (data.weekSales/10000).toFixed(2):data.weekSales,
@@ -559,24 +566,31 @@ Page({
 
 						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							zhb:res.data.ringRatio,
-							ztb:res.data.coRate   
+							ztb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							zhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ztbisadd:res.data.coRate.search("-") != -1?false:true,
+							zhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
+						
 					}
 					if(num==2) {
 
 						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							yhb:res.data.ringRatio,
-							ytb:res.data.coRate,
+							ytb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							yhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ytbisadd:res.data.coRate.search("-") != -1?false:true,
+							yhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 					if(num==3) {
 
 						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
 						this.setData({
-							nhb:res.data.ringRatio,
-							ntb:res.data.coRate,
+							ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ntbisadd:res.data.coRate.search("-") != -1?false:true,
+							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 				}

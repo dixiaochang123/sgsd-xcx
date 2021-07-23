@@ -1,4 +1,7 @@
 /**app.wxss**/
+page {
+	overflow-x:hidden;
+}
 .wxToast_mask {
 	width: 100%;
 	height: 100%;

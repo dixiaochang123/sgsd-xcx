@@ -36,9 +36,13 @@ let chartData = {
 let initOptions6data =[120, 180, 150]
 function initOption() {
 	return {
+		// tooltip: {
+		// 	show: false
+		// },
 		tooltip: {
-			show: false
-		},
+			trigger: 'item',
+			confine:true
+	},
 		grid: {
 			left: 60,
 		},
@@ -645,7 +649,9 @@ Page({
 		flowList: [],
 		activeUserStatistics:'',
 		tb:'',
-		hb:''
+		hb:'',
+		tbisadd:true,
+		hbisadd:true,
 	},
 	memberIsMoreThanYearOnYear: function (e) {
 		util.ajax({
@@ -660,8 +666,10 @@ Page({
 						let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
 						let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
 						this.setData({
-							tb:res.data.coRate,
-							hb:res.data.ringRatio,
+							tb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							hb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							tbisadd:res.data.coRate.search("-") != -1?false:true,
+							hbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					let chartSet = function () {
 						if (chart6) {

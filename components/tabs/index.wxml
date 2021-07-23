@@ -147,7 +147,7 @@
         <view class="tabss">
           <image class="juxing juxing1111" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-            <view class="money">本月客单价 <text class="money_text1 money_text1ftl">{{monthCustomerPrice}} <text class="money_text2">元</text></text></view>
+            <view class="money">本月客单价 <text class="money_text1 money_text1ftl">{{monthCustomerPrice}} <text class="money_text2">万元</text></text></view>
           </view>
         </view>
       </swiper-item>
