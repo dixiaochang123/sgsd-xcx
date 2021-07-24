@@ -5,115 +5,96 @@ const app = getApp();
 //曲线图
 var chart = null;
 let chartData = {
-	couponGivenCount: 0,
+	couponGivenCount: 51201,
 	couponGainRatio: 0,
 	couponUsedRatio: 0
 }
 function initOption() {
-	var placeHolderStyle = {
-    normal: {
-      color: 'rgba(124,228,245,0.2)',
-		},
-	};
-
 	return {
-		title: {
-			text: ` `+chartData.couponGivenCount+`\n发放数量`,
-			top: "center",
-			left: "center",
-			textStyle: {
-				fontSize: 12,
-				color: '#000000'
-			}
-		},
-		tooltip: {
-			show: false,
-			formatter: "{a}：{d}%"
-		},
-		legend: {
-			orient: '',
-			itemGap: 12,
-			left:'25%',
-			top:'center',
-			textStyle: {
-				color: "#010101",
-			},
-			data: ['领取数量', '使用数量', '核销率']
-		},
-		series: [{
-			type: 'pie',
-			hoverAnimation: false,
-			clockWise: false,
-			radius: ['70%', '90%'],
-			itemStyle: {
-				normal: {
-					color: '#4cabfe',
-					label: {
-						show: false
-					},
-					labelLine: {
-						show: false
-					}
-				}
-			},
-			data: [{
-				value:1-chartData.couponGainRatio,
-				itemStyle: placeHolderStyle
-			},
-			{
-				value:chartData.couponGainRatio,
-			}],
-		},
-		{
-			type: 'pie',
-			clockWise: false,
-			hoverAnimation: false, 
-			radius: ['70%', '90%'],
-			itemStyle: {
-				normal: {
-					color: '#ffaf00',
-					label: {
-						show: false
-					},
-					labelLine: {
-						show: false
-					}
-				}
-			},
-			data: [{
-				value: 1-chartData.couponUsedRatio,
-				itemStyle: placeHolderStyle
-			},
-			{
-				value: chartData.couponUsedRatio,
-			}]
-		},
-		/**{
-			type: 'pie',
-			clockWise: false,
-			hoverAnimation: false, 
-			radius: ['70%', '80%'],
-			itemStyle: {
-				normal: {
-					color: '#01ebb9',
-					label: {
-						show: false
-					},
-					labelLine: {
-						show: false
-					}
-				}
-			},
-			data: [{
-				value: 1-chartData.couponGainRatio,
-				itemStyle: placeHolderStyle
-			},
-			{
-				value: chartData.couponGainRatio,
-			}]
-		}**/
-	]
-	};	;
+    title: {
+        subtext: '发放数量',
+        text: chartData.couponGivenCount,
+        textStyle: {
+             color: '#333',
+             fontSize: 10,
+             // align: 'center'
+         },
+          subtextStyle: {
+             fontSize: 10,
+             color: ['#5a5d62']
+         },
+        left: 'center',
+        top: 'center'
+    },
+    // tooltip: {
+    //     trigger: 'item'
+    // },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+    },
+    series: [
+				 {//外层
+					silent: false ,
+            name:'',
+            hoverAnimation:false,
+           type:'pie',
+           startAngle:90, //起始角度
+           radius: ['65%', '95%'],
+           label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+           data:[ 
+						chartData.couponGainRatio,
+                chartData.couponGivenCount
+               ],   // 外层饼图的数据来源
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = ['#4a4d60','#aeb0c5'];
+                        return colorList[params.dataIndex]
+                    }
+                },
+                shadowColor: 'rgba(0,0,0,0.3)'
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        },
+        {
+					silent: false ,
+            name: '访问来源',
+            type: 'pie',
+            hoverAnimation:false,
+            radius: ['65%', '80%'],
+            startAngle:45, //起始角度
+            label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+            data: [
+							chartData.couponUsedRatio,
+                chartData.couponGivenCount,
+            ],
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = [ 'red', "rgba(250,250,250,0)"];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        }
+    ]
+};
 }
 
 Page({
@@ -172,7 +153,7 @@ Page({
 	onLoad: function(options) {
 		wx.showLoading();
 		this.getData();
-		this.getCouponData();
+		// this.getCouponData();
 		this.getCouponData1();
 	},
 	getData: function(e){
@@ -207,6 +188,24 @@ Page({
 						purchaseRate: res.data.purchaseRate,
 						refundRate: res.data.refundRate,
 					})
+					chartData.couponGivenCount = res.data.couponDischarge,
+					chartData.couponGainRatio = res.data.couponReceive;
+					chartData.couponUsedRatio = res.data.couponUsage;
+					let chartSet = function (){
+						if(chart){
+							console.log(chart)
+							chart.setOption(initOption())
+							console.log('set chart')
+						}else{
+							setTimeout(()=>{
+								console.log("chart is null")
+								chartSet();
+							},500)
+						}
+					}
+					chartSet();
+					
+					// this.getCouponData()
 				}
 
 				wx.hideLoading();
@@ -224,7 +223,7 @@ Page({
 			success:res=>{
 				if(res.success){
 					console.log(res.data)
-					chartData.couponGivenCount = res.data.couponGivenCount
+					chartData.couponGivenCount = this.data.couponDischarge
 					chartData.couponGainRatio = res.data.couponGainRatio/100;
 					chartData.couponUsedRatio = res.data.couponUsedRatio/100;
 					this.setData({

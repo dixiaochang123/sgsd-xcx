@@ -30,18 +30,18 @@
 						<view>{{GainCount}}</view>
 					</view-->
 						<view class="right_item">
-							<view class="right_item2">
-								<view></view>
-							</view>
-							<view>使用数量</view>
-							<view>{{couponUsage}}</view>
-						</view>
-						<view class="right_item">
 							<view class="right_item3">
 								<view></view>
 							</view>
 							<view>领取数量</view>
 							<view>{{couponReceive}}</view>
+						</view>
+						<view class="right_item">
+							<view class="right_item2">
+								<view></view>
+							</view>
+							<view>使用数量</view>
+							<view>{{couponUsage}}</view>
 						</view>
 					</view>
 				</view>

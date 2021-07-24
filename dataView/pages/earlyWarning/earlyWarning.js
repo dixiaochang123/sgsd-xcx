@@ -7,48 +7,51 @@ var chart = null;
 
 function getOption() {
   var option = {
-    color:['#ff4d4d','#ccc'],
-    gradientColor:['#f6efa6','#d88273','#bf444c'],
-      tooltip: {
-          trigger: 'item',
-          show:false
+    color: ['#ff4d4d', '#ccc'],
+    gradientColor: ['#f6efa6', '#d88273', '#bf444c'],
+    tooltip: {
+      trigger: 'item',
+      show: false
+    },
+    legend: {
+      top: '40%',
+      left: 'center',
+      show: false
+    },
+    series: [{
+      name: '访问来源',
+      type: 'pie',
+      radius: ['90%', '60%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center'
       },
-      legend: {
-          top: '40%',
-          left: 'center',
-          show:false
-      },
-      series: [
-        {
-          name: '访问来源',
-          type: 'pie',
-          radius: ['90%', '60%'],
-          avoidLabelOverlap: false,
-          label: {
-              show: false,
-              position: 'center'
-          },
-          emphasis: {
-              label: {
-                  show: false,
-                  fontSize: '40',
-                  fontWeight: 'bold'
-              }
-          },
-          labelLine: {
-              show: false
-          },
-          data: [
-              {value: 30, name: '餐饮'},
-              {value: 100, name: ''},
-          ]
+      emphasis: {
+        label: {
+          show: false,
+          fontSize: '40',
+          fontWeight: 'bold'
         }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [{
+          value: 30,
+          name: '餐饮'
+        },
+        {
+          value: 100,
+          name: ''
+        },
       ]
+    }]
   };
   return option;
-  }
+}
 
-  Page({
+Page({
 
   /**
    * 页面的初始数据
@@ -67,36 +70,51 @@ function getOption() {
         // return chart;
       },
     },
-    lastTapTime:0,
-    
+    lastTapTime: 0,
+
   },
-  doubleClick(e){
-    var curTime = e.timeStamp
-    var lastTime = e.currentTarget.dataset.time  // 通过e.currentTarget.dataset.time 访问到绑定到该组件的自定义数据
-    console.log("上一次点击时间："+lastTime)
-    console.log("这一次点击时间：" + curTime)
-    console.log('------------------------------');
-    if (curTime - lastTime > 0) {
-      if (curTime - lastTime < 300) {//是双击事件
-        console.log("挺快的双击，用了：" + (curTime - lastTime))
+  // 触摸开始时间
+  touchStartTime: 0,
+  // 触摸结束时间
+  touchEndTime: 0,
+  // 最后一次单击事件点击发生时间
+  lastTapTime: 0,
+  // 单击事件点击后要触发的函数
+  lastTapTimeoutFunc: null,
+  doubleTap: function (e) {
+    var that = this
+    // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
+    if (that.touchEndTime - that.touchStartTime < 350) {
+      // 当前点击的时间
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+
+      // 如果两次点击时间在300毫秒内，则认为是双击事件
+      if (currentTime - lastTapTime < 300) {
+        console.log("double tap")
+        // 成功触发双击事件时，取消单击事件的执行
+        clearTimeout(that.lastTapTimeoutFunc);
+        wx.showModal({
+          title: '提示',
+          content: '双击事件被触发',
+          showCancel: false
+        })
       }
-      
     }
-    this.setData({
-      lastTapTime: curTime
-    })
   },
   handleclicktomerchants() {
     console.log(2222222222222)
     wx.navigateTo({
-			url: '/dataView/pages/merchants/merchants'
-		});
+      url: '/dataView/pages/merchants/merchants'
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(chart){
+    if (chart) {
       chart.setOption(initOptions())
     }
   },
@@ -105,7 +123,7 @@ function getOption() {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

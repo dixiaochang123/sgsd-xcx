@@ -2,6 +2,7 @@
 page {
 	width: 100%;
 	background-color: #e3e7f5;
+	overflow-x: hidden;
 }
 .content {
 	width: 100%;
@@ -126,17 +127,18 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqEAAAINCAYAAAAOfK
 	font-size: 20rpx;
 }
 .right_item view:nth-child(1){
-	width: 20rpx;
+	width: 30rpx;
 	height: 15rpx;
+	border-radius: 7rpx;
 }
 .right_item1 view:nth-child(1){
 	background-color: #01ebb9;
 }
 .right_item2 view:nth-child(1){
-	background-color: #ffaf00;
+	background-color: #e70050;
 }
 .right_item3 view:nth-child(1){
-	background-color: #293c4b;
+	background-color: #4b4e61;
 }
 
 .circle {

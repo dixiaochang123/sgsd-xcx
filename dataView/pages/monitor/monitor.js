@@ -492,8 +492,8 @@ Page({
 
 						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number")
 						this.setData({
-							zhb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
-							ztb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ztb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							zhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
 							ztbisadd:res.data.coRate.search("-") != -1?false:true,
 							zhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
