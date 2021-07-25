@@ -1,15 +1,23 @@
 <!--pages/login/login.wxml-->
 <view class="login-container">
+    <image class="sgst sgst1" src="../../images/sgst_03.png"></image>
+    <image class="sgst sgst2 sgst2-1" src="../../images/sgst_07.jpg"></image>
+    <image class="sgst sgst2 sgst2-2" src="../../images/sgst_07.jpg"></image>
+    <image class="sgst sgst2 sgst2-3" src="../../images/sgst_07.jpg"></image>
+    <!-- <image class="sgst sgst3" src="../../images/sgst_11.jpg"></image> -->
     <view class="title">
-        <view class="title1">欢迎使用</view>
-        <view class="title2">硕果时代管理层看板</view>
+        <image class="logo1" src="../../images/loginbg2.png"></image>
+        <view style="height:30rpx;"></view>
+        <image class="logo2" src="../../images/logo.png"></image>
     </view>
     <view class="login-form">
-        <image src="../../images/logo.png"></image>
         <view class="title3">硕果时代管理层看板申请获得以下权限</view>
         <view class="title4">获得您的手机号码</view>
         <view>
             <button open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber" style="position: relative; left: 0rpx; top: -20rpx">授权登录</button>
         </view>
+    </view>
+    <view class="bgbottom">
+        <image class="" src="../../images/loginbg1.png"></image>
     </view>
 </view>
