@@ -430,7 +430,7 @@ Component({
                         ftl = isNaN(ftl)?0:ftl;
                         this.setData({
                             dayAppearanceData: res.data.dayAppearanceData, //今日出
-                            dayEntryData: parseFloat(res.data.dayEntryData).toLocaleString(), //今日入
+                            dayEntryData: res.data.dayEntryData>10000?(res.data.dayEntryData/10000).toFixed(2):res.data.dayEntryData, //今日入
                             ftl
                         })
                     }
@@ -487,7 +487,8 @@ Component({
                         console.log('今日收益',res.data)
                         this.setData({
                             // profit: res.data>10000?(res.data/10000):res.data
-                            profit: parseFloat(res.data).toLocaleString()
+                            // profit: parseFloat(res.data).toLocaleString()
+                            profit: res.data
                         })
                     }
                     wx.hideLoading();
