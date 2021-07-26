@@ -1,10 +1,11 @@
 <!--pages/memNum/memNum.wxml-->
 <view class="content">
-	<navBar title='会员信息统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
-		extClass="lxy-navbar-extclass"></navBar>
+	<!-- <navBar title='会员信息统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
+		extClass="lxy-navbar-extclass"></navBar> -->
 	<view class="warp">
 		<view class="circle">
-			<image src="../../../images/shabi.png" mode="widthFix"></image>
+			<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
+			<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
 			<view class="circle-txt">
 				<view>会员当前积分</view>
 				<view><text>{{totalScore}}</text>万分</view>

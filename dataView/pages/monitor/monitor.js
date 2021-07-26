@@ -113,6 +113,7 @@ function initOptions1() {
 		grid: {
 			left: 70,
 			right: 100,
+			top:40
 		},
 		xAxis: {
 			type: 'category',
@@ -125,10 +126,16 @@ function initOptions1() {
 			},
 			axisLabel: {
 				interval: 0
+			},
+			splitLine:{
+				show: false
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: seriesData.data1,
@@ -138,12 +145,17 @@ function initOptions1() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 30,
+			barWidth: 40,
 			itemStyle: {
 				borderRadius: 5,
 				borderColor: 'transparent',
 				borderWidth: 3,
-				color: '#7a819e'
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
 			},
 			showBackground: true,
 			backgroundStyle: {
@@ -158,13 +170,13 @@ function initOptions1() {
 						color: '#9c9bb3' // 0% 处的颜色
 					}, {
 						offset: 0.2,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.4,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.6,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 1,
 						color: '#dadeec' // 100% 处的颜色
@@ -185,6 +197,7 @@ function initOptions2() {
 		grid: {
 			left: 70,
 			right: 100,
+			top:40
 		},
 		xAxis: {
 			type: 'category',
@@ -210,10 +223,17 @@ function initOptions2() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 30,
+			barWidth: 40,
 			itemStyle: {
 				borderRadius: 5,
-				color: '#7a819e'
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
 			},
 			showBackground: true,
 			backgroundStyle: {
@@ -228,13 +248,13 @@ function initOptions2() {
 						color: '#9c9bb3' // 0% 处的颜色
 					}, {
 						offset: 0.2,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.4,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.6,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 1,
 						color: '#dadeec' // 100% 处的颜色
@@ -255,6 +275,7 @@ function initOptions3() {
 		grid: {
 			left: 70,
 			right: 100,
+			top:40
 		},
 		xAxis: {
 			type: 'category',
@@ -280,10 +301,17 @@ function initOptions3() {
 				valueAnimation: true
 			},
 			type: 'bar',
-			barWidth: 30,
+			barWidth: 40,
 			itemStyle: {
 				borderRadius: 5,
-				color: '#7a819e'
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
 			},
 			showBackground: true,
 			backgroundStyle: {
@@ -298,13 +326,13 @@ function initOptions3() {
 						color: '#9c9bb3' // 0% 处的颜色
 					}, {
 						offset: 0.2,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.4,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 0.6,
-						color: '#d9d9e7' // 0% 处的颜色
+						color: '#e3e5f2' // 0% 处的颜色
 					}, {
 						offset: 1,
 						color: '#dadeec' // 100% 处的颜色

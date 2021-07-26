@@ -3,9 +3,9 @@
 <view class="content">
 	<view class="top">
 		<view class="warp">
+			<image class="huiyuanbg" src="../../../images/huiyuanbg.png"></image>
 			<view class="lease">
 				<view class="title">
-					<image src="../../../images/icon_24.png" mode="widthFix"></image>
 					<text>会员情况</text>
 				</view>
 				<view class="lease-con2 lease-con2222">
@@ -29,20 +29,35 @@
 					</view>
 				</view>
 			</view>
+			<view class="laiyuan">
+				<view class="title">
+					<text>会员注册来源</text>
+				</view>
+				<view class="person">
+					<text>支付宝 {{'10'}}人</text>
+					<text>微信 {{'10'}}人</text>
+				</view>
+				<view class="person">
+					<text>微信_停车缴费 {{'10'}}人</text>
+					<text>微信_公众号 {{'10'}}人</text>
+				</view>
+			</view>
 			<view class="revenue">
 				<view class="title">
 					<text>新增会员</text>
 				</view>
 				<view class="revenue-list">
+					<image class="huiyuanbg huiyuanbg1" src="../../../images/huiyuanbg.png"></image>
 					<view class="revenue-top">
 						<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
 						<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
 					</view>
 					<view class="circle">
-						<image src="../../../images/shabi.png" mode="widthFix"></image>
+						<image src="../../../images/jrkl.png" mode="widthFix"></image>
 						<view class="circle-txt">
 							<view>新增总数</view>
-							<view><text>{{totalMember}}</text>人</view>
+							<view class="jinrikliu_text_2">{{totalMember}}</view>
+							<view style="font-size:20rpx;">人</view>
 						</view>
 					</view>
 					<view class="charts-con">
@@ -76,23 +91,24 @@
 			<view style="height:50rpx;"></view>
 			<view class="warp">
 				<view class="consumption">
+					<image class="klmb" src="../../../images/klmb.png"></image>
 					<view class="title">
-						<text>本月会员环同比</text>
+						<text>会员 • 本月环同比</text>
 					</view>
 					<view class="echarts-con">
 						<ec-canvas id="mychart-dom-bar6" canvas-id="mychart-bar6" ec="{{ ec6 }}"></ec-canvas>
 						<view class="rightInfo">
 							<view class="right_child right_child1">
-								<view>同比20年</view>
+								<view>同比</view>
 								<view>
 									<image wx:if="{{tbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 									<text class="right_child1_text"> {{tb}}</text>
 								</view>
 							</view>
-							<view style="height:40rpx;"></view>
+							<view style="width:40rpx;"></view>
 							<view class="right_child right_child2">
-								<view>环比上月</view>
+								<view>环比</view>
 								<view>
 									<image wx:if="{{hbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image><text
@@ -129,8 +145,8 @@
 				<view style="height:20rpx;"></view>
 				<view class="tabel">
 					<view class="tabel-th">
-						<view class="tabel-tt" bindtap="handleclickTop5">前五</view>
-						<view class="tabel-tts" bindtap="handleclickTop10">后五</view>
+						<view class="tabel-tt {{top5=='first5'?'activetab111':''}}" id="first5" bindtap="handleclickTop5">前五</view>
+						<view class="tabel-tts {{top5=='last5'?'activetab111':''}}" id="last5" bindtap="handleclickTop5">后五</view>
 					</view>
 					<view class="tabel-tb">
 						<view class="tabel-tr">

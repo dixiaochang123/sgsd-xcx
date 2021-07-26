@@ -139,7 +139,10 @@ function initOption1() {
 		},
 		yAxis: {
 			type: 'value',
-			show: false
+			show: false,
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			name: '',
@@ -168,7 +171,7 @@ function initOption1() {
 
 				borderColor: 'transparent',
 				borderWidth: 3,
-				color: '#7a819e'
+				color: '#bcc3dc'
 			},
 			showBackground: true,
 			backgroundStyle: {
@@ -468,7 +471,10 @@ function initOptions6() {
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: initOptions6data,
@@ -483,9 +489,9 @@ function initOptions6() {
 				borderRadius: 5,
 				borderColor: 'transparent',
 				borderWidth: 3,
-				color: '#7a819e'
+				color: '#bcc3dc'
 			},
-			showBackground: false,
+			showBackground: true,
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -652,6 +658,7 @@ Page({
 		hb:'',
 		tbisadd:true,
 		hbisadd:true,
+		top5:'first5'
 	},
 	memberIsMoreThanYearOnYear: function (e) {
 		util.ajax({
@@ -980,19 +987,19 @@ Page({
 						//max:res.data[i].maxOther
 						//});
 					}
-					let chartSet = function () {
-						if (chart2) {
-							console.log(chart2)
-							chart2.setOption(initOption2())
-							console.log('set chart')
-						} else {
-							setTimeout(() => {
-								console.log("chart is null")
-								chartSet();
-							}, 500)
-						}
-					};
-					chartSet();
+					// let chartSet = function () {
+					// 	if (chart2) {
+					// 		console.log(chart2)
+					// 		chart2.setOption(initOption2())
+					// 		console.log('set chart')
+					// 	} else {
+					// 		setTimeout(() => {
+					// 			console.log("chart is null")
+					// 			chartSet();
+					// 		}, 500)
+					// 	}
+					// };
+					// chartSet();
 				}
 				wx.hideLoading();
 			},
@@ -1030,19 +1037,19 @@ Page({
 						//max:res.data[i].maxOther
 						//});
 					}
-					let chartSet = function () {
-						if (chart3) {
-							console.log(chart3)
-							chart3.setOption(initOption3())
-							console.log('set chart')
-						} else {
-							setTimeout(() => {
-								console.log("chart is null")
-								chartSet();
-							}, 500)
-						}
-					};
-					chartSet();
+					// let chartSet = function () {
+					// 	if (chart3) {
+					// 		console.log(chart3)
+					// 		chart3.setOption(initOption3())
+					// 		console.log('set chart')
+					// 	} else {
+					// 		setTimeout(() => {
+					// 			console.log("chart is null")
+					// 			chartSet();
+					// 		}, 500)
+					// 	}
+					// };
+					// chartSet();
 				}
 				wx.hideLoading();
 			},
@@ -1080,19 +1087,19 @@ Page({
 							max: res.data[i].maxOther
 						});
 					}
-					let chartSet = function () {
-						if (chart4) {
-							console.log(chart4)
-							chart4.setOption(initOption4())
-							console.log('set chart')
-						} else {
-							setTimeout(() => {
-								console.log("chart is null")
-								chartSet();
-							}, 500)
-						}
-					};
-					chartSet();
+					// let chartSet = function () {
+					// 	if (chart4) {
+					// 		console.log(chart4)
+					// 		chart4.setOption(initOption4())
+					// 		console.log('set chart')
+					// 	} else {
+					// 		setTimeout(() => {
+					// 			console.log("chart is null")
+					// 			chartSet();
+					// 		}, 500)
+					// 	}
+					// };
+					// chartSet();
 				}
 				wx.hideLoading();
 			},
@@ -1135,19 +1142,19 @@ Page({
 						UsedRatio: res.data.couponUsedRatio
 					})
 				}
-				let chartSet = function () {
-					if (chart5) {
-						console.log(chart5)
-						chart5.setOption(initOption5())
-						console.log('set chart')
-					} else {
-						setTimeout(() => {
-							console.log("chart is null")
-							chartSet();
-						}, 500)
-					}
-				}
-				chartSet();
+				// let chartSet = function () {
+				// 	if (chart5) {
+				// 		console.log(chart5)
+				// 		chart5.setOption(initOption5())
+				// 		console.log('set chart')
+				// 	} else {
+				// 		setTimeout(() => {
+				// 			console.log("chart is null")
+				// 			chartSet();
+				// 		}, 500)
+				// 	}
+				// }
+				// chartSet();
 				wx.hideLoading();
 			},
 			fail: error => {
@@ -1192,10 +1199,20 @@ Page({
 			num: e.currentTarget.dataset.num
 		})
 	},
-	handleclickTop5() {
-
-	},
-	handleclickTop10() {
+	handleclickTop5(e) {
+		let id =e.target.id;
+		console.log(id)
+		if(id=='first5') {
+			this.setData({
+				top5:'first5'
+			})
+			
+		}
+		if(id=='last5') {
+			this.setData({
+				top5:'last5'
+			})
+		}
 
 	},
 

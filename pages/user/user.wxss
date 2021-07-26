@@ -42,7 +42,7 @@ page {
 	color: #040000;
 }
 .banner-dt {
-	width: 170rpx;
+	width: 150rpx;
 	height: 150rpx;
 	margin-right: 30rpx;
 	border-radius: 50%;
