@@ -73,7 +73,7 @@ page {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
-  margin-top: 45rpx;
+  margin-top: 100rpx;
 }
 .images {
   border-radius: 50%;

@@ -328,7 +328,7 @@ page {
 	font-size: 28rpx;
 	padding-left: 46rpx;
 }
-.circle-txt view text {
+.circle-txt view {
 	font-size: 36rpx;
 }
 .circle-txt view:first-child {

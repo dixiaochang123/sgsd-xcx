@@ -1,6 +1,7 @@
 <!-- wxml分页组件 -->
 <view class="page_div">
-	<view class="page_sum">共{{pagetotal}}页
+	<view class="page_sum">
+	<!-- 共{{pagetotal}}页 -->
 	 <!-- 当前{{currentPage}}页 -->
 	 </view>
 	<view class="page_prev page_first" bindtap="firstFn">首页</view>

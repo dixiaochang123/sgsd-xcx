@@ -4,6 +4,61 @@
 	<navBar title='车场数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
   </navBar>
 	<view class="warp">
+		<view class="lease">
+			<view class="title">
+				<text>车辆出入</text>
+			</view>
+			<view class="lease-con lease-con-parent">
+				<view class="echarts-com">
+					<view class="left">
+						<view class="left_item">
+							<view class="left_item_color2"></view>
+							<view class="left_item_con_right">车辆入
+								<view class="carcount">
+									<text space='nbsp'>{{dayEntryData}} 辆</text>
+									<!-- <view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==true}}">
+										<image src="../../images/u_jt_01.png" mode="widthFix"></image>
+										<text>{{filters.substring(yesterdayYearOnYearIn,1,7)}}</text>
+									</view>
+									<view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==false}}">
+										<image src="../../images/u_jt_02.png" mode="widthFix"></image>
+										<text>{{yesterdayYearOnYearIn}}</text>
+									</view> -->
+								</view>
+							</view>
+						</view>
+						<view class="left_item">
+							<view class="left_item_color1"></view>
+							<view class="left_item_con_right">车辆出
+								<view class="carcount">
+									<text space='nbsp'>{{dayAppearanceData}} 辆</text>
+									<!-- <view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==true}}">
+										<image src="../../images/u_jt_01.png" mode="widthFix"></image>
+										<text>{{filters.substring(yesterdayYearOnYearOut,1,7)}}</text>
+									</view>
+									<view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==false}}">
+										<image src="../../images/u_jt_02.png" mode="widthFix"></image>
+										<text> {{yesterdayYearOnYearOut}}</text>
+									</view> -->
+								</view>
+							</view>
+						</view>
+						
+						<!-- <view class="left_item">
+							<view class="left_item_color3"></view>
+							<view class="left_item_con_right">剩余车位数量
+								<view class="carcount">
+									{{remainSpace}} 辆
+								</view>
+							</view>
+						</view> -->
+					</view>
+					<image src="../../../images/car.png" mode="widthFix"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
 		<view class="consumption">
 			<view class="title">
 				<text>本周车流量环同比</text>
@@ -80,59 +135,6 @@
 		</view>
 	</view>
 	<view class="warp">
-		<view class="lease">
-			<view class="title">
-				<text>车辆出入</text>
-			</view>
-			<view class="lease-con lease-con-parent">
-				<view class="echarts-com">
-					<view class="left">
-						<view class="left_item">
-							<view class="left_item_color2"></view>
-							<view class="left_item_con_right">车辆入
-								<view class="carcount">
-									<text space='nbsp'>{{dayEntryData}} 辆</text>
-									<!-- <view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==true}}">
-										<image src="../../images/u_jt_01.png" mode="widthFix"></image>
-										<text>{{filters.substring(yesterdayYearOnYearIn,1,7)}}</text>
-									</view>
-									<view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==false}}">
-										<image src="../../images/u_jt_02.png" mode="widthFix"></image>
-										<text>{{yesterdayYearOnYearIn}}</text>
-									</view> -->
-								</view>
-							</view>
-						</view>
-						<view class="left_item">
-							<view class="left_item_color1"></view>
-							<view class="left_item_con_right">车辆出
-								<view class="carcount">
-									<text space='nbsp'>{{dayAppearanceData}} 辆</text>
-									<!-- <view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==true}}">
-										<image src="../../images/u_jt_01.png" mode="widthFix"></image>
-										<text>{{filters.substring(yesterdayYearOnYearOut,1,7)}}</text>
-									</view>
-									<view wx:if="{{(filters.substring(yesterdayYearOnYearOut,0,1)=='-')==false}}">
-										<image src="../../images/u_jt_02.png" mode="widthFix"></image>
-										<text> {{yesterdayYearOnYearOut}}</text>
-									</view> -->
-								</view>
-							</view>
-						</view>
-						
-						<!-- <view class="left_item">
-							<view class="left_item_color3"></view>
-							<view class="left_item_con_right">剩余车位数量
-								<view class="carcount">
-									{{remainSpace}} 辆
-								</view>
-							</view>
-						</view> -->
-					</view>
-					<image src="../../../images/car.png" mode="widthFix"></image>
-				</view>
-			</view>
-		</view>
 		<view class="revenue">
 			<view class="title">
 				<text>车流量</text>

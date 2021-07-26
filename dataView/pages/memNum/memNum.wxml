@@ -2,14 +2,46 @@
 <view class="content">
 	<!-- <navBar title='会员信息统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
 		extClass="lxy-navbar-extclass"></navBar> -->
+		<view style="height:30rpx;"></view>
 	<view class="warp">
 		<view class="circle">
 			<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
 			<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
 			<view class="circle-txt">
 				<view>会员当前积分</view>
-				<view><text>{{totalScore}}</text>万分</view>
+				<view class="jinrikliu_text_2">{{totalScore}}</view>
+				<view style="font-size:25rpx;">万分</view>
 			</view>
+			<image bindtap="handleticket"  class="jinrikliu_text_4 jinrikliu_text_5" src="../../../images/more1.png" mode="widthFix"></image>
+		</view>
+		<view>
+			<view class="title">
+					<text>会员情况</text>
+				</view>
+			<view style="height:45rpx;"></view>
+        <view class="tabss">
+          <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
+          <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
+            <view class="money">支付宝无感积分</view>
+						<view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+          </view>
+        </view>
+			<view style="height:45rpx;"></view>
+        <view class="tabss">
+          <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
+          <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
+            <view class="money">微信无感积分</view>
+						<view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+          </view>
+        </view>
+			<view style="height:45rpx;"></view>
+        <view class="tabss">
+          <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
+          <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
+            <view class="money">签到 </view>
+            <view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+          </view>
+        </view>
 		</view>
 
 		<view class="lease">
@@ -18,9 +50,9 @@
 					<image src="../../../images/icon_29.png" mode="widthFix"></image>
 					<text>优惠券</text>
 				</view>
-				<text class="ticket" bindtap="handleticket">more ></text>
 			</view>
 			<view class="lease-con-parent">
+				<image class="klmb" src="../../../images/klmb.png"></image>
 				<view class="lease-con">
 
 					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
@@ -54,5 +86,6 @@
 				</view>
 			</view>
 		</view>
+		<view style="height:40rpx;"></view>
 	</view>
 </view>
