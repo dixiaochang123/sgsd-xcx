@@ -875,6 +875,8 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for (let i = 0; i < res.data.membershipGrowthTrend.length; i++) {
+						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2 ,2).replace(/\b(0+)/gi,"")+'日'
+						console.log(res.data.membershipGrowthTrend[i].date)
 						lineChartData.xData.push(res.data.membershipGrowthTrend[i].date);
 						lineChartData.seriesData.push(res.data.membershipGrowthTrend[i].numberOfMembers)
 					}
@@ -921,6 +923,8 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for (let i = 0; i < res.data.membershipGrowthTrend.length; i++) {
+						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2 ,2).replace(/\b(0+)/gi,"")+'月'
+						console.log(res.data.membershipGrowthTrend[i].date)
 						lineChartData.xData.push(res.data.membershipGrowthTrend[i].date);
 						lineChartData.seriesData.push(res.data.membershipGrowthTrend[i].numberOfMembers)
 					}

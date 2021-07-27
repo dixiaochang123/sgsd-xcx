@@ -15,13 +15,60 @@
 						<text>本年</text>
 					</view>
 				</view>
+				<view style="height:30rpx;"></view>
 				<view class="circle">
-					<image src="../../../images/shabi.png" mode="widthFix"></image>
+					<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
+					<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
 					<view class="circle-txt">
-						<view><text>{{totalSpace}}</text>万元</view>
 						<view>总收益</view>
+						<view class="jinrikliu_text_2">{{totalSpace}}</view>
+						<view style="font-size:25rpx;">万元</view>
 					</view>
 				</view>
+			</view>
+		</view>
+	</view>
+	<view class="number">
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">当前客流量</view>
+				<view class="number-dd">{{currentPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_1.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">近一小时客流量</view>
+				<view class="number-dd">{{hourPassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_2.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">今日累计客流量</view>
+				<view class="number-dd">{{dayPassengerFlow}}人</view>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本周累计客流量</view>
+				<view class="number-dd">{{weekPassengerFlow}}万人</view>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本月累计客流量</view>
+				<view class="number-dd">{{monthPassengerFlow}}万人</view>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
+				<view class="number-dt">本年累计客流量</view>
+				<view class="number-dd">{{yearPassengerFlow}}万人</view>
 			</view>
 		</view>
 	</view>
