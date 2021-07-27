@@ -107,7 +107,7 @@ sub {
 }
 .echarts-con {
 	width: 100%;
-	height: 400rpx;
+	height: 600rpx;
 }
 .consumption {
 	width: 90%;
@@ -165,7 +165,7 @@ sub {
 }
 .circle {
 	width: 100%;
-	height: 600rpx;
+	height: 400rpx;
 	text-align: center;
 	position: relative;
 }
@@ -193,7 +193,7 @@ sub {
 	font-size: 36rpx;
 }
 .circle-txt view:first-child {
-	margin-top: 60rpx;
+	margin-top: 88rpx;
 }
 .circle-txt view:last-child {
 	margin-bottom: 335rpx;
@@ -244,9 +244,13 @@ sub {
 	width: 100%;
 }
 .number-dt {
-	font-size: 25rpx;
+	display: flex;
+	flex-direction: column;
+	font-size: 30rpx;
 }
 .number-dd {
-	margin-top: 20rpx;
-	font-size: 35rpx;
+	font-size: 30rpx;
+}
+.number-dd text {
+	font-size: 25rpx;
 }

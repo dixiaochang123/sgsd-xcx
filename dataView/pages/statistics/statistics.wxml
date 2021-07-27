@@ -3,7 +3,8 @@
 	<navBar title='商铺统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
 	<view class="warp">
 		<view class="banner shangguan">
-			<image src="../../../images/ban.png" mode="widthFix"></image>
+			<!-- <image src="../../../images/ban.png" mode="widthFix"></image> -->
+			<image class="huiyuanbg" src="../../../images/huiyuanbg.png"></image>
 			<view class="banner-txt">
 				<view class="banner-top">总面积</view>
 				<view class="banner-num"><text>{{areaTotal}}</text>m<sub>2</sub></view>

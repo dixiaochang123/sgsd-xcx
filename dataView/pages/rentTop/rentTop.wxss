@@ -54,6 +54,19 @@ page {
 	font-size: 28rpx;
 	color: #252c44;
 	margin-top: 20rpx;
+	border-radius: 5rpx;
+}
+.li-bd {
+	padding-left: 20rpx;
+}
+.li-hd1 {
+	padding-right: 30rpx;
+}
+.list-li:nth-child(odd) {
+	background-color: #c2c9dc;
+}
+.list-li:nth-child(even) {
+	background-color: #d4daea;
 }
 .list-li image {
 	width: 60rpx;

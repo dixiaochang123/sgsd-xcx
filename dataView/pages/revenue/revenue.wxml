@@ -28,11 +28,19 @@
 			</view>
 		</view>
 	</view>
+	<view class="revenue-list">
+				<view class="charts-con">
+					<!-- <view class="charts-tm">车流量（辆）</view> -->
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
 	<view class="number">
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">当前客流量</view>
-				<view class="number-dd">{{currentPassengerFlow}}人</view>
+				<view class="number-dt">微信</view>
+				<view class="number-dd">{{currentPassengerFlow}}<text>元</text></view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_1.png" mode="widthFix"></image>
@@ -40,36 +48,33 @@
 		</view>
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">近一小时客流量</view>
-				<view class="number-dd">{{hourPassengerFlow}}人</view>
-			</view>
-			<view class="number-img">
-				<image src="../../../images/qx_2.png" mode="widthFix"></image>
+				<view class="number-dt">支付宝</view>
+				<view class="number-dd">{{hourPassengerFlow}}<text>元</text></view>
 			</view>
 		</view>
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">今日累计客流量</view>
-				<view class="number-dd">{{dayPassengerFlow}}人</view>
+				<view class="number-dt"><text>捷顺</text><text>微信</text></view>
+				<view class="number-dd">{{dayPassengerFlow}}<text>元</text></view>
 			</view>
 		</view>
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">本周累计客流量</view>
-				<view class="number-dd">{{weekPassengerFlow}}万人</view>
+				<view class="number-dt"><text>捷顺</text><text>支付宝</text></view>
+				<view class="number-dd">{{weekPassengerFlow}}<text>元</text></view>
 			</view>
 		</view>
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">本月累计客流量</view>
-				<view class="number-dd">{{monthPassengerFlow}}万人</view>
+				<view class="number-dt"><text>第三方</text><text>微信</text></view>
+				<view class="number-dd">{{monthPassengerFlow}}<text>元</text></view>
 			</view>
 		</view>
-		<view class="number-li">
+		<!-- <view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本年累计客流量</view>
 				<view class="number-dd">{{yearPassengerFlow}}万人</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </view>

@@ -45,7 +45,7 @@
 							<text wx:else>{{index+1}}</text>
 							<view class="bd-name">{{item.storeName}}</view>
 						</view>
-						<view class="li-hd">
+						<view class="li-hd li-hd1">
 							{{item.value}}%
 						</view>
 					</view>

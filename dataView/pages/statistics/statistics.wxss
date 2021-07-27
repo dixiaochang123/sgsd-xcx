@@ -10,15 +10,17 @@ page {
 	margin: 0 auto;
 }
 .banner {
-	width: 100%;
+	width: 90%;
 	overflow: hidden;
 	position: relative;
 	margin-top: 20rpx;
+	margin-left: auto;
+	margin-right: auto;
 	
 }
 .banner image {
 	width: 100%;
-	margin-left: 45rpx;
+	/* margin-left: 45rpx; */
 }
 .banner-txt {
 	/* width: 90%; */

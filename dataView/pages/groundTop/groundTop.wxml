@@ -3,6 +3,7 @@
 	<navBar title='坪效' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick"
 		extClass="lxy-navbar-extclass">
 	</navBar>
+	<view style="height:20rpx"></view>
 	<!--顶部导航栏-->
 	<view class="swiper-tab">
 		<view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">排名前十</view>
@@ -20,7 +21,7 @@
 							<text>{{index+1}}</text>
 							<view class="bd-name">{{item.storeName}}</view>
 						</view>
-						<view class="li-hd">
+						<view class="li-hd li-hd1">
 							{{item.salesPerSquareMeter}}元/平方米
 						</view>
 					</view>
@@ -32,7 +33,7 @@
 							<text>{{index+1}}</text>
 							<view class="bd-name">{{item.storeName}}</view>
 						</view>
-						<view class="li-hd">
+						<view class="li-hd li-hd1">
 							{{item.salesPerSquareMeter}}元/平方米
 						</view>
 					</view>
@@ -62,7 +63,7 @@
 							<text wx:else>{{index+1}}</text>
 							<view class="bd-name">{{item.storeName}}</view>
 						</view>
-						<view class="li-hd">
+						<view class="li-hd li-hd1">
 							{{item.salesPerSquareMeter}}元/平方米
 						</view>
 					</view>
