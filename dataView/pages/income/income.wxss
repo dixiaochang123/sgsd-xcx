@@ -15,11 +15,16 @@ page {
 	width: 100%;
 	min-height: 200rpx;
 	margin: 20rpx auto 50rpx;
+	position: relative;
 }
 .title {
 	width: 100%;
 	display: flex;
 	align-items: center;
+	position: relative;
+	z-index: 1;
+	padding-top: 20rpx;
+	padding-left: 20rpx;
 }
 .title image {
 	width: 50rpx;
@@ -27,7 +32,9 @@ page {
 }
 .title text {
 	font-size: 30rpx;
-	color: #000;
+    color: #2c324d;
+    padding-left: 20rpx;
+    padding-top: 20rpx;
 }
 .revenue-list {
 	width: 100%;
@@ -217,7 +224,9 @@ page {
 	width: 70%;
 	font-size: 24rpx;
 	color: #fff;
-	margin-top: 10%
+	margin-top: 10%;
+	position: relative;
+	z-index: 2;
 }
 #mychart-dom-line{
 	width: 100%;
@@ -239,6 +248,14 @@ page {
 	width: 100%;
 	min-height: 200rpx;
 	margin: 0 auto;
+	position: relative;
+}
+.klmb {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
 }
 .charts-tm {
 	width: 100%;
@@ -246,15 +263,21 @@ page {
 	color: #414760;
 }
 .rightInfo {
-	height: 100%;
+	/* height: 100%; */
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
+	/* flex-direction: column; */
 	position: absolute;
 	right: 10rpx;
-	top:0;
+	bottom:20rpx;
+	left: 0;
+	right: 0;
+	margin:auto;
 	/* font-size: 20px; */
 	color:#3f3d60;
+}
+.right_child {
+	display: flex;
 }
 .rise {
 	width: 23rpx;height: 30rpx;
@@ -263,6 +286,8 @@ page {
 .warp {
 	width: 90%;
 	margin:0 auto;
+	position: relative;
+	margin-bottom: 20rpx;
 }
 .circle {
 	width: 100%;
@@ -288,13 +313,22 @@ page {
 	width: 100%;
 	color: #000000;
 	font-size: 28rpx;
+	padding-left: 93rpx;
 }
 .circle-txt view text {
 	font-size: 36rpx;
 }
 .circle-txt view:first-child {
-	margin-top: 207rpx;
+	margin-top: 117rpx;
 }
 .circle-txt view:last-child {
 	margin-bottom: 252rpx;
+}
+.jinrikliu_text_2 {
+  padding-top: 50rpx !important;
+  font-size: 40px !important;
+  font-weight: 500 !important;
+  font-family: SimSun !important;
+	font-weight: 600 !important;
+	padding-bottom: 50rpx !important;
 }

@@ -73,3 +73,8 @@ page {
   width: 100rpx !important;
   height: 45rpx !important;
 }
+.textlist {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

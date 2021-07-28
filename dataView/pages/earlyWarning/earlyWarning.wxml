@@ -18,10 +18,10 @@
           </cover-view>
         </view>
         <view style="display:inline-block;float:right">
-          <view class="titless" style="margin-top:10rpx"><text>预警商家共10家</text>  <image bindtap="handleclicktomerchants" class="imagess" src="../../../images/more.png"></image></view>
+          <view class="titless" style="margin-top:10rpx"><text style="white-space: nowrap;font-size:25rpx;">预警商家共10家</text> <text style="color:#ff4d4d;font-size:25rpx;">TOP5</text>  <image bindtap="handleclicktomerchants" class="imagess" src="../../../images/more.png"></image></view>
           
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、板上厨房</text>
             <text class="pinpai">2、小徐打麻将</text>
             <text class="pinpai">3、嘟嘴鱼</text>
@@ -42,7 +42,7 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4"><image src="more.png"></image></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、梦婷美容院</text>
             <text class="pinpai">2、奥康</text>
             <text class="pinpai">3、宝岛眼镜</text>
@@ -63,7 +63,7 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4"><image src="more.png"></image></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、第九街区</text>
             <text class="pinpai">2、痣缘宫</text>
             <text class="pinpai">3、荟宝</text>
@@ -83,7 +83,7 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4"><image src="more.png"></image></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、海底捞</text>
             <text class="pinpai">2、国美电器</text>
             <text class="pinpai">3、优衣库</text>
@@ -104,7 +104,7 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4"><image src="more.png"></image></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、比音勒芬</text>
             <text class="pinpai">2、品玉</text>
             <text class="pinpai">3、TRENDIANO</text>
@@ -125,7 +125,7 @@
         <view style="display:inline-block;float:right">
           <view style="margin-top:10rpx">预警商家共10家 <text class="jinrikliu_text_4"><image src="more.png"></image></text></view>
           <view style="margin-top:10rpx">TOP5</view>
-          <view style="width:350rpx;margin-top:10rpx">
+          <view style="width:350rpx;margin-top:10rpx" class="textlist">
             <text class="pinpai">1、莱克斯顿特卖(展位)</text>
             <text class="pinpai">2、POLO特卖（展位）</text>
             <text class="pinpai">3、品玉特卖（展位）</text>

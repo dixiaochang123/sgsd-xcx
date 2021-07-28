@@ -13,15 +13,26 @@ let lineChartData = {
 	receivableAmount: [],
 	outstandingAmount: []
 }
+var chart1 = null;
+var chart2 = null;
+var chart3 = null;
+let seriesData = {
+	data1:[120, 180, 150],
+	data2:[120, 180, 150],
+	data3:[120, 180, 150],
+}
 
 function initOption4() {
 	return {
 		grid: {
-			left: '5%',
-			right: '5%',
+			left: 20,
+			right: 30,
 			top: '5%',
 			bottom: '5%',
-			containLabel: true
+			containLabel: true,
+			textStyle: {
+				color: "#fff"
+			}
 		},
 		"tooltip": {
 			"trigger": "axis",
@@ -38,14 +49,7 @@ function initOption4() {
 			textStyle: {
 				color: '#2d3450'
 			},
-			right: 0
-		},
-		"grid": {
-			"left": '15%',
-			right: '5%',
-			textStyle: {
-				color: "#fff"
-			}
+			right: 30
 		},
 		"calculable": true,
 		"xAxis": [{
@@ -72,7 +76,7 @@ function initOption4() {
 		"yAxis": [{
 			"type": "value",
 			"splitLine": {
-				"show": true
+				"show": false
 			},
 			"axisLine": {
 				"show": false
@@ -95,7 +99,7 @@ function initOption4() {
 			"name": "应交",
 			"type": "bar",
 			"barGap": "-100%",
-			"barWidth": 20,
+			"barWidth": 15,
 			// "stack": "总量",
 			// symbolSize: 8,
 			// symbol: 'circle',
@@ -117,7 +121,7 @@ function initOption4() {
 				"name": "已付",
 				"type": "bar",
 				"stack": "总量",
-				"barWidth": 20,
+				"barWidth": 15,
 				"barGap": "-100%",
 				"itemStyle": {
 					"normal": {
@@ -143,6 +147,254 @@ function initOption4() {
 		]
 	}
 }
+function initOptions1() {
+	return {
+		grid: {
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
+		},
+		xAxis: {
+			type: 'category',
+			data: ['本周', '上周', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data1,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
+
+function initOptions2() {
+	return {
+		grid: {
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
+		},
+		xAxis: {
+			type: 'category',
+			data: ['本月', '上月', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data2,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
+
+function initOptions3() {
+	return {
+		grid: {
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
+		},
+		xAxis: {
+			type: 'category',
+			data: ['本年', '19年', '20年'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data3,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
 Page({
 
 	/**
@@ -162,6 +414,39 @@ Page({
 				return chart;
 			}
 		},
+		ec1: {
+			onInit: (canvas,width,height,dpr) => {
+				chart1 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart1);
+				return chart1;
+			}
+    },
+    ec2: {
+			onInit: (canvas,width,height,dpr) => {
+				chart2 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart2);
+				return chart2;
+			}
+    },
+    ec3: {
+			onInit: (canvas,width,height,dpr) => {
+				chart3 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart3);
+				return chart3;
+			}
+		},
 		ec4: {
 			onInit: (canvas, width, height, dpr) => {
 				chart4 = echarts.init(canvas, null, {
@@ -177,6 +462,87 @@ Page({
 		marketRevenue:0,
 		blockIncome:0,
 		totalIncome:0,
+
+		zhb:'',
+		ztb:'',
+		yhb:'',
+		ytb:'',
+		nhb:'',
+		ntb:'',
+		ztbisadd:true,
+		zhbisadd:true,
+		ytbisadd:true,
+		yhbisadd:true,
+		ntbisadd:true,
+		nhbisadd:true,
+	},
+	passengerDataFromTheSameYear: function (num) {
+		console.log(num)
+		let that = this;
+		wx.showLoading();
+		util.ajax({
+			url: "data-analysis/api/parkingLotStatistics/carFlowCycleWithData?type="+num,
+			method: "POST",
+			success: res => {
+				console.log(res)
+				if (res.success) {
+					console.log(333333,res.data)
+					// 环比增长率=（本期数-上期数）/上期数×100%
+						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
+					let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
+					let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
+					if(num==1) {
+
+						seriesData.data1 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						this.setData({
+							ztb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							zhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ztbisadd:res.data.coRate.search("-") != -1?false:true,
+							zhbisadd:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					if(num==2) {
+
+						seriesData.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						this.setData({
+							ytb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							yhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ytbisadd:res.data.coRate.search("-") != -1?false:true,
+							yhbisadd:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					if(num==3) {
+
+						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						this.setData({
+							ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ntbisadd:res.data.coRate.search("-") != -1?false:true,
+							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					let chartSet = function () {
+						if (chart1) {
+							chart1.setOption(initOptions1())
+							chart2.setOption(initOptions2())
+							chart3.setOption(initOptions3())
+							console.log('set chart')
+							
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
+				}
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
 	},
 
 	/**
@@ -185,10 +551,14 @@ Page({
 	onLoad: function (options) {
 		var that = this;
 		// that.getPieData();
+		that.passengerDataFromTheSameYear(1);
+		that.passengerDataFromTheSameYear(2);
+		that.passengerDataFromTheSameYear(3);
 		that.getPieData1();
 		// that.getLineData();  本月
 		that.getLineData1(); //本年
-		this.getData()
+		that.getData()
+		
 		wx.showLoading();
 	},
 	getData() {
