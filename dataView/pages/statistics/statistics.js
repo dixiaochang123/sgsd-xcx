@@ -132,6 +132,24 @@ function initOption1() {
 		// },
 		color: ['#e5004f', '#4d5063'],
 		series: [{
+			name: '',
+			type: 'pie',
+			radius: [0, '40%'],
+			tooltip: { show: false },
+			label: {
+				show: false,
+			},
+			itemStyle: {
+					normal: {
+							color: '#ffffff',
+					},
+			},
+			data: [
+					{
+							value: 100,
+					},
+			],
+	},{
 			name: '总铺位',
 			type: 'pie',
 			radius: ['40%', '60%'],

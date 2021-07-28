@@ -11,35 +11,78 @@ function initOption() {
 	return {
 		tooltip: {
 			trigger: 'item',
-			formatter: '{a}\n{b}: {c} ({d}%)'
+			// formatter: function(pram){
+			// 	console.log(pram)
+			// 	return pram.name+'\n'+'   '+pram.percent+'%'
+			// },
 		},
 		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3'],
 		legend: {
 			show: false
 		},
-		series: [{
+		series: [ {
 			name: '商铺数量',
 			type: 'pie',
-			radius: ['40%', '70%'],
-			center: ['47%', '50%'],
-			// roseType: 'radius',
-			// roseType: false ,
-			startAngle:180,
-			data: pieChartData.seriesData,
+			radius: ['50%', '70%'],
+			center: ['50%', '50%'],
 			label: {
-				color: '#3f3d60',
-				formatter: "{b}\n{d}%"
+				normal: {
+					show: true,
+					position: 'outside',
+					formatter: '{d}%',
+					borderRadius: 20,
+					color:"#5e5d7c",
+					formatter: function(pram){
+						console.log(pram)
+						return pram.name+'\n'+pram.percent+'%'
+				},
+				},
+				emphasis: {
+					show: true,
+					textStyle: {
+						fontSize: '12',
+						fontWeight: 'bold'
+					}
+				}
 			},
-			// labelLine: {
-			// 	lineStyle: {
-			// 		color: '#fff'
-			// 	}
-			// },
-			animationType: 'scale',
-			animationEasing: 'elasticOut',
-			animationDelay: function (idx) {
-					return Math.random() * 200;
-			}
+			data: pieChartData.seriesData,
+			itemStyle: {
+				// borderRadius: 10,
+				borderColor: '#e3e7f5',
+				borderWidth: 4
+			},
+		},{
+			itemStyle: {
+				normal: {
+					color: '#e3e6f5',
+					borderColor: {
+						type: 'radial',
+						x: 0.5,
+						y: 0.5,
+						r: 0.5,
+						colorStops: [{
+								offset: 0, color: '#000000' // 0% 处的颜色
+						}, {
+								offset: 1, color: '#e4e7f6' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					} ,
+					borderWidth: 5 ,
+				}
+			},
+			type: 'pie',
+			hoverAnimation: false,
+			radius: ['60%', '80%'],
+			center: ["50%", "50%"],
+			label: {
+				normal: {
+					show: false
+				}
+			},
+			data: [{
+				value: 1,
+			}],
+			z: -1
 		}]
 	};
 }
