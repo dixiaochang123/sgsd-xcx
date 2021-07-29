@@ -1,8 +1,45 @@
 <!--pages/consumption/consumption.wxml-->
 <wxs module="filters" src="../../../utils/utils.wxs"></wxs>
 <view class="content">
-  <navBar title='收银数据统计' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
-  </navBar>
+  <view style="height:50rpx;"></view>
+  <view class="warp">
+    <view class="circle">
+			<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
+			<view class="circle-txt">
+				<view>今日销售额</view>
+				<view><text>{{todaySales}}</text>万元</view>
+			</view>
+		</view>
+  </view>
+  <view class="warp warpflex">
+    <view class="flex">
+      <view><text class="maxtext">{{weekSales}}</text><text>万元</text></view>
+      <view>本周销售额</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{monthSales}}</text><text>万元</text></view>
+      <view>本月销售额</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{yearSales}}</text><text>万元</text></view>
+      <view>本年销售额</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{weekCustomerPrice}}</text><text>万元</text></view>
+      <view>本周客单价</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{monthCustomerPrice}}</text><text>万元</text></view>
+      <view>本月客单价</view>
+		</view>
+    <view class="flex">
+      <view><text class="maxtext">{{yearCustomerPrice}}</text>
+      <text wx:if="{{yearCustomerPrice>10000}}">万元</text>
+      <text wx:else>元</text>
+      </view>
+      <view>本年客单价</view>
+		</view>
+  </view>
   <view class="warp">
 		<view class="consumption">
 			<view class="title">
@@ -82,44 +119,7 @@
 			</view>
 		</view>
 	</view>
-  <view class="warp">
-    <view class="circle">
-			<image src="../../../images/shabi.png" mode="widthFix"></image>
-			<view class="circle-txt">
-				<view>今日销售额</view>
-				<view><text>{{todaySales}}</text>万元</view>
-			</view>
-		</view>
-  </view>
-  <view class="warp warpflex">
-    <view class="flex">
-      <view><text class="maxtext">{{weekSales}}</text><text>万元</text></view>
-      <view>本周销售额</view>
-		</view>
-    <view class="flex">
-      <view><text class="maxtext">{{monthSales}}</text><text>万元</text></view>
-      <view>本月销售额</view>
-		</view>
-    <view class="flex">
-      <view><text class="maxtext">{{yearSales}}</text><text>万元</text></view>
-      <view>本年销售额</view>
-		</view>
-    <view class="flex">
-      <view><text class="maxtext">{{weekCustomerPrice}}</text><text>万元</text></view>
-      <view>本周客单价</view>
-		</view>
-    <view class="flex">
-      <view><text class="maxtext">{{monthCustomerPrice}}</text><text>万元</text></view>
-      <view>本月客单价</view>
-		</view>
-    <view class="flex">
-      <view><text class="maxtext">{{yearCustomerPrice}}</text>
-      <text wx:if="{{yearCustomerPrice>10000}}">万元</text>
-      <text wx:else>元</text>
-      </view>
-      <view>本年客单价</view>
-		</view>
-  </view>
+
 
 
 

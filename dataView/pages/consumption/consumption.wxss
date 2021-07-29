@@ -211,6 +211,7 @@ page {
 }
 .circle image {
 	width: 600rpx;
+	margin-right: 71rpx;
 }
 .circle-txt {
 	width: 100%;
