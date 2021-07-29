@@ -294,6 +294,7 @@ page {
 	height: 600rpx;
 	text-align: center;
 	position: relative;
+	margin-top: 50rpx;
 }
 .circle image {
 	width: 600rpx;

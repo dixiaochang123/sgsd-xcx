@@ -17,12 +17,20 @@
 		</view>
 		<view class="consumption">
 			<view class="title">
-				<text>当年租金收缴率</text>
+				<text>当年租金收缴率(假数据)</text>
 			</view>
-			<view class="revenue-list">
-				
+			<view style="height:20rpx;"></view>
+			<view class="revenue-list1">
+				<image class="klmb" src="../../../images/klmb.png"></image>
+				<view class="charts-con">
+					<!-- <view class="charts-tm">车流量（辆）</view> -->
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+					</view>
+				</view>
 			</view>
 		</view>
+		<view style="height:60rpx;"></view> 
     <view class="consumption">
 			<view class="title">
 				<text>各楼层租金收缴率</text>

@@ -22,11 +22,12 @@
             <text>{{index+1}}</text>
             <view class="bd-name">{{item.storeName}}</view>
           </view>
-          <view class="li-hd">
+          <view class="li-hd1">
             {{item.salesPerSquareMeter}}元
           </view>
         </view>
       </view>
     </view>
+    <view style="height:20rpx;"></view>
   </view>
 </view>
