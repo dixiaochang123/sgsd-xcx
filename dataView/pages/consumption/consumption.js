@@ -1,6 +1,8 @@
 // pages/consumption/consumption.js
 import * as echarts from '../../../ec-canvas/echarts';
 const util = require('../../../utils/util');
+var icon =
+'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABDCAMAAABjnP3jAAAAilBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEAAAAAAAAAAAAAAAAAAAAAAAAAAADT09MAAAAAAAAAAAAAAAD////8/Pz5+fnr6+v8/Pzr6+vZ2dn09PTFxcX+/v719fX6+vrf39+5ubnDw8MSEhIrKytRUVF2dnZAQEDi4uLi4uLk5OTk5OT///+tdFIzAAAALXRSTlMABQgNFBwDNS4mCxEYIyAamisoMS364t9b57qWj3b0s6mec28rJhMNDKemZ2YvJtR9AAACMUlEQVRo3u2ZaW/iMBBAaTDdxI7tOCeF0vvaY/7/39sZJ2BgKyUrxNBKfh+RyHtMJkhJZl+Ja+LqzHjJ53rvTs5OX/Gp/n350DZwZu66h+X7vwmoT5YtMNEuE0w48n/cAiO3H0NB+P2cfioYZhDmD8yEs0ABydsNMHPzllDA4Jd/gJ3fEguGADm/B3bu5xIDhgGoFthpFY2gD5iLBthpxHwbIFUOFyBX8osE4ApYuAAWl4ACaAUuE0BLMAQs4AIsYkAMiAExIAbEgBgQA2JADIgB+wF3wE5zENABO+1+gF0BOytLAdt7ww2ws6F7w93d8Sv/M6LXg9tz8wzMPJsQQFuoH4GVR007uA2gEbz8AkZ+vtAAKMAXSBpB+dQBE91TSQOQ5N+NAAvSzapr4Mw03WqToj8MoN8CX+DSqvoxjQKOKCZ+sapS5/20AeFZsaQCozPn6jodpcLO4tiPH6aj1LVzmTbkl1d9QCgQmGC0zsYpHc6qOPDj73JlNo7WBvVi5w8FiU/IrV2MY2hWabHnT11GRx7H2tzrk+APBZiglJhATqerTIvgL2msuZiAUqgP/lBACYnEiAlgJu1sXQz+mrZK4JEnINFO+utT3prJfmczKiB/1m+V/I+3Zie+N8QGJazJ3Bpg7TJjhUL7ae8Np+Mr+wJdrtel7v3+2DMWqIGuGkG7SNsnaKtZ7McFIrc2F+z+UKAUXVfM/lDg/zr8Rc3tDwUefn9I8PDrQ4Jn9q35C4Ev35B0ZZBdAAAAAElFTkSuQmCC';
 const app = getApp();
 //曲线图
 var chart = null;
@@ -36,321 +38,351 @@ let seriesData = {
 	data2:[120, 180, 150],
 	data3:[120, 180, 150],
 }
-
-function initOption() {
+function initOption(){
 	return {
 		grid: {
 			left: '5%',
 			right: '5%',
-			top: '10%',
+			top: 50,
 			bottom: '5%',
 			containLabel: true
 		},
-		tooltip: {
-			show: true,
-			trigger: 'axis',
-			confine:true,
-		},
+		// tooltip: {
+		// 	show: true,
+		// 	trigger: 'axis'
+		// },
 		dataZoom: [{
 			type: "inside",
-			endValue: 8
+			startValue:lineChartData.xData.length - 4,
+			endValue: lineChartData.xData.length - 1
 		}],
 		xAxis: {
 			type: 'category',
-			name: '',
-			nameLocation: 'middle',
-			nameTextStyle: {
-				color: "#fff",
-				fontSize: 10,
-				padding: 10
+			axisLine:{
+				show:false
 			},
-			splitLine: {
-				show: false,
-				//  改变轴线颜色
-				lineStyle: {
-					type: 'dashed',
-					color: '#DCE0EE'
-				}
+			axisTick:{
+				show:false
 			},
-			axisTick: { //y轴刻度线
-				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			boundaryGap: true, //X轴从0开始
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
+			axisLabel:{
+				interval:0
 			},
 			data: lineChartData.xData
 		},
 		yAxis: {
-			name: '',
-			x: 'center',
 			type: 'value',
-			nameLocation: 'center',
-			nameGap: 0,
-			// max: mNum,
-			// min: 0,
-			splitNumber: 10,
-			//interval: 200, //间隔
-			minInterval: 1, //设置成1保证坐标轴分割刻度显示成整数。
-			nameTextStyle: { //文字样式
-				color: '#fff',
-				fontSize: 10
-			},
-			axisTick: { //y轴刻度线
+			splitLine:{
 				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
-			},
-			splitLine: {
-				//show: false,
-				lineStyle: {
-					type: 'solid',
-					color: '#DCE0EE'
-				}
 			}
-			// show: false
 		},
 		series: [{
 			name: '',
-			type: 'line',
-			color: ['#1BE6DA'],
-			markPoint: {
-				symbol:'circle',
-				symbolSize:20,
+			type: 'bar',
+			barWidth:40,
+			color: ['#7a819e'],
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
 			},
+			// smooth: true,
+			// markPoint: {
+			// 	symbol:'circle',
+			// 	symbolSize:20,
+			// },
 			itemStyle: {
-				normal: {
-					label: {
-						color: '#fff',
-						show: true, //开启显示
-						position: 'top', //在上方显示
-						textStyle: { //数值样式
-							color: 'white',
-							fontSize: 10
-						},
-					}
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
 				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
 			},
 			data: lineChartData.seriesData
 		}]
 	};
 }
-function initOptions1(){
-	return  {
+function initOptions1() {
+	return {
 		grid: {
-			left: 80 ,
-			right: 90 ,
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
 		},
-    xAxis: {
-        type: 'category',
-				data: ['本周', '上周', '20年同期'],
-				axisLine:{
-					show:false
+		xAxis: {
+			type: 'category',
+			data: ['本周', '上周', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data1,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true,
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
 				},
-				axisTick:{
-					show:false
-				},
-				axisLabel:{
-					interval:0
-				}
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: seriesData.data1,
-        label: {
-            show: true,
-            position: 'top',
-            valueAnimation: true
-        },
-				type: 'bar',
-				barWidth:35,
-				itemStyle:{
-					borderRadius: 5,
-					borderColor: 'transparent' ,
-			borderWidth: 3 ,
-					color:'#7a819e'
-				},
-        showBackground: true,
-        backgroundStyle: {
-						color: {
-							type: 'linear',
-							x: 0,
-							y: 0,
-							x2: 1,
-							y2: 0,
-							colorStops: [{
-									offset: 0, color: '#9c9bb3' // 0% 处的颜色
-							}, {
-								offset: 0.2, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.4, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.6, color: '#d9d9e7' // 0% 处的颜色
-						},{
-									offset: 1, color: '#dadeec' // 100% 处的颜色
-							}],
-							global: false // 缺省为 false
-						},
-						borderColor: '#ebeef8' ,
-						borderWidth: 3 ,
-						borderRadius: 5,
-						opacity:1
-        }
-    }]
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
 }
-}
-function initOptions2(){
-	return  {
+
+function initOptions2() {
+	return {
 		grid: {
-			left: 80 ,
-			right: 90 ,
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
 		},
-    xAxis: {
-        type: 'category',
-				data: ['本月', '上月', '20年同期'],
-				axisLine:{
-					show:false
+		xAxis: {
+			type: 'category',
+			data: ['本月', '上月', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data2,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
 				},
-				axisTick:{
-					show:false
-				},
-				axisLabel:{
-					interval:0
-				}
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: seriesData.data2,
-        label: {
-            show: true,
-            position: 'top',
-            valueAnimation: true
-        },
-				type: 'bar',
-				barWidth:35,
-				itemStyle:{
-					borderRadius: 5,
-					color:'#7a819e'
-				},
-        showBackground: true,
-        backgroundStyle: {
-						color: {
-							type: 'linear',
-							x: 0,
-							y: 0,
-							x2: 1,
-							y2: 0,
-							colorStops: [{
-									offset: 0, color: '#9c9bb3' // 0% 处的颜色
-							}, {
-								offset: 0.2, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.4, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.6, color: '#d9d9e7' // 0% 处的颜色
-						},{
-									offset: 1, color: '#dadeec' // 100% 处的颜色
-							}],
-							global: false // 缺省为 false
-						},
-						borderColor: '#ebeef8' ,
-						borderWidth: 3 ,
-						borderRadius: 5,
-						opacity:1
-        }
-    }]
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
 }
-}
-function initOptions3(){
-	return  {
+
+function initOptions3() {
+	return {
 		grid: {
-			left: 80 ,
-			right: 90 ,
+			left: 90,
+			right: 90,
+			bottom:80,
+			top:50
 		},
-    xAxis: {
-        type: 'category',
-				data: ['本年',  '19年','20年'],
-				axisLine:{
-					show:false
+		xAxis: {
+			type: 'category',
+			data: ['本年', '19年', '20年'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData.data3,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 35,
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
 				},
-				axisTick:{
-					show:false
-				},
-				axisLabel:{
-					interval:0
-				}
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: seriesData.data3,
-        label: {
-            show: true,
-            position: 'top',
-            valueAnimation: true
-        },
-				type: 'bar',
-				barWidth:35,
-				itemStyle:{
-					borderRadius: 5,
-					color:'#7a819e'
-				},
-        showBackground: true,
-        backgroundStyle: {
-						color: {
-							type: 'linear',
-							x: 0,
-							y: 0,
-							x2: 1,
-							y2: 0,
-							colorStops: [{
-									offset: 0, color: '#9c9bb3' // 0% 处的颜色
-							}, {
-								offset: 0.2, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.4, color: '#d9d9e7' // 0% 处的颜色
-						},{
-							offset: 0.6, color: '#d9d9e7' // 0% 处的颜色
-						},{
-									offset: 1, color: '#dadeec' // 100% 处的颜色
-							}],
-							global: false // 缺省为 false
-						},
-						borderColor: '#ebeef8' ,
-						borderWidth: 3 ,
-						borderRadius: 5,
-						opacity:1
-        }
-    }]
-}
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
 }
 Page({
 
@@ -358,6 +390,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+		num:1,
     ec: {
 			onInit: (canvas,width,height,dpr) => {
 				chart = echarts.init(canvas, null, {
@@ -618,15 +651,89 @@ Page({
 		})			
 	},
 
-
+	getLineData: function(e){
+		util.ajax({
+			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=2",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
+						lineChartData.seriesData.push(res.data[i].trafficVolume);
+					}
+				}
+				let chartSet = function (){
+					if(chart){
+						chart.setOption(initOption())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
+	},
+	getLineData1: function(e){
+		util.ajax({
+			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=3",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
+						lineChartData.seriesData.push(res.data[i].trafficVolume);
+					}
+				}
+				let chartSet = function (){
+					if(chart){
+						chart.setOption(initOption())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
+	},
 /**
 	 * 图表切换
-*/
-	chartsClick: function(e){
+	 */
+	chartsClick: function(e) {
 		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num == num) {return false} 
+		else {
+			that.setData({num: e.currentTarget.dataset.num})
+		}
+		if(num == 1){
+			that.getLineData();
+		}
+		else if(num == 2){
+			that.getLineData1();
+		}
 		that.setData({
 			num: e.currentTarget.dataset.num
-		});
+		})
 	},
   /**
    * 生命周期函数--监听页面初次渲染完成

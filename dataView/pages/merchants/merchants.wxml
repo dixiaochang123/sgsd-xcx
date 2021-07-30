@@ -1,22 +1,19 @@
 <!--dataView/pages/merchants/merchants.wxml-->
-<text>dataView/pages/merchants/merchants.wxml</text>
 <view>
-
-
-  <view class="warp">
-				<view class="list">
-					<view class="list-li" wx:for="{{rentList}}" wx:key="index">
-						<view class="li-bd">
-							<text wx:if="{{currentTab == 6 && page}}">{{(index + 1) + (page - 1) * 10}}</text>
-							<text wx:else>{{index+1}}</text>
-							<view class="bd-name">{{item.storeName}}</view>
-						</view>
-						<view class="li-hd">
-							{{item.value}}%
-						</view>
-					</view>
+<view class="ssss"><text>餐饮</text><text>15%</text></view>
+	<view class="warp">
+		<view class="list">
+			<view class="list-li" wx:for="{{rentList}}" wx:key="index">
+				<view class="li-bd li-hd1">
+					<text wx:if="{{page}}">{{(index + 1) + (page - 1) * 10}}</text>
+					<view class="bd-name">{{item.storeName}}</view>
+				</view>
+				<view class="li-hd li-hd1">
+					{{item.value}}%
 				</view>
 			</view>
-			<pagination  bind:pageChange="pageChange" page="{{page}}" total="{{total}}" size="{{10}}"></pagination>
+		</view>
+	</view>
 
+	<pagination bind:pageChange="pageChange" page="{{page}}" total="{{total}}" size="{{10}}"></pagination>
 </view>

@@ -1,6 +1,9 @@
 /* dataView/pages/merchants/merchants.wxss */
+page {
+	background-color: #e3e7f5;
+}
 .warp {
-	width: 90%;
+	width: 85%;
 	margin: 0 auto;
 }
 .list {
@@ -16,6 +19,7 @@
 	font-size: 28rpx;
 	color: #252c44;
 	margin-top: 20rpx;
+	border-radius: 5rpx;
 }
 .list-li image {
 	width: 60rpx;
@@ -35,4 +39,27 @@
 	font-size: 30rpx;
 	color: #252c44;
 	margin-right: 20rpx;
+}
+.li-bd {
+	padding-left: 20rpx;
+}
+.li-hd1 {
+	padding-right: 30rpx;
+}
+.list-li:nth-child(odd) {
+	background-color: #c2c9dc;
+}
+.list-li:nth-child(even) {
+	background-color: #d4daea;
+}
+.ssss {
+	width: 265rpx;
+	height: 100rpx;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #e8ebf7;
+	border-radius: 20rpx;
+	box-shadow: 10rpx 10rpx 5rpx #b9b6c1;
+	margin:50rpx;
 }
