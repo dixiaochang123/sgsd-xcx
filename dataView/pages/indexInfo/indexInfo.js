@@ -98,8 +98,11 @@ function initOption1() {
 		},
 		dataZoom: [{
 			type: "inside",
-			start: 70
+			// start: 70,
+			startValue:lineChartData.xData.length - 7,
+			endValue: lineChartData.xData.length - 1
 		}],
+		
 		xAxis: {
 			type: 'category',
 			name: '',
@@ -166,6 +169,11 @@ function initOption1() {
 			// 		color:"#1be6da"
 			// 	}
 			// },
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
 			itemStyle: {
 				borderRadius: 5,
 

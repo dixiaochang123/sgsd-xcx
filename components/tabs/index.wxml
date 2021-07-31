@@ -1,7 +1,7 @@
 <wxs module="filters" src="../../utils/utils.wxs"></wxs>
 <view class="weui-tabs">
   <view class="weui-tabs-bar__wrp">
-    <scroll-view scroll-x scroll-into-view="item_{{currentView}}" scroll-with-animation="{{animation}}">
+    <scroll-view enhanced="true" style="border:none;" show-scrollbar="false" scroll-x scroll-into-view="item_{{currentView}}" scroll-with-animation="{{animation}}">
       <view class="weui-tabs-bar__content">
         <block wx:for="{{tabs}}" wx:key="title">
           <view id="item_{{index}}" class="weui-tabs-bar__item"
@@ -102,7 +102,7 @@
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日车流量（入）</text>
           <text  class="jinrikliu_text_2">{{dayEntryData}}</text>
-          <text wx:if="{{dayEntryData<10000}}" class="jinrikliu_text_3">万次</text>
+          <text wx:if="{{dayEntryData<10000}}" class="jinrikliu_text_3">次</text>
           <text wx:else class="jinrikliu_text_3">次</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="车场" bindtap="handleTabClickflow">more ></text> -->

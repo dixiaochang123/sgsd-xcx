@@ -17,7 +17,7 @@
 		</view>
 		<view class="consumption">
 			<view class="title">
-				<text>当年租金收缴率(假数据)</text>
+				<text>当年租金收缴率</text>
 			</view>
 			<view style="height:20rpx;"></view>
 			<view class="revenue-list1">

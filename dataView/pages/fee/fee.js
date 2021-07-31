@@ -155,7 +155,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.getData();
-    that.getLineData1();
+    // that.getLineData1();
     wx.showLoading();
   },
   getLineData1: function(e){

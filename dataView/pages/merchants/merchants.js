@@ -20,7 +20,7 @@ Page({
     this.setData({
       page
     })
-    this.getData1()
+    // this.getData1()
   },
   // 更多数据接口
   getInfo1() {
@@ -113,7 +113,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    that.getData1();
+    // that.getData1();
   },
 
   /**

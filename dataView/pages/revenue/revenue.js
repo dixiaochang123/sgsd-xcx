@@ -17,7 +17,8 @@ function initOption(){
 		},
 		// tooltip: {
 		// 	show: true,
-		// 	trigger: 'axis'
+		// 	trigger: 'axis',
+		// 	// formatter
 		// },
 		dataZoom: [{
 			type: "inside",
@@ -41,7 +42,7 @@ function initOption(){
 			type: 'value',
 			show:false,
 			
-offset: 0 ,
+			offset: 0 ,
 			splitLine:{
 				show: false
 			}
@@ -51,11 +52,11 @@ offset: 0 ,
 			type: 'bar',
 			barWidth:30,
 			color: ['#7a819e'],
-			// label: {
-			// 	show: true,
-			// 	position: 'top',
-			// 	valueAnimation: true
-			// },
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
 			// smooth: true,
 			// markPoint: {
 			// 	symbol:'circle',

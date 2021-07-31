@@ -6,6 +6,7 @@ page {
 }
 .content {
 	width: 100%;
+	overflow-x: hidden;
 }
 .warp {
 	width: 100%;

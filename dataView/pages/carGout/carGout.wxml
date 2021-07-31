@@ -121,14 +121,14 @@
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
 					<view class="rightInfo">
-							<view class="right_child right_child1">
+							<!-- <view class="right_child right_child1">
 								<view>同比</view>
 								<view>
 									<image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 								<text class="right_child1_text"> {{ntb}}</text></view>
 							</view>
-							<view style="width:40rpx;"></view>
+							<view style="width:40rpx;"></view> -->
 							<view class="right_child right_child2">
 								<view>同比</view>
 								<view><image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>

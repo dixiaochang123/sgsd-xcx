@@ -30,11 +30,63 @@
 		</view>
 	</view>
 	<view class="warp">
+		<view class="revenue">
+			<image class="klmb" src="../../../images/klmb.png"></image>
+			<view class="title">
+				<text>销售额（万元）</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+				</view>
+				<view class="charts-con">
+					<!-- <view class="charts-tm">车流量（辆）</view> -->
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+      <view class="number-li number-li1">
+          <view class="number-dl">
+            <view class="number-dt">本周销售</view>
+            <view class="number-dd">{{weekSales}}<text>元</text></view>
+          </view>
+        </view>
+		</view>
+	</view>
+  <view class="warp">
+		<view class="revenue">
+			<image class="klmb" src="../../../images/klmb.png"></image>
+			<view class="title">
+				<text>客单价（万元）</text>
+			</view>
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+				</view>
+				<view class="charts-con">
+					<!-- <view class="charts-tm">车流量（辆）</view> -->
+					<view class="echarts-con">
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+					</view>
+				</view>
+        <view class="number-li number-li1">
+          <view class="number-dl">
+            <view class="number-dt">本周客单价</view>
+            <view class="number-dd">{{weekSales}}<text>元</text></view>
+          </view>
+        </view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
 		<!-- <image class="klmb" src="../../../images/klmb.png"></image> -->
 		<view class="consumption">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
-				<text>车流 • 本周环同比</text>
+				<text>收银 • 本周环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec1 }}"></ec-canvas>
@@ -61,7 +113,7 @@
 		<view class="consumption">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
-				<text>车流 • 本月环同比</text>
+				<text>收银 • 本月环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
@@ -87,7 +139,7 @@
 		<view class="consumption">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
-				<text>车流 • 本年环同比</text>
+				<text>收银 • 本年环同比</text>
 			</view>
 			<view class="echarts-con">
 					<ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec3 }}"></ec-canvas>
@@ -109,58 +161,7 @@
 			</view>
 		</view>
 	</view>
-  <view class="warp">
-		<view class="revenue">
-			<image class="klmb" src="../../../images/klmb.png"></image>
-			<view class="title">
-				<text>车流量</text>
-			</view>
-			<view class="revenue-list">
-				<view class="revenue-top">
-					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
-					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
-				</view>
-				<view class="charts-con">
-					<!-- <view class="charts-tm">车流量（辆）</view> -->
-					<view class="echarts-con">
-						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-					</view>
-				</view>
-			</view>
-      <view class="number-li number-li1">
-          <view class="number-dl">
-            <view class="number-dt">本周销售</view>
-            <view class="number-dd">{{weekSales}}<text>元</text></view>
-          </view>
-        </view>
-		</view>
-	</view>
-  <view class="warp">
-		<view class="revenue">
-			<image class="klmb" src="../../../images/klmb.png"></image>
-			<view class="title">
-				<text>车流量</text>
-			</view>
-			<view class="revenue-list">
-				<view class="revenue-top">
-					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
-					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
-				</view>
-				<view class="charts-con">
-					<!-- <view class="charts-tm">车流量（辆）</view> -->
-					<view class="echarts-con">
-						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-					</view>
-				</view>
-        <view class="number-li number-li1">
-          <view class="number-dl">
-            <view class="number-dt">本周销售</view>
-            <view class="number-dd">{{weekSales}}<text>元</text></view>
-          </view>
-        </view>
-			</view>
-		</view>
-	</view>
+  
 
 
 

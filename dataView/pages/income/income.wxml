@@ -185,7 +185,7 @@
 					<view class="top-li {{nums==2?'cur':''}}" data-nums="2" bindtap="chartsClicka"><text>本年</text></view>
 				</view> -->
 				<view class="charts-con">
-					<view class="charts-tm">应交已付统计</view>
+					<view class="charts-tm">应交已付统计（万元）</view>
 					<view class="echarts-con">
 						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec4 }}"></ec-canvas>
 					</view>

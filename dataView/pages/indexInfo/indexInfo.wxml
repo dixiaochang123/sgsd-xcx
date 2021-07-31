@@ -34,12 +34,12 @@
 					<text>会员注册来源</text>
 				</view>
 				<view class="person">
-					<text>支付宝 {{'10'}}人</text>
-					<text>微信 {{'10'}}人</text>
+					<text>支付宝 {{'  '}}人</text>
+					<text>微信 {{'  '}}人</text>
 				</view>
 				<view class="person">
-					<text>微信_停车缴费 {{'10'}}人</text>
-					<text>微信_公众号 {{'10'}}人</text>
+					<text>微信_停车缴费 {{'  '}}人</text>
+					<text>微信_公众号 {{'  '}}人</text>
 				</view>
 			</view>
 			<view class="revenue">
@@ -148,7 +148,7 @@
 						<view class="tabel-tt {{top5=='first5'?'activetab111':''}}" id="first5" bindtap="handleclickTop5">前五</view>
 						<view class="tabel-tts {{top5=='last5'?'activetab111':''}}" id="last5" bindtap="handleclickTop5">后五</view>
 					</view>
-					<view class="tabel-tb">
+					<!-- <view class="tabel-tb">
 						<view class="tabel-tr">
 							<view class="table-td">{{"主页"}}</view>
 							<view class="table-tds">{{"线上商城"}}</view>
@@ -168,6 +168,28 @@
 						<view class="tabel-tr">
 							<view class="table-td">{{"会员中心"}}</view>
 							<view class="table-tds">{{"我的券包"}}</view>
+						</view>
+					</view> -->
+					<view class="tabel-tb">
+						<view class="tabel-tr">
+							<view class="table-td">{{""}}</view>
+							<view class="table-tds">{{""}}</view>
+						</view>
+						<view class="tabel-tr">
+							<view class="table-td">{{""}}</view>
+							<view class="table-tds">{{""}}</view>
+						</view>
+						<view class="tabel-tr">
+							<view class="table-td">{{""}}</view>
+							<view class="table-tds">{{""}}</view>
+						</view>
+						<view class="tabel-tr">
+							<view class="table-td">{{""}}</view>
+							<view class="table-tds">{{""}}</view>
+						</view>
+						<view class="tabel-tr">
+							<view class="table-td">{{""}}</view>
+							<view class="table-tds">{{""}}</view>
 						</view>
 					</view>
 				</view>

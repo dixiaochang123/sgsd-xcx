@@ -61,5 +61,5 @@ page {
 	background-color: #e8ebf7;
 	border-radius: 20rpx;
 	box-shadow: 10rpx 10rpx 5rpx #b9b6c1;
-	margin:50rpx;
+	margin:30rpx;
 }

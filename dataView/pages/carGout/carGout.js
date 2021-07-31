@@ -31,7 +31,7 @@ function initOption(){
 		// },
 		dataZoom: [{
 			type: "inside",
-			startValue:lineChartData.xData.length - 4,
+			startValue:lineChartData.xData.length - 7,
 			endValue: lineChartData.xData.length - 1
 		}],
 		xAxis: {
@@ -56,7 +56,7 @@ function initOption(){
 		series: [{
 			name: '',
 			type: 'bar',
-			barWidth:40,
+			barWidth:30,
 			color: ['#7a819e'],
 			label: {
 				show: true,
@@ -109,6 +109,14 @@ function initOption(){
 				borderWidth: 3,
 				borderRadius: 5,
 				opacity: 1
+			},
+			emphasis:{
+				label:{
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
 			},
 			data: lineChartData.seriesData
 		}]
@@ -290,7 +298,7 @@ function initOptions3() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本年', '19年', '20年'],
+			data: ['本年','20年', '19年'],
 			axisLine: {
 				show: false
 			},
@@ -496,7 +504,9 @@ Page({
 					}
 					if(num==3) {
 
-						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number")
+						// [seriesData.data3[0], seriesData.data3[1]] = [seriesData.data3[1], seriesData.data3[0]];
+						// console.log('seriesData.data3',seriesData.data3)
 						this.setData({
 							ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
 							nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
