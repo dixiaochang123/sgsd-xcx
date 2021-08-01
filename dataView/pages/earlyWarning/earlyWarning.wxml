@@ -11,8 +11,8 @@
           <ec-canvas id="mychart-dom222" canvas-id="mychart222" ec="{{ ecpie }}"></ec-canvas>
           <cover-view class="asset-money" bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
             <cover-view class="asset-font">餐饮</cover-view>
-            <cover-view class="asset-font af2">30%</cover-view>
-            <cover-view class="asset-font af2"><input class="weui-input" auto-focus placeholder="将会获取焦点"/></cover-view>
+            <cover-view wx:if="{{isshow}}" class="asset-font af2">{{value}}%</cover-view>
+            <view wx:else class="asset-font af2"><input type="number" maxlength="3" class="weui-input"  min="1" max="100" auto-focus value="{{value}}" placeholder="" bindblur="inputBlur" bindinput="inputchange"/>%</view>
             <!-- <cover-view class="asset-font af2">
               <input class="input" name="userName" placeholder="请输入用户名" bindinput="userNameInput"/>
             </cover-view> -->

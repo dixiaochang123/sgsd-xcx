@@ -59,6 +59,9 @@ page {
   color:#333;
   z-index:9999 !important;
   font-size:30rpx;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 .asset-money .af2{
   color:red;
@@ -77,4 +80,7 @@ page {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+}
+.weui-input {
+  width:54rpx ;
 }

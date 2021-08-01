@@ -71,6 +71,8 @@ Page({
       },
     },
     lastTapTime: 0,
+    isshow:true,
+    value:100
 
   },
   // 触摸开始时间
@@ -96,11 +98,15 @@ Page({
         console.log("double tap")
         // 成功触发双击事件时，取消单击事件的执行
         clearTimeout(that.lastTapTimeoutFunc);
-        wx.showModal({
-          title: '提示',
-          content: '双击事件被触发',
-          showCancel: false
+        this.setData({
+          isshow:!that.data.isshow
         })
+        console.log(that.data.isshow,'双击事件被触发')
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '双击事件被触发',
+        //   showCancel: false
+        // })
       }
     }
   },
@@ -109,6 +115,31 @@ Page({
     wx.navigateTo({
       url: '/dataView/pages/merchants/merchants'
     });
+  },
+  inputBlur(e) {
+    this.setData({
+      isshow:true
+    })
+
+  },
+  inputchange(e) {
+    let value = e.detail.value;
+    let newValue = this.substrchange(value)
+    console.log(newValue)
+    this.setData({
+      value:newValue
+    })
+  },
+  substrchange(str) {
+    str = str.replace(/[^\d]/g,"");
+    if(str.substr(0, 1)=="0") {
+      str = str.substr(1)
+      this.substrchange(str)
+    }
+    if(str>100) {
+      str = 100
+    }
+    return str
   },
   /**
    * 生命周期函数--监听页面加载
