@@ -7,6 +7,7 @@ var chart = null;
 var chart1 = null;
 var chart2 = null;
 var chart3 = null;
+var position = []
 let lineChartData={
 	seriesData:[],
 	xData:[]
@@ -31,8 +32,9 @@ function initOption(){
 		// },
 		dataZoom: [{
 			type: "inside",
-			startValue:lineChartData.xData.length - 7,
-			endValue: lineChartData.xData.length - 1
+			startValue:lineChartData.xData.length - 8,
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',
@@ -56,11 +58,14 @@ function initOption(){
 		series: [{
 			name: '',
 			type: 'bar',
-			barWidth:30,
+			barMaxWidth:30,
 			color: ['#7a819e'],
 			label: {
 				show: true,
 				position: 'top',
+				// offset:lineChartData.seriesData.map((item,index)=>{
+				// 	return index%2==0?[0,0]:[0,-30]
+				// }),
 				valueAnimation: true
 			},
 			// smooth: true,
@@ -118,6 +123,8 @@ function initOption(){
 					color:"#e5004f"
 				}
 			},
+			// data: lineChartData.seriesData
+			data: [5324,2644],
 			data: lineChartData.seriesData
 		}]
 	};
@@ -586,6 +593,18 @@ Page({
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
 						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.seriesData.push({
+								
+							name:'' ,
+							value: res.data[i].trafficVolume,
+							label:{
+								show: true,
+								position: 'top',
+								offset:[0,0],
+								// offset:[0,0],
+								valueAnimation: true
+							}
+						});
 					}
 				}
 				let chartSet = function (){
@@ -620,7 +639,19 @@ Page({
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						// lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.seriesData.push({
+								
+							name:'' ,
+							value: res.data[i].trafficVolume,
+							label:{
+								show: true,
+								position: 'top',
+								offset:i%2==0?[0,-30]:[0,0],
+								// offset:[0,0],
+								valueAnimation: true
+							}
+						});
 					}
 				}
 				let chartSet = function (){

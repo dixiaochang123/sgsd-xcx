@@ -25,7 +25,8 @@ let initOption = function () {
 		},
 		dataZoom: [{
 			type: "inside",
-			endValue: 8
+			endValue: 8,
+			zoomLock: true
 		}],
 		tooltip: {
 			show: true,
@@ -144,7 +145,8 @@ function initOption1(){
 		},
 		dataZoom: [{
 			type: "inside",
-			endValue: 8
+			endValue: 8,
+			zoomLock: true
 		}],
 		tooltip: {
 			show: true,

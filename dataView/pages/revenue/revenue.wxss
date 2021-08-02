@@ -80,7 +80,7 @@ sub {
 	border-radius: 5px;
 	overflow: hidden;
 	margin-top: 30rpx;
-	padding: 30rpx 4%;
+	/* padding: 30rpx 4%; */
 }
 .revenue-top {
 	width: 50%;
@@ -108,7 +108,7 @@ sub {
 }
 .echarts-con {
 	width: 100%;
-	height: 600rpx;
+	height: 400rpx;
 }
 .consumption {
 	width: 90%;

@@ -16,7 +16,7 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周销售</view>
-				<view class="number-dd">{{weekSales}}<text>元</text></view>
+				<view class="number-dd">{{weekSales}}<text>万元</text></view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_1.png" mode="widthFix"></image>
@@ -25,13 +25,13 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周客单</view>
-				<view class="number-dd">{{weekCustomerPrice}}<text>元</text></view>
+				<view class="number-dd">{{weekCustomerPrice}}<text>万元</text></view>
 			</view>
 		</view>
 	</view>
 	<view class="warp">
-		<view class="revenue">
 			<image class="klmb" src="../../../images/klmb.png"></image>
+		<view class="revenue">
 			<view class="title">
 				<text>销售额（万元）</text>
 			</view>
@@ -43,16 +43,16 @@
 				<view class="charts-con">
 					<!-- <view class="charts-tm">车流量（辆）</view> -->
 					<view class="echarts-con">
-						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec0 }}"></ec-canvas>
 					</view>
 				</view>
-			</view>
       <view class="number-li number-li1">
           <view class="number-dl">
             <view class="number-dt">本周销售</view>
-            <view class="number-dd">{{weekSales}}<text>元</text></view>
+            <view class="number-dd">{{weekSales}}<text>万元</text></view>
           </view>
         </view>
+			</view>
 		</view>
 	</view>
   <view class="warp">
@@ -75,7 +75,7 @@
         <view class="number-li number-li1">
           <view class="number-dl">
             <view class="number-dt">本周客单价</view>
-            <view class="number-dd">{{weekSales}}<text>元</text></view>
+            <view class="number-dd">{{weekCustomerPrice}}<text>万元</text></view>
           </view>
         </view>
 			</view>
@@ -151,12 +151,12 @@
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 								<text class="right_child1_text"> {{ntb}}</text></view>
 							</view>
-							<view style="width:40rpx;"></view>
+							<!-- <view style="width:40rpx;"></view>
 							<view class="right_child right_child2">
 								<view>同比</view>
 								<view><image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image><text class="right_child1_text">{{nhb}}</text></view>
-							</view>
+							</view> -->
 					</view>
 			</view>
 		</view>

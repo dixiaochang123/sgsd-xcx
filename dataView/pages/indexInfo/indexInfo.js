@@ -99,8 +99,9 @@ function initOption1() {
 		dataZoom: [{
 			type: "inside",
 			// start: 70,
-			startValue:lineChartData.xData.length - 7,
-			endValue: lineChartData.xData.length - 1
+			startValue:lineChartData.xData.length - 8,
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
 		}],
 		
 		xAxis: {

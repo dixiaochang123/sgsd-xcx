@@ -22,8 +22,9 @@ function initOption(){
 		// },
 		dataZoom: [{
 			type: "inside",
-			startValue:lineChartData.xData.length - 7,
-			endValue: lineChartData.xData.length - 1
+			startValue:lineChartData.xData.length - 8,
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',
@@ -138,10 +139,11 @@ Page({
 		},
 		remainSpace: [],
 		totalSpace: '',
+		totalSpace11:''
 	},
 	getLineData: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=2",
+			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=2",
 			method:"POST",
 			success:res=>{
 				if(res.success){
@@ -149,7 +151,7 @@ Page({
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.seriesData.push(res.data[i].income);
 					}
 				}
 				let chartSet = function (){
@@ -176,7 +178,7 @@ Page({
 	},
 	getLineData1: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=3",
+			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=3",
 			method:"POST",
 			success:res=>{
 				if(res.success){
@@ -184,7 +186,7 @@ Page({
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.seriesData.push(res.data[i].income);
 					}
 				}
 				let chartSet = function (){
@@ -222,7 +224,8 @@ Page({
 			success:res=>{
 				if(res.success){
 					this.setData({
-						totalSpace: res.data>10000?(res.data/10000).toFixed(2):res.data
+						totalSpace: res.data>10000?(res.data/10000).toFixed(2):res.data,
+						totalSpace11: res.data
 					})
 				}
 				wx.hideLoading();

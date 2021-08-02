@@ -53,8 +53,8 @@ page {
 	background-color: #d4daea;
 }
 .ssss {
-	width: 265rpx;
-	height: 100rpx;
+	width: 200rpx;
+  height: 80rpx;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;

@@ -4,6 +4,7 @@ const util = require('../../../utils/util');
 const app = getApp();
 //曲线图
 var chart = null;
+var chart0 = null;
 //饼状图
 var chart1 = null;
 var chart2 = null;
@@ -18,6 +19,10 @@ let sendData =  JSON.stringify({
 	groupType: 2
 });
 let lineChartData = {
+	seriesData:[],
+	xData:[]
+};
+let lineChartData0 = {
 	seriesData:[],
 	xData:[]
 };
@@ -51,8 +56,9 @@ function initOption(){
 		// },
 		dataZoom: [{
 			type: "inside",
-			startValue:lineChartData.xData.length - 7,
-			endValue: lineChartData.xData.length - 1
+			startValue:lineChartData.xData.length - 8,
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',
@@ -76,7 +82,7 @@ function initOption(){
 		series: [{
 			name: '',
 			type: 'bar',
-			barWidth:30,
+			barMaxWidth:30,
 			color: ['#7a819e'],
 			label: {
 				show: true,
@@ -139,6 +145,113 @@ function initOption(){
 				}
 			},
 			data: lineChartData.seriesData
+		}]
+	};
+}
+function initOption0(){
+	return {
+		grid: {
+			left: '5%',
+			right: '5%',
+			top: 50,
+			bottom: '5%',
+			containLabel: true
+		},
+		// tooltip: {
+		// 	show: true,
+		// 	trigger: 'axis'
+		// },
+		dataZoom: [{
+			type: "inside",
+			startValue:lineChartData0.xData.length - 8,
+			endValue: lineChartData0.xData.length - 1,
+			zoomLock: true
+		}],
+		xAxis: {
+			type: 'category',
+			axisLine:{
+				show:false
+			},
+			axisTick:{
+				show:false
+			},
+			axisLabel:{
+				interval:0
+			},
+			data: lineChartData0.xData
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			name: '',
+			type: 'bar',
+			barMaxWidth:30,
+			color: ['#7a819e'],
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			// smooth: true,
+			// markPoint: {
+			// 	symbol:'circle',
+			// 	symbolSize:20,
+			// },
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			},
+			emphasis:{
+				label:{
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
+			data: lineChartData0.seriesData
 		}]
 	};
 }
@@ -220,7 +333,15 @@ function initOptions1() {
 				borderWidth: 3,
 				borderRadius: 5,
 				opacity: 1
-			}
+			},
+			emphasis:{
+				label:{
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 		}]
 	}
 }
@@ -303,7 +424,15 @@ function initOptions2() {
 				borderWidth: 3,
 				borderRadius: 5,
 				opacity: 1
-			}
+			},
+			emphasis:{
+				label:{
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 		}]
 	}
 }
@@ -318,7 +447,7 @@ function initOptions3() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本年', '19年', '20年'],
+			data: ['本年', '20年', '19年'],
 			axisLine: {
 				show: false
 			},
@@ -386,7 +515,15 @@ function initOptions3() {
 				borderWidth: 3,
 				borderRadius: 5,
 				opacity: 1
-			}
+			},
+			emphasis:{
+				label:{
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 		}]
 	}
 }
@@ -406,6 +543,17 @@ Page({
 				});
 				canvas.setChart(chart);
 				return chart;
+			}
+		},
+    ec0: {
+			onInit: (canvas,width,height,dpr) => {
+				chart0 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart0);
+				return chart0;
 			}
 		},
 		ec1: {
@@ -659,15 +807,19 @@ Page({
 
 	getLineData: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=2",
+			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
+					lineChartData0.xData = [];
+					lineChartData0.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
+						lineChartData.seriesData.push(res.data[i].customerPrice);
+						lineChartData0.xData.push(res.data[i].time.substring(6,8)+'日');
+						lineChartData0.seriesData.push(res.data[i].sales);
 					}
 				}
 				let chartSet = function (){
@@ -682,6 +834,18 @@ Page({
 					}
 				}
 				chartSet();
+				let chartSet0 = function (){
+					if(chart0){
+						chart0.setOption(initOption0())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet0();
+						},500)
+					}
+				}
+				chartSet0();
 				wx.hideLoading();
 			},
 			fail:error=>{
@@ -691,15 +855,19 @@ Page({
 	},
 	getLineData1: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/trafficVolume?type=3",
+			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=2",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
+					lineChartData0.xData = [];
+					lineChartData0.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
+						lineChartData.seriesData.push(res.data[i].customerPrice);
+						lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
+						lineChartData0.seriesData.push(res.data[i].sales);
 					}
 				}
 				let chartSet = function (){
@@ -714,6 +882,18 @@ Page({
 					}
 				}
 				chartSet();
+				let chartSet0 = function (){
+					if(chart0){
+						chart0.setOption(initOption0())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet0();
+						},500)
+					}
+				}
+				chartSet0();
 				wx.hideLoading();
 			},
 			fail:error=>{

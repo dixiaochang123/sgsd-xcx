@@ -128,4 +128,6 @@ page {
 .li-hd{
 	height: 100%;
 	overflow: auto;
+	display: flex;
+    align-items: center;
 }

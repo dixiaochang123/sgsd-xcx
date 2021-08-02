@@ -79,7 +79,8 @@ function initOption1() {
 		},
 		dataZoom: [{
 			type: "inside",
-			start: 50
+			start: 50,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',

@@ -22,7 +22,8 @@
 					<view class="circle-txt">
 						<view>总收益</view>
 						<view class="jinrikliu_text_2">{{totalSpace}}</view>
-						<view style="font-size:25rpx;">万元</view>
+						<view wx:if="{{totalSpace11>10000}}" style="font-size:25rpx;">万元</view>
+						<view wx:else style="font-size:25rpx;">元</view>
 					</view>
 				</view>
 			</view>

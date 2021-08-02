@@ -225,7 +225,7 @@ page {
 	width: 70%;
 	font-size: 24rpx;
 	color: #fff;
-	margin-top: 10%;
+	margin-top: 3%;
 	position: relative;
 	z-index: 2;
 }
@@ -299,6 +299,7 @@ page {
 }
 .circle image {
 	width: 600rpx;
+	margin-right: 60rpx;
 }
 .circle-txt {
 	width: 100%;
@@ -315,7 +316,7 @@ page {
 	width: 100%;
 	color: #000000;
 	font-size: 28rpx;
-	padding-left: 93rpx;
+	padding-left: 34rpx;
 }
 .circle-txt view text {
 	font-size: 36rpx;

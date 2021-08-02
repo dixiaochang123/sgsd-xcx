@@ -60,7 +60,7 @@ page {
   z-index:9999 !important;
   font-size:30rpx;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
 }
 .asset-money .af2{

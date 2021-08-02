@@ -173,7 +173,7 @@ sub {
 	width: 100%;
 	color: #000000;
 	font-size: 28rpx;
-	padding-left: 64rpx;
+	padding-left: 12rpx;
 }
 .circle-txt view text {
 	font-size: 36rpx;
@@ -217,12 +217,13 @@ sub {
 .jinrikliu {
   width: 500rpx;
   /* height: 420rpx; */
-  margin:0 auto;
+	margin:0 auto;
+	margin-right: 55rpx;
 }
 .jinrikliu_text_4 {
   position: absolute;
-  top: 388rpx;
-  right: 20rpx;
+  top: 460rpx;
+  right: 9rpx;
   z-index: 1;
   width:148rpx;
 }

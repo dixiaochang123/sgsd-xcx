@@ -39,7 +39,7 @@ page {
 	overflow: hidden;
 	margin-top: 30rpx;
 	margin-left: center;
-	padding: 30rpx 4%;
+	padding: 30rpx 0;
 }
 .echarts-con {
 	width: 100%;

@@ -33,7 +33,8 @@ function initOption() {
 		dataZoom: [{
 			type: "inside",
 			startValue:lineChartData.xData.length - 9,
-			endValue: lineChartData.xData.length - 1
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',
@@ -153,7 +154,8 @@ function initOption1() {
 		},
 		dataZoom: [{
 			type: "inside",
-			endValue: 8
+			endValue: 8,
+			zoomLock: true
 		}],
 		xAxis: {
 			type: 'category',

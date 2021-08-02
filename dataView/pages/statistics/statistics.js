@@ -112,6 +112,11 @@ function initOption() {
 
 function initOption1() {
 	return {
+		grid: {
+			top: 20,
+			bottom: '10%',
+			containLabel: false
+		},
 		title: {
 			text: chartData.Count + '户',
 			subtext: '总铺位数',
@@ -159,15 +164,22 @@ function initOption1() {
 			},
 			data: [{
 					value: chartData.nullCount,
-					name: '空铺位' + chartData.nullCount,
+					name: '空铺位',
 					selected: true
 				},
 				{
 					value: chartData.rentCount,
-					name: '已租铺位' + chartData.nullCount,
+					name: '已租铺位',
 
 				}
-			]
+			],
+			label: {
+				textStyle: {
+					color: '#000',
+					align:'left'
+				},
+				formatter: '{b}\n{c}户\n({d}%)'
+			},
 		}]
 	};
 }

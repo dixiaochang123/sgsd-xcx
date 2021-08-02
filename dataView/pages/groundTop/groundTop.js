@@ -5,7 +5,7 @@ Page({
   data: {
     // tab切换 
     currentTab: 0,
-    currentTab1: 6,
+    currentTab1: new Date().getMonth(),
     groundList: [],
     page: 1,
     total:10
