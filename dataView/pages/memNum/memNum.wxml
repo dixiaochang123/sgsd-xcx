@@ -14,7 +14,7 @@
 			</view>
 			<image bindtap="handleticket"  class="jinrikliu_text_4 jinrikliu_text_5" src="../../../images/more1.png" mode="widthFix"></image>
 		</view>
-		<view>
+		<view wx:if="{{false}}">
 			<view class="title">
 					<text>会员情况</text>
 				</view>
@@ -23,7 +23,7 @@
           <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
             <view class="money">支付宝无感积分</view>
-						<view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+						<view class="money">{{''}} <text style="font-size:20rpx;">万分</text> </view>
           </view>
         </view>
 			<view style="height:45rpx;"></view>
@@ -31,7 +31,7 @@
           <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
             <view class="money">微信无感积分</view>
-						<view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+						<view class="money">{{''}} <text style="font-size:20rpx;">万分</text> </view>
           </view>
         </view>
 			<view style="height:45rpx;"></view>
@@ -39,7 +39,7 @@
           <image class="juxing juxing1111" src="../../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
             <view class="money">签到 </view>
-            <view class="money">{{'100'}} <text style="font-size:20rpx;">万分</text> </view>
+            <view class="money">{{''}} <text style="font-size:20rpx;">万分</text> </view>
           </view>
         </view>
 		</view>

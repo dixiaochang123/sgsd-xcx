@@ -5,7 +5,7 @@
   </navBar>
 	<view class="warp">
 		<!-- <image class="klmb" src="../../../images/klmb.png"></image> -->
-		<view class="consumption">
+		<view class="consumption" wx:if="{{false}}">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
 				<text>收入 • 本周环同比</text>
@@ -31,7 +31,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="warp">
+	<view class="warp" wx:if="{{false}}">
 		<view class="consumption">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
@@ -57,7 +57,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="warp">
+	<view class="warp" wx:if="{{false}}">
 		<view class="consumption">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">

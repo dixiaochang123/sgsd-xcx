@@ -31,10 +31,10 @@
 					<image src="../../images/icon_14.png" mode="widthFix"></image>
 					<text>租金收缴率</text>
 				</navigator>
-				<navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
+				<!-- <navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
 					<image src="../../images/icon_33.png" mode="widthFix"></image>
 					<text>业态预警</text>
-				</navigator>
+				</navigator> -->
 			</view>
 		</view>
 		<view class="warp-list">

@@ -37,7 +37,7 @@
 					</view>
 				</view>
 			</view>
-	<view class="number">
+	<view class="number" wx:if="{{false}}">
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">微信</view>

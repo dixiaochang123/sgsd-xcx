@@ -25,7 +25,7 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周客单</view>
-				<view class="number-dd">{{weekCustomerPrice}}<text>万元</text></view>
+				<view class="number-dd">{{weekCustomerPrice}}<text>元</text></view>
 			</view>
 		</view>
 	</view>
@@ -33,12 +33,12 @@
 			<image class="klmb" src="../../../images/klmb.png"></image>
 		<view class="revenue">
 			<view class="title">
-				<text>销售额（万元）</text>
+				<text>销售额（元）</text>
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">
-					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
-					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+					<view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1"><text>本月</text></view>
+					<view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1"><text>本年</text></view>
 				</view>
 				<view class="charts-con">
 					<!-- <view class="charts-tm">车流量（辆）</view> -->
@@ -59,7 +59,7 @@
 		<view class="revenue">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
-				<text>客单价（万元）</text>
+				<text>客单价（元）</text>
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">
@@ -75,7 +75,7 @@
         <view class="number-li number-li1">
           <view class="number-dl">
             <view class="number-dt">本周客单价</view>
-            <view class="number-dd">{{weekCustomerPrice}}<text>万元</text></view>
+            <view class="number-dd">{{weekCustomerPrice}}<text>元</text></view>
           </view>
         </view>
 			</view>

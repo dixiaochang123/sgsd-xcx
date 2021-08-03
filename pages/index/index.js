@@ -547,6 +547,7 @@ Page({
 						dataAllFlow:{
 							// dayPassengerFlow: parseFloat(res.data.dayPassengerFlow).toLocaleString(),
 							dayPassengerFlow: res.data.dayPassengerFlow>10000?(res.data.dayPassengerFlow/10000).toFixed(2):res.data.dayPassengerFlow,
+							dayPassengerFlow11: res.data.dayPassengerFlow,
 							weekPassengerFlow: res.data.weekPassengerFlow,
 							monthPassengerFlow: res.data.monthPassengerFlow,
 							yearPassengerFlow: res.data.yearPassengerFlow,

@@ -647,7 +647,7 @@ Page({
 							label:{
 								show: true,
 								position: 'top',
-								offset:i%2==0?[0,-30]:[0,0],
+								offset:i%2==0?[0,-20]:[0,0],
 								// offset:[0,0],
 								valueAnimation: true
 							}

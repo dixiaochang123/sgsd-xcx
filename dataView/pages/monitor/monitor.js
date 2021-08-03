@@ -279,7 +279,7 @@ function initOptions3() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本年', '19年', '20年'],
+			data: ['本年', '20年', '19年'],
 			axisLine: {
 				show: false
 			},

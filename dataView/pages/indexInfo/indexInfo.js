@@ -667,7 +667,8 @@ Page({
 		hb:'',
 		tbisadd:true,
 		hbisadd:true,
-		top5:'first5'
+		top5:'first5',
+		count:''//微信
 	},
 	memberIsMoreThanYearOnYear: function (e) {
 		util.ajax({
@@ -770,6 +771,24 @@ Page({
 			}
 		})
 	},
+	memberSource() {
+		util.ajax({
+			url: "data-analysis/api/general/member/memberSource",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					console.log(res.data)
+					this.setData({
+						count:res.data[0].count
+					})
+				}
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
 	handleclickTab(event) {
 		console.log(event)
 		var dataval = event.target.dataset.val;
@@ -845,6 +864,7 @@ Page({
 		this.getMemberData();
 		this.getMemberData1();
 		this.gethydata(0)
+		this.memberSource()
 		this.memberIsMoreThanYearOnYear()
 	},
 	getData: function (e) {

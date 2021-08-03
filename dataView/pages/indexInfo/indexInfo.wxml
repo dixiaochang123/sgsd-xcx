@@ -34,13 +34,13 @@
 					<text>会员注册来源</text>
 				</view>
 				<view class="person">
-					<text>支付宝 {{'  '}}人</text>
-					<text>微信 {{'  '}}人</text>
+					<text>微信 {{count}}人</text>
+					<text style="visibility: hidden;">支付宝 {{'  '}}人</text>
 				</view>
-				<view class="person">
+				<!-- <view class="person">
 					<text>微信_停车缴费 {{'  '}}人</text>
 					<text>微信_公众号 {{'  '}}人</text>
-				</view>
+				</view> -->
 			</view>
 			<view class="revenue">
 				<view class="title">
@@ -138,7 +138,7 @@
 				</view>
 			</view>
 			<view style="height:50rpx;"></view>
-			<view class="revenue">
+			<view class="revenue" wx:if="{{false}}">
 				<view class="title">
 					<text>页面点击</text>
 				</view>

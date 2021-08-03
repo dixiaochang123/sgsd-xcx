@@ -534,6 +534,7 @@ Page({
    */
   data: {
 		num:1,
+		num1:1,
     ec: {
 			onInit: (canvas,width,height,dpr) => {
 				chart = echarts.init(canvas, null, {
@@ -634,6 +635,7 @@ Page({
 		that.drawLeasePie();
 		setTimeout(that.getData);
 		that.getLineData();
+		that.getLineDataxse();
 		that.getBarData(1);
 		that.getBarData(2);
 		that.getBarData(3);
@@ -805,7 +807,7 @@ Page({
 		})			
 	},
 
-	getLineData: function(e){
+	getLineData: function(type){
 		util.ajax({
 			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
 			method:"POST",
@@ -813,13 +815,13 @@ Page({
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
-					lineChartData0.xData = [];
-					lineChartData0.seriesData = [];
+					// lineChartData0.xData = [];
+					// lineChartData0.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
 						lineChartData.seriesData.push(res.data[i].customerPrice);
-						lineChartData0.xData.push(res.data[i].time.substring(6,8)+'日');
-						lineChartData0.seriesData.push(res.data[i].sales);
+						// lineChartData0.xData.push(res.data[i].time.substring(6,8)+'日');
+						// lineChartData0.seriesData.push(res.data[i].sales);
 					}
 				}
 				let chartSet = function (){
@@ -834,6 +836,126 @@ Page({
 					}
 				}
 				chartSet();
+				// let chartSet0 = function (){
+				// 	if(chart0){
+				// 		chart0.setOption(initOption0())
+				// 		console.log('set chart')
+				// 	}else{
+				// 		setTimeout(()=>{
+				// 			console.log("chart is null")
+				// 			chartSet0();
+				// 		},500)
+				// 	}
+				// }
+				// chartSet0();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
+	},
+	getLineData1: function(e){
+		util.ajax({
+			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=2",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					console.log(898989)
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					// lineChartData0.xData = [];
+					// lineChartData0.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
+						// lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
+						// lineChartData.seriesData.push(res.data[i].customerPrice);
+						// lineChartData0.seriesData.push(res.data[i].sales);
+						lineChartData.seriesData.push({
+							name:'' ,
+							value: res.data[i].customerPrice,
+							label:{
+								show: true,
+								position:i%2==0?[0,-38]:[0,0],
+								// offset:i%2==0?[0,-38]:[0,0],
+								// offset:[0,0],
+								valueAnimation: true
+							}
+						});
+						// lineChartData0.seriesData.push({
+								
+						// 	name:'' ,
+						// 	value: res.data[i].sales,
+						// 	label:{
+						// 		show: true,
+						// 		position:i%2==0?[0,-38]:[0,0],
+						// 		// offset:i%2==0?[0,-38]:[0,0],
+						// 		// offset:[0,0],
+						// 		valueAnimation: true
+						// 	}
+						// });
+					}
+				}
+				let chartSet = function (){
+					if(chart){
+						chart.setOption(initOption())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+				// let chartSet0 = function (){
+				// 	if(chart0){
+				// 		chart0.setOption(initOption0())
+				// 		console.log('set chart')
+				// 	}else{
+				// 		setTimeout(()=>{
+				// 			console.log("chart is null")
+				// 			chartSet0();
+				// 		},500)
+				// 	}
+				// }
+				// chartSet0();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
+	},
+	getLineDataxse: function(type){
+		util.ajax({
+			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					// lineChartData.xData = [];
+					// lineChartData.seriesData = [];
+					lineChartData0.xData = [];
+					lineChartData0.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						// lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
+						// lineChartData.seriesData.push(res.data[i].customerPrice);
+						lineChartData0.xData.push(res.data[i].time.substring(6,8)+'日');
+						lineChartData0.seriesData.push(res.data[i].sales);
+					}
+				}
+				// let chartSet = function (){
+				// 	if(chart){
+				// 		chart.setOption(initOption())
+				// 		console.log('set chart')
+				// 	}else{
+				// 		setTimeout(()=>{
+				// 			console.log("chart is null")
+				// 			chartSet();
+				// 		},500)
+				// 	}
+				// }
+				// chartSet();
 				let chartSet0 = function (){
 					if(chart0){
 						chart0.setOption(initOption0())
@@ -853,7 +975,7 @@ Page({
 			}
 		})			
 	},
-	getLineData1: function(e){
+	getLineData1xse: function(e){
 		util.ajax({
 			url:"data-analysis/api/sg/cashRegisterSalesStatistics?type=2",
 			method:"POST",
@@ -864,24 +986,48 @@ Page({
 					lineChartData0.xData = [];
 					lineChartData0.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
-						lineChartData.seriesData.push(res.data[i].customerPrice);
+						// lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
 						lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
+						// lineChartData.seriesData.push(res.data[i].customerPrice);
 						lineChartData0.seriesData.push(res.data[i].sales);
+						// lineChartData.seriesData.push({
+								
+						// 	name:'' ,
+						// 	value: res.data[i].customerPrice,
+						// 	label:{
+						// 		show: true,
+						// 		position:i%2==0?[0,-38]:[0,0],
+						// 		// offset:i%2==0?[0,-38]:[0,0],
+						// 		// offset:[0,0],
+						// 		valueAnimation: true
+						// 	}
+						// });
+						lineChartData0.seriesData.push({
+								
+							name:'' ,
+							value: res.data[i].sales,
+							label:{
+								show: true,
+								position:i%2==0?[0,-38]:[0,0],
+								// offset:i%2==0?[0,-38]:[0,0],
+								// offset:[0,0],
+								valueAnimation: true
+							}
+						});
 					}
 				}
-				let chartSet = function (){
-					if(chart){
-						chart.setOption(initOption())
-						console.log('set chart')
-					}else{
-						setTimeout(()=>{
-							console.log("chart is null")
-							chartSet();
-						},500)
-					}
-				}
-				chartSet();
+				// let chartSet = function (){
+				// 	if(chart){
+				// 		chart.setOption(initOption())
+				// 		console.log('set chart')
+				// 	}else{
+				// 		setTimeout(()=>{
+				// 			console.log("chart is null")
+				// 			chartSet();
+				// 		},500)
+				// 	}
+				// }
+				// chartSet();
 				let chartSet0 = function (){
 					if(chart0){
 						chart0.setOption(initOption0())
@@ -919,6 +1065,23 @@ Page({
 		}
 		that.setData({
 			num: e.currentTarget.dataset.num
+		})
+	},
+	chartsClick1: function(e) {
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num1 == num) {return false} 
+		else {
+			that.setData({num1: e.currentTarget.dataset.num})
+		}
+		if(num == 1){
+			that.getLineDataxse();
+		}
+		else if(num == 2){
+			that.getLineData1xse();
+		}
+		that.setData({
+			num1: e.currentTarget.dataset.num
 		})
 	},
   /**
