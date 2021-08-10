@@ -381,6 +381,7 @@ Page({
 		},
 		leasePercent: 0.25,
 		todaySales: 0,
+		todaySales1: 0,
 		weekSales: 0,
 		monthSales: 0,
 		totalNumberOfMembers: 0, //会员总数
@@ -464,6 +465,7 @@ Page({
 					let data = res.data;
 					this.setData({
 						todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
+						todaySales1: data.todaySales,
 						weekSales: data.weekSales,
 						monthSales: data.monthSales
 					})

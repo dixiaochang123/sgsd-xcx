@@ -10,7 +10,7 @@
 				<view class="banner-top">实时租金收缴率</view>
 				<view class="banner-num"><text>{{ratio}}%</text></view>
 			</view>
-			<view class="banner-txt banner-txt2">
+			<view style="visibility: hidden;" class="banner-txt banner-txt2">
 				<view class="banner-top">租金收缴率</view>
 				<view class="banner-num"><text>{{ratio}}%</text></view>
 			</view>

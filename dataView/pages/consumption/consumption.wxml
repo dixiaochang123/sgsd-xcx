@@ -8,7 +8,8 @@
 			<view class="circle-txt">
 				<view>今日销售额</view>
 				<view class="jinrikliu_text_2">{{todaySales}}</view>
-				<view style="font-size:25rpx;">万元</view>
+				<view style="font-size:25rpx;" wx:if="{{todaySales1>10000}}">万元</view>
+				<view style="font-size:25rpx;" wx:else>元</view>
 			</view>
 		</view>
   </view>

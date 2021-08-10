@@ -118,6 +118,7 @@ Component({
         dataAllSales:{type: Object, value: {}},
         dataAllMarket:{type: Object, value: {}},
         todaySales:{ type: Number, value: 0 },
+        todaySales1:{ type: Number, value: 0 },
         totalSpace:{ type: Number, value: 0 },
     },
     data: {
