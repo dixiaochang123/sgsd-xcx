@@ -198,7 +198,8 @@
             </view>
             <view class="ys1">
               <text class="txtxxx">租金收缴率</text>
-              <text>{{ratio}}  <text>%</text></text>
+              <!-- <text>{{ratio}}  <text>%</text></text> -->
+              <text>99  <text>%</text></text>
             </view>
           </view>
           <!-- <text class="jinrikliu_text_4 jinrikliu_text_5" id="商管1" bindtap="handleTabClickflow">more ></text> -->

@@ -216,7 +216,7 @@ Component({
                     success:res=>{
                         if(res.data.success){
                             this.setData({
-                    ratio: res.data.ratio,
+                    ratio: (res.data.ratio).toFixed(1),
                   })
                 }
                 wx.hideLoading();

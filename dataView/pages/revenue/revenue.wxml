@@ -1,6 +1,7 @@
 <!--pages/revenue/revenue.wxml-->
 <view class="content">
-	<navBar title='车辆' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass"></navBar>
+	<navBar title='车辆' background='#e3e7f5' back="{{true}}" bindback="handlerGobackClick" extClass="lxy-navbar-extclass">
+	</navBar>
 	<view class="warp">
 		<view class="revenue">
 			<view class="title">
@@ -30,13 +31,13 @@
 		</view>
 	</view>
 	<view class="revenue-list">
-				<view class="charts-con">
-					<!-- <view class="charts-tm">车流量（辆）</view> -->
-					<view class="echarts-con">
-						<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-					</view>
-				</view>
+		<view class="charts-con">
+			<!-- <view class="charts-tm">车流量（辆）</view> -->
+			<view class="echarts-con">
+				<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
 			</view>
+		</view>
+	</view>
 	<view class="number" wx:if="{{false}}">
 		<view class="number-li">
 			<view class="number-dl">

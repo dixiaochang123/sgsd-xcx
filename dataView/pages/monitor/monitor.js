@@ -8,6 +8,7 @@ var chart = null;
 var chart1 = null;
 var chart2 = null;
 var chart3 = null;
+var chart4 = null;
 let pieChartData = {
 	legendData: [],
 	seriesData: [],
@@ -17,6 +18,10 @@ let seriesData = {
 	data1:[120, 180, 150],
 	data2:[120, 180, 150],
 	data3:[120, 180, 150],
+}
+let lineChartData={
+	seriesData:[],
+	xData:[]
 }
 
 function initOptions() {
@@ -347,6 +352,119 @@ function initOptions3() {
 		}]
 	}
 }
+function initOption4(){
+	return {
+		grid: {
+			left: 10,
+			right: 30,
+			top: 20,
+			bottom: '10%',
+			containLabel: false
+		},
+		// tooltip: {
+		// 	show: true,
+		// 	trigger: 'axis',
+		// 	// formatter
+		// },
+		dataZoom: [{
+			type: "inside",
+			startValue:lineChartData.xData.length - 8,
+			endValue: lineChartData.xData.length - 1,
+			zoomLock: true
+		}],
+		xAxis: {
+			type: 'category',
+			axisLine:{
+				show:false
+			},
+			axisTick:{
+				show:false
+			},
+			axisLabel:{
+				interval:0
+			},
+			data: lineChartData.xData
+		},
+		yAxis: {
+			type: 'value',
+			show:false,
+			
+			offset: 0 ,
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			name: '',
+			type: 'bar',
+			barWidth:30,
+			color: ['#7a819e'],
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			// smooth: true,
+			// markPoint: {
+			// 	symbol:'circle',
+			// 	symbolSize:20,
+			// },
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			},
+			data: lineChartData.seriesData,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			}
+		}]
+	};
+}
 Page({
 
 	/**
@@ -400,6 +518,18 @@ Page({
 				canvas.setChart(chart3);
 				return chart3;
 			},
+		},
+		num1: 1,
+		ec4: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart4 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+			});
+			canvas.setChart(chart4);
+			return chart4;
+		  }
 		},
 		num: 0,
 		type: 2,
@@ -497,6 +627,7 @@ Page({
 		var that = this;
 		that.getData();
 		that.getList();
+		that.getLineData();
 		that.passengerDataFromTheSameYear(1);
 		that.passengerDataFromTheSameYear(2);
 		that.passengerDataFromTheSameYear(3);
@@ -696,6 +827,87 @@ Page({
 			})
 		}
 		that.getList()
+	},
+	chartsClick1: function(e){
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num1 == num) {return false} 
+		else {
+			that.setData({num1: e.currentTarget.dataset.num})
+		}
+		if(num == 1){
+			that.getLineData();
+		}
+		else if(num == 2){
+			that.getLineData1();
+		}
+		that.setData({
+			num1: e.currentTarget.dataset.num
+		})
+	},
+	getLineData: function(e){
+		util.ajax({
+			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=2",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
+						lineChartData.seriesData.push(res.data[i].income);
+					}
+				}
+				let chartSet = function (){
+					if(chart4){
+						chart4.setOption(initOption4())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
+	},
+	getLineData1: function(e){
+		util.ajax({
+			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=3",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					for(let i = 0; i <res.data.length;i++){
+						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
+						lineChartData.seriesData.push(res.data[i].income);
+					}
+				}
+				let chartSet = function (){
+					if(chart4){
+						chart4.setOption(initOption4())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})			
 	},
 
 	/**

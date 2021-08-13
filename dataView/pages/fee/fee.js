@@ -213,7 +213,7 @@ Page({
           })
           let operationTypeDataArr = util.sortOther(res.data.operationTypeData,"value","name")
 					this.setData({
-            ratio: res.data.ratio,
+            ratio: (res.data.ratio).toFixed(1),
 						floorData: res.data.floorData,
 						operationTypeData: operationTypeDataArr
           })

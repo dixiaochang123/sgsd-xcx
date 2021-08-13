@@ -10,9 +10,9 @@
 				<view class="banner-top">实时租金收缴率</view>
 				<view class="banner-num"><text>{{ratio}}%</text></view>
 			</view>
-			<view style="visibility: hidden;" class="banner-txt banner-txt2">
+			<view class="banner-txt banner-txt2">
 				<view class="banner-top">租金收缴率</view>
-				<view class="banner-num"><text>{{ratio}}%</text></view>
+				<view class="banner-num"><text>{{'99'}}%</text></view>
 			</view>
 		</view>
 		<view class="consumption" wx:if="{{false}}">
