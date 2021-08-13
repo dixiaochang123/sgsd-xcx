@@ -632,13 +632,29 @@ Page({
 					res.data.sort((a, b) => {
 						return b.currentPassengerFlow - a.currentPassengerFlow
 					})
+					// let arr = 0;
+					// res.data.map(item=>{
+					// 	arr+=item.currentPassengerFlow
+					// })
+					let infos = res.data;
+					let arr = 0;
+					for (let i = 0; i < infos.length; i++) {
+						const element = infos[i];
+						arr+=element.currentPassengerFlow;
+						
+					}
 					let info = util.sortOther(res.data, "currentPassengerFlow", "channelName");
+					info.map(item=>{
+						item['proportion'] = ((item.currentPassengerFlow/arr)*100).toFixed(2) +'%'
+					})
+					console.log('all',arr,'info',info)
 					for (let i = 0; i < info.length; i++) {
 						pieChartData.totalValue += info[i].currentPassengerFlow
 						pieChartData.legendData.push(info[i].channelName);
 						pieChartData.seriesData.push({
 							value: info[i].currentPassengerFlow,
-							name: info[i].channelName
+							name: info[i].channelName,
+							proportion:info[i].proportion,
 						})
 					}
 					this.setData({

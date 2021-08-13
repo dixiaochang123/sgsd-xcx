@@ -247,3 +247,6 @@ width: 100%;
 height: 600rpx;
 float: left;
 } */
+.tabel-tts1 {
+	border-right: 1px solid #e6e9f6;
+}

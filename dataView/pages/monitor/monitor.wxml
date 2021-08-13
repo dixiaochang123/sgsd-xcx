@@ -77,12 +77,14 @@
 				<view class="tabel">
 					<view class="tabel-th">
 						<view class="tabel-tt">出入口</view>
-						<view class="tabel-tts">客流</view>
+						<view class="tabel-tts tabel-tts1">客流</view>
+						<view class="tabel-tts tabel-tts1">比例</view>
 					</view>
 					<view class="tabel-tb">
 						<view class="tabel-tr" wx:for="{{flowList}}" wx:key="item">
 							<view class="table-td">{{item.channelName}}</view>
-							<view class="table-tds">{{item.currentPassengerFlow}}</view>
+							<view class="table-tds tabel-tts1">{{item.currentPassengerFlow}}</view>
+							<view class="table-tds tabel-tts1">{{item.proportion}}</view>
 						</view>
 					</view>
 				</view>
