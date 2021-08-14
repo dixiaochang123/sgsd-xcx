@@ -175,7 +175,7 @@ page {
 	color: #243441;
 }
 .tabel-tt {
-	width: 60%;
+	width: 70%;
 	line-height: 80rpx;
 	border-right: 1px solid #e6e9f6;}
 .tabel-tts {
@@ -199,7 +199,7 @@ page {
 	text-align: center;
 }
 .table-td {
-	width: 60%;
+	width: 70%;
 	line-height: 70rpx;
 	border-right: 1px solid #e6e9f6;
 	border-top: 1px solid #e6e9f6;
