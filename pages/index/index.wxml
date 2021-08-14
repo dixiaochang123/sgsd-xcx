@@ -2,7 +2,7 @@
 <wxs module="filters" src="../../utils/utils.wxs"></wxs>
 <view class="content">
 	<navBar title='首页' background='#e3e7f5' back="{{false}}"></navBar>
-	<mp-tabs tabs="{{tabs}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}" dataAllMember="{{dataAllMember}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" swiperClass="{{swiperClass}}" bindtabclick="onTabCLick"
+	<mp-tabs tabs="{{tabs}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}" dataAllMember="{{dataAllMember}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}" todaySales1="{{todaySales1}}" activeTab="{{activeTab}}" swiperClass="{{swiperClass}}" bindtabclick="onTabCLick"
 		bindchange="onChange" activeClass="tab-bar-title__selected">
 		<block wx:for="{{tabs}}" wx:key="title">
 			<view class="tab-content" slot="tab-content-{{index}}"> {{item.title}} </view>

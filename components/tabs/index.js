@@ -153,6 +153,7 @@ Component({
 
     },
     attached() {
+        console.log(3333333333333,this.data.todaySales1)
         
     },
     // parseFloat(res.data.dayPassengerFlow).toLocaleString()
@@ -195,7 +196,7 @@ Component({
         },
         totalSpace: function totalSpace(val) {
             this.getData()
-        },
+        }
     },
     lifetimes: {
         created: function created() {}
