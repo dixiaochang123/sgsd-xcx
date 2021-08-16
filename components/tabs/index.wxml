@@ -145,7 +145,7 @@
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日销售额</text>
           <text class="jinrikliu_text_2">{{todaySales}}</text>
-          <text class="jinrikliu_text_3" wx:if="{todaySales1>10000}">万元</text>
+          <text class="jinrikliu_text_3" wx:if="{{todaySales1>10000}}">万元</text>
           <text class="jinrikliu_text_3" wx:else>元</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="收银" bindtap="handleTabClickflow">more ></text> -->

@@ -469,6 +469,7 @@ Page({
 						weekSales: data.weekSales,
 						monthSales: data.monthSales
 					})
+					console.log(this.data.todaySales,typeof this.data.todaySales,this.data.todaySales1,typeof this.data.todaySales1)
 					this.setData({
 						dataAllSales:{
 							todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
