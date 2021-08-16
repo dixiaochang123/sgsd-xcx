@@ -410,7 +410,7 @@ Page({
 		swiperClass:'weui-tabs-swiper'
 	},
 	onChange(e) {
-		let arr = ['weui-tabs-swiper','weui-tabs-swiper1','weui-tabs-swiper1','weui-tabs-swiper2','weui-tabs-swiper']
+		let arr = ['weui-tabs-swiper','weui-tabs-swiper1','weui-tabs-swiper','weui-tabs-swiper2','weui-tabs-swiper']
 		let i = e.detail.index
 		console.log(e.detail.index)
 		this.setData({

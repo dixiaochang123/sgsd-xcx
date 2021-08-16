@@ -127,7 +127,7 @@
           </view>
         </view>
         <view style="height:45rpx;"></view>
-        <view class="jinrikliu_parent">
+        <view class="jinrikliu_parent" wx:if="{{false}}">
           <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
           <view class="jinrikliu_text">
             <text class="jinrikliu_text_1">今日收益</text>
@@ -171,7 +171,7 @@
         </view>
       </swiper-item>
       <swiper-item>
-        <view class="shangguan">
+        <view wx:if="{{false}}" class="shangguan">
           <view class="please"></view>
           <view class="zj">租金（本月）</view>
           <view class="flexs">

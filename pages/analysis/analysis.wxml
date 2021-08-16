@@ -15,10 +15,10 @@
 					<image src="../../images/icon_03.png" mode="widthFix"></image>
 					<text>商铺业态分布</text>
 				</navigator>
-				<navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
+				<!-- <navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
 					<image src="../../images/icon_04.png" mode="widthFix"></image>
 					<text>收入统计</text>
-				</navigator>
+				</navigator> -->
 				<navigator class="warp-li" url="/dataView/pages/rentTop/rentTop" hover-class="none">
 					<image src="../../images/icon_05.png" mode="widthFix"></image>
 					<text>租售比</text>
@@ -42,10 +42,10 @@
 				<image src="../../images/icon_16.png" mode="widthFix"></image>停车场数据
 			</view>
 			<view class="warp-ul">
-				<navigator class="warp-li" url="/dataView/pages/revenue/revenue" hover-class="none">
+				<!-- <navigator class="warp-li" url="/dataView/pages/revenue/revenue" hover-class="none">
 					<image src="../../images/icon_06.png" mode="widthFix"></image>
 					<text>收益</text>
-				</navigator>
+				</navigator> -->
 				<navigator class="warp-li" url="/dataView/pages/carGout/carGout" hover-class="none">
 					<image src="../../images/icon_07.png" mode="widthFix"></image>
 					<text>车辆</text>

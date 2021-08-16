@@ -140,7 +140,7 @@ function initOptions1() {
 			type: 'value',
 			splitLine:{
 				show: false
-			}
+			},
 		},
 		series: [{
 			data: seriesData.data1,
@@ -163,6 +163,16 @@ function initOptions1() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -218,7 +228,10 @@ function initOptions2() {
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: seriesData.data2,
@@ -241,6 +254,16 @@ function initOptions2() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -296,7 +319,10 @@ function initOptions3() {
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: seriesData.data3,
@@ -319,6 +345,16 @@ function initOptions3() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -421,6 +457,7 @@ function initOption4(){
 				
 			},
 			showBackground: true,
+			
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -531,6 +568,7 @@ Page({
 			return chart4;
 		  }
 		},
+		charts4Isshow:false,
 		num: 0,
 		type: 2,
 		currentPassengerFlow: 0,
@@ -847,17 +885,28 @@ Page({
 	},
 	getLineData: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=2",
+			url:"data-analysis/api/passengerFlow/passengerFlowTrendMonthOryear?type=1",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
-						lineChartData.seriesData.push(res.data[i].income);
+						lineChartData.xData.push(res.data[i].sdate.substring(8,10)+'日');
+						lineChartData.seriesData.push(res.data[i].count);
+					}
+					console.log(999,res.data,this.data.ec4)
+					if(res.data.length>0) {
+						this.setData({
+							charts4Isshow:true
+						})
+					} else {
+						this.setData({
+							charts4Isshow:false
+						})
 					}
 				}
+				
 				let chartSet = function (){
 					if(chart4){
 						chart4.setOption(initOption4())
@@ -879,15 +928,15 @@ Page({
 	},
 	getLineData1: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=3",
+			url:"data-analysis/api/passengerFlow/passengerFlowTrendMonthOryear?type=2",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
-						lineChartData.seriesData.push(res.data[i].income);
+						lineChartData.xData.push(res.data[i].sdate.substring(6,8)+'月');
+						lineChartData.seriesData.push(res.data[i].count);
 					}
 				}
 				let chartSet = function (){
