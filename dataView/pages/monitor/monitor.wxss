@@ -254,12 +254,13 @@ float: left;
 }
 
 .revenue-list {
-	width: 100%;
+	width: 90%;
 	min-height: 200rpx;
 	border-radius: 5px;
 	overflow: hidden;
-	margin-top: 30rpx;
-	padding: 30rpx 0;
+	/* margin-top: 30rpx; */
+	margin:30rpx auto 0;
+	padding: 25rpx;
 	position: relative;
 }
 .huiyuanbg {
@@ -272,7 +273,7 @@ float: left;
 .huiyuanbg1 {
 	position: absolute;
     top: 0px;
-    left: 0;
+    left: 10rpx;
     width: 100%;
     height: 100%;
 }

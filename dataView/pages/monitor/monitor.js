@@ -847,16 +847,17 @@ Page({
 	},
 	getLineData: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=2",
+			url:"data-analysis/api/passengerFlow/passengerFlowTrendMonthOryear?type=1",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
-						lineChartData.seriesData.push(res.data[i].income);
+						lineChartData.xData.push(res.data[i].sdate.substring(8,10)+'日');
+						lineChartData.seriesData.push(res.data[i].count);
 					}
+					console.log(999,res.data)
 				}
 				let chartSet = function (){
 					if(chart4){
@@ -879,15 +880,15 @@ Page({
 	},
 	getLineData1: function(e){
 		util.ajax({
-			url:"data-analysis/api/parkingLotStatistics/parkingSpaceRevenue?type=3",
+			url:"data-analysis/api/passengerFlow/passengerFlowTrendMonthOryear?type=2",
 			method:"POST",
 			success:res=>{
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].date.substring(6,8)+'月');
-						lineChartData.seriesData.push(res.data[i].income);
+						lineChartData.xData.push(res.data[i].sdate.substring(6,8)+'月');
+						lineChartData.seriesData.push(res.data[i].count);
 					}
 				}
 				let chartSet = function (){
