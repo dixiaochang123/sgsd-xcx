@@ -140,7 +140,7 @@ function initOptions1() {
 			type: 'value',
 			splitLine:{
 				show: false
-			}
+			},
 		},
 		series: [{
 			data: seriesData.data1,
@@ -163,6 +163,16 @@ function initOptions1() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -218,7 +228,10 @@ function initOptions2() {
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: seriesData.data2,
@@ -241,6 +254,16 @@ function initOptions2() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -296,7 +319,10 @@ function initOptions3() {
 			}
 		},
 		yAxis: {
-			type: 'value'
+			type: 'value',
+			splitLine:{
+				show: false
+			}
 		},
 		series: [{
 			data: seriesData.data3,
@@ -319,6 +345,16 @@ function initOptions3() {
 				
 			},
 			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
 			backgroundStyle: {
 				color: {
 					type: 'linear',
@@ -421,6 +457,7 @@ function initOption4(){
 				
 			},
 			showBackground: true,
+			
 			backgroundStyle: {
 				color: {
 					type: 'linear',

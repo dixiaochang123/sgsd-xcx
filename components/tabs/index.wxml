@@ -127,7 +127,7 @@
           </view>
         </view>
         <view style="height:45rpx;"></view>
-        <view class="jinrikliu_parent">
+        <view class="jinrikliu_parent" wx:if="{{false}}">
           <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
           <view class="jinrikliu_text">
             <text class="jinrikliu_text_1">今日收益</text>
