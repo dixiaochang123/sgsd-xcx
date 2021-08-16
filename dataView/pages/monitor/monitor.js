@@ -568,6 +568,7 @@ Page({
 			return chart4;
 		  }
 		},
+		charts4Isshow:false,
 		num: 0,
 		type: 2,
 		currentPassengerFlow: 0,
@@ -894,8 +895,18 @@ Page({
 						lineChartData.xData.push(res.data[i].sdate.substring(8,10)+'日');
 						lineChartData.seriesData.push(res.data[i].count);
 					}
-					console.log(999,res.data)
+					console.log(999,res.data,this.data.ec4)
+					if(res.data.length>0) {
+						this.setData({
+							charts4Isshow:true
+						})
+					} else {
+						this.setData({
+							charts4Isshow:false
+						})
+					}
 				}
+				
 				let chartSet = function (){
 					if(chart4){
 						chart4.setOption(initOption4())
