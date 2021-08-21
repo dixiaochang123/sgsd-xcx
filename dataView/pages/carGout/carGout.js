@@ -592,7 +592,7 @@ Page({
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
 						lineChartData.xData.push(res.data[i].date.substring(8,10)+'日');
-						lineChartData.seriesData.push(res.data[i].trafficVolume);
+						// lineChartData.seriesData.push(res.data[i].trafficVolume);
 						lineChartData.seriesData.push({
 								
 							name:'' ,
