@@ -575,6 +575,7 @@ Page({
 		hourPassengerFlow: 0,
 		dayPassengerFlow: 0,
 		weekPassengerFlow: 0,
+		weekPassengerFlow1: 0,
 		monthPassengerFlow: 0,
 		yearPassengerFlow: 0,
 		flowList: [],
@@ -756,6 +757,7 @@ Page({
 						hourPassengerFlow: res.data.hourPassengerFlow,
 						dayPassengerFlow: res.data.dayPassengerFlow,
 						weekPassengerFlow: res.data.weekPassengerFlow>10000?(res.data.weekPassengerFlow/10000).toFixed(2):res.data.weekPassengerFlow,
+						weekPassengerFlow1: res.data.weekPassengerFlow,
 						monthPassengerFlow: res.data.monthPassengerFlow>10000?(res.data.monthPassengerFlow/10000).toFixed(2):res.data.monthPassengerFlow,
 						yearPassengerFlow: res.data.yearPassengerFlow>10000?(res.data.yearPassengerFlow/10000).toFixed(2):res.data.yearPassengerFlow,
 					})

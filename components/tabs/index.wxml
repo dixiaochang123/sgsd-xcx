@@ -96,6 +96,35 @@
           <image bindtap="handleTabClickflow" id="会员1" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
 
         </view>
+        <view class="warp">
+          <image class="klmb" src="../../images/klmb.png"></image>
+          <view class="revenue">
+            <view class="title">
+              <text>销售额（元）</text>
+            </view>
+            <view class="revenue-list">
+              <view class="revenue-top">
+                <view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1"><text>本月</text></view>
+                <view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1"><text>本年</text></view>
+              </view>
+              <view class="charts-con">
+                <!-- <view class="charts-tm">车流量（辆）</view> -->
+                <view class="echarts-con">
+                  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec0 }}"></ec-canvas>
+                </view>
+              </view>
+            <view class="number-li number-li1">
+                <view class="number-dl">
+                  <view class="number-dt">本周销售</view>
+                  <view class="number-dd">{{weekSales}}<text>万元</text></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+
       </swiper-item>
       <swiper-item>
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>

@@ -33,7 +33,9 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周累计客流量</view>
-				<view class="number-dd">{{weekPassengerFlow}}万人</view>
+				<!-- <view class="number-dd">{{weekPassengerFlow}}万人</view> -->
+				<view wx:if="{{weekPassengerFlow1>10000}}" class="number-dd">{{weekPassengerFlow}}万人</view>
+				<view wx:else class="number-dd">{{weekPassengerFlow}}人</view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_4.png" mode="widthFix"></image>

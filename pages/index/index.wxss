@@ -335,7 +335,7 @@ page{
 }
 .weui-tabs-swiper1 {
 	width: 100%;
-	height: 900px;
+	height: 1500px;
 }
 .weui-tabs-swiper2 {
 	width: 100%;
