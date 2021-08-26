@@ -1,4 +1,3 @@
-import * as echarts from '../../ec-canvas/echarts';
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -94,118 +93,6 @@ module.exports =
 "use strict";
 const app = getApp();
 const util = require('../../utils/util');
-var chart0 = null;
-let lineChartData0 = {
-	seriesData: [],
-	xData: []
-};
-function initOption0() {
-	return {
-		grid: {
-			left: '5%',
-			right: '5%',
-			top: 50,
-			bottom: '5%',
-			containLabel: true
-		},
-		// tooltip: {
-		// 	show: true,
-		// 	trigger: 'axis'
-		// },
-		dataZoom: [{
-			type: "inside",
-			startValue: lineChartData0.xData.length - 8,
-			endValue: lineChartData0.xData.length - 1,
-			zoomLock: true
-		}],
-		xAxis: {
-			type: 'category',
-			axisLine: {
-				show: false
-			},
-			axisTick: {
-				show: false
-			},
-			axisLabel: {
-				interval: 0
-			},
-			data: lineChartData0.xData
-		},
-		yAxis: {
-			type: 'value',
-			splitLine: {
-				show: false
-			}
-		},
-		series: [{
-			name: '',
-			type: 'bar',
-			barMaxWidth: 30,
-			color: ['#7a819e'],
-			label: {
-				show: true,
-				position: 'top',
-				valueAnimation: true
-			},
-			// smooth: true,
-			// markPoint: {
-			// 	symbol:'circle',
-			// 	symbolSize:20,
-			// },
-			itemStyle: {
-				borderRadius: 5,
-				borderColor: 'transparent',
-				borderWidth: 3,
-				color: '#bdc3dd',
-				shadowColor: '#8a8895',
-				shadowBlur: 3,
-				shadowOffsetX: -1,
-				shadowOffsetY: -2,
-
-			},
-			showBackground: true,
-			backgroundStyle: {
-				color: {
-					type: 'linear',
-					x: 0,
-					y: 0,
-					x2: 1,
-					y2: 0,
-					colorStops: [{
-						offset: 0,
-						color: '#9c9bb3' // 0% 处的颜色
-					}, {
-						offset: 0.2,
-						color: '#e3e5f2' // 0% 处的颜色
-					}, {
-						offset: 0.4,
-						color: '#e3e5f2' // 0% 处的颜色
-					}, {
-						offset: 0.6,
-						color: '#e3e5f2' // 0% 处的颜色
-					}, {
-						offset: 1,
-						color: '#dadeec' // 100% 处的颜色
-					}],
-					global: false // 缺省为 false
-				},
-				borderColor: '#ebeef8',
-				borderWidth: 3,
-				borderRadius: 5,
-				opacity: 1
-			},
-			emphasis: {
-				label: {
-					color: "#e5004f"
-				},
-				itemStyle: {
-					color: "#e5004f"
-				}
-			},
-			data: lineChartData0.seriesData
-		}]
-	};
-}
 Component({
     options: {
         addGlobalClass: true,
@@ -261,19 +148,7 @@ Component({
         monthCustomerPrice:'',
 
         ftl:0,
-        ratio:'',//实时租金收缴率
-        numseletedchart:1,
-        ec0: {
-			onInit: (canvas, width, height, dpr) => {
-				chart0 = echarts.init(canvas, null, {
-					width: width,
-					height: height,
-					devicePixelRatio: dpr // new
-				});
-				canvas.setChart(chart0);
-				return chart0;
-			}
-		},
+        ratio:''//实时租金收缴率
 
 
     },
@@ -304,8 +179,6 @@ Component({
             this.getCarData()
             this.carFlowCycleWithData()
             this.parkingDataRevenueData()
-
-            this.getLineDataxse();
         },
         dataAllSales: function dataAllSales(val) {
             this.setData({
@@ -328,157 +201,6 @@ Component({
         created: function created() {}
     },
     methods: {
-        chartsClick1: function (e) {
-            var that = this;
-            var num = e.currentTarget.dataset.num;
-            if (that.data.numseletedchart == num) {
-                return false
-            } else {
-                that.setData({
-                    numseletedchart: e.currentTarget.dataset.num
-                })
-            }
-            if (num == 1) {
-                that.getLineDataxse();
-            } else if (num == 2) {
-                that.getLineData1xse();
-            }
-            that.setData({
-                numseletedchart: e.currentTarget.dataset.num
-            })
-        },
-        getLineDataxse: function (type) {
-            util.ajax({
-                url: "data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
-                method: "POST",
-                success: res => {
-                    if (res.success) {
-                        // lineChartData.xData = [];
-                        // lineChartData.seriesData = [];
-                        lineChartData0.xData = [];
-                        lineChartData0.seriesData = [];
-                        for (let i = 0; i < res.data.length; i++) {
-                            // lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
-                            // lineChartData.seriesData.push(res.data[i].customerPrice);
-                            lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
-                            // lineChartData0.seriesData.push(res.data[i].sales);
-                            lineChartData0.seriesData.push({
-    
-                                name: '',
-                                value: res.data[i].sales,
-                                label: {
-                                    show: true,
-                                    position: i % 2 == 0 ? [0, -28] : [-10, -10],
-                                    // offset:i%2==0?[0,-28]:[0,0],
-                                    // offset:[0,0],
-                                    valueAnimation: true
-                                }
-                            });
-                        }
-                    }
-                    // let chartSet = function (){
-                    // 	if(chart){
-                    // 		chart.setOption(initOption())
-                    // 		console.log('set chart')
-                    // 	}else{
-                    // 		setTimeout(()=>{
-                    // 			console.log("chart is null")
-                    // 			chartSet();
-                    // 		},500)
-                    // 	}
-                    // }
-                    // chartSet();
-                    let chartSet0 = function () {
-                        if (chart0) {
-                            chart0.setOption(initOption0())
-                            console.log('set chart')
-                        } else {
-                            setTimeout(() => {
-                                console.log("chart is null")
-                                chartSet0();
-                            }, 500)
-                        }
-                    }
-                    chartSet0();
-                    wx.hideLoading();
-                },
-                fail: error => {
-                    wx.hideLoading();
-                }
-            })
-        },
-        getLineData1xse: function (e) {
-            util.ajax({
-                url: "data-analysis/api/sg/cashRegisterSalesStatistics?type=2",
-                method: "POST",
-                success: res => {
-                    if (res.success) {
-                        lineChartData.xData = [];
-                        lineChartData.seriesData = [];
-                        lineChartData0.xData = [];
-                        lineChartData0.seriesData = [];
-                        for (let i = 0; i < res.data.length; i++) {
-                            // lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
-                            lineChartData0.xData.push(res.data[i].time.substring(4, 6) + '月');
-                            // lineChartData.seriesData.push(res.data[i].customerPrice);
-                            lineChartData0.seriesData.push(res.data[i].sales);
-                            // lineChartData.seriesData.push({
-    
-                            // 	name:'' ,
-                            // 	value: res.data[i].customerPrice,
-                            // 	label:{
-                            // 		show: true,
-                            // 		position:i%2==0?[0,-28]:[0,0],
-                            // 		// offset:i%2==0?[0,-28]:[0,0],
-                            // 		// offset:[0,0],
-                            // 		valueAnimation: true
-                            // 	}
-                            // });
-                            lineChartData0.seriesData.push({
-    
-                                name: '',
-                                value: res.data[i].sales,
-                                label: {
-                                    show: true,
-                                    position: i % 2 == 0 ? [0, -28] : [-10, -10],
-                                    // offset:i%2==0?[0,-28]:[0,0],
-                                    // offset:[0,0],
-                                    valueAnimation: true
-                                }
-                            });
-                        }
-                    }
-                    // let chartSet = function (){
-                    // 	if(chart){
-                    // 		chart.setOption(initOption())
-                    // 		console.log('set chart')
-                    // 	}else{
-                    // 		setTimeout(()=>{
-                    // 			console.log("chart is null")
-                    // 			chartSet();
-                    // 		},500)
-                    // 	}
-                    // }
-                    // chartSet();
-                    let chartSet0 = function () {
-                        if (chart0) {
-                            chart0.setOption(initOption0())
-                            console.log('set chart')
-                        } else {
-                            setTimeout(() => {
-                                console.log("chart is null")
-                                chartSet0();
-                            }, 500)
-                        }
-                    }
-                    chartSet0();
-                    wx.hideLoading();
-                },
-                fail: error => {
-                    wx.hideLoading();
-                }
-            })
-        },
         getData: function(e){
             wx.request({
                     url: app.globalData.baseUrlOP+'rest/sgsdbi/countrentcollect',

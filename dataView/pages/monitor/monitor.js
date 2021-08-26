@@ -61,7 +61,10 @@ function initOptions() {
 					show: true,
 					position: 'outside',
 					formatter: '{d}%',
-					borderRadius: 20
+					borderRadius: 20,
+					
+overflow: 'none' ,
+					
 				},
 				emphasis: {
 					show: true,
@@ -681,7 +684,7 @@ Page({
 			success: res => {
 				console.log(res)
 				if (res.success) {
-					console.log(333333,res.data)
+					console.log(4444444444444444,res.data)
 					// 环比增长率=（本期数-上期数）/上期数×100%
 						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
 					let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
@@ -714,14 +717,15 @@ Page({
 						this.setData({
 							// nhb:res.data.ringRatio,
 							// ntb:res.data.coRate,
-							ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
-							nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							// ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							// nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ntb:res.data.ringRatio,
 							ntbisadd:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
 					}
 					let chartSet = function () {
-						if (chart) {
+						if (chart1) {
 							chart1.setOption(initOptions1())
 							chart2.setOption(initOptions2())
 							chart3.setOption(initOptions3())

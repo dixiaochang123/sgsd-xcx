@@ -153,8 +153,8 @@ function initOption() {
 function initOption0() {
 	return {
 		grid: {
-			left: '5%',
-			right: '5%',
+			left: '4%',
+			right: '3%',
 			top: 50,
 			bottom: '5%',
 			containLabel: true
@@ -699,49 +699,6 @@ Page({
 			}
 		})
 	},
-	getLineData: function (e) {
-		let sendData = JSON.stringify({
-			startTime: util.getNowDate(new Date(), '-') + " 00:00:00",
-			endTime: util.formatTime(new Date()),
-			order: "desc",
-			groupType: 1
-		});
-		util.ajax({
-			url: "data-analysis/api/sg/businessTypeSalesAnalysis",
-			method: "POST",
-			data: sendData,
-			success: res => {
-				// if(res.success){
-				// 	lineChartData.xData = [];
-				// 	lineChartData.seriesData = [];
-				// 	for(let i = 0; i <res.data.length;i++){
-				// 		lineChartData.xData.push(res.data[i].timestr.substring(4,6));
-				// 		lineChartData.seriesData.push((res.data[i].sales/10000).toFixed(2));
-				// 	}
-				// }
-				let chartSet = function () {
-					if (chart1) {
-						console.log(44333, chart)
-						// chart.setOption(initOption())
-						chart1.setOption(initOptions1())
-						chart2.setOption(initOptions2())
-						chart3.setOption(initOptions3())
-						console.log('set linechart')
-					} else {
-						setTimeout(() => {
-							console.log("linechart is null")
-							chartSet();
-						}, 500)
-					}
-				}
-				chartSet();
-				wx.hideLoading();
-			},
-			fail: error => {
-				wx.hideLoading();
-			}
-		})
-	},
 	getBarData: function (num) {
 		util.ajax({
 			url: "data-analysis/api/sg/cashRegisterIsMoreThanYearOnYear?type=" + num,
@@ -823,7 +780,7 @@ Page({
 					// lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
-						lineChartData.seriesData.push(res.data[i].customerPrice);
+						// lineChartData.seriesData.push(res.data[i].customerPrice);
 						for (let i = 0; i < res.data.length; i++) {
 							// lineChartData.xData.push(res.data[i].time.substring(4, 6) + '月');
 							// lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
@@ -834,8 +791,8 @@ Page({
 								value: res.data[i].customerPrice,
 								label: {
 									show: true,
-									position: i % 2 == 0 ? [0, -28] : [-10, -10],
-									// offset:i%2==0?[0,-28]:[0,0],
+									position: i % 2 == 0 ? [0, -38] : [-10, -10],
+									// offset:i%2==0?[0,-38]:[0,0],
 									// offset:[0,0],
 									valueAnimation: true
 								}
@@ -846,8 +803,8 @@ Page({
 							// 	value: res.data[i].sales,
 							// 	label:{
 							// 		show: true,
-							// 		position:i%2==0?[0,-28]:[0,0],
-							// 		// offset:i%2==0?[0,-28]:[0,0],
+							// 		position:i%2==0?[0,-38]:[0,0],
+							// 		// offset:i%2==0?[0,-38]:[0,0],
 							// 		// offset:[0,0],
 							// 		valueAnimation: true
 							// 	}
@@ -867,18 +824,6 @@ Page({
 					}
 				}
 				chartSet();
-				// let chartSet0 = function (){
-				// 	if(chart0){
-				// 		chart0.setOption(initOption0())
-				// 		console.log('set chart')
-				// 	}else{
-				// 		setTimeout(()=>{
-				// 			console.log("chart is null")
-				// 			chartSet0();
-				// 		},500)
-				// 	}
-				// }
-				// chartSet0();
 				wx.hideLoading();
 			},
 			fail: error => {
@@ -907,8 +852,8 @@ Page({
 							value: res.data[i].customerPrice,
 							label: {
 								show: true,
-								position: i % 2 == 0 ? [0, -28] : [-10, -10],
-								// offset:i%2==0?[0,-28]:[0,0],
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								// offset:i%2==0?[0,-38]:[0,0],
 								// offset:[0,0],
 								valueAnimation: true
 							}
@@ -919,8 +864,8 @@ Page({
 						// 	value: res.data[i].sales,
 						// 	label:{
 						// 		show: true,
-						// 		position:i%2==0?[0,-28]:[0,0],
-						// 		// offset:i%2==0?[0,-28]:[0,0],
+						// 		position:i%2==0?[0,-38]:[0,0],
+						// 		// offset:i%2==0?[0,-38]:[0,0],
 						// 		// offset:[0,0],
 						// 		valueAnimation: true
 						// 	}
@@ -939,18 +884,6 @@ Page({
 					}
 				}
 				chartSet();
-				// let chartSet0 = function (){
-				// 	if(chart0){
-				// 		chart0.setOption(initOption0())
-				// 		console.log('set chart')
-				// 	}else{
-				// 		setTimeout(()=>{
-				// 			console.log("chart is null")
-				// 			chartSet0();
-				// 		},500)
-				// 	}
-				// }
-				// chartSet0();
 				wx.hideLoading();
 			},
 			fail: error => {
@@ -979,26 +912,14 @@ Page({
 							value: res.data[i].sales,
 							label: {
 								show: true,
-								position: i % 2 == 0 ? [0, -28] : [-10, -10],
-								// offset:i%2==0?[0,-28]:[0,0],
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								// offset:i%2==0?[0,-38]:[0,0],
 								// offset:[0,0],
 								valueAnimation: true
 							}
 						});
 					}
 				}
-				// let chartSet = function (){
-				// 	if(chart){
-				// 		chart.setOption(initOption())
-				// 		console.log('set chart')
-				// 	}else{
-				// 		setTimeout(()=>{
-				// 			console.log("chart is null")
-				// 			chartSet();
-				// 		},500)
-				// 	}
-				// }
-				// chartSet();
 				let chartSet0 = function () {
 					if (chart0) {
 						chart0.setOption(initOption0())
@@ -1032,15 +953,15 @@ Page({
 						// lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
 						lineChartData0.xData.push(res.data[i].time.substring(4, 6) + '月');
 						// lineChartData.seriesData.push(res.data[i].customerPrice);
-						lineChartData0.seriesData.push(res.data[i].sales);
+						// lineChartData0.seriesData.push(res.data[i].sales);
 						// lineChartData.seriesData.push({
 
 						// 	name:'' ,
 						// 	value: res.data[i].customerPrice,
 						// 	label:{
 						// 		show: true,
-						// 		position:i%2==0?[0,-28]:[0,0],
-						// 		// offset:i%2==0?[0,-28]:[0,0],
+						// 		position:i%2==0?[0,-38]:[0,0],
+						// 		// offset:i%2==0?[0,-38]:[0,0],
 						// 		// offset:[0,0],
 						// 		valueAnimation: true
 						// 	}
@@ -1051,8 +972,8 @@ Page({
 							value: res.data[i].sales,
 							label: {
 								show: true,
-								position: i % 2 == 0 ? [0, -28] : [-10, -10],
-								// offset:i%2==0?[0,-28]:[0,0],
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								// offset:i%2==0?[0,-38]:[0,0],
 								// offset:[0,0],
 								valueAnimation: true
 							}

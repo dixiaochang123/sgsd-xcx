@@ -81,6 +81,7 @@ page {
 	font-size: 28rpx;
 	color: #2c324d;
 	text-align: center;
+	padding: 20rpx 0;
 }
 .top-li.cur text {
 	color: #e5004f;

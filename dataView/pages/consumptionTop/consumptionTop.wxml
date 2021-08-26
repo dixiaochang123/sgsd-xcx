@@ -14,11 +14,8 @@
     </view>
     <view class="warp">
       <view class="list">
-        <view class="list-li" wx:for="{{salesList}}">
+        <view class="list-li" wx:for="{{salesList}}" wx:key="index">
           <view class="li-bd">
-            <!-- <image src="../../images/lv1.png" mode="widthFix" wx:if="{{index == 0}}"></image>
-            <image src="../../images/lv2.png" mode="widthFix" wx:if="{{index == 1}}"></image>
-            <image src="../../images/lv3.png" mode="widthFix" wx:if="{{index == 2}}"></image> -->
             <text>{{index+1}}</text>
             <view class="bd-name">{{item.storeName}}</view>
           </view>
