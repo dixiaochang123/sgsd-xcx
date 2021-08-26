@@ -153,8 +153,8 @@ function initOption() {
 function initOption0() {
 	return {
 		grid: {
-			left: '4%',
-			right: '3%',
+			left: '2%',
+			right: '10%',
 			top: 30,
 			bottom: '5%',
 			containLabel: true
@@ -777,39 +777,18 @@ Page({
 				if (res.success) {
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
-					// lineChartData0.xData = [];
-					// lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
-						// lineChartData.seriesData.push(res.data[i].customerPrice);
 						for (let i = 0; i < res.data.length; i++) {
-							// lineChartData.xData.push(res.data[i].time.substring(4, 6) + '月');
-							// lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
-							// lineChartData.seriesData.push(res.data[i].customerPrice);
-							// lineChartData0.seriesData.push(res.data[i].sales);
 							lineChartData.seriesData.push({
 								name: '',
 								value: res.data[i].customerPrice,
 								label: {
 									show: true,
 									position: i % 2 == 0 ? [0, -38] : [-10, -10],
-									// offset:i%2==0?[0,-38]:[0,0],
-									// offset:[0,0],
 									valueAnimation: true
 								}
 							});
-							// lineChartData0.seriesData.push({
-	
-							// 	name:'' ,
-							// 	value: res.data[i].sales,
-							// 	label:{
-							// 		show: true,
-							// 		position:i%2==0?[0,-38]:[0,0],
-							// 		// offset:i%2==0?[0,-38]:[0,0],
-							// 		// offset:[0,0],
-							// 		valueAnimation: true
-							// 	}
-							// });
 						}
 					}
 				}
@@ -898,38 +877,33 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					// lineChartData.xData = [];
-					// lineChartData.seriesData = [];
 					lineChartData0.xData = [];
 					lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
-						// lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
-						// lineChartData.seriesData.push(res.data[i].customerPrice);
 						lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
 						lineChartData0.seriesData.push({
-
 							name: '',
 							value: res.data[i].sales,
 							label: {
 								show: true,
-								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								position:'top',
 								valueAnimation: true
 							}
 						});
 					}
-				}
-				let chartSet0 = function () {
-					if (chart0) {
-						chart0.setOption(initOption0())
-						console.log('set chart')
-					} else {
-						setTimeout(() => {
-							console.log("chart is null")
-							chartSet0();
-						}, 500)
+					let chartSet0 = function () {
+						if (chart0) {
+							chart0.setOption(initOption0())
+							console.log('set chart')
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet0();
+							}, 500)
+						}
 					}
+					chartSet0();
 				}
-				chartSet0();
 				wx.hideLoading();
 			},
 			fail: error => {
@@ -950,12 +924,11 @@ Page({
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData0.xData.push(res.data[i].time.substring(4, 6) + '月');
 						lineChartData0.seriesData.push({
-
 							name: '',
 							value: res.data[i].sales,
 							label: {
 								show: true,
-								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								position: 'top',
 								valueAnimation: true
 							}
 						});
@@ -1032,14 +1005,27 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		var that = this;
+		that.onLoad();
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
-
+		var that = this;
+		that.onLoad();
+	},
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload: function () {
+		chart = null;
+		chart0 = null;
+		chart1 = null;
+		chart2 = null;
+		chart3 = null;
+		chart4 = null;
 	},
 
 	/**

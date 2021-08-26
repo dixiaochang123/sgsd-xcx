@@ -614,7 +614,7 @@ Page({
 		console.log('this.selectComponent', this.selectComponent('#mychart-dom-bar'))
     this.selectComponent('#mychart-dom-bar').canvasToTempFilePath({
       success: function (res) {
-				console.log('imgSrc',res.tempFilePath);
+				// console.log('imgSrc',res.tempFilePath);
         that.setData({
           imgSrc: res.tempFilePath,
         });
@@ -626,7 +626,7 @@ Page({
     }, this);
     this.selectComponent('#mychart-dom-bar1').canvasToTempFilePath({
       success: function (res) {
-				console.log('imgSrc1',res.tempFilePath);
+				// console.log('imgSrc1',res.tempFilePath);
         that.setData({
           imgSrc1: res.tempFilePath,
         });
@@ -638,7 +638,7 @@ Page({
     }, this);
     this.selectComponent('#mychart-dom-bar2').canvasToTempFilePath({
       success: function (res) {
-				console.log('imgSrc2',res.tempFilePath);
+				// console.log('imgSrc2',res.tempFilePath);
         that.setData({
           imgSrc2: res.tempFilePath,
         });
@@ -650,7 +650,7 @@ Page({
     }, this);
     this.selectComponent('#mychart-dom-bar3').canvasToTempFilePath({
       success: function (res) {
-				console.log('imgSrc3',res.tempFilePath);
+				// console.log('imgSrc3',res.tempFilePath);
         that.setData({
           imgSrc3: res.tempFilePath,
         });
@@ -911,20 +911,19 @@ Page({
 							charts4Isshow:false
 						})
 					}
-				}
-				
-				let chartSet = function (){
-					if(chart4){
-						chart4.setOption(initOption4())
-						console.log('set chart')
-					}else{
-						setTimeout(()=>{
-							console.log("chart is null")
-							chartSet();
-						},500)
+					let chartSet = function (){
+						if(chart4){
+							chart4.setOption(initOption4())
+							console.log('set chart')
+						}else{
+							setTimeout(()=>{
+								console.log("chart is null")
+								chartSet();
+							},500)
+						}
 					}
+					chartSet();
 				}
-				chartSet();
 				wx.hideLoading();
 			},
 			fail:error=>{
@@ -976,14 +975,16 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		var that = this;
+		that.onLoad();
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
-
+		var that = this;
+		that.onLoad();
 	},
 
 	/**
@@ -991,6 +992,10 @@ Page({
 	 */
 	onUnload: function () {
 		chart = null;
+		chart1 = null;
+		chart2 = null;
+		chart3 = null;
+		chart4 = null;
 	},
 
 	/**
