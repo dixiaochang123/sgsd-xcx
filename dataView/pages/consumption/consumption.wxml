@@ -34,7 +34,7 @@
 			<image class="klmb" src="../../../images/klmb.png"></image>
 		<view class="revenue">
 			<view class="title">
-				<text>销售额（元）</text>
+				<text>销售额（万元）</text>
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">

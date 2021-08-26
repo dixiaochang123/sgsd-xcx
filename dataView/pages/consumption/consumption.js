@@ -197,7 +197,7 @@ function initOption0() {
 				show: true,
 				position: 'top',
 				valueAnimation: true,
-				color:"transparent"
+				// color:"transparent"
 			},
 			// smooth: true,
 			// markPoint: {
@@ -877,19 +877,23 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					lineChartData0.xData = [];
-					lineChartData0.seriesData = [];
-					for (let i = 0; i < res.data.length; i++) {
-						lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
-						lineChartData0.seriesData.push({
-							name: '',
-							value: res.data[i].sales,
-							label: {
-								show: true,
-								position:'top',
-								valueAnimation: true
-							}
-						});
+						lineChartData0.xData = [];
+						lineChartData0.seriesData = [];
+						for (let i = 0; i < res.data.length; i++) {
+							console.log(res.data[i].sales,typeof res.data[i].sales)
+							// res.data[i].sales = (res.data[i].sales/10000).toFixed(1)
+							lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
+							lineChartData0.seriesData.push({
+								name: '',
+								value: res.data[i].sales,
+								label: {
+									show: true,
+									position:'top',
+									valueAnimation: true
+								}
+							});
+						}
+						
 					}
 					let chartSet0 = function () {
 						if (chart0) {
@@ -903,7 +907,6 @@ Page({
 						}
 					}
 					chartSet0();
-				}
 				wx.hideLoading();
 			},
 			fail: error => {
@@ -917,6 +920,10 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
+					// res.data.map(item=>{
+					// 	item.sales = (item.sales/10000).toFixed(1)
+					// })
+					
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					lineChartData0.xData = [];
@@ -929,6 +936,7 @@ Page({
 							label: {
 								show: true,
 								position: 'top',
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
 								valueAnimation: true
 							}
 						});
