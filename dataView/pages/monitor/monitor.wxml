@@ -187,7 +187,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="revenue-list" wx:if="{{!!charts4Isshow}}">
+	<view class="revenue-list" wx:if="{{!!charts4Isshow}}" style="margin-bottom:80rpx;">
 		<image class="huiyuanbg huiyuanbg1" src="../../../images/huiyuanbg.png"></image>
 		<view style="height:40rpx;"></view>
 		<view class="revenue-top" style="margin-bottom:0;">

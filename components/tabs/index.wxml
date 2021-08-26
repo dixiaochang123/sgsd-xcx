@@ -123,7 +123,7 @@
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-            <view class="money"><text>翻台率</text>  <text class="money_text1 money_text1ftl">{{ftl}} <text class="money_text2">%</text></text></view>
+            <view class="money"><text>今日翻台率</text>  <text class="money_text1 money_text1ftl">{{ftl}} <text class="money_text2">%</text></text></view>
           </view>
         </view>
         <view style="height:45rpx;"></view>

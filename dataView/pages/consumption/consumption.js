@@ -47,7 +47,7 @@ function initOption() {
 		grid: {
 			left: '5%',
 			right: '5%',
-			top: 50,
+			top: 30,
 			bottom: '5%',
 			containLabel: true
 		},
@@ -155,7 +155,7 @@ function initOption0() {
 		grid: {
 			left: '4%',
 			right: '3%',
-			top: 50,
+			top: 30,
 			bottom: '5%',
 			containLabel: true
 		},
@@ -196,7 +196,8 @@ function initOption0() {
 			label: {
 				show: true,
 				position: 'top',
-				valueAnimation: true
+				valueAnimation: true,
+				color:"transparent"
 			},
 			// smooth: true,
 			// markPoint: {
@@ -637,8 +638,8 @@ Page({
 		var that = this;
 		that.drawLeasePie();
 		setTimeout(that.getData);
-		that.getLineData();
 		that.getLineDataxse();
+		that.getLineData();
 		that.getBarData(1);
 		that.getBarData(2);
 		that.getBarData(3);
@@ -905,7 +906,6 @@ Page({
 						// lineChartData.xData.push(res.data[i].time.substring(6,8)+'日');
 						// lineChartData.seriesData.push(res.data[i].customerPrice);
 						lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
-						// lineChartData0.seriesData.push(res.data[i].sales);
 						lineChartData0.seriesData.push({
 
 							name: '',
@@ -913,8 +913,6 @@ Page({
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
-								// offset:i%2==0?[0,-38]:[0,0],
-								// offset:[0,0],
 								valueAnimation: true
 							}
 						});
@@ -950,22 +948,7 @@ Page({
 					lineChartData0.xData = [];
 					lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
-						// lineChartData.xData.push(res.data[i].time.substring(4,6)+'月');
 						lineChartData0.xData.push(res.data[i].time.substring(4, 6) + '月');
-						// lineChartData.seriesData.push(res.data[i].customerPrice);
-						// lineChartData0.seriesData.push(res.data[i].sales);
-						// lineChartData.seriesData.push({
-
-						// 	name:'' ,
-						// 	value: res.data[i].customerPrice,
-						// 	label:{
-						// 		show: true,
-						// 		position:i%2==0?[0,-38]:[0,0],
-						// 		// offset:i%2==0?[0,-38]:[0,0],
-						// 		// offset:[0,0],
-						// 		valueAnimation: true
-						// 	}
-						// });
 						lineChartData0.seriesData.push({
 
 							name: '',
@@ -973,25 +956,11 @@ Page({
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
-								// offset:i%2==0?[0,-38]:[0,0],
-								// offset:[0,0],
 								valueAnimation: true
 							}
 						});
 					}
 				}
-				// let chartSet = function (){
-				// 	if(chart){
-				// 		chart.setOption(initOption())
-				// 		console.log('set chart')
-				// 	}else{
-				// 		setTimeout(()=>{
-				// 			console.log("chart is null")
-				// 			chartSet();
-				// 		},500)
-				// 	}
-				// }
-				// chartSet();
 				let chartSet0 = function () {
 					if (chart0) {
 						chart0.setOption(initOption0())

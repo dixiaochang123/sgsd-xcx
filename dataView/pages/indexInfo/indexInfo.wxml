@@ -119,7 +119,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="revenue">
+			<view class="revenue" style="margin-bottom:50rpx;">
 				<view class="title">
 					<text>会员登录</text>
 				</view>

@@ -83,7 +83,7 @@
 				</navigator>
 			</view>
 		</view>
-		<view class="warp-list">
+		<view class="warp-list" style="margin-bottom: 80rpx;">
 			<view class="warp-tit">
 				<image src="../../images/icon_19.png" mode="widthFix"></image>客流数据
 			</view>

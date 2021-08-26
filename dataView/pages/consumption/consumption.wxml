@@ -38,8 +38,8 @@
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">
-					<view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1"><text>本月</text></view>
-					<view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1"><text>本年</text></view>
+					<view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1"><text bindtap="chartsClick1">本月</text></view>
+					<view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1"><text bindtap="chartsClick1">本年</text></view>
 				</view>
 				<view class="charts-con">
 					<!-- <view class="charts-tm">车流量（辆）</view> -->
@@ -64,8 +64,8 @@
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">
-					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text>本月</text></view>
-					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text>本年</text></view>
+					<view class="top-li {{num==1?'cur':''}}" data-num="1" bindtap="chartsClick"><text bindtap="chartsClick">本月</text></view>
+					<view class="top-li {{num==2?'cur':''}}" data-num="2" bindtap="chartsClick"><text bindtap="chartsClick">本年</text></view>
 				</view>
 				<view class="charts-con">
 					<!-- <view class="charts-tm">车流量（辆）</view> -->

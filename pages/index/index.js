@@ -439,7 +439,7 @@ Page({
 		this.getCarData();
 		// this.getCarData1();
 		// this.getBMData();
-		this.getBMData1();
+		// this.getBMData1();
 		// this.getLineData();
 		// this.getLineData1();
 		// this.drawLeasePie();
