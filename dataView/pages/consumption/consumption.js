@@ -637,9 +637,10 @@ Page({
 	onLoad: function (options) {
 		var that = this;
 		that.drawLeasePie();
+		that.shabi()
 		setTimeout(that.getData);
-		that.getLineDataxse();
-		that.getLineData();
+		// that.getLineDataxse();
+		// that.getLineData();
 		that.getBarData(1);
 		that.getBarData(2);
 		that.getBarData(3);
@@ -768,7 +769,72 @@ Page({
 			}
 		})
 	},
-
+	shabi:function() {
+		util.ajax({
+			url: "data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					lineChartData.xData = [];
+					lineChartData.seriesData = [];
+					// ---------------
+					lineChartData0.xData = [];
+					lineChartData0.seriesData = [];
+					for (let i = 0; i < res.data.length; i++) {
+						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
+						lineChartData.seriesData.push({
+							name: '',
+							value: res.data[i].customerPrice,
+							label: {
+								show: true,
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								valueAnimation: true
+							}
+						});
+						// ----------
+						lineChartData0.xData.push(res.data[i].time.substring(6, 8) + '日');
+							lineChartData0.seriesData.push({
+								name: '',
+								value: res.data[i].sales,
+								label: {
+									show: true,
+									position:'top',
+									valueAnimation: true
+								}
+							});
+					}
+				}
+				let chartSet = function () {
+					if (chart) {
+						chart.setOption(initOption())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet();
+						}, 100)
+					}
+				}
+				chartSet();
+				let chartSet0 = function () {
+					if (chart0) {
+						chart0.setOption(initOption0())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet0();
+						}, 100)
+					}
+				}
+				chartSet0();
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
 	getLineData: function (type) {
 		util.ajax({
 			url: "data-analysis/api/sg/cashRegisterSalesStatistics?type=1",
@@ -779,17 +845,15 @@ Page({
 					lineChartData.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
-						for (let i = 0; i < res.data.length; i++) {
-							lineChartData.seriesData.push({
-								name: '',
-								value: res.data[i].customerPrice,
-								label: {
-									show: true,
-									position: i % 2 == 0 ? [0, -38] : [-10, -10],
-									valueAnimation: true
-								}
-							});
-						}
+						lineChartData.seriesData.push({
+							name: '',
+							value: res.data[i].customerPrice,
+							label: {
+								show: true,
+								position: i % 2 == 0 ? [0, -38] : [-10, -10],
+								valueAnimation: true
+							}
+						});
 					}
 				}
 				let chartSet = function () {
@@ -820,36 +884,19 @@ Page({
 					console.log(898989)
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
-					// lineChartData0.xData = [];
-					// lineChartData0.seriesData = [];
+					lineChartData0.xData = [];
+					lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData.xData.push(res.data[i].time.substring(4, 6) + '月');
-						// lineChartData0.xData.push(res.data[i].time.substring(4,6)+'月');
-						// lineChartData.seriesData.push(res.data[i].customerPrice);
-						// lineChartData0.seriesData.push(res.data[i].sales);
 						lineChartData.seriesData.push({
 							name: '',
 							value: res.data[i].customerPrice,
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
-								// offset:i%2==0?[0,-38]:[0,0],
-								// offset:[0,0],
 								valueAnimation: true
 							}
 						});
-						// lineChartData0.seriesData.push({
-
-						// 	name:'' ,
-						// 	value: res.data[i].sales,
-						// 	label:{
-						// 		show: true,
-						// 		position:i%2==0?[0,-38]:[0,0],
-						// 		// offset:i%2==0?[0,-38]:[0,0],
-						// 		// offset:[0,0],
-						// 		valueAnimation: true
-						// 	}
-						// });
 					}
 				}
 				let chartSet = function () {
@@ -1014,7 +1061,15 @@ Page({
 	 */
 	onShow: function () {
 		var that = this;
-		that.onLoad();
+		that.drawLeasePie();
+		that.shabi()
+		setTimeout(that.getData);
+		// that.getLineDataxse();
+		// that.getLineData();
+		that.getBarData(1);
+		that.getBarData(2);
+		that.getBarData(3);
+		wx.showLoading();
 	},
 
 	/**
@@ -1041,6 +1096,7 @@ Page({
 	 */
 	onUnload: function () {
 		chart = null;
+		chart0 = null;
 		chart1 = null;
 		chart2 = null;
 		chart3 = null;

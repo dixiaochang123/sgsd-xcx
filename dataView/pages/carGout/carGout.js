@@ -22,7 +22,7 @@ function initOption(){
 		grid: {
 			left: '5%',
 			right: '5%',
-			top: 50,
+			top: 20,
 			bottom: '5%',
 			containLabel: true
 		},
