@@ -91,6 +91,7 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
 const app = getApp();
 const util = require('../../utils/util');
 Component({
@@ -120,6 +121,7 @@ Component({
         todaySales:{ type: Number, value: 0 },
         todaySales1:{ type: Number, value: 0 },
         totalSpace:{ type: Number, value: 0 },
+        ec10:{type: Object, value: {}},
     },
     data: {
         currentView: 0,
@@ -145,13 +147,36 @@ Component({
 
         activeSales:"本周销售额",
         salesdata:'0',
+        salesdata1:'0',
         monthCustomerPrice:'',
 
         ftl:0,
-        ratio:''//实时租金收缴率
+        ratio:'',//实时租金收缴率
+        scrollTop:0,
+
+        flowdata1:0
+
+        //新增图表
+        // ec: {
+		// 	onInit: (canvas, width, height, dpr) =>{
+		// 		chart = echarts.init(canvas, null, {
+		// 			width: width,
+		// 			height: height,
+		// 			devicePixelRatio: dpr // new
+		// 		});
+		// 		canvas.setChart(chart);
+		// 		return chart;
+		// 	}
+		// },
 
 
     },
+    onPageScroll: function(e) {
+		console.log('滚动条高度',e.scrollTop)
+		this.setData({
+			scrollTop:e.scrollTop
+		})
+},
     attached() {
         
     },
@@ -167,8 +192,10 @@ Component({
         },
         dataAllFlow: function dataAllFlow(val) {
             this.setData({
-                flowdata:this.data.dataAllFlow.weekPassengerFlow>10000?(this.data.dataAllFlow.weekPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.weekPassengerFlow
+                flowdata:this.data.dataAllFlow.weekPassengerFlow>10000?(this.data.dataAllFlow.weekPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.weekPassengerFlow,
+                flowdata1:this.data.dataAllFlow.weekPassengerFlow
             })
+            console.log('flowdata1',this.data.flowdata1)
         },
         dataAllMember: function dataAllMember(val) {
             this.setData({
@@ -183,6 +210,7 @@ Component({
         dataAllSales: function dataAllSales(val) {
             this.setData({
                 salesdata:this.data.dataAllSales.weekSales,
+                salesdata1:this.data.dataAllSales.weekSales,
                 // totalNewMumber:this.data.dataAllSales.totalNewMumber,
                 monthCustomerPrice:this.data.dataAllSales.monthCustomerPrice
             })
@@ -227,11 +255,17 @@ Component({
                 })
           },
         handleTabClick: function handleTabClick(e) {
+            wx.pageScrollTo({
+                scrollTop: this.data.scrollTop+1
+            })
             var index = e.currentTarget.dataset.index;
             this.setData({ activeTab: index });
             this.triggerEvent('tabclick', { index: index });
         },
         handleSwiperChange: function handleSwiperChange(e) {
+            wx.pageScrollTo({
+                scrollTop: this.data.scrollTop+1
+            })
             var index = e.detail.current;
             this.setData({ activeTab: index });
             this.triggerEvent('change', { index: index });
@@ -315,9 +349,9 @@ Component({
                 '本年增加':3
             }
             let obj3={
-                '本周销售额':this.data.dataAllSales.weekSales,
-                '本月销售额':this.data.dataAllSales.monthSales,
-                '本年销售额':this.data.dataAllSales.yearSales
+                '本周销售额':this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
+                '本月销售额':this.data.dataAllSales.monthSales>10000?(this.data.dataAllSales.monthSales/10000).toFixed(2):this.data.dataAllSales.monthSales,
+                '本年销售额':this.data.dataAllSales.yearSales>10000?(this.data.dataAllSales.yearSales/10000).toFixed(2):this.data.dataAllSales.yearSales,
             }
             let obj4={
                 '本周车流':1,
@@ -329,8 +363,25 @@ Component({
                     var activeflow = event.target.id;
                     this.setData({ activeflow });
                     this.setData({
-                        flowdata:obj[activeflow]
+                        flowdata:obj[activeflow],
+                        // flowdata1:this.data.dataAllFlow.weekPassengerFlow
                     })
+                    if(activeflow=='本周') {
+                        this.setData({
+                            flowdata1:this.data.dataAllFlow.weekPassengerFlow
+                        })
+                    }
+                    if(activeflow=='本月') {
+                        this.setData({
+                            flowdata1:this.data.dataAllFlow.monthPassengerFlow
+                        })
+                    }
+                    if(activeflow=='本年') {
+                        this.setData({
+                            flowdata1:this.data.dataAllFlow.yearPassengerFlow
+                        })
+                    }
+                    console.log('flowdata1',this.data.flowdata1)
                     break;
                 case "会员":
                     var activeMember = event.target.id;
@@ -364,6 +415,28 @@ Component({
                     this.setData({
                         salesdata:obj3[activeSales]
                     })
+                    // let obj3={
+                    //     '本周销售额':this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
+                    //     '本月销售额':this.data.dataAllSales.monthSales>10000?(this.data.dataAllSales.monthSales/10000).toFixed(2):this.data.dataAllSales.monthSales,
+                    //     '本年销售额':this.data.dataAllSales.yearSales>10000?(this.data.dataAllSales.yearSales/10000).toFixed(2):this.data.dataAllSales.yearSales,
+                    // }
+                    console.log('activeSales',activeSales)
+                    if(activeSales=='本周销售额') {
+                        this.setData({
+                            salesdata1:this.data.dataAllSales.weekSales
+                        })
+                    }
+                    if(activeSales=='本月销售额') {
+                        this.setData({
+                            salesdata1:this.data.dataAllSales.monthSales
+                        })
+                    }
+                    if(activeSales=='本年销售额') {
+                        this.setData({
+                            salesdata1:this.data.dataAllSales.yearSales
+                        })
+                    }
+                    console.log('salesdata1',this.data.salesdata1)
                     break;
             
                 default:

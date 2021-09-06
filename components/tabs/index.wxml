@@ -1,15 +1,16 @@
 <wxs module="filters" src="../../utils/utils.wxs"></wxs>
 <view class="weui-tabs">
   <view class="weui-tabs-bar__wrp">
-    <scroll-view enhanced="true" style="border:none;" show-scrollbar="false" scroll-x scroll-into-view="item_{{currentView}}" scroll-with-animation="{{animation}}">
+    <scroll-view enhanced="true" style="border:none;" show-scrollbar="false" scroll-x
+      scroll-into-view="item_{{currentView}}" scroll-with-animation="{{animation}}">
       <view class="weui-tabs-bar__content">
         <block wx:for="{{tabs}}" wx:key="title">
           <view id="item_{{index}}" class="weui-tabs-bar__item"
-            style="color: {{activeTab === index ? tabActiveTextColor : tabInactiveTextColor}};"
-            bindtap="handleTabClick" data-index="{{index}}">
+            style="color: {{activeTab === index ? tabActiveTextColor : tabInactiveTextColor}};" bindtap="handleTabClick"
+            data-index="{{index}}">
             <view class="weui-tabs-bar__title {{tabClass}} {{activeTab === index ? activeClass : ''}}">
               <view>
-                <image style="width: 30px; height: 30px;" src="{{activeTab === index ? item.url1 : item.url}}" ></image>
+                <image style="width: 30px; height: 30px;" src="{{activeTab === index ? item.url1 : item.url}}"></image>
               </view>
               <text class="">{{item.title}}</text>
             </view>
@@ -33,7 +34,8 @@
           <text wx:else class="jinrikliu_text_3">人</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="客流" bindtap="handleTabClickflow">more ></text> -->
-        <image bindtap="handleTabClickflow" id="客流" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+        <image bindtap="handleTabClickflow" id="客流" class="jinrikliu_text_4" src="../../images/more1.png"
+          mode="widthFix"></image>
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text" bindtap="handleclickTab">
@@ -43,7 +45,7 @@
           </view>
           <view class="money">
             <image class="money_img" src="../../images/person.png" mode="widthFix"></image>
-            <text class="money_text1">{{flowdata}} <text class="money_text2">万人</text></text>
+            <text class="money_text1">{{flowdata}} <text class="money_text2" wx:if="{{flowdata1<10000}}">人</text><text class="money_text2" wx:else>万人</text></text>
           </view>
         </view>
       </swiper-item>
@@ -56,7 +58,8 @@
           <text wx:else class="jinrikliu_text_3">人</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="会员" bindtap="handleTabClickflow">more ></text> -->
-        <image bindtap="handleTabClickflow" id="会员" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+        <image bindtap="handleTabClickflow" id="会员" class="jinrikliu_text_4" src="../../images/more1.png"
+          mode="widthFix"></image>
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text" bindtap="handleclickTab">
@@ -93,7 +96,8 @@
             <text wx:if="{{totalScore<10000}}" class="jinrikliu_text_3">万分</text>
             <text wx:else class="jinrikliu_text_3">分</text>
           </view>
-          <image bindtap="handleTabClickflow" id="会员1" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+          <image bindtap="handleTabClickflow" id="会员1" class="jinrikliu_text_4" src="../../images/more1.png"
+            mode="widthFix"></image>
 
         </view>
       </swiper-item>
@@ -101,12 +105,13 @@
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日车流量（入）</text>
-          <text  class="jinrikliu_text_2">{{dayEntryData}}</text>
+          <text class="jinrikliu_text_2">{{dayEntryData}}</text>
           <text wx:if="{{dayEntryData<10000}}" class="jinrikliu_text_3">次</text>
           <text wx:else class="jinrikliu_text_3">次</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="车场" bindtap="handleTabClickflow">more ></text> -->
-        <image bindtap="handleTabClickflow" id="车场" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+        <image bindtap="handleTabClickflow" id="车场" class="jinrikliu_text_4" src="../../images/more1.png"
+          mode="widthFix"></image>
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text" bindtap="handleclickTab">
@@ -123,7 +128,8 @@
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-            <view class="money"><text>今日翻台率</text>  <text class="money_text1 money_text1ftl">{{ftl}} <text class="money_text2">%</text></text></view>
+            <view class="money"><text>翻台率</text> <text class="money_text1 money_text1ftl">{{ftl}} <text
+                  class="money_text2">%</text></text></view>
           </view>
         </view>
         <view style="height:45rpx;"></view>
@@ -137,7 +143,8 @@
             <text wx:else class="jinrikliu_text_3">元</text>
           </view>
           <!-- <text class="jinrikliu_text_4" id="车场1" bindtap="handleTabClickflow">more ></text> -->
-          <image bindtap="handleTabClickflow" id="车场1" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+          <image bindtap="handleTabClickflow" id="车场1" class="jinrikliu_text_4" src="../../images/more1.png"
+            mode="widthFix"></image>
         </view>
       </swiper-item>
       <swiper-item>
@@ -149,7 +156,8 @@
           <text class="jinrikliu_text_3" wx:else>元</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="收银" bindtap="handleTabClickflow">more ></text> -->
-        <image bindtap="handleTabClickflow" id="收银" class="jinrikliu_text_4" src="../../images/more1.png" mode="widthFix"></image>
+        <image bindtap="handleTabClickflow" id="收银" class="jinrikliu_text_4" src="../../images/more1.png"
+          mode="widthFix"></image>
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text" bindtap="handleclickTab">
@@ -160,13 +168,14 @@
         </view>
         <view class="money">
           <image class="money_img money_img111" src="../../images/icon_money.png" mode="widthFix"></image>
-          <text class="money_text1">{{salesdata}} <text class="money_text2">万元</text></text>
+          <text class="money_text1">{{salesdata}} <text class="money_text2" wx:if="{{salesdata1<10000}}">元</text><text class="money_text2" wx:else>万元</text></text>
         </view>
         <view style="height:45rpx;"></view>
         <view class="tabss">
           <image class="juxing juxing1111" src="../../images/juxing.png" mode="widthFix"></image>
           <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-            <view class="money">本月客单价 <text class="money_text1 money_text1ftl">{{monthCustomerPrice}} <text class="money_text2">元</text></text></view>
+            <view class="money">本月客单价 <text class="money_text1 money_text1ftl">{{monthCustomerPrice}} <text
+                  class="money_text2">元</text></text></view>
           </view>
         </view>
       </swiper-item>
@@ -185,7 +194,8 @@
             </view>
           </view>
           <!-- <text class="jinrikliu_text_4 jinrikliu_text_5" id="商管" bindtap="handleTabClickflow">more ></text> -->
-          <image wx:if="{{false}}" bindtap="handleTabClickflow" id="商管" class="jinrikliu_text_4 jinrikliu_text_5" src="../../images/more1.png" mode="widthFix"></image>
+          <image wx:if="{{false}}" bindtap="handleTabClickflow" id="商管" class="jinrikliu_text_4 jinrikliu_text_5"
+            src="../../images/more1.png" mode="widthFix"></image>
 
         </view>
         <view class="shangguan">
@@ -199,11 +209,12 @@
             <view class="ys1">
               <text class="txtxxx">租金收缴率</text>
               <!-- <text>{{ratio}}  <text>%</text></text> -->
-              <text>99  <text>%</text></text>
+              <text>99 <text>%</text></text>
             </view>
           </view>
           <!-- <text class="jinrikliu_text_4 jinrikliu_text_5" id="商管1" bindtap="handleTabClickflow">more ></text> -->
-          <image bindtap="handleTabClickflow" id="商管1" class="jinrikliu_text_4 jinrikliu_text_5" src="../../images/more1.png" mode="widthFix"></image>
+          <image bindtap="handleTabClickflow" id="商管1" class="jinrikliu_text_4 jinrikliu_text_5"
+            src="../../images/more1.png" mode="widthFix"></image>
 
         </view>
       </swiper-item>

@@ -2,340 +2,403 @@
 import * as echarts from '../../ec-canvas/echarts';
 const util = require('../../utils/util');
 const app = getApp();
-//曲线图
-var chart = null;
-var chart1 = null;
-var chart2 = null;
-var areaTotal = 0;
-var rentedAreaTotal = 0;
-let lineChartData = {
+var chart10 = null;
+var chart11 = null;
+var chart12 = null;
+var chart13 = null;
+let lineChartData10 = {
 	xData: [],
-	seriesData: [],
+	legendData: ["上周", "本周", "去年同期"],
+	currentDataList: [], //上周
+	byDataList: [], //本周
+	dataYearOnyearList: [], //去年同期
 }
-let lineChartData1 = {
+let lineChartData11 = {
 	xData: [],
-	seriesData: [],
+	legendData: ["上周", "本周", "去年同期"],
+	currentDataList: [], //上周
+	byDataList: [], //本周
+	dataYearOnyearList: [], //去年同期
+}
+let lineChartData12 = {
+	xData: [],
+	legendData: ["上周", "本周", "去年同期"],
+	currentDataList: [], //上周
+	byDataList: [], //本周
+	dataYearOnyearList: [], //去年同期
+}
+let lineChartData13 = {
+	xData: [],
+	legendData: ["上周", "本周", "去年同期"],
+	currentDataList: [], //上周
+	byDataList: [], //本周
+	dataYearOnyearList: [], //去年同期
 }
 
-function initOption() {
-	
+function initOption10() {
+
 	return {
+		// color:['#7f7d7e','#e3004f','#597ee9'],
+		color: ['#e3004f', '#597ee9', '#7f7d7e'],
 		grid: {
-			left: '5%',
-			right: '15%',
-			top: '10%',
-			bottom: '5%',
-			containLabel: true
+			left: 70,
+			right: 20,
+			// top:40
 		},
 		tooltip: {
-			trigger: 'axis'
-		},
-		dataZoom: [{
-			type: "inside",
-			startValue:lineChartData.xData.length - 9,
-			endValue: lineChartData.xData.length - 1,
-			zoomLock: true
-		}],
-		xAxis: {
-			type: 'category',
-			name: '',
-			nameLocation: 'middle',
-			nameTextStyle: {
-				color: "#fff",
-				fontSize: 10,
-				padding: 10
-			},
-			splitLine: {
-				show: false,
-				//  改变轴线颜色
-				lineStyle: {
-					type: 'dashed',
-					color: '#DCE0EE'
-				}
-			},
-			axisTick: { //y轴刻度线
-				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			boundaryGap: true, //X轴从0开始
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
-			},
-			data: lineChartData.xData
-		},
-		yAxis: {
-			name: '',
-			x: 'center',
-			type: 'value',
-			nameLocation: 'center',
-			nameGap: 0,
-			// max: mNum,
-			// min: 0,
-			splitNumber: 10,
-			//interval: 200, //间隔
-			minInterval: 1, //设置成1保证坐标轴分割刻度显示成整数。
-			nameTextStyle: { //文字样式
-				color: '#fff',
-				fontSize: 10
-			},
-			axisTick: { //y轴刻度线
-				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
-			},
-			splitLine: {
-				//show: false,
-				lineStyle: {
-					type: 'solid',
-					color: '#DCE0EE'
-				}
-			}
-			// show: false
-		},
-		series: [{
-			name: '',
-			type: 'line',
-			color: ['#1BE6DA'],
-			markPoint: {
-				symbol: 'circle',
-				symbolSize: 20,
-			},
-			itemStyle: {
-				normal: {
-					label: {
-						color: '#fff',
-						show: true, //开启显示
-						position: 'top', //在上方显示
-						textStyle: { //数值样式
-							color: 'white',
-							fontSize: 10
-						}
-					}
-				},
-			},
-			data: lineChartData.seriesData
-		}]
-	};
-}
+			trigger: "axis",
 
-function initOption1() {
-	return {
-		grid: {
-			left: '5%',
-			right: '15%',
-			top: '10%',
-			bottom: '5%',
-			containLabel: true
-		},
-		tooltip: {
-			trigger: 'axis',
-		},
-		dataZoom: [{
-			type: "inside",
-			endValue: 8,
-			zoomLock: true
-		}],
-		xAxis: {
-			type: 'category',
-			name: '',
-			nameLocation: 'middle',
-			nameTextStyle: {
-				color: "#fff",
-				fontSize: 10,
-				padding: 10
-			},
-			splitLine: {
-				show: false,
-				//  改变轴线颜色
-				lineStyle: {
-					type: 'dashed',
-					color: '#DCE0EE'
-				}
-			},
-			axisTick: { //y轴刻度线
-				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			boundaryGap: true, //X轴从0开始
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
-			},
-			data: lineChartData1.xData
-		},
-		yAxis: {
-			name: '',
-			x: 'center',
-			type: 'value',
-			nameLocation: 'center',
-			nameGap: 0,
-			// max: mNum,
-			// min: 0,
-			splitNumber: 10,
-			//interval: 200, //间隔
-			minInterval: 1, //设置成1保证坐标轴分割刻度显示成整数。
-			nameTextStyle: { //文字样式
-				color: '#fff',
-				fontSize: 10
-			},
-			axisTick: { //y轴刻度线
-				show: false
-			},
-			axisLabel: {
-				show: true,
-				textStyle: {
-					color: '#fff',
-					fontSize: 10
-				}
-			},
-			axisLine: {
-				show: false,
-				lineStyle: {
-					color: '#fff',
-					width: 1, //这里是坐标轴的宽度
-				}
-			},
-			splitLine: {
-				//show: false,
-				lineStyle: {
-					type: 'solid',
-					color: '#DCE0EE'
-				}
-			}
-			// show: false
-		},
-		series: [{
-			name: '',
-			type: 'line',
-			color: ['#1BE6DA'],
-			markPoint: {
-				symbol: 'circle',
-				symbolSize: 20,
-			},
-			itemStyle: {
-				normal: {
-					label: {
-						color: '#fff',
-						show: true, //开启显示
-						position: 'top', //在上方显示
-						textStyle: { //数值样式
-							color: 'white',
-							fontSize: 10
-						}
-					}
-				},
-			},
-			data: lineChartData1.seriesData
-		}]
-	};
-}
-
-function initOption2() {
-	let num = (areaTotal - rentedAreaTotal).toFixed(2)
-	var resultData = [{
-			value: rentedAreaTotal,
-			name: "已租面积"
-		},
-		{
-			value: num,
-			name: "未租面积"
-		}
-	];
-	return {
-		tooltip: {
-			trigger: 'item',
-			formatter: '{b}\n{c}m² ({d}%)'
+			confine: true,
 		},
 		legend: {
-			show: false,
+			icon: 'rect',
+			data: lineChartData10.legendData,
+			itemHeight: 3,
+			itemwidth: 80,
+			align: 'right',
 		},
-		color: ['#1be6da', '#2e4c61'],
+		calculable: true,
+		xAxis: [{
+			type: "category",
+			data: lineChartData10.xData,
+			// data: ["1/7", "2/7", "3/7", "4/7", "5/7", "6/7", "7/7"],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: false
+			},
+			boundaryGap: true,
+			axisLabel: {
+				interval: 0
+			}
+		}],
+		yAxis: [{
+			type: "value",
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: "#ccc"
+				}
+			}
+		}],
 		series: [{
-				name: "",
-				type: "pie",
-				radius: ["50%", "70%"],
-				data: resultData,
-				label: {
-					textStyle: {
-						color: '#FFF'
-					},
-					show:false
-				},
+				name: lineChartData10.legendData[0],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData10.currentDataList,
+				data: lineChartData10.currentDataList,
+				// data: [12000, 13200, 10100, 13400, 9000, 23000, 21000],
+				symbol: "circle"
 			},
 			{
-				name: "",
-				type: "pie",
-				radius: [0, "60%"],
-				data: [{
-						value: rentedAreaTotal,
-						name: '已租面积',
-						itemStyle: {
-							normal: {
-								opacity: 0
-							},
-							emphasis: {
-								opacity: 1
-							}
-						}
-					},
-					{
-						value: num,
-						name: "未租面积",
-						itemStyle: {
-							normal: {
-								opacity: 0
-							},
-							emphasis: {
-								opacity: 1
-							}
-						}
-					},
-				],
-				label: {
-					textStyle: {
-						color: '#FFF'
-					},
-					formatter:'{b}({d}%)\n{c}m² ',
-				},
-				labelLine: {
-					lineStyle: {
-						color: '#FFF'
-					},
-					showAbove: true
-				}
+				name: lineChartData10.legendData[1],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData10.byDataList,
+				data: lineChartData10.byDataList,
+				// data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+				symbol: "circle"
 			},
+			{
+				name: lineChartData10.legendData[2],
+				type: "line",
+				data: lineChartData10.dataYearOnyearList,
+				// data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
+				symbol: "circle",
+				// stack: "总量"
+			},
+
+
+
+
 		],
+		// grid: {
+		//     borderWidth: 0
+		// }
+	};
+}
+
+function initOption11() {
+
+	return {
+		color: ['#e3004f', '#597ee9', '#7f7d7e'],
+		// color:['#e3004f','#597ee9','#7f7d7e'],
+		grid: {
+			left: 70,
+			right: 20,
+			// top:40
+		},
+		tooltip: {
+			trigger: "axis",
+
+			confine: true,
+		},
+		legend: {
+			icon: 'rect',
+			data: lineChartData11.legendData,
+			itemHeight: 3,
+			itemwidth: 80,
+			align: 'right',
+		},
+		calculable: true,
+		xAxis: [{
+			type: "category",
+			data: lineChartData11.xData,
+			// data: ["1/7", "2/7", "3/7", "4/7", "5/7", "6/7", "7/7"],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: false
+			},
+			boundaryGap: true,
+			axisLabel: {
+				interval: 0
+			}
+		}],
+		yAxis: [{
+			type: "value",
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: "#ccc"
+				}
+			}
+		}],
+		series: [{
+				name: lineChartData11.legendData[0],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData11.currentDataList,
+				data: lineChartData11.currentDataList,
+				// data: [12000, 13200, 10100, 13400, 9000, 23000, 21000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData11.legendData[1],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData11.byDataList,
+				data: lineChartData11.byDataList,
+				// data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData11.legendData[2],
+				type: "line",
+				data: lineChartData11.dataYearOnyearList,
+				// data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
+				symbol: "circle",
+				// stack: "总量"
+			},
+
+
+
+
+		],
+	};
+}
+
+function initOption12() {
+
+	return {
+		color: ['#e3004f', '#597ee9', '#7f7d7e'],
+		grid: {
+			left: 70,
+			right: 20,
+			// top:40
+		},
+		tooltip: {
+			trigger: "axis",
+
+			confine: true,
+		},
+		legend: {
+			icon: 'rect',
+			data: lineChartData12.legendData,
+			itemHeight: 3,
+			itemwidth: 80,
+			align: 'right',
+		},
+		calculable: true,
+		xAxis: [{
+			type: "category",
+			data: lineChartData12.xData,
+			// data: ["1/7", "2/7", "3/7", "4/7", "5/7", "6/7", "7/7"],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: false
+			},
+			boundaryGap: true,
+			axisLabel: {
+				interval: 0
+			}
+		}],
+		yAxis: [{
+			type: "value",
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: "#ccc"
+				}
+			}
+		}],
+		series: [{
+				name: lineChartData12.legendData[0],
+				type: "line",
+				// stack: "总量",
+
+				// data: lineChartData12.currentDataList,
+				data: lineChartData12.currentDataList,
+				// data: [12000, 13200, 10100, 13400, 9000, 23000, 21000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData12.legendData[1],
+				type: "line",
+				// stack: "总量",
+
+				// data: lineChartData12.byDataList,
+				data: lineChartData12.byDataList,
+				// data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData12.legendData[2],
+				type: "line",
+				data: lineChartData12.dataYearOnyearList,
+				// data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
+				symbol: "circle",
+			},
+
+
+
+		],
+		// grid: {
+		//     borderWidth: 0
+		// }
+	};
+}
+
+function initOption13() {
+
+	return {
+		color: ['#e3004f', '#597ee9', '#7f7d7e'],
+		grid: {
+			left: 80,
+			right: 20,
+			// top:40
+		},
+		tooltip: {
+			trigger: "axis",
+
+			confine: true,
+		},
+		legend: {
+			icon: 'rect',
+			data: lineChartData13.legendData,
+			itemHeight: 3,
+			itemwidth: 80,
+			align: 'right',
+		},
+		calculable: true,
+		xAxis: [{
+			type: "category",
+			data: lineChartData13.xData,
+			// data: ["1/7", "2/7", "3/7", "4/7", "5/7", "6/7", "7/7"],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: false
+			},
+			boundaryGap: true,
+			axisLabel: {
+				interval: 0
+			}
+		}],
+		yAxis: [{
+			type: "value",
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: "#ccc"
+				}
+			}
+		}],
+		series: [{
+				name: lineChartData13.legendData[0],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData13.currentDataList,
+				data: lineChartData13.currentDataList,
+				// data: [12000, 13200, 10100, 13400, 9000, 23000, 21000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData13.legendData[1],
+				type: "line",
+				// stack: "总量",
+				// data: lineChartData13.byDataList,
+				data: lineChartData13.byDataList,
+				// data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+				symbol: "circle"
+			},
+			{
+				name: lineChartData13.legendData[2],
+				type: "line",
+				data: lineChartData13.dataYearOnyearList,
+				// data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
+				symbol: "circle",
+				// stack: "总量"
+			},
+
+
+
+
+		],
+		// grid: {
+		//     borderWidth: 0
+		// }
 	};
 }
 Page({
@@ -346,37 +409,48 @@ Page({
 	data: {
 		num: 1,
 		nums: 1,
-		ec: {
+		ec10: {
 			onInit: (canvas, width, height, dpr) => {
-				chart = echarts.init(canvas, null, {
+				chart10 = echarts.init(canvas, null, {
 					width: width,
 					height: height,
 					devicePixelRatio: dpr // new
 				});
-				canvas.setChart(chart);
-				return chart;
+				canvas.setChart(chart10);
+				return chart10;
 			}
 		},
-		ec1: {
+		ec11: {
 			onInit: (canvas, width, height, dpr) => {
-				chart1 = echarts.init(canvas, null, {
+				chart11 = echarts.init(canvas, null, {
 					width: width,
 					height: height,
 					devicePixelRatio: dpr // new
 				});
-				canvas.setChart(chart1);
-				return chart1;
+				canvas.setChart(chart11);
+				return chart11;
 			}
 		},
-		ec2: {
+		ec12: {
 			onInit: (canvas, width, height, dpr) => {
-				chart2 = echarts.init(canvas, null, {
+				chart12 = echarts.init(canvas, null, {
 					width: width,
 					height: height,
 					devicePixelRatio: dpr // new
 				});
-				canvas.setChart(chart2);
-				return chart2;
+				canvas.setChart(chart12);
+				return chart12;
+			}
+		},
+		ec13: {
+			onInit: (canvas, width, height, dpr) => {
+				chart13 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart13);
+				return chart13;
 			}
 		},
 		leasePercent: 0.25,
@@ -385,37 +459,529 @@ Page({
 		weekSales: 0,
 		monthSales: 0,
 		totalNumberOfMembers: 0, //会员总数
-		totalNewMumber: 0,//新增会员
-		totalNumberOfMaleMembers: 0,//男性会员数
-		totalNumberOfFemaleMembers: 0,//女性会员数
-		totalNumberOfOtherMembers: 0,//其他会员数
-		dayPassengerFlow: 0,//客流
-		weekPassengerFlow: 0,//客流
-		monthPassengerFlow: 0,//客流
-		yearPassengerFlow: 0,//客流
+		totalNewMumber: 0, //新增会员
+		totalNumberOfMaleMembers: 0, //男性会员数
+		totalNumberOfFemaleMembers: 0, //女性会员数
+		totalNumberOfOtherMembers: 0, //其他会员数
+		dayPassengerFlow: 0, //客流
+		weekPassengerFlow: 0, //客流
+		monthPassengerFlow: 0, //客流
+		yearPassengerFlow: 0, //客流
 		totalSpace: 0,
 		dayEntryData: 0,
 		dayAppearanceData: 0,
 		shoundAmount: 0,
 		receivableAmount: 0,
-		marketRevenue:0,
-		blockIncome:0,
+		marketRevenue: 0,
+		blockIncome: 0,
 		tabs: [],
 		activeTab: 0,
-		dataAllFlow:{},//人流
-		dataAllMember:{},//会员
-		dataAllSales:{},//收银
-		dataAllMarket:{},
+		dataAllFlow: {}, //人流
+		dataAllMember: {}, //会员
+		dataAllSales: {}, //收银
+		dataAllMarket: {},
 
-		swiperClass:'weui-tabs-swiper'
+		swiperClass: 'weui-tabs-swiper',
+		idx: 0,
+		scrollTop: 0,
+		num10: 1,
+		type10: 1,
+		num11: 1,
+		type11: 1,
+		num12: 1,
+		type12: 1,
+		num13: 1,
+		type13: 1,
+
+	},
+	onPageScroll: function (e) {
+		// console.log('滚动条高度',e.scrollTop)
+		this.setData({
+			scrollTop: e.scrollTop
+		})
+	},
+	chartsClick10: function (e) {
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num10 == num) {
+			return false
+		} else {
+			that.setData({
+				num10: e.currentTarget.dataset.num
+			})
+		}
+		if (num == 1) {
+			that.getLineDataxse(1);
+		} else if (num == 2) {
+			that.getLineDataxse(2);
+		} else if (num == 3) {
+			that.getLineDataxse(3);
+
+		}
+		that.setData({
+			num10: e.currentTarget.dataset.num
+		})
+	},
+	chartsClick11: function (e) {
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num11 == num) {
+			return false
+		} else {
+			that.setData({
+				num11: e.currentTarget.dataset.num
+			})
+		}
+		if (num == 1) {
+			that.getLineData1xse(1);
+		} else if (num == 2) {
+			that.getLineData1xse(2);
+		} else if (num == 3) {
+			that.getLineData1xse(3);
+
+		}
+		that.setData({
+			num11: e.currentTarget.dataset.num
+		})
+	},
+	chartsClick12: function (e) {
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num12 == num) {
+			return false
+		} else {
+			that.setData({
+				num12: e.currentTarget.dataset.num
+			})
+		}
+		if (num == 1) {
+			that.getLineData2xse(1);
+		} else if (num == 2) {
+			that.getLineData2xse(2);
+		} else if (num == 3) {
+			that.getLineData2xse(3);
+
+		}
+		that.setData({
+			num12: e.currentTarget.dataset.num
+		})
+	},
+	chartsClick13: function (e) {
+		var that = this;
+		var num = e.currentTarget.dataset.num;
+		if (that.data.num13 == num) {
+			return false
+		} else {
+			that.setData({
+				num13: e.currentTarget.dataset.num
+			})
+		}
+		if (num == 1) {
+			that.getLineData3xse(1);
+		} else if (num == 2) {
+			that.getLineData3xse(2);
+		} else if (num == 3) {
+			that.getLineData3xse(3);
+
+		}
+		that.setData({
+			num13: e.currentTarget.dataset.num
+		})
+	},
+	getLineDataxse(type) {
+		this.setData({
+			type10: type
+		})
+		util.ajax({
+			url: "data-analysis/api/passengerFlow/flwTonghuanRatioTrend?type=" + type,
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let {
+						currentDataList,
+						byDataList,
+						dataYearOnyearList
+					} = res.data;
+					lineChartData10.legendData = []
+					lineChartData10.xData = [];
+					lineChartData10.currentDataList = [];
+					lineChartData10.byDataList = [];
+					lineChartData10.dataYearOnyearList = [];
+					console.log(type, typeof type)
+					let obj = {
+						'1': '周一',
+						'2': '周二',
+						'3': '周三',
+						'4': '周四',
+						'5': '周五',
+						'6': '周六',
+						'0': '周日',
+					}
+					if (type == 1) {
+						// lineChartData10.legendData = ["上周", "本周", "去年同期"]
+						lineChartData10.legendData = ["本周", "上周", "去年同期"]
+					}
+					if (type == 2) {
+						// lineChartData10.legendData = ["上月", "本月", "去年同期"]
+						lineChartData10.legendData = ["本月", "上月", "去年同期"]
+					}
+					if (type == 3) {
+						lineChartData10.legendData = ["本年", "去年"]
+					}
+					let ln = currentDataList.length > 0 ? currentDataList : (byDataList.length > 0 ? byDataList : dataYearOnyearList);
+					console.log(ln)
+					for (let i = 0; i < ln.length; i++) {
+						// lineChartData10.xData.push(currentDataList[i].sdate +'/'+currentDataList.length);
+						if (type == 1) {
+							// lineChartData10.xData.push(obj[ln[i].sdate]);
+							// lineChartData10.currentDataList.push(currentDataList[i].count);
+							// lineChartData10.byDataList.push(byDataList[i].count);
+							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
+
+							lineChartData10.xData.push(obj[ln[i].sdate]);
+							let cur = currentDataList[i] ? currentDataList[i].count : 0;
+							lineChartData10.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].count : 0;
+							lineChartData10.byDataList.push(by);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].count : 0;
+							lineChartData10.dataYearOnyearList.push(yea);
+						}
+						if (type == 2) {
+
+							lineChartData10.xData.push(currentDataList[i].sdate.substring(8, 10) + '日');
+							lineChartData10.currentDataList.push(currentDataList[i].count);
+							lineChartData10.byDataList.push(byDataList[i].count);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].count : 0;
+							lineChartData10.dataYearOnyearList.push(yea);
+							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
+						}
+						if (type == 3) {
+							lineChartData10.xData.push(currentDataList[i].sdate.substring(5, 7) + '月');
+							lineChartData10.currentDataList.push(currentDataList[i].count);
+							lineChartData10.byDataList.push(byDataList[i].count);
+							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
+						}
+					}
+					console.log(currentDataList, byDataList, dataYearOnyearList)
+					console.log(lineChartData10)
+
+				}
+				let chartSet10 = function () {
+					if (chart10) {
+						chart10.setOption(initOption10())
+						// chart11.setOption(initOption10())
+						// chart12.setOption(initOption10())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet10();
+						}, 500)
+					}
+				}
+				chartSet10();
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getLineData1xse(type) {
+		this.setData({
+			type11: type
+		})
+		util.ajax({
+			url: "data-analysis/api/general/member/tonghuanRatioTrendMemberNum?type=" + type,
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let {
+						currentDataList,
+						byDataList,
+						dataYearOnyearList
+					} = res.data;
+					lineChartData11.legendData = []
+					lineChartData11.xData = [];
+					lineChartData11.currentDataList = [];
+					lineChartData11.byDataList = [];
+					lineChartData11.dataYearOnyearList = [];
+					console.log(type, typeof type)
+					let obj = {
+						'1': '周一',
+						'2': '周二',
+						'3': '周三',
+						'4': '周四',
+						'5': '周五',
+						'6': '周六',
+						'0': '周日',
+					}
+					if (type == 1) {
+						lineChartData11.legendData = ["本周", "上周", "去年同期"]
+					}
+					if (type == 2) {
+						lineChartData11.legendData = ["本月", "上月", "去年同期"]
+					}
+					if (type == 3) {
+						lineChartData11.legendData = ["本年", "去年"]
+					}
+					let ln = currentDataList.length > 0 ? currentDataList : (byDataList.length > 0 ? byDataList : dataYearOnyearList);
+					for (let i = 0; i < ln.length; i++) {
+						if (type == 1) {
+							lineChartData11.xData.push(obj[ln[i].date]);
+							let cur = currentDataList[i] ? currentDataList[i].numberOfMembers : 0;
+							lineChartData11.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].numberOfMembers : 0;
+							lineChartData11.byDataList.push(by);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].numberOfMembers : 0;
+							lineChartData11.dataYearOnyearList.push(yea);
+							// lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
+							// lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
+							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+						}
+						if (type == 2) {
+
+							lineChartData11.xData.push(currentDataList[i].date.substring(8, 10) + '日');
+							lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
+							lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].numberOfMembers : 0;
+							lineChartData11.dataYearOnyearList.push(yea);
+							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+						}
+						if (type == 3) {
+							lineChartData11.xData.push(currentDataList[i].date.substring(5, 7) + '月');
+							lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
+							lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
+							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+						}
+					}
+					console.log(currentDataList, byDataList, dataYearOnyearList)
+					console.log(lineChartData11)
+
+				}
+				let chartSet11 = function () {
+					if (chart11) {
+						chart11.setOption(initOption11())
+						// chart12.setOption(initOption10())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet11();
+						}, 500)
+					}
+				}
+				chartSet11();
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getLineData2xse(type) {
+		this.setData({
+			type12: type
+		})
+		util.ajax({
+			url: "data-analysis/api/parkingLotStatistics/tonghuanRatioTrendTrafficVolume?type=" + type,
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let {
+						currentDataList,
+						byDataList,
+						dataYearOnyearList
+					} = res.data;
+					lineChartData12.legendData = []
+					lineChartData12.xData = [];
+					lineChartData12.currentDataList = [];
+					lineChartData12.byDataList = [];
+					lineChartData12.dataYearOnyearList = [];
+					let obj = {
+						'1': '周一',
+						'2': '周二',
+						'3': '周三',
+						'4': '周四',
+						'5': '周五',
+						'6': '周六',
+						'0': '周日',
+					}
+					if (type == 1) {
+						lineChartData12.legendData = ["本周", "上周", "去年同期"]
+					}
+					if (type == 2) {
+						lineChartData12.legendData = ["本月", "上月", "去年同期"]
+					}
+					if (type == 3) {
+						lineChartData12.legendData = ["本年", "去年"]
+					}
+					let ln = currentDataList.length > 0 ? currentDataList : (byDataList.length > 0 ? byDataList : dataYearOnyearList);
+					for (let i = 0; i < ln.length; i++) {
+						if (type == 1) {
+							lineChartData12.xData.push(obj[ln[i].date]);
+							let cur = currentDataList[i] ? currentDataList[i].trafficVolume : 0;
+							lineChartData12.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].trafficVolume : 0;
+							lineChartData12.byDataList.push(by);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].trafficVolume : 0;
+							lineChartData12.dataYearOnyearList.push(yea);
+						}
+						if (type == 2) {
+
+							lineChartData12.xData.push(currentDataList[i].date.substring(8, 10) + '日');
+							lineChartData12.currentDataList.push(currentDataList[i].trafficVolume);
+							lineChartData12.byDataList.push(byDataList[i].trafficVolume);
+							// lineChartData12.dataYearOnyearList.push(dataYearOnyearList[i].trafficVolume);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].trafficVolume : 0;
+							lineChartData12.dataYearOnyearList.push(yea);
+						}
+						if (type == 3) {
+							lineChartData12.xData.push(currentDataList[i].date.substring(5, 7) + '月');
+							let cur = currentDataList[i] ? currentDataList[i].trafficVolume : 0;
+							let by = byDataList[i] ? byDataList[i].trafficVolume : 0;
+							lineChartData12.currentDataList.push(cur);
+							lineChartData12.byDataList.push(by);
+							// lineChartData12.dataYearOnyearList.push(dataYearOnyearList[i].trafficVolume);
+						}
+					}
+					console.log(currentDataList, byDataList, dataYearOnyearList)
+					console.log(lineChartData12)
+
+				}
+				let chartSet12 = function () {
+					if (chart12) {
+						chart12.setOption(initOption12())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet12();
+						}, 500)
+					}
+				}
+				chartSet12();
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getLineData3xse(type) {
+		this.setData({
+			type13: type
+		})
+		util.ajax({
+			url: "data-analysis/api/sg/cashRegisterDataIsTheSameAsTheTrend?type=" + type,
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let {
+						currentDataList,
+						byDataList,
+						dataYearOnyearList
+					} = res.data;
+					lineChartData13.legendData = []
+					lineChartData13.xData = [];
+					lineChartData13.currentDataList = [];
+					lineChartData13.byDataList = [];
+					lineChartData13.dataYearOnyearList = [];
+					let obj = {
+						'1': '周一',
+						'2': '周二',
+						'3': '周三',
+						'4': '周四',
+						'5': '周五',
+						'6': '周六',
+						'0': '周日',
+					}
+					if (type == 1) {
+						lineChartData13.legendData = ["本周", "上周", "去年同期"]
+					}
+					if (type == 2) {
+						lineChartData13.legendData = ["本月", "上月", "去年同期"]
+					}
+					if (type == 3) {
+						lineChartData13.legendData = ["本年", "去年"]
+					}
+					let ln = currentDataList.length > 0 ? currentDataList : (byDataList.length > 0 ? byDataList : dataYearOnyearList);
+					for (let i = 0; i < ln.length; i++) {
+						if (type == 1) {
+							lineChartData13.xData.push(obj[ln[i].time]);
+							let cur = currentDataList[i] ? currentDataList[i].sales : 0;
+							lineChartData13.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].sales : 0;
+							lineChartData13.byDataList.push(by);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].sales : 0;
+							lineChartData13.dataYearOnyearList.push(yea);
+						}
+						if (type == 2) {
+
+							lineChartData13.xData.push(currentDataList[i].time.substring(6, 8) + '日');
+							lineChartData13.currentDataList.push(currentDataList[i].sales);
+							lineChartData13.byDataList.push(byDataList[i].sales);
+							// lineChartData13.dataYearOnyearList.push(dataYearOnyearList[i].sales);
+							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].sales : 0;
+							lineChartData13.dataYearOnyearList.push(yea);
+						}
+						if (type == 3) {
+							lineChartData13.xData.push(currentDataList[i].time.substring(5, 7) + '月');
+							let cur = currentDataList[i] ? currentDataList[i].sales : 0;
+							let by = byDataList[i] ? byDataList[i].sales : 0;
+							lineChartData13.currentDataList.push(cur);
+							lineChartData13.byDataList.push(by);
+							// lineChartData13.dataYearOnyearList.push(dataYearOnyearList[i].sales);
+						}
+					}
+					console.log(currentDataList, byDataList, dataYearOnyearList)
+					console.log(lineChartData13)
+
+				}
+				let chartSet13 = function () {
+					if (chart13) {
+						chart13.setOption(initOption13())
+						console.log('set chart')
+					} else {
+						setTimeout(() => {
+							console.log("chart is null")
+							chartSet13();
+						}, 500)
+					}
+				}
+				chartSet13();
+				wx.hideLoading();
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
 	},
 	onChange(e) {
-		let arr = ['weui-tabs-swiper','weui-tabs-swiper1','weui-tabs-swiper','weui-tabs-swiper2','weui-tabs-swiper']
+		let arr = ['weui-tabs-swiper', 'weui-tabs-swiper1', 'weui-tabs-swiper2', 'weui-tabs-swiper2', 'weui-tabs-swiper2']
+		// wx.pageScrollTo({
+		// 	scrollTop: this.data.scrollTop+2
+		// })
 		let i = e.detail.index
-		console.log(e.detail.index)
 		this.setData({
-			swiperClass:arr[i]
+			swiperClass: arr[i],
+			idx: i
 		})
+		setTimeout(() => {
+
+			if (i == 0) {
+				this.getLineDataxse(this.data.type10)
+			}
+			if (i == 1) {
+				this.getLineData1xse(this.data.type11)
+			}
+			if (i == 2) {
+				this.getLineData2xse(this.data.type12)
+			}
+			if (i == 3) {
+				this.getLineData3xse(this.data.type13)
+			}
+		}, 200)
 
 	},
 
@@ -440,21 +1006,26 @@ Page({
 		// this.getCarData1();
 		// this.getBMData();
 		this.getBMData1();
+		this.getLineDataxse(1);
+		this.getLineData1xse(1);
 		// this.getLineData();
 		// this.getLineData1();
 		// this.drawLeasePie();
 		const titles = ['keliu', 'huiyuan', 'chechang', 'shouyin', 'shangguan'];
 		const title = ['客流', '会员', '车场', '收银', '商管']
-    const tabs = titles.map((item,index) => ({title: item,
-      // url:getApp().globalData.baseUrl+'客流.png'}))
-      url:'../../images/'+item+'.png',
-			url1:'../../images/'+item+'1.png',
-			title:title[index]
+		const tabs = titles.map((item, index) => ({
+			title: item,
+			// url:getApp().globalData.baseUrl+'客流.png'}))
+			url: '../../images/' + item + '.png',
+			url1: '../../images/' + item + '1.png',
+			title: title[index]
 		}))
 		let dataInfo = {
 
 		}
-    this.setData({tabs})
+		this.setData({
+			tabs
+		})
 	},
 	getConsumptionData: function (e) {
 		util.ajax({
@@ -464,19 +1035,19 @@ Page({
 				if (res.success) {
 					let data = res.data;
 					this.setData({
-						todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
+						todaySales: data.todaySales > 10000 ? (res.data.todaySales / 10000).toFixed(2) : res.data.todaySales,
 						todaySales1: data.todaySales,
 						weekSales: data.weekSales,
 						monthSales: data.monthSales
 					})
-					console.log(this.data.todaySales,typeof this.data.todaySales,this.data.todaySales1,typeof this.data.todaySales1)
+					console.log(this.data.todaySales, typeof this.data.todaySales, this.data.todaySales1, typeof this.data.todaySales1)
 					this.setData({
-						dataAllSales:{
-							todaySales: data.todaySales > 10000? (res.data.todaySales/10000).toFixed(2):res.data.todaySales,
-							weekSales: data.weekSales > 10000? (res.data.weekSales/10000).toFixed(2):res.data.weekSales,
-							monthSales: data.monthSales > 10000? (res.data.monthSales/10000).toFixed(2):res.data.monthSales,
-							monthCustomerPrice:data.monthCustomerPrice > 10000? (res.data.monthCustomerPrice/10000).toFixed(2):res.data.monthCustomerPrice,
-							yearSales:data.yearSales > 10000? (res.data.yearSales/10000).toFixed(2):res.data.yearSales,
+						dataAllSales: {
+							todaySales: data.todaySales > 10000 ? (res.data.todaySales / 10000).toFixed(2) : res.data.todaySales,
+							weekSales: data.weekSales,
+							monthSales: data.monthSales,
+							monthCustomerPrice: data.monthCustomerPrice > 10000 ? (res.data.monthCustomerPrice / 10000).toFixed(2) : res.data.monthCustomerPrice,
+							yearSales: data.yearSales,
 						}
 					})
 				}
@@ -500,9 +1071,9 @@ Page({
 						totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
 					})
 					this.setData({
-						dataAllMember:{
+						dataAllMember: {
 							totalNumberOfMembers: parseFloat(res.data.totalNumberOfMembers).toLocaleString(),
-							totalNumberOfMembers: res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers,
+							totalNumberOfMembers: res.data.totalNumberOfMembers > 10000 ? (res.data.totalNumberOfMembers / 10000).toFixed(2) : res.data.totalNumberOfMembers,
 							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers,
@@ -523,9 +1094,9 @@ Page({
 			success: res => {
 				if (res.success) {
 					this.setData({
-						totalNewMumber:  res.data.totalNumberOfMembers
+						totalNewMumber: res.data.totalNumberOfMembers
 					})
-					console.log(3333333333,res.data.totalNumberOfMembers)
+					console.log(3333333333, res.data.totalNumberOfMembers)
 				}
 				wx.hideLoading();
 			},
@@ -547,16 +1118,16 @@ Page({
 						yearPassengerFlow: res.data.yearPassengerFlow,
 					})
 					this.setData({
-						dataAllFlow:{
+						dataAllFlow: {
 							// dayPassengerFlow: parseFloat(res.data.dayPassengerFlow).toLocaleString(),
-							dayPassengerFlow: res.data.dayPassengerFlow>10000?(res.data.dayPassengerFlow/10000).toFixed(2):res.data.dayPassengerFlow,
+							dayPassengerFlow: res.data.dayPassengerFlow > 10000 ? (res.data.dayPassengerFlow / 10000).toFixed(2) : res.data.dayPassengerFlow,
 							dayPassengerFlow11: res.data.dayPassengerFlow,
 							weekPassengerFlow: res.data.weekPassengerFlow,
 							monthPassengerFlow: res.data.monthPassengerFlow,
 							yearPassengerFlow: res.data.yearPassengerFlow,
 						}
 					})
-					console.log(444444444,this.data.dataAllFlow,this.dataAllFlow)
+					console.log(444444444, this.data.dataAllFlow, this.dataAllFlow)
 				}
 				wx.hideLoading();
 			},
@@ -588,7 +1159,7 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					console.log('总车位：'+res.data.totalSpace)
+					console.log('总车位：' + res.data.totalSpace)
 					this.setData({
 						totalSpace: res.data.totalSpace
 					})
@@ -618,42 +1189,6 @@ Page({
 			}
 		})
 	},
-	getBMData: function (e) {
-		wx.request({
-			url: app.globalData.baseUrlOP + 'rest/sgsdbi/countrentarea',
-			dataType: 'json',
-			data: JSON.stringify({
-				apiKey: "STANDRAD"
-			}),
-			header: {
-				"content-type": 'application/json'
-			},
-			method: "POST",
-			success: res => {
-				if (res.data.success) {
-					areaTotal = res.data.data.areaTotal,
-						rentedAreaTotal = res.data.data.rentedAreaTotal
-				}
-				let chartSet = function () {
-					if (chart2) {
-						console.log(chart2)
-						chart2.setOption(initOption2())
-						console.log('set chart')
-					} else {
-						setTimeout(() => {
-							console.log("chart is null")
-							chartSet();
-						}, 500)
-					}
-				}
-				chartSet();
-				wx.hideLoading();
-			},
-			fail: error => {
-				wx.hideLoading();
-			}
-		})
-	},
 	getBMData1: function (e) {
 		wx.request({
 			url: app.globalData.baseUrlOP + 'rest/sgsdbi/countincome',
@@ -674,13 +1209,13 @@ Page({
 							this.setData({
 								shoundAmount: res.data.dateStatistic[i].shoundAmount,
 								receivableAmount: res.data.dateStatistic[i].receivableAmount,
-								marketRevenue:res.data.dateStatistic[i].mallShoundAmount,
-								blockIncome:res.data.dateStatistic[i].squareShoundAmount,
-								dataAllMarket:{
+								marketRevenue: res.data.dateStatistic[i].mallShoundAmount,
+								blockIncome: res.data.dateStatistic[i].squareShoundAmount,
+								dataAllMarket: {
 									shoundAmount: res.data.dateStatistic[i].shoundAmount,
 									receivableAmount: res.data.dateStatistic[i].receivableAmount,
-									marketRevenue:res.data.dateStatistic[i].mallShoundAmount,
-									blockIncome:res.data.dateStatistic[i].squareShoundAmount,
+									marketRevenue: res.data.dateStatistic[i].mallShoundAmount,
+									blockIncome: res.data.dateStatistic[i].squareShoundAmount,
 								}
 							})
 						}

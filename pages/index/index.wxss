@@ -80,7 +80,7 @@ page {
 .revenue-list {
 	width: 100%;
 	min-height: 200rpx;
-	background-color: #293c4b;
+	/* background-color: #293c4b; */
 	border-radius: 5px;
 	overflow: hidden;
 	margin-top: 50rpx;
@@ -116,7 +116,7 @@ page {
 }
 .echarts-con {
 	width: 100%;
-	height: 400rpx;
+	height: 600rpx;
 }
 .charts-tm {
 	width: 100%;
@@ -331,7 +331,7 @@ page{
 
 .weui-tabs-swiper {
 	width: 100%;
-	height:585px;
+	height:480px;
 }
 .weui-tabs-swiper1 {
 	width: 100%;
@@ -339,7 +339,7 @@ page{
 }
 .weui-tabs-swiper2 {
 	width: 100%;
-	height: 600px;
+	height: 580px;
 }
 .weui-tabs-swiper3 {
 	width: 100%;
@@ -380,4 +380,65 @@ page{
 	background-color: #e5004f;
 }
 
+.warp {
+	width: 90%;
+	position: relative;
+	/* padding: 25rpx; */
+	margin:0 auto;
+	margin-bottom: 20rpx;
+}
+.klmb {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.revenue {
+	width: 100%;
+	min-height: 200rpx;
+	margin: 20rpx auto 0;
+}
+.revenue-list {
+	width: 92%;
+	min-height: 200rpx;
+	/* background-color: #293c4b; */
+	border-radius: 5px;
+	overflow: hidden;
+	margin-top: 30rpx;
+	padding: 30rpx 4%;
+	position: relative;
+	z-index: 1;
+}
+.revenue-top {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	/* margin-bottom: 50rpx; */
+}
+.top-li {
+	width: 50%;
+	font-size: 28rpx;
+	color: #2c324d;
+	text-align: center;
+	padding: 20rpx 0;
+}
+.top-li.cur text {
+	color: #e5004f;
+	border-bottom: 1px solid #e5004f;
+	display: inline-block;
+	padding-bottom: 5rpx;
+}
+.top-nav {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
 
+.charttext {
+	position: absolute;
+    top: -30px;
+    z-index: 10000;
+}

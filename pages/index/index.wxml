@@ -2,10 +2,100 @@
 <wxs module="filters" src="../../utils/utils.wxs"></wxs>
 <view class="content">
 	<navBar title='首页' background='#e3e7f5' back="{{false}}"></navBar>
-	<mp-tabs tabs="{{tabs}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}" dataAllMember="{{dataAllMember}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}" todaySales1="{{todaySales1}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" swiperClass="{{swiperClass}}" bindtabclick="onTabCLick"
-		bindchange="onChange" activeClass="tab-bar-title__selected">
+	<mp-tabs tabs="{{tabs}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}"
+		dataAllMember="{{dataAllMember}}" ec10="{{ec10}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}"
+		todaySales1="{{todaySales1}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" swiperClass="{{swiperClass}}"
+		bindtabclick="onTabCLick" bindchange="onChange" activeClass="tab-bar-title__selected">
 		<block wx:for="{{tabs}}" wx:key="title">
 			<view class="tab-content" slot="tab-content-{{index}}"> {{item.title}} </view>
 		</block>
 	</mp-tabs>
+	<!-- <view hidden='{{idx!==0}}' class="warp"> -->
+	<view wx:if="{{idx==0}}" class="warp">
+		<view class="charttext">客流环同比分析</view>
+		<image class="klmb" src="../../images/klmb.png"></image>
+		<view class="revenue">
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num10==1?'cur':''}}" data-num="1" bindtap="chartsClick10"><text
+							bindtap="chartsClick10">周</text></view>
+					<view class="top-li {{num10==2?'cur':''}}" data-num="2" bindtap="chartsClick10"><text
+							bindtap="chartsClick10">月</text></view>
+					<view class="top-li {{num10==3?'cur':''}}" data-num="3" bindtap="chartsClick10"><text
+							bindtap="chartsClick10">年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas wx:if="{{idx==0}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec10 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- <view hidden='{{idx!==1}}' class="warp"> -->
+	<view wx:if="{{idx==1}}" class="warp">
+		<view class="charttext">会员环同比分析</view>
+		<image class="klmb" src="../../images/klmb.png"></image>
+		<view class="revenue">
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num11==1?'cur':''}}" data-num="1" bindtap="chartsClick11"><text
+							bindtap="chartsClick11">周</text></view>
+					<view class="top-li {{num11==2?'cur':''}}" data-num="2" bindtap="chartsClick11"><text
+							bindtap="chartsClick11">月</text></view>
+					<view class="top-li {{num11==3?'cur':''}}" data-num="3" bindtap="chartsClick11"><text
+							bindtap="chartsClick11">年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas wx:if="{{idx==1}}" id="mychart-dom-line1" canvas-id="mychart-line1" ec="{{ ec11 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- <view hidden='{{idx!==2}}' class="warp"> -->
+	<view wx:if="{{idx==2}}" class="warp">
+		<view class="charttext">车流量环同比分析</view>
+		<image class="klmb" src="../../images/klmb.png"></image>
+		<view class="revenue">
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num12==1?'cur':''}}" data-num="1" bindtap="chartsClick12"><text
+							bindtap="chartsClick12">周</text></view>
+					<view class="top-li {{num12==2?'cur':''}}" data-num="2" bindtap="chartsClick12"><text
+							bindtap="chartsClick12">月</text></view>
+					<view class="top-li {{num12==3?'cur':''}}" data-num="3" bindtap="chartsClick12"><text
+							bindtap="chartsClick12">年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas wx:if="{{idx==2}}" id="mychart-dom-line2" canvas-id="mychart-line2" ec="{{ ec12 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- <view hidden='{{idx!==2}}' class="warp"> -->
+	<view wx:if="{{idx==3}}" class="warp">
+		<view class="charttext">收银环同比分析</view>
+		<image class="klmb" src="../../images/klmb.png"></image>
+		<view class="revenue">
+			<view class="revenue-list">
+				<view class="revenue-top">
+					<view class="top-li {{num13==1?'cur':''}}" data-num="1" bindtap="chartsClick13"><text
+							bindtap="chartsClick13">周</text></view>
+					<view class="top-li {{num13==2?'cur':''}}" data-num="2" bindtap="chartsClick13"><text
+							bindtap="chartsClick13">月</text></view>
+					<view class="top-li {{num13==3?'cur':''}}" data-num="3" bindtap="chartsClick13"><text
+							bindtap="chartsClick13">年</text></view>
+				</view>
+				<view class="charts-con">
+					<view class="echarts-con">
+						<ec-canvas wx:if="{{idx==3}}" id="mychart-dom-line3" canvas-id="mychart-line3" ec="{{ ec13 }}"></ec-canvas>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </view>

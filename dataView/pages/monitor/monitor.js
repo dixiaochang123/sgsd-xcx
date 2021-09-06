@@ -687,6 +687,9 @@ Page({
 					console.log(4444444444444444,res.data)
 					// 环比增长率=（本期数-上期数）/上期数×100%
 						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
+						if(res.data.thisPeriodOfData==null) {
+							res.data.thisPeriodOfData = 0
+						}
 					let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
 					let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
 					if(num==1) {

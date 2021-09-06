@@ -340,7 +340,8 @@ function initOptions1() {
 			},
 			emphasis: {
 				label: {
-					color: "#e5004f"
+					color: "#e5004f",
+					fontSize:8
 				},
 				itemStyle: {
 					color: "#e5004f"
@@ -596,13 +597,15 @@ Page({
 		},
 		leasePercent: 0.25,
 		todaySales: [],
-		weekSales: [],
+		weekSales: 0,
+		weekSales1: 0,
 		monthSales: [],
 		customerPrice: [],
 		floorList: [],
 		formatList: [],
 		yearSales: '',
 		weekCustomerPrice: '',
+		weekCustomerPrice1: '',
 		monthCustomerPrice: '',
 		yearCustomerPrice: '',
 		zhb: '',
@@ -686,13 +689,16 @@ Page({
 						todaySales: data.todaySales > 10000 ? (data.todaySales / 10000).toFixed(2) : data.todaySales,
 						todaySales1: data.todaySales,
 						weekSales: data.weekSales > 10000 ? (data.weekSales / 10000).toFixed(2) : data.weekSales,
+						weekSales1: data.weekSales,
 						monthSales: data.monthSales > 10000 ? (data.monthSales / 10000).toFixed(2) : data.monthSales,
 						customerPrice: data.customerPrice > 10000 ? (data.customerPrice / 10000).toFixed(2) : data.customerPrice,
 						yearSales: data.yearSales > 10000 ? (data.yearSales / 10000).toFixed(2) : data.yearSales,
 						weekCustomerPrice: data.weekCustomerPrice > 10000 ? (data.weekCustomerPrice / 10000).toFixed(2) : data.weekCustomerPrice,
+						weekCustomerPrice1: data.weekCustomerPrice,
 						monthCustomerPrice: data.monthCustomerPrice > 10000 ? (data.monthCustomerPrice / 10000).toFixed(2) : data.monthCustomerPrice,
 						yearCustomerPrice: data.yearCustomerPrice > 10000 ? (data.yearCustomerPrice / 10000).toFixed(2) : data.yearCustomerPrice,
 					})
+					console.log(this.data.weekSales1)
 				}
 				wx.hideLoading();
 			},
