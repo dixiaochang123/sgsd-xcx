@@ -17,7 +17,7 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周销售</view>
-				<view class="number-dd">{{weekSales}}<text>万元</text></view>
+				<view class="number-dd">{{weekSales}}<text wx:if="{{weekSales1>10000}}">万元</text><text wx:else>元</text></view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_1.png" mode="widthFix"></image>
@@ -26,7 +26,7 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本周客单</view>
-				<view class="number-dd">{{weekCustomerPrice}}<text>元</text></view>
+				<view class="number-dd">{{weekCustomerPrice}}<text wx:if="{{weekCustomerPrice1>10000}}">万元</text><text wx:else>元</text></view>
 			</view>
 		</view>
 	</view>
@@ -50,7 +50,7 @@
       <view class="number-li number-li1">
           <view class="number-dl">
             <view class="number-dt">本周销售</view>
-            <view class="number-dd">{{weekSales}}<text wx:if="{{weekSales1>10000}}">万元</text><text wx:ielse>元</text></view>
+            <view class="number-dd">{{weekSales}}<text wx:if="{{weekSales1>10000}}">万元</text><text wx:else>元</text></view>
           </view>
         </view>
 			</view>

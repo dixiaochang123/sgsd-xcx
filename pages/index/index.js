@@ -12,6 +12,7 @@ let lineChartData10 = {
 	currentDataList: [], //上周
 	byDataList: [], //本周
 	dataYearOnyearList: [], //去年同期
+	dataZoom: [],
 }
 let lineChartData11 = {
 	xData: [],
@@ -19,6 +20,7 @@ let lineChartData11 = {
 	currentDataList: [], //上周
 	byDataList: [], //本周
 	dataYearOnyearList: [], //去年同期
+	dataZoom: [],
 }
 let lineChartData12 = {
 	xData: [],
@@ -26,6 +28,7 @@ let lineChartData12 = {
 	currentDataList: [], //上周
 	byDataList: [], //本周
 	dataYearOnyearList: [], //去年同期
+	dataZoom: [],
 }
 let lineChartData13 = {
 	xData: [],
@@ -33,6 +36,7 @@ let lineChartData13 = {
 	currentDataList: [], //上周
 	byDataList: [], //本周
 	dataYearOnyearList: [], //去年同期
+	dataZoom: [],
 }
 
 function initOption10() {
@@ -58,6 +62,7 @@ function initOption10() {
 			align: 'right',
 		},
 		calculable: true,
+		dataZoom:lineChartData10.dataZoom,
 		xAxis: [{
 			type: "category",
 			data: lineChartData10.xData,
@@ -151,6 +156,7 @@ function initOption11() {
 			align: 'right',
 		},
 		calculable: true,
+		dataZoom:lineChartData11.dataZoom,
 		xAxis: [{
 			type: "category",
 			data: lineChartData11.xData,
@@ -240,6 +246,7 @@ function initOption12() {
 			align: 'right',
 		},
 		calculable: true,
+		dataZoom:lineChartData12.dataZoom,
 		xAxis: [{
 			type: "category",
 			data: lineChartData12.xData,
@@ -332,6 +339,7 @@ function initOption13() {
 			align: 'right',
 		},
 		calculable: true,
+		dataZoom:lineChartData13.dataZoom,
 		xAxis: [{
 			type: "category",
 			data: lineChartData13.xData,
@@ -493,6 +501,8 @@ Page({
 		num13: 1,
 		type13: 1,
 
+		power:{}
+
 	},
 	onPageScroll: function (e) {
 		// console.log('滚动条高度',e.scrollTop)
@@ -633,11 +643,6 @@ Page({
 					for (let i = 0; i < ln.length; i++) {
 						// lineChartData10.xData.push(currentDataList[i].sdate +'/'+currentDataList.length);
 						if (type == 1) {
-							// lineChartData10.xData.push(obj[ln[i].sdate]);
-							// lineChartData10.currentDataList.push(currentDataList[i].count);
-							// lineChartData10.byDataList.push(byDataList[i].count);
-							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
-
 							lineChartData10.xData.push(obj[ln[i].sdate]);
 							let cur = currentDataList[i] ? currentDataList[i].count : 0;
 							lineChartData10.currentDataList.push(cur);
@@ -645,21 +650,51 @@ Page({
 							lineChartData10.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].count : 0;
 							lineChartData10.dataYearOnyearList.push(yea);
+							lineChartData10.dataZoom = []
 						}
 						if (type == 2) {
-
-							lineChartData10.xData.push(currentDataList[i].sdate.substring(8, 10) + '日');
-							lineChartData10.currentDataList.push(currentDataList[i].count);
-							lineChartData10.byDataList.push(byDataList[i].count);
+							let sdate = currentDataList[i].sdate.substring(8, 10);
+							if(sdate.substr(0, 1)) {
+								if(sdate.substr(0, 1)=='0') {
+									sdate = sdate.substr(1, 2) + '日'
+								} else {
+									sdate = sdate.substr(0, 2) + '日'
+								}
+							}
+							lineChartData10.xData.push(sdate);
+							let cur = currentDataList[i] ? currentDataList[i].count : 0;
+							let by = byDataList[i] ? byDataList[i].count : 0;
+							lineChartData10.currentDataList.push(cur);
+							lineChartData10.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].count : 0;
 							lineChartData10.dataYearOnyearList.push(yea);
 							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
+							lineChartData10.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData10.xData.length - 5,
+								endValue: lineChartData10.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 						if (type == 3) {
-							lineChartData10.xData.push(currentDataList[i].sdate.substring(5, 7) + '月');
+							let sdate = currentDataList[i].sdate.substring(5, 7);
+							if(sdate.substr(0, 1)) {
+								if(sdate.substr(0, 1)=='0') {
+									sdate = sdate.substr(1, 2) + '月'
+								} else {
+									sdate = sdate.substr(0, 2) + '月'
+								}
+							}
+							lineChartData10.xData.push(sdate);
 							lineChartData10.currentDataList.push(currentDataList[i].count);
 							lineChartData10.byDataList.push(byDataList[i].count);
 							// lineChartData10.dataYearOnyearList.push(dataYearOnyearList[i].count);
+							lineChartData10.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData10.xData.length - 5,
+								endValue: lineChartData10.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 					}
 					console.log(currentDataList, byDataList, dataYearOnyearList)
@@ -738,21 +773,45 @@ Page({
 							// lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
 							// lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
 							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+							lineChartData11.dataZoom = []
 						}
 						if (type == 2) {
-
-							lineChartData11.xData.push(currentDataList[i].date.substring(8, 10) + '日');
+							let date = currentDataList[i].date.substring(8, 10);
+							if(date.substr(0, 1)=='0') {
+								date = date.substr(1, 2) + '日'
+							} else {
+								date = date.substr(0, 2) + '日'
+							}
+							lineChartData11.xData.push(date);
 							lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
 							lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].numberOfMembers : 0;
 							lineChartData11.dataYearOnyearList.push(yea);
 							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+							lineChartData11.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData11.xData.length - 5,
+								endValue: lineChartData11.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 						if (type == 3) {
-							lineChartData11.xData.push(currentDataList[i].date.substring(5, 7) + '月');
+							let date = currentDataList[i].date.substring(5, 7);
+							if(date.substr(0, 1)=='0') {
+								date = date.substr(1, 2) + '月'
+							} else {
+								date = date.substr(0, 2) + '月'
+							}
+							lineChartData11.xData.push(date);
 							lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
 							lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
 							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
+							lineChartData11.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData11.xData.length - 5,
+								endValue: lineChartData11.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 					}
 					console.log(currentDataList, byDataList, dataYearOnyearList)
@@ -826,23 +885,47 @@ Page({
 							lineChartData12.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].trafficVolume : 0;
 							lineChartData12.dataYearOnyearList.push(yea);
+							lineChartData12.dataZoom = []
 						}
 						if (type == 2) {
-
-							lineChartData12.xData.push(currentDataList[i].date.substring(8, 10) + '日');
+							let date = currentDataList[i].date.substring(8, 10);
+							if(date.substr(0, 1)=='0') {
+								date = date.substr(1, 2) + '日'
+							} else {
+								date = date.substr(0, 2) + '日'
+							}
+							lineChartData12.xData.push(date);
 							lineChartData12.currentDataList.push(currentDataList[i].trafficVolume);
 							lineChartData12.byDataList.push(byDataList[i].trafficVolume);
 							// lineChartData12.dataYearOnyearList.push(dataYearOnyearList[i].trafficVolume);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].trafficVolume : 0;
 							lineChartData12.dataYearOnyearList.push(yea);
+							lineChartData12.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData12.xData.length - 5,
+								endValue: lineChartData12.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 						if (type == 3) {
-							lineChartData12.xData.push(currentDataList[i].date.substring(5, 7) + '月');
+							let date = currentDataList[i].date.substring(5, 7);
+							if(date.substr(0, 1)=='0') {
+								date = date.substr(1, 2) + '月'
+							} else {
+								date = date.substr(0, 2) + '月'
+							}
+							lineChartData12.xData.push(date);
 							let cur = currentDataList[i] ? currentDataList[i].trafficVolume : 0;
 							let by = byDataList[i] ? byDataList[i].trafficVolume : 0;
 							lineChartData12.currentDataList.push(cur);
 							lineChartData12.byDataList.push(by);
 							// lineChartData12.dataYearOnyearList.push(dataYearOnyearList[i].trafficVolume);
+							lineChartData12.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData12.xData.length - 5,
+								endValue: lineChartData12.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 					}
 					console.log(currentDataList, byDataList, dataYearOnyearList)
@@ -915,23 +998,47 @@ Page({
 							lineChartData13.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].sales : 0;
 							lineChartData13.dataYearOnyearList.push(yea);
+							lineChartData13.dataZoom = []
 						}
 						if (type == 2) {
-
-							lineChartData13.xData.push(currentDataList[i].time.substring(6, 8) + '日');
+							let time = currentDataList[i].time.substring(6, 8);
+							if(time.substr(0, 1)=='0') {
+								time = time.substr(1, 2) + '日'
+							} else {
+								time = time.substr(0, 2) + '日'
+							}
+							lineChartData13.xData.push(time);
 							lineChartData13.currentDataList.push(currentDataList[i].sales);
 							lineChartData13.byDataList.push(byDataList[i].sales);
 							// lineChartData13.dataYearOnyearList.push(dataYearOnyearList[i].sales);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].sales : 0;
 							lineChartData13.dataYearOnyearList.push(yea);
+							lineChartData13.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData13.xData.length - 5,
+								endValue: lineChartData13.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 						if (type == 3) {
-							lineChartData13.xData.push(currentDataList[i].time.substring(5, 7) + '月');
+							let time = currentDataList[i].time.substring(4, 6);
+							if(time.substr(0, 1)=='0') {
+								time = time.substr(1, 2) + '月'
+							} else {
+								time = time.substr(0, 2) + '月'
+							}
+							lineChartData13.xData.push(time);
 							let cur = currentDataList[i] ? currentDataList[i].sales : 0;
 							let by = byDataList[i] ? byDataList[i].sales : 0;
 							lineChartData13.currentDataList.push(cur);
 							lineChartData13.byDataList.push(by);
 							// lineChartData13.dataYearOnyearList.push(dataYearOnyearList[i].sales);
+							lineChartData13.dataZoom = [{
+								type: "inside",
+								startValue: lineChartData13.xData.length - 5,
+								endValue: lineChartData13.xData.length - 1,
+								zoomLock: true
+							}]
 						}
 					}
 					console.log(currentDataList, byDataList, dataYearOnyearList)
@@ -1011,21 +1118,56 @@ Page({
 		// this.getLineData();
 		// this.getLineData1();
 		// this.drawLeasePie();
-		const titles = ['keliu', 'huiyuan', 'chechang', 'shouyin', 'shangguan'];
-		const title = ['客流', '会员', '车场', '收银', '商管']
-		const tabs = titles.map((item, index) => ({
-			title: item,
-			// url:getApp().globalData.baseUrl+'客流.png'}))
-			url: '../../images/' + item + '.png',
-			url1: '../../images/' + item + '1.png',
-			title: title[index]
-		}))
-		let dataInfo = {
+		let titless = [{
+			title:'客流',
+			name:'keliu',
+			code:'frontPagePassengerFlow',
+		},{
+			title:'会员',
+			name:'huiyuan',
+			code:'frontPageMember',
+		},{
+			title:'车场',
+			name:'chechang',
+			code:'frontPageGreenhouse',
+		},{
+			title:'收银',
+			name:'shouyin',
+			code:'frontPageCashier',
+		},{
+			title:'商管',
+			name:'shangguan',
+			code:'frontPageCommercialManagement',
+		}]
+		setTimeout(()=>{
 
-		}
-		this.setData({
-			tabs
-		})
+			console.log('用户权限信息',app.globalData,app.globalData.power)
+			if(!app.globalData.power.frontPagePassengerFlow) {
+				titless = titless.filter(item=>item.title!=='客流')
+			}
+			if(!app.globalData.power.frontPageMember) {
+				titless = titless.filter(item=>item.title!=='会员')
+			}
+			if(!app.globalData.power.frontPageGreenhouse) {
+				titless = titless.filter(item=>item.title!=='车场')
+			}
+			if(!app.globalData.power.frontPageCashier) {
+				titless = titless.filter(item=>item.title!=='收银')
+			}
+			if(!app.globalData.power.frontPageCommercialManagement) {
+				titless = titless.filter(item=>item.title!=='商管')
+			}
+			const tabs = titless.map((item, index) => ({
+				title: item.title,
+				url: '../../images/' + item.name + '.png',
+				url1: '../../images/' + item.name + '1.png',
+			}))
+	
+			this.setData({
+				tabs,
+				power:app.globalData.power
+			})
+		},500)
 	},
 	getConsumptionData: function (e) {
 		util.ajax({
@@ -1274,6 +1416,17 @@ Page({
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
+		let that = this;
+		that.setData({
+			num10: 1,
+			type10: 1,
+			num11: 1,
+			type11: 1,
+			num12: 1,
+			type12: 1,
+			num13: 1,
+			type13: 1,
+		})
 
 	},
 

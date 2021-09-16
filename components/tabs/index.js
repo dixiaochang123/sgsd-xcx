@@ -122,6 +122,7 @@ Component({
         todaySales1:{ type: Number, value: 0 },
         totalSpace:{ type: Number, value: 0 },
         ec10:{type: Object, value: {}},
+        power:{type: Object, value: {}},
     },
     data: {
         currentView: 0,
@@ -209,7 +210,7 @@ Component({
         },
         dataAllSales: function dataAllSales(val) {
             this.setData({
-                salesdata:this.data.dataAllSales.weekSales,
+                salesdata:this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
                 salesdata1:this.data.dataAllSales.weekSales,
                 // totalNewMumber:this.data.dataAllSales.totalNewMumber,
                 monthCustomerPrice:this.data.dataAllSales.monthCustomerPrice
