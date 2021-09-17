@@ -1,4 +1,4 @@
-- 管理层小程序 project 结构
+## MBO project 结构
 ```
 sgsd-xcx
 ├─ .DS_Store
