@@ -4,14 +4,14 @@
 	<navBar title='首页' background='#e3e7f5' back="{{false}}"></navBar>
 	<mp-tabs tabs="{{tabs}}" power="{{power}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}"
 		dataAllMember="{{dataAllMember}}" ec10="{{ec10}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}"
-		todaySales1="{{todaySales1}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" swiperClass="{{swiperClass}}"
+		todaySales1="{{todaySales1}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" dataId="{{dataId}}" swiperClass="{{swiperClass}}"
 		bindtabclick="onTabCLick" bindchange="onChange" activeClass="tab-bar-title__selected">
 		<block wx:for="{{tabs}}" wx:key="title">
 			<view class="tab-content" slot="tab-content-{{index}}"> {{item.title}} </view>
 		</block>
 	</mp-tabs>
 	<!-- <view hidden='{{idx!==0}}' class="warp"> -->
-	<view wx:if="{{idx==0}}" class="warp">
+	<view wx:if="{{idx==0 && !!power.frontPagePassengerFlow}}" class="warp">
 		<view class="charttext">客流环同比分析</view>
 		<image class="klmb" src="../../images/klmb.png"></image>
 		<view class="revenue">
@@ -33,7 +33,7 @@
 		</view>
 	</view>
 	<!-- <view hidden='{{idx!==1}}' class="warp"> -->
-	<view wx:if="{{idx==1}}" class="warp">
+	<view wx:if="{{idx==1 && !!power.frontPageMember}}" class="warp">
 		<view class="charttext">会员环同比分析</view>
 		<image class="klmb" src="../../images/klmb.png"></image>
 		<view class="revenue">
@@ -55,7 +55,7 @@
 		</view>
 	</view>
 	<!-- <view hidden='{{idx!==2}}' class="warp"> -->
-	<view wx:if="{{idx==2}}" class="warp">
+	<view wx:if="{{idx==2  && !!power.frontPageGreenhouse}}" class="warp">
 		<view class="charttext">车流量环同比分析</view>
 		<image class="klmb" src="../../images/klmb.png"></image>
 		<view class="revenue">
@@ -77,7 +77,7 @@
 		</view>
 	</view>
 	<!-- <view hidden='{{idx!==2}}' class="warp"> -->
-	<view wx:if="{{idx==3}}" class="warp">
+	<view wx:if="{{idx==3 && !!power.frontPageCashier}}" class="warp">
 		<view class="charttext">收银环同比分析</view>
 		<image class="klmb" src="../../images/klmb.png"></image>
 		<view class="revenue">

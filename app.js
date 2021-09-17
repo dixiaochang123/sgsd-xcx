@@ -14,6 +14,8 @@ App({
           console.log('获取用户权限',res)
           if(res.data.success ==true){
             this.globalData.power = res.data.data;
+            // this.globalData.power.frontPagePassengerFlow = false;
+            // this.globalData.power.dataAnalysisPassengerFlowDataStatistics = false;
           }
         },
         fail:error=>{

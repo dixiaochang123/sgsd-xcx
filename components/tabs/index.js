@@ -104,6 +104,7 @@ Component({
         tabs: { type: Array, value: [] },
         tabClass: { type: String, value: '' },
         swiperClass: { type: String, value: '' },
+        dataId: { type: String, value: '' },
         activeClass: { type: String, value: '' },
         tabUnderlineColor: { type: String, value: '#07c160' },
         tabActiveTextColor: { type: String, value: '#000000' },
@@ -256,20 +257,22 @@ Component({
                 })
           },
         handleTabClick: function handleTabClick(e) {
+            console.log(e)
             wx.pageScrollTo({
                 scrollTop: this.data.scrollTop+1
             })
             var index = e.currentTarget.dataset.index;
             this.setData({ activeTab: index });
-            this.triggerEvent('tabclick', { index: index });
+            this.triggerEvent('tabclick', { index: index,id:e.currentTarget.dataset.id });
         },
         handleSwiperChange: function handleSwiperChange(e) {
             wx.pageScrollTo({
                 scrollTop: this.data.scrollTop+1
             })
+            console.log(e)
             var index = e.detail.current;
             this.setData({ activeTab: index });
-            this.triggerEvent('change', { index: index });
+            this.triggerEvent('change', { index: index,id:e.detail.currentItemId });
         },
         handleTabClickflow(e) {
             let key = e.target.id;

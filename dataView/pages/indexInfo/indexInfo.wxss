@@ -310,6 +310,7 @@ page {
 }
 .circle image {
 	width: 350rpx;
+	margin-right: 35rpx;
 }
 .circle-txt {
 	width: 100%;
@@ -327,6 +328,7 @@ page {
 	color: #000000;
 	font-size: 28rpx;
 	padding-left: 46rpx;
+	padding-right: 35rpx;
 }
 .circle-txt view {
 	font-size: 36rpx;

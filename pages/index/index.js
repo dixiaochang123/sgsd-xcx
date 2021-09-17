@@ -483,6 +483,7 @@ Page({
 		marketRevenue: 0,
 		blockIncome: 0,
 		tabs: [],
+		tabs1: ['客流','会员','车场','收银','商管'],
 		activeTab: 0,
 		dataAllFlow: {}, //人流
 		dataAllMember: {}, //会员
@@ -490,6 +491,7 @@ Page({
 		dataAllMarket: {},
 
 		swiperClass: 'weui-tabs-swiper',
+		dataId: '客流',
 		idx: 0,
 		scrollTop: 0,
 		num10: 1,
@@ -653,7 +655,7 @@ Page({
 							lineChartData10.dataZoom = []
 						}
 						if (type == 2) {
-							let sdate = currentDataList[i].sdate.substring(8, 10);
+							let sdate = ln[i].sdate.substring(8, 10);
 							if(sdate.substr(0, 1)) {
 								if(sdate.substr(0, 1)=='0') {
 									sdate = sdate.substr(1, 2) + '日'
@@ -677,7 +679,7 @@ Page({
 							}]
 						}
 						if (type == 3) {
-							let sdate = currentDataList[i].sdate.substring(5, 7);
+							let sdate = ln[i].sdate.substring(5, 7);
 							if(sdate.substr(0, 1)) {
 								if(sdate.substr(0, 1)=='0') {
 									sdate = sdate.substr(1, 2) + '月'
@@ -776,15 +778,17 @@ Page({
 							lineChartData11.dataZoom = []
 						}
 						if (type == 2) {
-							let date = currentDataList[i].date.substring(8, 10);
+							let date = ln[i].date.substring(8, 10);
 							if(date.substr(0, 1)=='0') {
 								date = date.substr(1, 2) + '日'
 							} else {
 								date = date.substr(0, 2) + '日'
 							}
 							lineChartData11.xData.push(date);
-							lineChartData11.currentDataList.push(currentDataList[i].numberOfMembers);
-							lineChartData11.byDataList.push(byDataList[i].numberOfMembers);
+							let cur = currentDataList[i] ? currentDataList[i].numberOfMembers : 0;
+							lineChartData11.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].numberOfMembers : 0;
+							lineChartData11.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].numberOfMembers : 0;
 							lineChartData11.dataYearOnyearList.push(yea);
 							// lineChartData11.dataYearOnyearList.push(dataYearOnyearList[i].numberOfMembers);
@@ -796,7 +800,7 @@ Page({
 							}]
 						}
 						if (type == 3) {
-							let date = currentDataList[i].date.substring(5, 7);
+							let date = ln[i].date.substring(5, 7);
 							if(date.substr(0, 1)=='0') {
 								date = date.substr(1, 2) + '月'
 							} else {
@@ -888,7 +892,7 @@ Page({
 							lineChartData12.dataZoom = []
 						}
 						if (type == 2) {
-							let date = currentDataList[i].date.substring(8, 10);
+							let date = ln[i].date.substring(8, 10);
 							if(date.substr(0, 1)=='0') {
 								date = date.substr(1, 2) + '日'
 							} else {
@@ -908,7 +912,7 @@ Page({
 							}]
 						}
 						if (type == 3) {
-							let date = currentDataList[i].date.substring(5, 7);
+							let date = ln[i].date.substring(5, 7);
 							if(date.substr(0, 1)=='0') {
 								date = date.substr(1, 2) + '月'
 							} else {
@@ -1001,7 +1005,7 @@ Page({
 							lineChartData13.dataZoom = []
 						}
 						if (type == 2) {
-							let time = currentDataList[i].time.substring(6, 8);
+							let time = ln[i].time.substring(6, 8);
 							if(time.substr(0, 1)=='0') {
 								time = time.substr(1, 2) + '日'
 							} else {
@@ -1021,7 +1025,7 @@ Page({
 							}]
 						}
 						if (type == 3) {
-							let time = currentDataList[i].time.substring(4, 6);
+							let time = ln[i].time.substring(4, 6);
 							if(time.substr(0, 1)=='0') {
 								time = time.substr(1, 2) + '月'
 							} else {
@@ -1066,26 +1070,56 @@ Page({
 	},
 	onChange(e) {
 		let arr = ['weui-tabs-swiper', 'weui-tabs-swiper1', 'weui-tabs-swiper2', 'weui-tabs-swiper2', 'weui-tabs-swiper2']
+		let arr1 = [
+			{
+				name:'客流',
+				class:'weui-tabs-swiper',
+				index:0
+			},
+			{
+				name:'会员',
+				class:'weui-tabs-swiper1',
+				index:1
+			},
+			{
+				name:'车场',
+				class:'weui-tabs-swiper2',
+				index:2
+			},
+			{
+				name:'收银',
+				class:'weui-tabs-swiper2',
+				index:3
+			},
+			{
+				name:'商管',
+				class:'weui-tabs-swiper2',
+				index:4
+			},
+		]
 		// wx.pageScrollTo({
 		// 	scrollTop: this.data.scrollTop+2
 		// })
-		let i = e.detail.index
+		let i = e.detail.index;
+		let id = e.detail.id;
 		this.setData({
-			swiperClass: arr[i],
-			idx: i
+			swiperClass: arr1.find(item=>item.name==id).class,
+			idx: arr1.find(item=>item.name==id).index,
+			dataId:id
 		})
+		console.log('id',id)
 		setTimeout(() => {
 
-			if (i == 0) {
+			if (id == '客流') {
 				this.getLineDataxse(this.data.type10)
 			}
-			if (i == 1) {
+			if (id == '会员') {
 				this.getLineData1xse(this.data.type11)
 			}
-			if (i == 2) {
+			if (id == '车场') {
 				this.getLineData2xse(this.data.type12)
 			}
-			if (i == 3) {
+			if (id == '收银') {
 				this.getLineData3xse(this.data.type13)
 			}
 		}, 200)
@@ -1113,8 +1147,8 @@ Page({
 		// this.getCarData1();
 		// this.getBMData();
 		this.getBMData1();
-		this.getLineDataxse(1);
-		this.getLineData1xse(1);
+		// this.getLineDataxse(1);
+		// this.getLineData1xse(1);
 		// this.getLineData();
 		// this.getLineData1();
 		// this.drawLeasePie();
@@ -1122,22 +1156,32 @@ Page({
 			title:'客流',
 			name:'keliu',
 			code:'frontPagePassengerFlow',
+			class:'weui-tabs-swiper',
+				index:0
 		},{
 			title:'会员',
 			name:'huiyuan',
 			code:'frontPageMember',
+			class:'weui-tabs-swiper1',
+				index:1
 		},{
 			title:'车场',
 			name:'chechang',
 			code:'frontPageGreenhouse',
+			class:'weui-tabs-swiper2',
+				index:2
 		},{
 			title:'收银',
 			name:'shouyin',
 			code:'frontPageCashier',
+			class:'weui-tabs-swiper2',
+				index:3
 		},{
 			title:'商管',
 			name:'shangguan',
 			code:'frontPageCommercialManagement',
+			class:'weui-tabs-swiper2',
+				index:4
 		}]
 		setTimeout(()=>{
 
@@ -1162,10 +1206,46 @@ Page({
 				url: '../../images/' + item.name + '.png',
 				url1: '../../images/' + item.name + '1.png',
 			}))
+			if (tabs[0].title == '客流') {
+				console.log('请求客流数据')
+				this.setData({
+					idx:0,
+					swiperClass:'weui-tabs-swiper'
+				})
+				this.getLineDataxse(this.data.type10)
+			}
+			if (tabs[0].title == '会员') {
+				console.log('请求会员数据')
+				this.setData({
+					idx:1,
+					swiperClass:'weui-tabs-swiper1'
+				})
+				this.getLineData1xse(this.data.type11)
+			}
+			if (tabs[0].title == '车场') {
+				this.setData({
+					idx:2,
+					swiperClass:'weui-tabs-swiper2'
+				})
+				console.log('请求车场数据')
+
+				this.getLineData2xse(this.data.type12)
+			}
+			if (tabs[0].title == '收银') {
+				console.log('请求收银数据')
+				this.setData({
+					idx:3,
+					swiperClass:'weui-tabs-swiper2'
+				})
+
+				this.getLineData3xse(this.data.type13)
+			}
 	
 			this.setData({
 				tabs,
-				power:app.globalData.power
+				tabs1:tabs.map(item=>item.title),
+				power:app.globalData.power,
+				dataId:tabs[0].title
 			})
 		},500)
 	},

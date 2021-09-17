@@ -83,7 +83,7 @@
 				</navigator>
 			</view>
 		</view>
-		<view class="warp-list" wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" style="margin-bottom: 80rpx;">
+		<view class="warp-list" wx:if="{{!!power.frontPagePassengerFlow}}" style="margin-bottom: 80rpx;">
 			<view class="warp-tit">
 				<image src="../../images/icon_19.png" mode="widthFix"></image>客流数据
 			</view>

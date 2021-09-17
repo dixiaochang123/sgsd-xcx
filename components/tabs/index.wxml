@@ -5,7 +5,7 @@
       scroll-into-view="item_{{currentView}}" scroll-with-animation="{{animation}}">
       <view class="weui-tabs-bar__content">
         <block wx:for="{{tabs}}" wx:key="title">
-          <view id="item_{{index}}" class="weui-tabs-bar__item"
+          <view id="item_{{index}}" data-id="{{item.title}}" class="weui-tabs-bar__item"
             style="color: {{activeTab === index ? tabActiveTextColor : tabInactiveTextColor}};" bindtap="handleTabClick"
             data-index="{{index}}">
             <view class="weui-tabs-bar__title {{tabClass}} {{activeTab === index ? activeClass : ''}}">
@@ -24,8 +24,8 @@
       <slot name="tab-content-{{index}}"></slot>
     </swiper-item> -->
     <view style="height:80rpx;"></view>
-    <block>
-      <swiper-item wx:if="{{!!power.frontPagePassengerFlow}}" class="jinrikliu_parent">
+    <!-- <block> -->
+      <swiper-item item-id="客流" wx:if="{{!!power.frontPagePassengerFlow}}" class="jinrikliu_parent">
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日客流</text>
@@ -34,7 +34,7 @@
           <text wx:else class="jinrikliu_text_3">人</text>
         </view>
         <!-- <text class="jinrikliu_text_4" id="客流" bindtap="handleTabClickflow">more ></text> -->
-        <image bindtap="handleTabClickflow" id="客流" class="jinrikliu_text_4" src="../../images/more1.png"
+        <image wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" bindtap="handleTabClickflow" id="客流" class="jinrikliu_text_4" src="../../images/more1.png"
           mode="widthFix"></image>
         <view class="tabss">
           <image class="juxing" src="../../images/juxing.png" mode="widthFix"></image>
@@ -49,7 +49,7 @@
           </view>
         </view>
       </swiper-item>
-      <swiper-item wx:if="{{!!power.frontPageMember}}" class="jinrikliu_parent">
+      <swiper-item item-id="会员" wx:if="{{!!power.frontPageMember}}" class="jinrikliu_parent">
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">会员总数</text>
@@ -101,7 +101,7 @@
 
         </view>
       </swiper-item>
-      <swiper-item wx:if="{{!!power.frontPageGreenhouse}}">
+      <swiper-item item-id="车场" wx:if="{{!!power.frontPageGreenhouse}}">
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日车流量（入）</text>
@@ -147,7 +147,7 @@
             mode="widthFix"></image>
         </view>
       </swiper-item>
-      <swiper-item wx:if="{{!!power.frontPageCashier}}">
+      <swiper-item item-id="收银" wx:if="{{!!power.frontPageCashier}}">
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
         <view class="jinrikliu_text">
           <text class="jinrikliu_text_1">今日销售额</text>
@@ -179,7 +179,7 @@
           </view>
         </view>
       </swiper-item>
-      <swiper-item wx:if="{{!!power.frontPageCommercialManagement}}">
+      <swiper-item item-id="商管" wx:if="{{!!power.frontPageCommercialManagement}}">
         <view wx:if="{{true}}" class="shangguan">
           <view class="please"></view>
           <view class="zj">租金（本月）</view>
@@ -218,6 +218,6 @@
 
         </view>
       </swiper-item>
-    </block>
+    <!-- </block> -->
   </swiper>
 </view>
