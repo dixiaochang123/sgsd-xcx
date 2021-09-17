@@ -16,6 +16,43 @@ App({
             this.globalData.power = res.data.data;
             // this.globalData.power.frontPagePassengerFlow = false;
             // this.globalData.power.dataAnalysisPassengerFlowDataStatistics = false;
+            // this.globalData.power.dataAnalysis =false
+            if(this.globalData.power.dataAnalysisCashRegisterDataStatistics == true||
+              this.globalData.power.dataAnalysisCashierData == true||
+              this.globalData.power.dataAnalysisCommercialManagementData == true||
+              this.globalData.power.dataAnalysisMemberData == true||
+              this.globalData.power.dataAnalysisMemberDataStatistics == true||
+              this.globalData.power.dataAnalysisParkingLotData == true||
+              this.globalData.power.dataAnalysisPassengerData == true||
+              this.globalData.power.dataAnalysisPassengerFlowDataStatistics == true||
+              this.globalData.power.dataAnalysisPinginess == true||
+              this.globalData.power.dataAnalysisRentCollectionRate == true||
+              this.globalData.power.dataAnalysisRentSellingRatio == true||
+              this.globalData.power.dataAnalysisShopStatistics == true||
+              this.globalData.power.dataAnalysisShoppingBusinessAnalysis == true||
+              this.globalData.power.dataAnalysisVehicle == true||
+              this.globalData.power.dataAnalysiseFrontPageTop10Shop == true||
+              this.globalData.power.dataAnalysiseMberInformationStatistics == true) {
+                this.globalData.power.dataAnalysis =true
+              }
+            if(!this.globalData.power.dataAnalysis) {
+              this.globalData.power.dataAnalysisCashRegisterDataStatistics = false;
+              this.globalData.power.dataAnalysisCashierData = false;
+              this.globalData.power.dataAnalysisCommercialManagementData = false;
+              this.globalData.power.dataAnalysisMemberData = false;
+              this.globalData.power.dataAnalysisMemberDataStatistics = false;
+              this.globalData.power.dataAnalysisParkingLotData = false;
+              this.globalData.power.dataAnalysisPassengerData = false;
+              this.globalData.power.dataAnalysisPassengerFlowDataStatistics = false;
+              this.globalData.power.dataAnalysisPinginess = false;
+              this.globalData.power.dataAnalysisRentCollectionRate = false;
+              this.globalData.power.dataAnalysisRentSellingRatio = false;
+              this.globalData.power.dataAnalysisShopStatistics = false;
+              this.globalData.power.dataAnalysisShoppingBusinessAnalysis = false;
+              this.globalData.power.dataAnalysisVehicle = false;
+              this.globalData.power.dataAnalysiseFrontPageTop10Shop = false;
+              this.globalData.power.dataAnalysiseMberInformationStatistics = false;
+            }
           }
         },
         fail:error=>{

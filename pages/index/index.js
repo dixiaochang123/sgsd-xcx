@@ -1005,6 +1005,7 @@ Page({
 							lineChartData13.dataZoom = []
 						}
 						if (type == 2) {
+							console.log(ln[i])
 							let time = ln[i].time.substring(6, 8);
 							if(time.substr(0, 1)=='0') {
 								time = time.substr(1, 2) + '日'
@@ -1012,9 +1013,10 @@ Page({
 								time = time.substr(0, 2) + '日'
 							}
 							lineChartData13.xData.push(time);
-							lineChartData13.currentDataList.push(currentDataList[i].sales);
-							lineChartData13.byDataList.push(byDataList[i].sales);
-							// lineChartData13.dataYearOnyearList.push(dataYearOnyearList[i].sales);
+							let cur = currentDataList[i] ? currentDataList[i].sales : 0;
+							lineChartData13.currentDataList.push(cur);
+							let by = byDataList[i] ? byDataList[i].sales : 0;
+							lineChartData13.byDataList.push(by);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].sales : 0;
 							lineChartData13.dataYearOnyearList.push(yea);
 							lineChartData13.dataZoom = [{
@@ -1102,6 +1104,7 @@ Page({
 		// })
 		let i = e.detail.index;
 		let id = e.detail.id;
+		wx.setStorageSync('dataId', id)
 		this.setData({
 			swiperClass: arr1.find(item=>item.name==id).class,
 			idx: arr1.find(item=>item.name==id).index,
@@ -1131,6 +1134,7 @@ Page({
 	 */
 	onLoad: function (options) {
 		let userId = wx.getStorageSync('userId');
+	
 		if (!userId) {
 			wx.reLaunch({
 				url: '../login/login',
@@ -1183,6 +1187,7 @@ Page({
 			class:'weui-tabs-swiper2',
 				index:4
 		}]
+		console.log(this.data.dataId)
 		setTimeout(()=>{
 
 			console.log('用户权限信息',app.globalData,app.globalData.power)
@@ -1206,7 +1211,8 @@ Page({
 				url: '../../images/' + item.name + '.png',
 				url1: '../../images/' + item.name + '1.png',
 			}))
-			if (tabs[0].title == '客流') {
+			console.log(this.data.dataId,tabs[0].title)
+			if (this.data.dataId=='客流') {
 				console.log('请求客流数据')
 				this.setData({
 					idx:0,
@@ -1214,7 +1220,7 @@ Page({
 				})
 				this.getLineDataxse(this.data.type10)
 			}
-			if (tabs[0].title == '会员') {
+			if (this.data.dataId=='会员') {
 				console.log('请求会员数据')
 				this.setData({
 					idx:1,
@@ -1222,7 +1228,7 @@ Page({
 				})
 				this.getLineData1xse(this.data.type11)
 			}
-			if (tabs[0].title == '车场') {
+			if (this.data.dataId=='车场') {
 				this.setData({
 					idx:2,
 					swiperClass:'weui-tabs-swiper2'
@@ -1231,7 +1237,7 @@ Page({
 
 				this.getLineData2xse(this.data.type12)
 			}
-			if (tabs[0].title == '收银') {
+			if (this.data.dataId=='收银') {
 				console.log('请求收银数据')
 				this.setData({
 					idx:3,
@@ -1240,12 +1246,19 @@ Page({
 
 				this.getLineData3xse(this.data.type13)
 			}
+			if (this.data.dataId=='商管') {
+				console.log('请求收银数据')
+				this.setData({
+					idx:4,
+					swiperClass:'weui-tabs-swiper2'
+				})
+			}
 	
 			this.setData({
 				tabs,
 				tabs1:tabs.map(item=>item.title),
 				power:app.globalData.power,
-				dataId:tabs[0].title
+				dataId:wx.getStorageSync('dataId')?wx.getStorageSync('dataId'):tabs[0].title
 			})
 		},500)
 	},

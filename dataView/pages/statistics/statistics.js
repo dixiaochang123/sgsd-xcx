@@ -218,7 +218,8 @@ Page({
 		nullCount: 0,
 		rentCount: 0,
 		nullRate: 0,
-		rentRate: 0
+		rentRate: 0,
+		imgSrc:'',//饼图替代图片src
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();
@@ -241,6 +242,21 @@ Page({
 		this.getData();
 		this.getPieChartData();
 		this.drawLeasePie();
+	},
+	handleCanvarToImg() {
+		let that = this;
+		this.selectComponent('#mychart-dom-bar').canvasToTempFilePath({
+      success: function (res) {
+				// console.log('imgSrc',res.tempFilePath);
+        that.setData({
+          imgSrc: res.tempFilePath,
+        });
+
+      },
+      fail:function(err){
+        console.log('canvasErr',err)
+      }
+    }, this);
 	},
 	getData: function (e) {
 		wx.request({
@@ -277,6 +293,9 @@ Page({
 				}
 				chartSet();
 				wx.hideLoading();
+				setTimeout(()=>{
+					this.handleCanvarToImg()
+				},2000)
 			},
 			fail: error => {
 				wx.hideLoading();

@@ -286,7 +286,7 @@ Component({
                     break;
                 case '会员':
                     wx.navigateTo({
-                        url: '/dataView/pages/indexInfo/indexInfo'
+                        url: '/dataView/pages/indexInfo/indexInfo?id=会员'
                     })
                     
                     break;
