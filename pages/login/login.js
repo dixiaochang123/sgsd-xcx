@@ -22,7 +22,6 @@ Page({
           console.log('获取用户权限powerInfo',res)
           if(res.success ==true){
             let power = res.data;
-            this.globalData.power = res.data.data;
             // this.globalData.power.frontPageMember = false;
             // this.globalData.power.frontPagePassengerFlow = false;
             // this.globalData.power.dataAnalysisPassengerFlowDataStatistics = false;
@@ -63,10 +62,10 @@ Page({
               power.dataAnalysiseFrontPageTop10Shop = false;
               power.dataAnalysiseMberInformationStatistics = false;
             }
-            console.log('用户权限11111111',power)
             app.globalData.power = power
-            wx.setStorageSync('power', power)
-            console.log(wx.getStorageSync('power'))
+            console.log('用户权限11111111',app.globalData)
+            // wx.setStorageSync('power', power)
+            // console.log(wx.getStorageSync('power'))
           }
         },
         fail:error=>{
