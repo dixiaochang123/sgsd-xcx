@@ -2,41 +2,18 @@
 <view class="content">
 	<navBar title='商铺统计' background='#e3e7f5' back="{{false}}"></navBar>
 	<view class="warp">
-		<view class="warp-list" wx:if="{{!!power.dataAnalysisCommercialManagementData}}">
+		<view class="warp-list" wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" style="margin-bottom: 80rpx;">
 			<view class="warp-tit">
-				<image src="../../images/icon_15.png" mode="widthFix"></image>商管数据
+				<image src="../../images/icon_19.png" mode="widthFix"></image>客流数据
 			</view>
 			<view class="warp-ul">
-				<navigator wx:if="{{!!power.dataAnalysisShopStatistics}}" class="warp-li" url="/dataView/pages/statistics/statistics" hover-class="none">
-					<image src="../../images/icon_02.png" mode="widthFix"></image>
-					<text>商铺统计</text>
+				<navigator wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" class="warp-li" url="/dataView/pages/monitor/monitor" hover-class="none">
+					<image src="../../images/icon_12.png" mode="widthFix"></image>
+					<text>客流数据统计</text>
 				</navigator>
-				<navigator wx:if="{{!!power.dataAnalysisShoppingBusinessAnalysis}}" class="warp-li" url="/dataView/pages/distribution/distribution" hover-class="none">
-					<image src="../../images/icon_03.png" mode="widthFix"></image>
-					<text>商铺业态分布</text>
-				</navigator>
-				<!-- <navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
-					<image src="../../images/icon_04.png" mode="widthFix"></image>
-					<text>收入统计</text>
-				</navigator> -->
-				<navigator wx:if="{{!!power.dataAnalysisRentSellingRatio}}" class="warp-li" url="/dataView/pages/rentTop/rentTop" hover-class="none">
-					<image src="../../images/icon_05.png" mode="widthFix"></image>
-					<text>租售比</text>
-				</navigator>
-				<navigator wx:if="{{!!power.dataAnalysisPinginess}}" class="warp-li" url="/dataView/pages/groundTop/groundTop" hover-class="none">
-					<image src="../../images/icon_13.png" mode="widthFix"></image>
-					<text>坪效</text>
-				</navigator>
-				<navigator wx:if="{{!!power.dataAnalysisRentCollectionRate}}" class="warp-li" url="/dataView/pages/fee/fee" hover-class="none">
-					<image src="../../images/icon_14.png" mode="widthFix"></image>
-					<text>租金收缴率</text>
-				</navigator>
-				<!-- <navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
-					<image src="../../images/icon_33.png" mode="widthFix"></image>
-					<text>业态预警</text>
-				</navigator> -->
 			</view>
 		</view>
+		
 		<view class="warp-list" wx:if="{{!!power.dataAnalysisVehicle}}">
 			<view class="warp-tit">
 				<image src="../../images/icon_16.png" mode="widthFix"></image>停车场数据
@@ -83,15 +60,39 @@
 				</navigator>
 			</view>
 		</view>
-		<view class="warp-list" wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" style="margin-bottom: 80rpx;">
+		<view class="warp-list" wx:if="{{!!power.dataAnalysisCommercialManagementData}}">
 			<view class="warp-tit">
-				<image src="../../images/icon_19.png" mode="widthFix"></image>客流数据
+				<image src="../../images/icon_15.png" mode="widthFix"></image>商管数据
 			</view>
 			<view class="warp-ul">
-				<navigator wx:if="{{!!power.dataAnalysisPassengerFlowDataStatistics}}" class="warp-li" url="/dataView/pages/monitor/monitor" hover-class="none">
-					<image src="../../images/icon_12.png" mode="widthFix"></image>
-					<text>客流数据统计</text>
+				<navigator wx:if="{{!!power.dataAnalysisShopStatistics}}" class="warp-li" url="/dataView/pages/statistics/statistics" hover-class="none">
+					<image src="../../images/icon_02.png" mode="widthFix"></image>
+					<text>商铺统计</text>
 				</navigator>
+				<navigator wx:if="{{!!power.dataAnalysisShoppingBusinessAnalysis}}" class="warp-li" url="/dataView/pages/distribution/distribution" hover-class="none">
+					<image src="../../images/icon_03.png" mode="widthFix"></image>
+					<text>商铺业态分布</text>
+				</navigator>
+				<!-- <navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
+					<image src="../../images/icon_04.png" mode="widthFix"></image>
+					<text>收入统计</text>
+				</navigator> -->
+				<navigator wx:if="{{!!power.dataAnalysisRentSellingRatio}}" class="warp-li" url="/dataView/pages/rentTop/rentTop" hover-class="none">
+					<image src="../../images/icon_05.png" mode="widthFix"></image>
+					<text>租售比</text>
+				</navigator>
+				<navigator wx:if="{{!!power.dataAnalysisPinginess}}" class="warp-li" url="/dataView/pages/groundTop/groundTop" hover-class="none">
+					<image src="../../images/icon_13.png" mode="widthFix"></image>
+					<text>坪效</text>
+				</navigator>
+				<navigator wx:if="{{!!power.dataAnalysisRentCollectionRate}}" class="warp-li" url="/dataView/pages/fee/fee" hover-class="none">
+					<image src="../../images/icon_14.png" mode="widthFix"></image>
+					<text>租金收缴率</text>
+				</navigator>
+				<!-- <navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
+					<image src="../../images/icon_33.png" mode="widthFix"></image>
+					<text>业态预警</text>
+				</navigator> -->
 			</view>
 		</view>
 	</view>
