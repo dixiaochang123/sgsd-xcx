@@ -10,9 +10,70 @@ Page({
      */
     data: {
       nickName:[],
-      avatarUrl:[]
+      avatarUrl:[],
+      power:{}
     },
-    
+    powerInfo() {
+      util.ajax({
+        // url: this.globalData.baseUrl+'data-analysis/api/v1/accessPerm?userId='+wx.getStorageSync('userId'),
+        url: 'data-analysis/api/v1/sgsdAccessPerm?userId='+wx.getStorageSync('userId'),
+        method:"POST",
+        success:res=>{
+          console.log('获取用户权限powerInfo',res)
+          if(res.success ==true){
+            let power = res.data;
+            this.globalData.power = res.data.data;
+            // this.globalData.power.frontPageMember = false;
+            // this.globalData.power.frontPagePassengerFlow = false;
+            // this.globalData.power.dataAnalysisPassengerFlowDataStatistics = false;
+            // this.globalData.power.dataAnalysis =false
+            if(power.dataAnalysisCashRegisterDataStatistics == true||
+              power.dataAnalysisCashierData == true||
+              power.dataAnalysisCommercialManagementData == true||
+              power.dataAnalysisMemberData == true||
+              power.dataAnalysisMemberDataStatistics == true||
+              power.dataAnalysisParkingLotData == true||
+              power.dataAnalysisPassengerData == true||
+              power.dataAnalysisPassengerFlowDataStatistics == true||
+              power.dataAnalysisPinginess == true||
+              power.dataAnalysisRentCollectionRate == true||
+              power.dataAnalysisRentSellingRatio == true||
+              power.dataAnalysisShopStatistics == true||
+              power.dataAnalysisShoppingBusinessAnalysis == true||
+              power.dataAnalysisVehicle == true||
+              power.dataAnalysiseFrontPageTop10Shop == true||
+              power.dataAnalysiseMberInformationStatistics == true) {
+                power.dataAnalysis =true
+              }
+            if(!power.dataAnalysis) {
+              power.dataAnalysisCashRegisterDataStatistics = false;
+              power.dataAnalysisCashierData = false;
+              power.dataAnalysisCommercialManagementData = false;
+              power.dataAnalysisMemberData = false;
+              power.dataAnalysisMemberDataStatistics = false;
+              power.dataAnalysisParkingLotData = false;
+              power.dataAnalysisPassengerData = false;
+              power.dataAnalysisPassengerFlowDataStatistics = false;
+              power.dataAnalysisPinginess = false;
+              power.dataAnalysisRentCollectionRate = false;
+              power.dataAnalysisRentSellingRatio = false;
+              power.dataAnalysisShopStatistics = false;
+              power.dataAnalysisShoppingBusinessAnalysis = false;
+              power.dataAnalysisVehicle = false;
+              power.dataAnalysiseFrontPageTop10Shop = false;
+              power.dataAnalysiseMberInformationStatistics = false;
+            }
+            console.log('用户权限11111111',power)
+            app.globalData.power = power
+            wx.setStorageSync('power', power)
+            console.log(wx.getStorageSync('power'))
+          }
+        },
+        fail:error=>{
+          console.log('获取用户权限',error)
+        }
+      })
+    },
     getPhoneNumber(e){
       // wx.showLoading({
       //   title: '登录中',
@@ -40,7 +101,7 @@ Page({
             if(res.success){
               wx.setStorageSync('userId', res.data.userInfo.userId)
               wx.setStorageSync('nickname', res.data.userInfo.nickname)
-              console.log(res.data.userInfo.userId)
+              this.powerInfo()
               wx.reLaunch({
                 url: '/pages/index/index',
               })

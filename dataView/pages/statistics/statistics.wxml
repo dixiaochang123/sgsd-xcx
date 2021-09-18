@@ -26,7 +26,7 @@
 		</view>
 		<view class="lease" style="margin-bottom: 60rpx;">
 			<view class="title">
-				<image src="../../../images/icon_22.png" mode="widthFix"></image>
+				<image src="../../../images/1172.png" mode="widthFix"></image>
 				<text>铺位数统计</text>
 			</view>
 			<view class="lease-con sss">

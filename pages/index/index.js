@@ -1260,7 +1260,7 @@ Page({
 				power:app.globalData.power,
 				dataId:wx.getStorageSync('dataId')?wx.getStorageSync('dataId'):tabs[0].title
 			})
-		},500)
+		},1000)
 	},
 	getConsumptionData: function (e) {
 		util.ajax({
@@ -1494,8 +1494,56 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {
+	onReady: function (){
 		//this.ecComponent = this.selectComponent('#mychart-dom-bar');
+		setTimeout(()=>{
+
+			this.setData({
+				dataId:this.data.tabs[0].title
+			})
+			if (this.data.dataId=='客流') {
+				console.log('请求客流数据')
+				this.setData({
+					idx:0,
+					swiperClass:'weui-tabs-swiper'
+				})
+				this.getLineDataxse(this.data.type10)
+			}
+			if (this.data.dataId=='会员') {
+				console.log('请求会员数据')
+				this.setData({
+					idx:1,
+					swiperClass:'weui-tabs-swiper1'
+				})
+				this.getLineData1xse(this.data.type11)
+			}
+			if (this.data.dataId=='车场') {
+				this.setData({
+					idx:2,
+					swiperClass:'weui-tabs-swiper2'
+				})
+				console.log('请求车场数据')
+				
+				this.getLineData2xse(this.data.type12)
+			}
+			if (this.data.dataId=='收银') {
+				console.log('请求收银数据')
+				this.setData({
+					idx:3,
+					swiperClass:'weui-tabs-swiper2'
+				})
+				
+				this.getLineData3xse(this.data.type13)
+			}
+			if (this.data.dataId=='商管') {
+				console.log('请求收银数据')
+				this.setData({
+					idx:4,
+					swiperClass:'weui-tabs-swiper2'
+				})
+			}
+			console.log('监听页面初次渲染完成',this.data.dataId,this.data.idx)
+		},1000)
 	},
 
 	/**
