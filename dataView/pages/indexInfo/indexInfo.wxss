@@ -280,6 +280,13 @@ page {
     width: 100%;
     height: 930rpx;
 }
+.huiyuanbg2 {
+	position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 450rpx;
+}
 .revenue-top {
 	width: 100%;
 	display: flex;

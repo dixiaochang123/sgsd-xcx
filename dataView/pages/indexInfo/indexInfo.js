@@ -10,6 +10,9 @@ var chart3 = null;
 var chart4 = null;
 var chart5 = null;
 var chart6 = null;
+var chart10 = null;
+var chart11 = null;
+var chart12 = null;
 let pieChartData = {
 	totalNumberOfMembers: 0,
 	totalNumberOfMaleMembers: [],
@@ -542,6 +545,88 @@ function initOptions6() {
 		}]
 	}
 }
+let pieChartData10 = {
+	seriesData:[],
+}
+function initOption10() {
+	return {
+		tooltip: {
+			trigger: 'item',
+			// formatter: function(pram){
+			// 	console.log(pram)
+			// 	return pram.name+'\n'+'   '+pram.percent+'%'
+			// },
+		},
+		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3'],
+		legend: {
+			show: false
+		},
+		series: [ {
+			name: '商铺数量',
+			type: 'pie',
+			radius: ['50%', '70%'],
+			center: ['50%', '50%'],
+			label: {
+				normal: {
+					show: true,
+					position: 'outside',
+					formatter: '{d}%',
+					borderRadius: 20,
+					color:"#5e5d7c",
+					formatter: function(pram){
+						console.log(pram)
+						return pram.name+'\n'+pram.percent+'%'
+				},
+				},
+				emphasis: {
+					show: true,
+					textStyle: {
+						fontSize: '12',
+						fontWeight: 'bold'
+					}
+				}
+			},
+			data: pieChartData10.seriesData,
+			itemStyle: {
+				// borderRadius: 10,
+				borderColor: '#e3e7f5',
+				borderWidth: 4
+			},
+		},{
+			itemStyle: {
+				normal: {
+					color: '#e3e6f5',
+					borderColor: {
+						type: 'radial',
+						x: 0.5,
+						y: 0.5,
+						r: 0.5,
+						colorStops: [{
+								offset: 0, color: '#000000' // 0% 处的颜色
+						}, {
+								offset: 1, color: '#e4e7f6' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					} ,
+					borderWidth: 5 ,
+				}
+			},
+			type: 'pie',
+			hoverAnimation: false,
+			radius: ['60%', '80%'],
+			center: ["50%", "50%"],
+			label: {
+				normal: {
+					show: false
+				}
+			},
+			data: [{
+				value: 1,
+			}],
+			z: -1
+		}]
+	};
+}
 
 Page({
 
@@ -625,6 +710,17 @@ Page({
 				canvas.setChart(chart6);
 				return chart6;
 			}
+		},
+		ec10: {
+			onInit: (canvas, width, height, dpr) => {
+				chart10 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart10);
+				return chart10;
+			},
 		},
 		totalScore: [],
 		GainCount: [],
