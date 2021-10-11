@@ -36,7 +36,8 @@ let chartData = {
 	couponGainRatio: 0,
 	couponUsedRatio: 0
 }
-let initOptions6data =[120, 180, 150]
+let initOptions6data = [120, 180, 150]
+
 function initOption() {
 	return {
 		// tooltip: {
@@ -44,8 +45,8 @@ function initOption() {
 		// },
 		tooltip: {
 			trigger: 'item',
-			confine:true
-	},
+			confine: true
+		},
 		grid: {
 			left: 60,
 		},
@@ -102,11 +103,11 @@ function initOption1() {
 		dataZoom: [{
 			type: "inside",
 			// start: 70,
-			startValue:lineChartData.xData.length - 8,
+			startValue: lineChartData.xData.length - 8,
 			endValue: lineChartData.xData.length - 1,
 			zoomLock: true
 		}],
-		
+
 		xAxis: {
 			type: 'category',
 			name: '',
@@ -147,7 +148,7 @@ function initOption1() {
 		yAxis: {
 			type: 'value',
 			show: false,
-			splitLine:{
+			splitLine: {
 				show: false
 			}
 		},
@@ -217,14 +218,14 @@ function initOption1() {
 				opacity: 1
 			},
 			data: lineChartData.seriesData,
-			emphasis:{
-				label:{
+			emphasis: {
+				label: {
 					position: 'top',
 					show: true,
-					color:"#e5004f"
+					color: "#e5004f"
 				},
-				itemStyle:{
-					color:"#e5004f"
+				itemStyle: {
+					color: "#e5004f"
 				}
 			}
 		}]
@@ -484,7 +485,7 @@ function initOptions6() {
 		},
 		yAxis: {
 			type: 'value',
-			splitLine:{
+			splitLine: {
 				show: false
 			}
 		},
@@ -534,37 +535,44 @@ function initOptions6() {
 				borderRadius: 5,
 				opacity: 1
 			},
-			emphasis:{
-				label:{
-					color:"#e5004f"
+			emphasis: {
+				label: {
+					color: "#e5004f"
 				},
-				itemStyle:{
-					color:"#e5004f"
+				itemStyle: {
+					color: "#e5004f"
 				}
 			}
 		}]
 	}
 }
 let pieChartData10 = {
-	seriesData:[],
+	legendData: [],
+	seriesData: []
 }
-function initOption10() {
+
+function initOptions10(pieChartData10) {
 	return {
-		tooltip: {
-			trigger: 'item',
-			// formatter: function(pram){
-			// 	console.log(pram)
-			// 	return pram.name+'\n'+'   '+pram.percent+'%'
-			// },
+		title: {
+			// text: pieChartData10.totalValue,
+			text: '年龄',
+			// subtext: '客流',
+			left: 'center',
+			right: 'center',
+			top: 'center',
+			textStyle: {
+				fontSize: 16,
+				color: '#3f435e'
+			},
+			subtextStyle: {
+				color: '#3f3d60'
+			}
 		},
-		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3'],
-		legend: {
-			show: false
-		},
-		series: [ {
-			name: '商铺数量',
+		color: ['#F3961C', '#F25C5D', '#907AFF', '#0ECEFF', '#0566E8', '#32CD32'],
+		series: [{
+			name: '客流占比',
 			type: 'pie',
-			radius: ['50%', '70%'],
+			radius: ['30%', '50%'],
 			center: ['50%', '50%'],
 			label: {
 				normal: {
@@ -572,11 +580,9 @@ function initOption10() {
 					position: 'outside',
 					formatter: '{d}%',
 					borderRadius: 20,
-					color:"#5e5d7c",
-					formatter: function(pram){
-						console.log(pram)
-						return pram.name+'\n'+pram.percent+'%'
-				},
+
+					overflow: 'none',
+
 				},
 				emphasis: {
 					show: true,
@@ -586,13 +592,23 @@ function initOption10() {
 					}
 				}
 			},
+			label: {
+				textStyle: {
+					color: '#3f435e'
+				},
+				// formatter: '{b}\n{c}m²'
+				formatter: function(pram){
+					return pram.name+'\n'+'   '+pram.value+'%'
+			},
+			overflow:'breakAll'
+			},
 			data: pieChartData10.seriesData,
 			itemStyle: {
 				// borderRadius: 10,
 				borderColor: '#e3e7f5',
 				borderWidth: 4
 			},
-		},{
+		}, {
 			itemStyle: {
 				normal: {
 					color: '#e3e6f5',
@@ -602,18 +618,20 @@ function initOption10() {
 						y: 0.5,
 						r: 0.5,
 						colorStops: [{
-								offset: 0, color: '#000000' // 0% 处的颜色
+							offset: 0,
+							color: '#000000' // 0% 处的颜色
 						}, {
-								offset: 1, color: '#e4e7f6' // 100% 处的颜色
+							offset: 1,
+							color: '#e4e7f6' // 100% 处的颜色
 						}],
 						global: false // 缺省为 false
-					} ,
-					borderWidth: 5 ,
+					},
+					borderWidth: 5,
 				}
 			},
 			type: 'pie',
 			hoverAnimation: false,
-			radius: ['60%', '80%'],
+			radius: ['40%', '60%'],
 			center: ["50%", "50%"],
 			label: {
 				normal: {
@@ -625,7 +643,7 @@ function initOption10() {
 			}],
 			z: -1
 		}]
-	};
+	}
 }
 
 Page({
@@ -722,6 +740,17 @@ Page({
 				return chart10;
 			},
 		},
+		ec11: {
+			onInit: (canvas, width, height, dpr) => {
+				chart11 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart11);
+				return chart11;
+			},
+		},
 		totalScore: [],
 		GainCount: [],
 		GainRatio: [],
@@ -754,17 +783,118 @@ Page({
 		activeMember: "男会员",
 		activeMember1: "点击率",
 		memberdata: '',
-		dataAllMember:{},
-		dataAllMember1:{},
+		dataAllMember: {},
+		dataAllMember1: {},
 
 		flowList: [],
-		activeUserStatistics:'',
-		tb:'',
-		hb:'',
-		tbisadd:true,
-		hbisadd:true,
-		top5:'first5',
-		count:''//微信
+		activeUserStatistics: '',
+		tb: '',
+		hb: '',
+		tbisadd: true,
+		hbisadd: true,
+		top5: 'first5',
+		count: '' //微信
+	},
+	getList() {
+		util.ajax({
+			url: "data-analysis/api/general/member/newAgeStatistics",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let {
+						totalCount,
+						age00Count,
+						age50Count,
+						age60Count,
+						age70Count,
+						age80Count,
+						age90Count,
+						ageNoCount
+					} = res.data;
+					let arr = [{
+						value: ((age00Count/totalCount)),
+						name: '00后'
+					}, {
+						value: ((age50Count/totalCount)),
+						name: '50后'
+					}, {
+						value: ((age60Count/totalCount)),
+						name: '60后'
+					}, {
+						value: ((age70Count/totalCount)),
+						name: '70后'
+					}, {
+						value: ((age80Count/totalCount)),
+						name: '80后'
+					}, {
+						value: ((age90Count/totalCount)),
+						name: '90后'
+					}, {
+						value: ((ageNoCount/totalCount)),
+						name: '未知'
+					}]
+					console.log(typeof totalCount, age50Count, age60Count, age70Count, age80Count, age90Count, ageNoCount, arr);
+					pieChartData10.seriesData = arr;
+					pieChartData10.legendData = arr.map(item => item.name);
+					let chartSet = function () {
+						if (chart10) {
+							chart10.setOption(initOptions10(pieChartData10))
+							console.log('set chart')
+
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
+				}
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getList1() {
+		util.ajax({
+			url: "/data-analysis/api/sg/percentCagegoryOfMemberSales?type=1",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					let{list,totalSale}= res.data
+					console.log(list)
+					let arr = []
+					list.map(item=>{
+						arr.push({
+							value:item.sale/totalSale,
+							name:item.categoryName
+						})
+					})
+				
+					pieChartData10.seriesData = arr;
+					pieChartData10.legendData = arr.map(item => item.name);
+					let chartSet = function () {
+						if (chart11) {
+							chart11.setOption(initOptions10(pieChartData10))
+							console.log('set chart')
+
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
+				}
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
 	},
 	memberIsMoreThanYearOnYear: function (e) {
 		util.ajax({
@@ -772,23 +902,23 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					console.log(444444,res)
-					initOptions6data = Object.values(res.data).filter(item=>typeof(item)=="number")  
+					console.log(444444, res)
+					initOptions6data = Object.values(res.data).filter(item => typeof (item) == "number")
 					// 环比增长率=（本期数-上期数）/上期数×100%
-						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
-						let hb = (((res.data.byData - res.data.dataYearOnYear)/ res.data.byData) * 100).toFixed(2);
-						let tb = (((res.data.byData - res.data.thisPeriodOfData)/ res.data.thisPeriodOfData) * 100).toFixed(2);
-						this.setData({
-							tb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
-							hb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
-							tbisadd:res.data.coRate.search("-") != -1?false:true,
-							hbisadd:res.data.ringRatio.search("-") != -1?false:true,
-						})
+					// 同比增长率=（本期数-去年同期数）/去年同期数×100%
+					let hb = (((res.data.byData - res.data.dataYearOnYear) / res.data.byData) * 100).toFixed(2);
+					let tb = (((res.data.byData - res.data.thisPeriodOfData) / res.data.thisPeriodOfData) * 100).toFixed(2);
+					this.setData({
+						tb: res.data.coRate.search("-") != -1 ? res.data.coRate.substr(1) : res.data.coRate,
+						hb: res.data.ringRatio.search("-") != -1 ? res.data.ringRatio.substr(1) : res.data.ringRatio,
+						tbisadd: res.data.coRate.search("-") != -1 ? false : true,
+						hbisadd: res.data.ringRatio.search("-") != -1 ? false : true,
+					})
 					let chartSet = function () {
 						if (chart6) {
 							chart6.setOption(initOptions6())
 							console.log('set chart')
-							
+
 						} else {
 							setTimeout(() => {
 								console.log("chart is null")
@@ -812,12 +942,12 @@ Page({
 			success: res => {
 				if (res.success) {
 					this.setData({
-						dataAllMember1:{
+						dataAllMember1: {
 							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
 						},
-						memberdata:res.data.totalNumberOfMaleMembers
+						memberdata: res.data.totalNumberOfMaleMembers
 					})
 				}
 				wx.hideLoading();
@@ -834,13 +964,13 @@ Page({
 			success: res => {
 				if (res.success) {
 					this.setData({
-						dataAllMember:{
+						dataAllMember: {
 							totalNumberOfMembers: res.data.totalNumberOfMembers,
 							totalNumberOfMaleMembers: res.data.totalNumberOfMaleMembers,
 							totalNumberOfFemaleMembers: res.data.totalNumberOfFemaleMembers,
 							totalNumberOfOtherMembers: res.data.totalNumberOfOtherMembers
 						},
-						memberdata:res.data.totalNumberOfMembers>10000?(res.data.totalNumberOfMembers/10000).toFixed(2):res.data.totalNumberOfMembers
+						memberdata: res.data.totalNumberOfMembers > 10000 ? (res.data.totalNumberOfMembers / 10000).toFixed(2) : res.data.totalNumberOfMembers
 					})
 				}
 				wx.hideLoading();
@@ -852,12 +982,12 @@ Page({
 	},
 	gethydata(num) {
 		util.ajax({
-			url: "data-analysis/api/general/member/activeUserStatistics?type="+num,
+			url: "data-analysis/api/general/member/activeUserStatistics?type=" + num,
 			method: "POST",
 			success: res => {
 				if (res.success) {
 					this.setData({
-						activeUserStatistics:res.data
+						activeUserStatistics: res.data
 					})
 				}
 				wx.hideLoading();
@@ -875,7 +1005,7 @@ Page({
 				if (res.success) {
 					console.log(res.data)
 					this.setData({
-						count:res.data[0].count
+						count: res.data[0].count
 					})
 				}
 				wx.hideLoading();
@@ -897,11 +1027,11 @@ Page({
 			'日活跃': 2,
 			'月活跃': 3
 		}
-		let obj={
-			'男会员':this.data.dataAllMember1.totalNumberOfMaleMembers,
-			'女会员':this.data.dataAllMember1.totalNumberOfFemaleMembers,
-			'其他':this.data.dataAllMember1.totalNumberOfOtherMembers
-	}
+		let obj = {
+			'男会员': this.data.dataAllMember1.totalNumberOfMaleMembers,
+			'女会员': this.data.dataAllMember1.totalNumberOfFemaleMembers,
+			'其他': this.data.dataAllMember1.totalNumberOfOtherMembers
+		}
 		switch (dataval) {
 			case "客流":
 				var activeMember = event.target.id;
@@ -962,6 +1092,8 @@ Page({
 		this.gethydata(0)
 		this.memberSource()
 		this.memberIsMoreThanYearOnYear()
+		this.getList()
+		this.getList1()
 	},
 	getData: function (e) {
 		util.ajax({
@@ -1000,7 +1132,7 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for (let i = 0; i < res.data.membershipGrowthTrend.length; i++) {
-						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2 ,2).replace(/\b(0+)/gi,"")+'日'
+						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2, 2).replace(/\b(0+)/gi, "") + '日'
 						console.log(res.data.membershipGrowthTrend[i].date)
 						lineChartData.xData.push(res.data.membershipGrowthTrend[i].date);
 						lineChartData.seriesData.push(res.data.membershipGrowthTrend[i].numberOfMembers)
@@ -1048,7 +1180,7 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for (let i = 0; i < res.data.membershipGrowthTrend.length; i++) {
-						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2 ,2).replace(/\b(0+)/gi,"")+'月'
+						res.data.membershipGrowthTrend[i].date = res.data.membershipGrowthTrend[i].date.substr(-2, 2).replace(/\b(0+)/gi, "") + '月'
 						console.log(res.data.membershipGrowthTrend[i].date)
 						lineChartData.xData.push(res.data.membershipGrowthTrend[i].date);
 						lineChartData.seriesData.push(res.data.membershipGrowthTrend[i].numberOfMembers)
@@ -1329,17 +1461,17 @@ Page({
 		})
 	},
 	handleclickTop5(e) {
-		let id =e.target.id;
+		let id = e.target.id;
 		console.log(id)
-		if(id=='first5') {
+		if (id == 'first5') {
 			this.setData({
-				top5:'first5'
+				top5: 'first5'
 			})
-			
+
 		}
-		if(id=='last5') {
+		if (id == 'last5') {
 			this.setData({
-				top5:'last5'
+				top5: 'last5'
 			})
 		}
 
