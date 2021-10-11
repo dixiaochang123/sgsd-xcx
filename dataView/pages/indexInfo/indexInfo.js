@@ -597,10 +597,10 @@ function initOptions10(pieChartData10) {
 					color: '#3f435e'
 				},
 				// formatter: '{b}\n{c}m²'
-				formatter: function(pram){
-					return pram.name+'\n'+'   '+pram.value+'%'
-			},
-			overflow:'breakAll'
+				formatter: function (pram) {
+					return pram.name + '\n' + '   ' + pram.value + '%'
+				},
+				overflow: 'breakAll'
 			},
 			data: pieChartData10.seriesData,
 			itemStyle: {
@@ -751,6 +751,17 @@ Page({
 				return chart11;
 			},
 		},
+		ec12: {
+			onInit: (canvas, width, height, dpr) => {
+				chart12 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart12);
+				return chart12;
+			},
+		},
 		totalScore: [],
 		GainCount: [],
 		GainRatio: [],
@@ -812,25 +823,25 @@ Page({
 						ageNoCount
 					} = res.data;
 					let arr = [{
-						value: ((age00Count/totalCount)),
+						value: ((age00Count / totalCount)),
 						name: '00后'
 					}, {
-						value: ((age50Count/totalCount)),
+						value: ((age50Count / totalCount)),
 						name: '50后'
 					}, {
-						value: ((age60Count/totalCount)),
+						value: ((age60Count / totalCount)),
 						name: '60后'
 					}, {
-						value: ((age70Count/totalCount)),
+						value: ((age70Count / totalCount)),
 						name: '70后'
 					}, {
-						value: ((age80Count/totalCount)),
+						value: ((age80Count / totalCount)),
 						name: '80后'
 					}, {
-						value: ((age90Count/totalCount)),
+						value: ((age90Count / totalCount)),
 						name: '90后'
 					}, {
-						value: ((ageNoCount/totalCount)),
+						value: ((ageNoCount / totalCount)),
 						name: '未知'
 					}]
 					console.log(typeof totalCount, age50Count, age60Count, age70Count, age80Count, age90Count, ageNoCount, arr);
@@ -863,21 +874,78 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.success) {
-					let{list,totalSale}= res.data
+					let {
+						list,
+						totalSale
+					} = res.data
 					console.log(list)
 					let arr = []
-					list.map(item=>{
+					list.map(item => {
 						arr.push({
-							value:item.sale/totalSale,
-							name:item.categoryName
+							value: item.sale / totalSale,
+							name: item.categoryName
 						})
 					})
-				
+
 					pieChartData10.seriesData = arr;
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart11) {
 							chart11.setOption(initOptions10(pieChartData10))
+							console.log('set chart')
+
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
+				}
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	getList2() {
+		util.ajax({
+			url: "/data-analysis/api/sg/percentageOfMemberSales",
+			dataType: 'json',
+			data: JSON.stringify({
+				startTime: "2020-01-01",
+				endTime: "2021-01-31",
+				order: "desc",
+				limit: 10,
+				groupType: 1
+			}),
+			header: {
+				"content-type": 'application/json'
+			},
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					console.log(res.data)
+					let {
+						memberSalesVolumeRatio,
+						nonMemberSalesVolumeRatio
+					} = res.data
+					console.log(memberSalesVolumeRatio, nonMemberSalesVolumeRatio)
+					let arr = [{
+						value: memberSalesVolumeRatio,
+						name: '会员销售额'
+					}, {
+						value: nonMemberSalesVolumeRatio,
+						name: '非会员销售额'
+					}]
+
+					pieChartData10.seriesData = arr;
+					pieChartData10.legendData = arr.map(item => item.name);
+					let chartSet = function () {
+						if (chart12) {
+							chart12.setOption(initOptions10(pieChartData10))
 							console.log('set chart')
 
 						} else {
@@ -1094,6 +1162,7 @@ Page({
 		this.memberIsMoreThanYearOnYear()
 		this.getList()
 		this.getList1()
+		this.getList2()
 	},
 	getData: function (e) {
 		util.ajax({

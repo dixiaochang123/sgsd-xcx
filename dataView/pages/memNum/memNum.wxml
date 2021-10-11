@@ -4,15 +4,71 @@
 		extClass="lxy-navbar-extclass"></navBar> -->
 		<view style="height:30rpx;"></view>
 	<view class="warp">
-		<view class="circle">
-			<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
-			<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
-			<view class="circle-txt">
-				<view>会员当前积分</view>
-				<view class="jinrikliu_text_2">{{totalScore}}</view>
-				<view style="font-size:25rpx;">万分</view>
+		<view class="flexs">
+			<view class="circle">
+				<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
+				<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
+				<view class="circle-txt">
+					<view>会员当前积分</view>
+					<view class="jinrikliu_text_2">{{totalScore}}</view>
+					<view style="font-size:25rpx;">万分</view>
+				</view>
+				<image wx:if="{{false}}" bindtap="handleticket"  class="jinrikliu_text_4 jinrikliu_text_5" src="../../../images/more1.png" mode="widthFix"></image>
 			</view>
-			<image wx:if="{{false}}" bindtap="handleticket"  class="jinrikliu_text_4 jinrikliu_text_5" src="../../../images/more1.png" mode="widthFix"></image>
+			<view class="circle">
+				<!-- <image src="../../../images/shabi.png" mode="widthFix"></image> -->
+				<image class="jinrikliu" src="../../../images/jrkl.png" mode="widthFix"></image>
+				<view class="circle-txt">
+					<view>会员消耗积分</view>
+					<view class="jinrikliu_text_2">{{consumedTotalScore}}</view>
+					<view style="font-size:25rpx;">万分</view>
+				</view>
+				<image wx:if="{{false}}" bindtap="handleticket"  class="jinrikliu_text_4 jinrikliu_text_5" src="../../../images/more1.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="lease">
+			<view class="tabssss" bindtap="handleclickTab">
+				<text class="{{activeflow=='积分来源'?'activetab':''}}" data-val='积分来源'>积分来源</text>
+				<text class="{{activeflow=='消耗来源'?'activetab':''}}" data-val='消耗来源'>消耗来源</text>
+			</view>
+			<view class="tabss">
+				<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
+				<view class="tabss_text">
+					<view class="texts">
+						<view>支付宝无感积分</view>
+						<view class="righttext">
+							<view>{{""}}<text style="font-size:16rpx;">万分</text></view>
+							<view class="numberbaifenbi">{{'30%'}}</view>
+						</view>
+					
+					</view>
+				</view>
+			</view>
+			<view class="tabss">
+				<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
+				<view class="tabss_text">
+					<view class="texts">
+						<view>微信无感积分</view>
+						<view class="righttext">
+							<view>{{""}}<text style="font-size:16rpx;">万分</text></view>
+							<view class="numberbaifenbi">{{'30%'}}</view>
+						</view>
+					
+					</view>
+				</view>
+			</view>
+			<view class="tabss">
+				<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
+				<view class="tabss_text">
+					<view class="texts">
+						<view>签到</view>
+						<view class="righttext">
+							<view>{{""}}<text style="font-size:16rpx;">万分</text></view>
+							<view class="numberbaifenbi">{{'30%'}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 		<view wx:if="{{false}}">
 			<view class="title">
@@ -67,14 +123,14 @@
 								<view></view>
 							</view>
 							<view>领取数量</view>
-							<view>{{couponReceive}}</view>
+							<!-- <view>{{couponReceive}}</view> -->
 						</view>
 						<view class="right_item">
 							<view class="right_item2">
 								<view></view>
 							</view>
 							<view>使用数量</view>
-							<view>{{couponUsage}}</view>
+							<!-- <view>{{couponUsage}}</view> -->
 						</view>
 					</view>
 				</view>
@@ -83,6 +139,90 @@
 					<view><text>核销率</text><text class="hhhk">{{verify}}</text></view>
 					<view><text>购买率</text><text class="hhhk">{{purchaseRate}}</text></view>
 					<view><text>退款率</text><text class="hhhk">{{refundRate}}</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="lease">
+			<view class="title">
+				<view class="jsjsjs">
+					<image src="../../../images/icon_29.png" mode="widthFix"></image>
+					<text>团购秒杀</text>
+				</view>
+			</view>
+			<view class="lease-con-parent">
+				<image class="klmb" src="../../../images/klmb.png"></image>
+				<view class="lease-con">
+
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec1 }}"></ec-canvas>
+					<view class="right">
+						<!--view class="right_item">
+						<view class="right_item1"><view></view></view>
+						<view>领取数量</view>
+						<view>{{GainCount}}</view>
+					</view-->
+						<view class="right_item">
+							<view class="right_item3">
+								<view></view>
+							</view>
+							<view>领取数量</view>
+							<!-- <view>{{couponReceive1}}</view> -->
+						</view>
+						<view class="right_item">
+							<view class="right_item2">
+								<view></view>
+							</view>
+							<view>使用数量</view>
+							<!-- <view>{{couponUsage1}}</view> -->
+						</view>
+					</view>
+				</view>
+				<view class="gfsgdgv">
+					<view><text>转化率</text><text class="hhhk">{{conversionRate1}}</text></view>
+					<view><text>核销率</text><text class="hhhk">{{verify1}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{purchaseRate1}}</text></view>
+					<view><text>退款率</text><text class="hhhk">{{refundRate1}}</text></view>
+				</view>
+			</view>
+		</view>
+		<view class="lease">
+			<view class="title">
+				<view class="jsjsjs">
+					<image src="../../../images/icon_29.png" mode="widthFix"></image>
+					<text>系统发放</text>
+				</view>
+			</view>
+			<view class="lease-con-parent">
+				<image class="klmb" src="../../../images/klmb.png"></image>
+				<view class="lease-con">
+
+					<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+					<view class="right">
+						<!--view class="right_item">
+						<view class="right_item1"><view></view></view>
+						<view>领取数量</view>
+						<view>{{GainCount}}</view>
+					</view-->
+						<view class="right_item">
+							<view class="right_item3">
+								<view></view>
+							</view>
+							<view>领取数量</view>
+							<!-- <view>{{couponReceive2}}</view> -->
+						</view>
+						<view class="right_item">
+							<view class="right_item2">
+								<view></view>
+							</view>
+							<view>使用数量</view>
+							<!-- <view>{{couponUsage2}}</view> -->
+						</view>
+					</view>
+				</view>
+				<view class="gfsgdgv">
+					<view><text>转化率</text><text class="hhhk">{{conversionRate2}}</text></view>
+					<view><text>核销率</text><text class="hhhk">{{verify2}}</text></view>
+					<view><text>购买率</text><text class="hhhk">{{purchaseRate2}}</text></view>
+					<view><text>退款率</text><text class="hhhk">{{refundRate2}}</text></view>
 				</view>
 			</view>
 		</view>

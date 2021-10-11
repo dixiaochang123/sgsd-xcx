@@ -95,6 +95,19 @@
 			</view>
 			<view class="revenue">
 				<view class="title">
+					<text>会员销售额占比</text>
+				</view>
+				<view class="revenue-list">
+					<image class="huiyuanbg huiyuanbg2" src="../../../images/huiyuanbg.png"></image>
+					<view class="charts-con">
+						<view class="echarts-con echarts-con1">
+							<ec-canvas id="mychart-dom-line1" canvas-id="mychart-line1" ec="{{ ec12 }}"></ec-canvas>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="revenue">
+				<view class="title">
 					<text>本月新增</text>
 				</view>
 				<view style="height:20rpx;"></view>

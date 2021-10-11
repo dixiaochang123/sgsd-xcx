@@ -503,7 +503,8 @@ Page({
 		num13: 1,
 		type13: 1,
 
-		power:{}
+		power:{},
+		rentCollectionRate:[]//租金收缴率
 
 	},
 	onPageScroll: function (e) {
@@ -1128,6 +1129,22 @@ Page({
 		}, 200)
 
 	},
+	getYearQuartePaogram() {
+		util.ajax({
+			url: "data-analysis/api/sg/pms/getYearQuartePaogram",
+			method: "POST",
+			success: res => {
+				if (res.success) {
+					console.log(res.data)
+					this.setData({
+						rentCollectionRate:res.data
+					})
+				}
+			},
+			fail: error => {
+			}
+		})
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -1151,6 +1168,7 @@ Page({
 		// this.getCarData1();
 		// this.getBMData();
 		this.getBMData1();
+		this.getYearQuartePaogram();
 		// this.getLineDataxse(1);
 		// this.getLineData1xse(1);
 		// this.getLineData();

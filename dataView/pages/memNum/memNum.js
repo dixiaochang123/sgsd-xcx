@@ -4,6 +4,8 @@ const util = require('../../../utils/util');
 const app = getApp();
 //曲线图
 var chart = null;
+var chart1 = null;
+var chart2 = null;
 let chartData = {
 	couponGivenCount: 51201,
 	couponGainRatio: 0,
@@ -114,7 +116,30 @@ Page({
 				return chart;
 			}
 		},
+		ec1: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart1 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart1);
+				return chart1;
+			}
+		},
+		ec2: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart2 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+				});
+				canvas.setChart(chart2);
+				return chart2;
+			}
+		},
 		totalScore:[],
+		consumedTotalScore:[],
 		GainCount: [],
 		GainRatio: [],
 		GivenCount: [],
@@ -124,10 +149,43 @@ Page({
 		couponDischarge: '',
 		couponUsage: '',
 		couponReceive: '',
+
+		couponUsage1: '',
+		couponReceive1: '',
+
+		couponUsage2: '',
+		couponReceive3: '',
+
+
+
 		conversionRate: '',
 		verify: '',
 		purchaseRate: '',
 		refundRate: '',
+
+		conversionRate1: '',
+		verify1: '',
+		purchaseRate1: '',
+		refundRate1: '',
+
+		conversionRate2: '',
+		verify2: '',
+		purchaseRate2: '',
+		refundRate2: '',
+
+		activeflow:'积分来源'
+	},
+	handleclickTab(event) {
+		var dataval = event.target.dataset.val;
+		this.setData({
+			activeflow:dataval
+		})
+		switch (dataval) {
+			case "积分来源":
+				;
+			case "消耗来源":
+				;
+		}
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -155,6 +213,8 @@ Page({
 		this.getData();
 		// this.getCouponData();
 		this.getCouponData1();
+		this.getCouponData2();
+		this.getCouponData3();
 	},
 	getData: function(e){
 		util.ajax({
@@ -163,7 +223,8 @@ Page({
 			success:res=>{
 				if(res.success){
 					this.setData({
-						totalScore: res.data.totalScore >10000? (res.data.totalScore/10000).toFixed(2):res.data.totalScore
+						totalScore: res.data.totalScore >10000? (res.data.totalScore/10000).toFixed(2):res.data.totalScore,
+						consumedTotalScore: res.data.consumedTotalScore >10000? (res.data.consumedTotalScore/10000).toFixed(2):res.data.consumedTotalScore
 					})
 				}
 				wx.hideLoading();
@@ -216,43 +277,91 @@ Page({
 		})
 
 	},
-	getCouponData: function(e){
+	getCouponData2: function(e){
 		util.ajax({
-			url:"data-analysis/api/general/member/coupon",
+			url:"data-analysis/api/general/member/groupBuyingSpike",
 			method:"POST",
 			success:res=>{
 				if(res.success){
-					console.log(res.data)
-					chartData.couponGivenCount = this.data.couponDischarge
-					chartData.couponGainRatio = res.data.couponGainRatio/100;
-					chartData.couponUsedRatio = res.data.couponUsedRatio/100;
 					this.setData({
-						GainCount: res.data.couponGainCount,
-						GainRatio: res.data.couponGainRatio,
-						GivenCount: res.data.couponGivenCount,
-						UsedCount: res.data.couponUsedCount,
-						UsedRatio: res.data.couponUsedRatio
+						couponDischarge: res.data.couponDischarge,
+						couponUsage1: res.data.couponUsage,
+						couponReceive1: res.data.couponReceive,
+						conversionRate1: res.data.conversionRate,
+						verify1: res.data.verify,
+						purchaseRate1: res.data.purchaseRate,
+						refundRate1: res.data.refundRate,
 					})
-				}
-				let chartSet = function (){
-					if(chart){
-						console.log(chart)
-						chart.setOption(initOption())
-						console.log('set chart')
-					}else{
-						setTimeout(()=>{
-							console.log("chart is null")
-							chartSet();
-						},500)
+					chartData.couponGivenCount = res.data.couponDischarge,
+					chartData.couponGainRatio = res.data.couponReceive;
+					chartData.couponUsedRatio = res.data.couponUsage;
+					let chartSet = function (){
+						if(chart1){
+							console.log(chart1)
+							chart1.setOption(initOption())
+							console.log('set chart')
+						}else{
+							setTimeout(()=>{
+								console.log("chart is null")
+								chartSet();
+							},500)
+						}
 					}
+					chartSet();
+					
+					// this.getCouponData()
 				}
-				chartSet();
+
 				wx.hideLoading();
 			},
 			fail:error=>{
 				wx.hideLoading();
 			}
 		})
+
+	},
+	getCouponData3: function(e){
+		util.ajax({
+			url:"data-analysis/api/general/member/systemDistributionCoupon",
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					this.setData({
+						couponDischarge: res.data.couponDischarge,
+						couponUsage2: res.data.couponUsage,
+						couponReceive2: res.data.couponReceive,
+						conversionRate2: res.data.conversionRate,
+						verify2: res.data.verify,
+						purchaseRate2: res.data.purchaseRate,
+						refundRate2: res.data.refundRate,
+					})
+					chartData.couponGivenCount = res.data.couponDischarge,
+					chartData.couponGainRatio = res.data.couponReceive;
+					chartData.couponUsedRatio = res.data.couponUsage;
+					let chartSet = function (){
+						if(chart2){
+							console.log(chart2)
+							chart2.setOption(initOption())
+							console.log('set chart')
+						}else{
+							setTimeout(()=>{
+								console.log("chart is null")
+								chartSet();
+							},500)
+						}
+					}
+					chartSet();
+					
+					// this.getCouponData()
+				}
+
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})
+
 	},
 
 	/**

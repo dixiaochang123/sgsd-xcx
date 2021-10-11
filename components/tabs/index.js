@@ -124,6 +124,7 @@ Component({
         totalSpace:{ type: Number, value: 0 },
         ec10:{type: Object, value: {}},
         power:{type: Object, value: {}},
+        rentCollectionRate:{ type: Array, value: []},
     },
     data: {
         currentView: 0,
