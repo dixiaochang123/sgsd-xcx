@@ -31,20 +31,20 @@
 				<text class="{{activeflow=='积分来源'?'activetab':''}}" data-val='积分来源'>积分来源</text>
 				<text class="{{activeflow=='消耗来源'?'activetab':''}}" data-val='消耗来源'>消耗来源</text>
 			</view>
-			<view class="tabss">
+			<view class="tabss" wx:for="{{integralSources}}" wx:key="source">
 				<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
 				<view class="tabss_text">
 					<view class="texts">
-						<view>支付宝无感积分</view>
+						<view>{{item.source}}</view>
 						<view class="righttext">
-							<view>{{""}}<text style="font-size:16rpx;">万分</text></view>
-							<view class="numberbaifenbi">{{'30%'}}</view>
+							<view>{{item.point}}<text style="font-size:16rpx;">万分</text></view>
+							<view class="numberbaifenbi">{{item.proportion}}</view>
 						</view>
 					
 					</view>
 				</view>
 			</view>
-			<view class="tabss">
+			<!-- <view class="tabss">
 				<image class="juxing" src="../../../images/juxing.png" mode="widthFix"></image>
 				<view class="tabss_text">
 					<view class="texts">
@@ -68,7 +68,7 @@
 						</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view wx:if="{{false}}">
 			<view class="title">

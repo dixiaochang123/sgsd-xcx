@@ -173,7 +173,8 @@ Page({
 		purchaseRate2: '',
 		refundRate2: '',
 
-		activeflow:'积分来源'
+		activeflow:'积分来源',
+		integralSources:[],
 	},
 	handleclickTab(event) {
 		var dataval = event.target.dataset.val;
@@ -182,10 +183,30 @@ Page({
 		})
 		switch (dataval) {
 			case "积分来源":
+				this.integralSource(0)
 				;
 			case "消耗来源":
+				this.integralSource(1)
 				;
 		}
+	},
+	integralSource(type) {
+		util.ajax({
+			url:"data-analysis/api/general/member/integralSource?type="+type,
+			method:"POST",
+			success:res=>{
+				if(res.success){
+					console.log(res.data)
+					this.setData({
+						integralSources:res.data
+					})
+				}
+				wx.hideLoading();
+			},
+			fail:error=>{
+				wx.hideLoading();
+			}
+		})
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -215,6 +236,7 @@ Page({
 		this.getCouponData1();
 		this.getCouponData2();
 		this.getCouponData3();
+		this.integralSource(0);
 	},
 	getData: function(e){
 		util.ajax({
