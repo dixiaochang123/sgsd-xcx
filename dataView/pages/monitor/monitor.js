@@ -901,7 +901,13 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].sdate.substring(8,10)+'日');
+						let date = res.data[i].sdate.substring(8,10)
+						if(date.substr(0, 1)=='0') {
+							date = date.substr(1, 2) + '日'
+						} else {
+							date = date.substr(0, 2) + '日'
+						}
+						lineChartData.xData.push(date);
 						lineChartData.seriesData.push(res.data[i].count);
 					}
 					console.log(999,res.data,this.data.ec4)
@@ -943,7 +949,13 @@ Page({
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
 					for(let i = 0; i <res.data.length;i++){
-						lineChartData.xData.push(res.data[i].sdate.substring(6,8)+'月');
+						let date = res.data[i].sdate.substring(5,8)
+						if(date.substr(0, 1)=='0') {
+							date = date.substr(1, 2) + '月'
+						} else {
+							date = date.substr(0, 2) + '月'
+						}
+						lineChartData.xData.push(date);
 						lineChartData.seriesData.push(res.data[i].count);
 					}
 				}
