@@ -896,6 +896,13 @@ Page({
 
 					pieChartData10.seriesData = arr;
 					pieChartData10.legendData = arr.map(item => item.name);
+					let istrue = !!(pieChartData10.legendData).includes("主力店—快时尚")?'快时尚获取到了':'快时尚没获取到'
+					console.log(pieChartData10.legendData,istrue)
+					wx.showToast({
+						title: istrue, //弹框内容
+						icon: 'success',  //弹框模式
+						duration: 2000    //弹框显示时间
+					})
 					let chartSet = function () {
 						if (chart11) {
 							chart11.setOption(initOptions10(pieChartData10,'品类',true))
