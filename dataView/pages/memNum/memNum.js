@@ -301,7 +301,7 @@ Page({
 	},
 	getCouponData2: function(e){
 		util.ajax({
-			url:"data-analysis/api/general/member/groupBuyingSpike",
+			url:"data-analysis/api/general/member/groupBuyingSpike?type=1",
 			method:"POST",
 			success:res=>{
 				if(res.success){

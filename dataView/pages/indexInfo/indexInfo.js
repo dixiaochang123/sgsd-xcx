@@ -551,11 +551,11 @@ let pieChartData10 = {
 	seriesData: []
 }
 
-function initOptions10(pieChartData10) {
+function initOptions10(pieChartData10,name) {
 	return {
 		title: {
 			// text: pieChartData10.totalValue,
-			text: '年龄',
+			text: name || '年龄',
 			// subtext: '客流',
 			left: 'center',
 			right: 'center',
@@ -814,37 +814,36 @@ Page({
 				if (res.success) {
 					let {
 						totalCount,
-						age00Count,
-						age50Count,
-						age60Count,
-						age70Count,
-						age80Count,
-						age90Count,
-						ageNoCount
+						age00Proportion,
+						age50Proportion,
+						age60Proportion,
+						age70Proportion,
+						age80Proportion,
+						age90Proportion,
+						ageNoProportion
 					} = res.data;
 					let arr = [{
-						value: ((age00Count / totalCount)),
+						value: age00Proportion.substr(0,age00Proportion.length-1),
 						name: '00后'
 					}, {
-						value: ((age50Count / totalCount)),
+						value: age50Proportion.substr(0,age50Proportion.length-1),
 						name: '50后'
 					}, {
-						value: ((age60Count / totalCount)),
+						value: age60Proportion.substr(0,age60Proportion.length-1),
 						name: '60后'
 					}, {
-						value: ((age70Count / totalCount)),
+						value: age70Proportion.substr(0,age70Proportion.length-1),
 						name: '70后'
 					}, {
-						value: ((age80Count / totalCount)),
+						value: age80Proportion.substr(0,age80Proportion.length-1),
 						name: '80后'
 					}, {
-						value: ((age90Count / totalCount)),
+						value: age90Proportion.substr(0,age90Proportion.length-1),
 						name: '90后'
 					}, {
-						value: ((ageNoCount / totalCount)),
+						value: ageNoProportion.substr(0,ageNoProportion.length-1),
 						name: '未知'
 					}]
-					console.log(typeof totalCount, age50Count, age60Count, age70Count, age80Count, age90Count, ageNoCount, arr);
 					pieChartData10.seriesData = arr;
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
@@ -882,7 +881,7 @@ Page({
 					let arr = []
 					list.map(item => {
 						arr.push({
-							value: item.sale / totalSale,
+							value: item.proportion.substr(0,item.proportion.length-1),
 							name: item.categoryName
 						})
 					})
@@ -934,10 +933,10 @@ Page({
 					} = res.data
 					console.log(memberSalesVolumeRatio, nonMemberSalesVolumeRatio)
 					let arr = [{
-						value: memberSalesVolumeRatio,
+						value: parseFloat(memberSalesVolumeRatio,2) ,
 						name: '会员销售额'
 					}, {
-						value: nonMemberSalesVolumeRatio,
+						value: parseFloat(nonMemberSalesVolumeRatio,2),
 						name: '非会员销售额'
 					}]
 
@@ -945,7 +944,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart12) {
-							chart12.setOption(initOptions10(pieChartData10))
+							chart12.setOption(initOptions10(pieChartData10,'品类'))
 							console.log('set chart')
 
 						} else {

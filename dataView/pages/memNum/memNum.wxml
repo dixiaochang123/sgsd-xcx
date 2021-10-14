@@ -221,8 +221,8 @@
 				<view class="gfsgdgv">
 					<view><text>转化率</text><text class="hhhk">{{conversionRate2}}</text></view>
 					<view><text>核销率</text><text class="hhhk">{{verify2}}</text></view>
-					<view><text>购买率</text><text class="hhhk">{{purchaseRate2}}</text></view>
-					<view><text>退款率</text><text class="hhhk">{{refundRate2}}</text></view>
+					<!-- <view><text>购买率</text><text class="hhhk">{{purchaseRate2}}</text></view>
+					<view><text>退款率</text><text class="hhhk">{{refundRate2}}</text></view> -->
 				</view>
 			</view>
 		</view>

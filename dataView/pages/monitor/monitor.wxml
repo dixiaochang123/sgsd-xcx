@@ -93,6 +93,36 @@
 			</view>
 		</view>
 	</view>
+	<view class="title">
+				<text style="padding-left:30rpx;">客流量</text>
+			</view>
+	<view class="revenue-list" wx:if="{{!!charts4Isshow}}" style="margin-bottom:80rpx;">
+		<image class="huiyuanbg huiyuanbg1" src="../../../images/huiyuanbg.png"></image>
+		<view style="height:40rpx;"></view>
+		<view class="revenue-top" style="margin-bottom:0;">
+			<view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1">
+				<text>本月</text>
+			</view>
+			<view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1">
+				<text>本年</text>
+			</view>
+		</view>
+		<view class="circle">
+						<image src="../../../images/jrkl.png" mode="widthFix"></image>
+						<view class="circle-txt">
+							<view>客流量</view>
+							<view class="jinrikliu_text_2">{{totalMember}}</view>
+							<view style="font-size:20rpx;">万次</view>
+						</view>
+					</view>
+		<view style="height:40rpx;"></view>
+		<view class="charts-con">
+			<!-- <view class="charts-tm">车流量（辆）</view> -->
+			<view class="echarts-con">
+				<ec-canvas id="mychart-dom-line" canvas-id="mychart-line4" ec="{{ ec4 }}"></ec-canvas>
+			</view>
+		</view>
+	</view>
 	<view class="warp">
 		<image class="klmb" src="../../../images/klmb.png"></image>
 		<view class="consumption">
@@ -187,25 +217,88 @@
 			</view>
 		</view>
 	</view>
-	<view class="revenue-list" wx:if="{{!!charts4Isshow}}" style="margin-bottom:80rpx;">
-		<image class="huiyuanbg huiyuanbg1" src="../../../images/huiyuanbg.png"></image>
-		<view style="height:40rpx;"></view>
-		<view class="revenue-top" style="margin-bottom:0;">
-			<view class="top-li {{num1==1?'cur':''}}" data-num="1" bindtap="chartsClick1">
-				<text>本月</text>
+	<view class="warp">
+		<image class="klmb" src="../../../images/klmb.png"></image>
+		<view class="consumption">
+			<view class="title">
+				<text>本周客流指标达成情况</text>
 			</view>
-			<view class="top-li {{num1==2?'cur':''}}" data-num="2" bindtap="chartsClick1">
-				<text>本年</text>
-			</view>
-		</view>
-		<view style="height:40rpx;"></view>
-		<view class="charts-con">
-			<!-- <view class="charts-tm">车流量（辆）</view> -->
 			<view class="echarts-con">
-				<ec-canvas id="mychart-dom-line" canvas-id="mychart-line4" ec="{{ ec4 }}"></ec-canvas>
+				<ec-canvas id="mychart-dom-bar5" canvas-id="mychart-bar5" ec="{{ ec5 }}"></ec-canvas>
+				<view class="rightInfo">
+					<view class="right_child right_child1">
+						<view>同比</view>
+						<view>
+							<image wx:if="{{ztbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{ztb1}}</text>
+						</view>
+					</view>
+					<view style="width:40rpx;"></view>
+					<view class="right_child right_child2">
+						<view>环比</view>
+						<view>
+							<image wx:if="{{zhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{zhb1}}</text>
+						</view>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>
+	<view class="warp">
+		<image class="klmb" src="../../../images/klmb.png"></image>
+		<view class="consumption">
+			<view class="title">
+				<text>本月客流指标达成情况</text>
+			</view>
+			<view class="echarts-con">
+				<ec-canvas id="mychart-dom-bar6" canvas-id="mychart-bar6" ec="{{ ec6 }}"></ec-canvas>
+				<view class="rightInfo">
+					<view class="right_child right_child1">
+						<view>同比</view>
+						<view>
+							<image wx:if="{{ytbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{ytb1}}</text>
+						</view>
+					</view>
+					<view style="width:40rpx;"></view>
+					<view class="right_child right_child2">
+						<view>环比</view>
+						<view>
+							<image wx:if="{{yhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{yhb1}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="warp">
+		<image class="klmb" src="../../../images/klmb.png"></image>
+		<view class="consumption">
+			<view class="title">
+				<text>本年客流指标达成情况</text>
+			</view>
+			<view class="echarts-con">
+				<ec-canvas id="mychart-dom-bar7" canvas-id="mychart-bar7" ec="{{ ec7 }}"></ec-canvas>
+				<view class="rightInfo">
+					<view class="right_child right_child1">
+						<view>同比</view>
+						<view>
+							<image wx:if="{{ntbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{ntb1}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	
 
 
 </view>

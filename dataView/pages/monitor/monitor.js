@@ -9,6 +9,9 @@ var chart1 = null;
 var chart2 = null;
 var chart3 = null;
 var chart4 = null;
+var chart5 = null;
+var chart6 = null;
+var chart7 = null;
 let pieChartData = {
 	legendData: [],
 	seriesData: [],
@@ -18,6 +21,11 @@ let seriesData = {
 	data1:[120, 180, 150],
 	data2:[120, 180, 150],
 	data3:[120, 180, 150],
+}
+let seriesData1 = {
+	data1:[120, 180, 150,100],
+	data2:[120, 180, 150,100],
+	data3:[120, 180, 150,100],
 }
 let lineChartData={
 	seriesData:[],
@@ -116,7 +124,7 @@ overflow: 'none' ,
 	}
 }
 
-function initOptions1() {
+function initOptions1(xAxisdata) {
 	return {
 		grid: {
 			left: 70,
@@ -125,7 +133,7 @@ function initOptions1() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本周', '上周', '20年同期'],
+			data: xAxisdata||['本周', '上周', '20年同期'],
 			axisLine: {
 				show: false
 			},
@@ -210,7 +218,7 @@ function initOptions1() {
 	}
 }
 
-function initOptions2() {
+function initOptions2(xAxisdata) {
 	return {
 		grid: {
 			left: 70,
@@ -219,7 +227,7 @@ function initOptions2() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本月', '上月', '20年同期'],
+			data: xAxisdata||['本月', '上月', '20年同期'],
 			axisLine: {
 				show: false
 			},
@@ -301,7 +309,7 @@ function initOptions2() {
 	}
 }
 
-function initOptions3() {
+function initOptions3(xAxisdata) {
 	return {
 		grid: {
 			left: 70,
@@ -310,7 +318,7 @@ function initOptions3() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本年', '20年', '19年'],
+			data: xAxisdata||['本年', '20年', '19年'],
 			axisLine: {
 				show: false
 			},
@@ -329,6 +337,281 @@ function initOptions3() {
 		},
 		series: [{
 			data: seriesData.data3,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
+function initOptions5(xAxisdata) {
+	return {
+		grid: {
+			left: 70,
+			right: 100,
+			top:40
+		},
+		xAxis: {
+			type: 'category',
+			data: xAxisdata||['本周', '上周', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			},
+			splitLine:{
+				show: false
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			},
+		},
+		series: [{
+			data: seriesData1.data1,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
+
+function initOptions6(xAxisdata) {
+	return {
+		grid: {
+			left: 70,
+			right: 100,
+			top:40
+		},
+		xAxis: {
+			type: 'category',
+			data: xAxisdata||['本月', '上月', '20年同期'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData1.data2,
+			label: {
+				show: true,
+				position: 'top',
+				valueAnimation: true
+			},
+			type: 'bar',
+			barWidth: 40,
+			itemStyle: {
+				borderRadius: 5,
+				borderColor: 'transparent',
+				borderWidth: 3,
+				color: '#bdc3dd',
+				shadowColor: '#8a8895',
+				shadowBlur: 3,
+				shadowOffsetX: -1 ,
+				shadowOffsetY: -2 ,
+				
+			},
+			showBackground: true,
+			emphasis:{
+				label:{
+					position: 'top',
+					show: true,
+					color:"#e5004f"
+				},
+				itemStyle:{
+					color:"#e5004f"
+				}
+			},
+			backgroundStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 1,
+					y2: 0,
+					colorStops: [{
+						offset: 0,
+						color: '#9c9bb3' // 0% 处的颜色
+					}, {
+						offset: 0.2,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.4,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 0.6,
+						color: '#e3e5f2' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#dadeec' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+				borderColor: '#ebeef8',
+				borderWidth: 3,
+				borderRadius: 5,
+				opacity: 1
+			}
+		}]
+	}
+}
+
+function initOptions7(xAxisdata) {
+	return {
+		grid: {
+			left: 70,
+			right: 100,
+			top:40
+		},
+		xAxis: {
+			type: 'category',
+			data: xAxisdata||['本年', '20年', '19年'],
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			axisLabel: {
+				interval: 0
+			}
+		},
+		yAxis: {
+			type: 'value',
+			splitLine:{
+				show: false
+			}
+		},
+		series: [{
+			data: seriesData1.data3,
 			label: {
 				show: true,
 				position: 'top',
@@ -571,6 +854,39 @@ Page({
 			return chart4;
 		  }
 		},
+		ec5: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart5 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+			});
+			canvas.setChart(chart5);
+			return chart5;
+		  }
+		},
+		ec6: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart6 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+			});
+			canvas.setChart(chart6);
+			return chart6;
+		  }
+		},
+		ec7: {
+			onInit: (canvas, width, height, dpr) =>{
+				chart7 = echarts.init(canvas, null, {
+					width: width,
+					height: height,
+					devicePixelRatio: dpr // new
+			});
+			canvas.setChart(chart7);
+			return chart7;
+		  }
+		},
 		charts4Isshow:false,
 		num: 0,
 		type: 2,
@@ -594,6 +910,20 @@ Page({
 		ntb:'',
 		ntbisadd:true,
 		nhbisadd:true,
+		totalMember:'',
+
+		zhb1:'',
+		ztb1:'',
+		ztbisadd1:true,
+		zhbisadd1:true,
+		yhb1:'',
+		ytb1:'',
+		ytbisadd1:true,
+		yhbisadd1:true,
+		nhb1:'',
+		ntb1:'',
+		ntbisadd1:true,
+		nhbisadd1:true,
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();
@@ -673,6 +1003,10 @@ Page({
 		that.passengerDataFromTheSameYear(1);
 		that.passengerDataFromTheSameYear(2);
 		that.passengerDataFromTheSameYear(3);
+
+		that.passengerDataFromTheSameYear1(1);
+		that.passengerDataFromTheSameYear1(2);
+		that.passengerDataFromTheSameYear1(3);
 	},
 	passengerDataFromTheSameYear: function (num) {
 		console.log(num)
@@ -732,6 +1066,84 @@ Page({
 							chart1.setOption(initOptions1())
 							chart2.setOption(initOptions2())
 							chart3.setOption(initOptions3())
+							console.log('set chart')
+							
+						} else {
+							setTimeout(() => {
+								console.log("chart is null")
+								chartSet();
+							}, 500)
+						}
+					}
+					chartSet();
+					wx.hideLoading();
+					setTimeout(()=>{
+						that.handleCanvarToImg();
+					},2000)
+				}
+			},
+			fail: error => {
+				wx.hideLoading();
+			}
+		})
+	},
+	passengerDataFromTheSameYear1: function (num) {
+		console.log(num)
+		let that = this;
+		wx.showLoading();
+		util.ajax({
+			url: "data-analysis/api/passengerFlow/passengerFlowIndicators?type="+num,
+			method: "POST",
+			success: res => {
+				console.log(res)
+				if (res.success) {
+					// res.data.passengerFlowIndex = 1
+					// res.data.thisPeriodOfData = 2
+					// res.data.byData = 3
+					// res.data.dataYearOnYear = 4
+					console.log(11, Object.values(res.data),Object.keys(res.data))
+					// 环比增长率=（本期数-上期数）/上期数×100%
+						// 同比增长率=（本期数-去年同期数）/去年同期数×100%
+						if(res.data.thisPeriodOfData==null) {
+							res.data.thisPeriodOfData = 0
+						}
+					if(num==1) {
+
+						seriesData1.data1 = Object.values(res.data).filter(item=>typeof(item)=="number")
+						this.setData({
+							ztb1:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							zhb1:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ztbisadd1:res.data.coRate.search("-") != -1?false:true,
+							zhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					if(num==2) {
+
+						seriesData1.data2 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						this.setData({
+							// yhb:res.data.ringRatio,
+							// ytb:res.data.coRate,
+							ytb1:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
+							yhb1:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							ytbisadd1:res.data.coRate.search("-") != -1?false:true,
+							yhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					if(num==3) {
+
+						seriesData1.data3 = Object.values(res.data).filter(item=>typeof(item)=="number");
+						seriesData1.data3.splice(2,1);
+						this.setData({
+							ntb1:res.data.ringRatio,
+							ntbisadd1:res.data.coRate.search("-") != -1?false:true,
+							nhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+						})
+					}
+					let chartSet = function () {
+						if (chart5) {
+							chart5.setOption(initOptions5(['本周','上周','去年同期','本周指标']))
+							chart6.setOption(initOptions6(['本月','上月','去年同期','本月指标']))
+							chart7.setOption(initOptions7(['本年','上年','本年指标']))
 							console.log('set chart')
 							
 						} else {
@@ -900,6 +1312,7 @@ Page({
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
+					let totalMember = 0
 					for(let i = 0; i <res.data.length;i++){
 						let date = res.data[i].sdate.substring(8,10)
 						if(date.substr(0, 1)=='0') {
@@ -909,7 +1322,11 @@ Page({
 						}
 						lineChartData.xData.push(date);
 						lineChartData.seriesData.push(res.data[i].count);
+						totalMember+=res.data[i].count
 					}
+					this.setData({
+						totalMember:totalMember>10000?(totalMember/10000).toFixed(2):totalMember,
+					})
 					console.log(999,res.data,this.data.ec4)
 					if(res.data.length>0) {
 						this.setData({
@@ -948,6 +1365,7 @@ Page({
 				if(res.success){
 					lineChartData.xData = [];
 					lineChartData.seriesData = [];
+					let totalMember=0;
 					for(let i = 0; i <res.data.length;i++){
 						let date = res.data[i].sdate.substring(5,8)
 						if(date.substr(0, 1)=='0') {
@@ -957,7 +1375,11 @@ Page({
 						}
 						lineChartData.xData.push(date);
 						lineChartData.seriesData.push(res.data[i].count);
+						totalMember+=res.data[i].count
 					}
+					this.setData({
+						totalMember:totalMember>10000?(totalMember/10000).toFixed(2):totalMember,
+					})
 				}
 				let chartSet = function (){
 					if(chart4){

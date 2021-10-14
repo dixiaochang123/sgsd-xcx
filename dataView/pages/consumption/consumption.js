@@ -155,7 +155,7 @@ function initOption0() {
 		grid: {
 			left: '2%',
 			right: '10%',
-			top: 30,
+			top: 50,
 			bottom: '5%',
 			containLabel: true
 		},
