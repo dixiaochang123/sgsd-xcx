@@ -551,11 +551,11 @@ let pieChartData10 = {
 	seriesData: []
 }
 
-function initOptions10(pieChartData10,name) {
+function initOptions10(pieChartData10,name,isLinefeed) {
 	return {
 		title: {
 			// text: pieChartData10.totalValue,
-			text: name || '年龄',
+			text: name==1?'':name || '年龄',
 			// subtext: '客流',
 			left: 'center',
 			right: 'center',
@@ -568,10 +568,12 @@ function initOptions10(pieChartData10,name) {
 				color: '#3f3d60'
 			}
 		},
-		color: ['#F3961C', '#F25C5D', '#907AFF', '#0ECEFF', '#0566E8', '#32CD32'],
+		// color: ['#F3961C', '#F25C5D', '#907AFF', '#0ECEFF', '#0566E8', '#32CD32'],
+		color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4','#ea7ccc'],
 		series: [{
 			name: '客流占比',
 			type: 'pie',
+			minAngle: 10,  //设置扇形的最小占比
 			radius: ['30%', '50%'],
 			center: ['50%', '50%'],
 			label: {
@@ -598,7 +600,13 @@ function initOptions10(pieChartData10,name) {
 				},
 				// formatter: '{b}\n{c}m²'
 				formatter: function (pram) {
-					return pram.name + '\n' + '   ' + pram.value + '%'
+					if(isLinefeed) {
+
+						return pram.name + '\n' + '   ' + pram.value + '%'
+					}else {
+						return pram.name + '   ' + pram.value + '%'
+
+					}
 				},
 				overflow: 'breakAll'
 			},
@@ -848,7 +856,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart10) {
-							chart10.setOption(initOptions10(pieChartData10))
+							chart10.setOption(initOptions10(pieChartData10,'',false))
 							console.log('set chart')
 
 						} else {
@@ -890,7 +898,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart11) {
-							chart11.setOption(initOptions10(pieChartData10))
+							chart11.setOption(initOptions10(pieChartData10,'品类',true))
 							console.log('set chart')
 
 						} else {
@@ -944,7 +952,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart12) {
-							chart12.setOption(initOptions10(pieChartData10,'品类'))
+							chart12.setOption(initOptions10(pieChartData10,'1',false))
 							console.log('set chart')
 
 						} else {

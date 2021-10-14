@@ -37,7 +37,7 @@
 					<view class="texts">
 						<view>{{item.source}}</view>
 						<view class="righttext">
-							<view>{{item.point}}<text style="font-size:16rpx;">万分</text></view>
+							<view>{{item.simplifyPoint}}<text style="font-size:16rpx;">万分</text></view>
 							<view class="numberbaifenbi">{{item.proportion}}</view>
 						</view>
 					
