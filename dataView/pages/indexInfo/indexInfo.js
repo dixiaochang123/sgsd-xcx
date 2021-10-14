@@ -551,7 +551,7 @@ let pieChartData10 = {
 	seriesData: []
 }
 
-function initOptions10(pieChartData10,name,isLinefeed) {
+function initOptions10(pieChartData10,name,isLinefeed,startAngle) {
 	return {
 		title: {
 			// text: pieChartData10.totalValue,
@@ -574,26 +574,10 @@ function initOptions10(pieChartData10,name,isLinefeed) {
 			name: '客流占比',
 			type: 'pie',
 			minAngle: 10,  //设置扇形的最小占比
+			startAngle:startAngle || 0,
+avoidLabelOverlap: true ,
 			radius: ['30%', '50%'],
 			center: ['50%', '50%'],
-			label: {
-				normal: {
-					show: true,
-					position: 'outside',
-					formatter: '{d}%',
-					borderRadius: 20,
-
-					overflow: 'none',
-
-				},
-				emphasis: {
-					show: true,
-					textStyle: {
-						fontSize: '12',
-						fontWeight: 'bold'
-					}
-				}
-			},
 			label: {
 				textStyle: {
 					color: '#3f435e'
@@ -602,13 +586,19 @@ function initOptions10(pieChartData10,name,isLinefeed) {
 				formatter: function (pram) {
 					if(isLinefeed) {
 
-						return pram.name + '\n' + '   ' + pram.value + '%'
+						// return pram.name + ' ' + pram.value + '%'
+						return pram.name + '\n'  + pram.value + '%'
 					}else {
-						return pram.name + '   ' + pram.value + '%'
+						return pram.name + ' ' + pram.value + '%'
 
 					}
 				},
-				overflow: 'breakAll'
+				overflow: 'none'
+			},
+			labelLine:{
+				show:true,
+				
+				showAbove:true
 			},
 			data: pieChartData10.seriesData,
 			itemStyle: {
@@ -856,7 +846,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart10) {
-							chart10.setOption(initOptions10(pieChartData10,'',false))
+							chart10.setOption(initOptions10(pieChartData10,'',false,1))
 							console.log('set chart')
 
 						} else {
@@ -896,13 +886,6 @@ Page({
 
 					pieChartData10.seriesData = arr;
 					pieChartData10.legendData = arr.map(item => item.name);
-					let istrue = !!(pieChartData10.legendData).includes("主力店—快时尚")?'快时尚获取到了':'快时尚没获取到'
-					console.log(pieChartData10.legendData,istrue)
-					wx.showToast({
-						title: istrue, //弹框内容
-						icon: 'success',  //弹框模式
-						duration: 2000    //弹框显示时间
-					})
 					let chartSet = function () {
 						if (chart11) {
 							chart11.setOption(initOptions10(pieChartData10,'品类',true))
@@ -959,7 +942,7 @@ Page({
 					pieChartData10.legendData = arr.map(item => item.name);
 					let chartSet = function () {
 						if (chart12) {
-							chart12.setOption(initOptions10(pieChartData10,'1',false))
+							chart12.setOption(initOptions10(pieChartData10,'1',false,90))
 							console.log('set chart')
 
 						} else {
