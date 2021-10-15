@@ -1056,7 +1056,7 @@ Page({
 							// ntb:res.data.coRate,
 							// ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
 							// nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
-							ntb:res.data.ringRatio,
+							ntb:res.data.coRate,
 							ntbisadd:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
