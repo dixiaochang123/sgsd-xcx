@@ -403,7 +403,7 @@ function initOptions5(xAxisdata) {
 	return {
 		grid: {
 			left: 70,
-			right: 100,
+			right: 20,
 			top:40
 		},
 		xAxis: {
@@ -497,7 +497,7 @@ function initOptions6(xAxisdata) {
 	return {
 		grid: {
 			left: 70,
-			right: 100,
+			right: 20,
 			top:40
 		},
 		xAxis: {
