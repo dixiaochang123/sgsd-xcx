@@ -1134,7 +1134,7 @@ Page({
 						seriesData1.data3 = Object.values(res.data).filter(item=>typeof(item)=="number");
 						seriesData1.data3.splice(2,1);
 						this.setData({
-							ntb1:res.data.ringRatio,
+							ntb1:res.data.coRate,
 							ntbisadd1:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
 						})

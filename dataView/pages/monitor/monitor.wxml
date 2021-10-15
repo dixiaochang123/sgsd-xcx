@@ -205,14 +205,15 @@
 							<text class="right_child1_text"> {{ntb}}</text>
 						</view>
 					</view>
-					<!-- <view style="width:40rpx;"></view>
-							<view class="right_child right_child2">
-								<view>同比</view>
-								<view>
-									<image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
-									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
-								<text class="right_child1_text"> {{nhb}}</text></view>
-							</view> -->
+					<view style="width:40rpx;"></view>
+					<view style="visibility: hidden;" class="right_child right_child2">
+						<view>环比</view>
+						<view>
+							<image wx:if="{{yhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{yhb1}}</text>
+						</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -292,6 +293,15 @@
 							<image wx:if="{{ntbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 							<text class="right_child1_text"> {{ntb1}}</text>
+						</view>
+					</view>
+					<view style="width:40rpx;"></view>
+					<view style="visibility: hidden;" class="right_child right_child2">
+						<view>环比</view>
+						<view>
+							<image wx:if="{{yhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
+							<text class="right_child1_text"> {{yhb1}}</text>
 						</view>
 					</view>
 				</view>

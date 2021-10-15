@@ -195,4 +195,5 @@ sgsd-xcx
 - echarts 饼图数据太小几乎看不见的解决方法
 ```
 minAngle: 10,  //设置扇形的最小占比
+startAngle: 10, //旋转角度
 ```
