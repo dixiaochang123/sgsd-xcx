@@ -399,12 +399,23 @@ function initOptions3(xAxisdata) {
 		}]
 	}
 }
-function initOptions5(xAxisdata) {
+function initOptions5(xAxisdata,title) {
 	return {
 		grid: {
 			left: 70,
 			right: 20,
 			top:40
+		},
+		title: {
+			show:true,
+			text:title,
+			right: 22,
+			top:10,
+			textStyle:{
+				fontWeight:400,
+				fontSize:12,
+				// color:'#000'
+			}
 		},
 		xAxis: {
 			type: 'category',
@@ -493,12 +504,23 @@ function initOptions5(xAxisdata) {
 	}
 }
 
-function initOptions6(xAxisdata) {
+function initOptions6(xAxisdata,title) {
 	return {
 		grid: {
 			left: 70,
 			right: 20,
 			top:40
+		},
+		title: {
+			show:true,
+			text:title,
+			right: 22,
+			top:10,
+			textStyle:{
+				fontWeight:400,
+				fontSize:12,
+				// color:'#000'
+			}
 		},
 		xAxis: {
 			type: 'category',
@@ -584,12 +606,23 @@ function initOptions6(xAxisdata) {
 	}
 }
 
-function initOptions7(xAxisdata) {
+function initOptions7(xAxisdata,title) {
 	return {
 		grid: {
 			left: 70,
 			right: 100,
 			top:40
+		},
+		title: {
+			show:true,
+			text:title,
+			right: 105,
+			top:12,
+			textStyle:{
+				fontWeight:400,
+				fontSize:12,
+				// color:'#000'
+			}
 		},
 		xAxis: {
 			type: 'category',
@@ -924,6 +957,9 @@ Page({
 		ntb1:'',
 		ntbisadd1:true,
 		nhbisadd1:true,
+		num11:'',
+		num22:'',
+		num33:'',
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();
@@ -1109,12 +1145,13 @@ Page({
 						}
 					if(num==1) {
 
-						seriesData1.data1 = Object.values(res.data).filter(item=>typeof(item)=="number")
+						seriesData1.data1 = Object.values(res.data).filter(item=>typeof(item)=="number");
 						this.setData({
 							ztb1:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
 							zhb1:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
 							ztbisadd1:res.data.coRate.search("-") != -1?false:true,
 							zhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+							num11:res.data.indexRate
 						})
 					}
 					if(num==2) {
@@ -1127,23 +1164,26 @@ Page({
 							yhb1:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
 							ytbisadd1:res.data.coRate.search("-") != -1?false:true,
 							yhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+							num22:res.data.indexRate
 						})
 					}
 					if(num==3) {
 
 						seriesData1.data3 = Object.values(res.data).filter(item=>typeof(item)=="number");
-						seriesData1.data3.splice(2,1);
+						seriesData1.data3.splice(1,1);
+						console.log(res.data,seriesData1.data3)
 						this.setData({
 							ntb1:res.data.coRate,
 							ntbisadd1:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd1:res.data.ringRatio.search("-") != -1?false:true,
+							num33:res.data.indexRate
 						})
 					}
 					let chartSet = function () {
 						if (chart5) {
-							chart5.setOption(initOptions5(['本周','上周','去年同期','本周指标']))
-							chart6.setOption(initOptions6(['本月','上月','去年同期','本月指标']))
-							chart7.setOption(initOptions7(['本年','上年','本年指标']))
+							chart5.setOption(initOptions5(['本周','上周','去年同期','本周指标'],this.data.num11))
+							chart6.setOption(initOptions6(['本月','上月','去年同期','本月指标'],this.data.num22))
+							chart7.setOption(initOptions7(['本年','上年','本年指标'],this.data.num33))
 							console.log('set chart')
 							
 						} else {
@@ -1152,7 +1192,7 @@ Page({
 								chartSet();
 							}, 500)
 						}
-					}
+					}.bind(this)
 					chartSet();
 					wx.hideLoading();
 					setTimeout(()=>{
