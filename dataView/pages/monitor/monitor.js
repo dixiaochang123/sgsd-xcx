@@ -39,7 +39,7 @@ function initOptions() {
 			subtext: '客流',
 			left: 'center',
 			right: 'center',
-			top: 148,
+			top: 142,
 			textStyle: {
 				fontSize: 16,
 				color: '#e5004f'
@@ -1093,7 +1093,7 @@ Page({
 							// ntb:res.data.coRate,
 							// ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
 							// nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
-							ntb:res.data.coRate,
+							ntb:res.data.ringRatio,
 							ntbisadd:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
