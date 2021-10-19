@@ -181,12 +181,13 @@ Page({
 		this.setData({
 			activeflow:dataval
 		})
+		console.log(dataval)
 		switch (dataval) {
 			case "积分来源":
-				this.integralSource(0)
+				this.integralSource('0')
 				;
 			case "消耗来源":
-				this.integralSource(1)
+				this.integralSource('1')
 				;
 		}
 	},
