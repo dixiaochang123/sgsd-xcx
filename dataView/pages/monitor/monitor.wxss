@@ -306,10 +306,10 @@ float: left;
 	padding-right: 35rpx;
 }
 .circle-txt view {
-	font-size: 36rpx;
+	font-size: 32rpx;
 }
 .circle-txt view:first-child {
-	margin-top: 56rpx;
+	margin-top: 80rpx;
 }
 .circle-txt view:last-child {
 	margin-bottom: 140rpx;

@@ -154,7 +154,7 @@ sub {
 }
 
 .circle {
-	width: 50%;
+	width: 45%;
 	height: 380rpx;
 	text-align: center;
 	position: relative;
@@ -220,7 +220,7 @@ sub {
 	margin-left: 20rpx;
 }
 .jinrikliu {
-  width: 350rpx;
+  width: 320rpx;
   /* height: 420rpx; */
 	margin:0 auto;
 	margin-right: 55rpx;

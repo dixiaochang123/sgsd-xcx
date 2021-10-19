@@ -111,7 +111,7 @@
 						<image src="../../../images/jrkl.png" mode="widthFix"></image>
 						<view class="circle-txt">
 							<view>客流量</view>
-							<view class="jinrikliu_text_2">{{totalMember}}</view>
+							<view class="jinrikliu_text_2" style="font-size: 42rpx;margin-top: 20rpx;">{{totalMember}}</view>
 							<view style="font-size:20rpx;">万次</view>
 						</view>
 					</view>
@@ -206,14 +206,14 @@
 						</view>
 					</view>
 					<view style="width:40rpx;"></view>
-					<view style="visibility: hidden;" class="right_child right_child2">
+					<!-- <view style="visibility: hidden;" class="right_child right_child2">
 						<view>环比</view>
 						<view>
 							<image wx:if="{{yhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 							<text class="right_child1_text"> {{yhb1}}</text>
 						</view>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>
@@ -296,14 +296,14 @@
 						</view>
 					</view>
 					<view style="width:40rpx;"></view>
-					<view style="visibility: hidden;" class="right_child right_child2">
+					<!-- <view style="visibility: hidden;" class="right_child right_child2">
 						<view>环比</view>
 						<view>
 							<image wx:if="{{yhbisadd1}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 							<text class="right_child1_text"> {{yhb1}}</text>
 						</view>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>

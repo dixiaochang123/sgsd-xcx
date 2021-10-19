@@ -39,14 +39,15 @@ function initOptions() {
 			subtext: '客流',
 			left: 'center',
 			right: 'center',
-			top: 'center',
+			top: 148,
 			textStyle: {
 				fontSize: 16,
 				color: '#e5004f'
 			},
 			subtextStyle: {
 				color: '#3f3d60'
-			}
+			},
+itemGap: 5,
 		},
 		legend: {
 			left: 'center',
