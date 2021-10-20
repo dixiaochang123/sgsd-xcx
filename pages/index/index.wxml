@@ -5,7 +5,7 @@
 	<mp-tabs tabs="{{tabs}}" power="{{power}}" dataAllSales="{{dataAllSales}}" dataAllFlow="{{dataAllFlow}}"
 		dataAllMember="{{dataAllMember}}" ec10="{{ec10}}" dataAllMarket="{{dataAllMarket}}" todaySales="{{todaySales}}"
 		todaySales1="{{todaySales1}}" totalSpace="{{totalSpace}}" activeTab="{{activeTab}}" dataId="{{dataId}}" swiperClass="{{swiperClass}}" rentCollectionRate="{{rentCollectionRate}}"
-		bindtabclick="onTabCLick" bindchange="onChange" activeClass="tab-bar-title__selected">
+		bindtabclick="onTabCLick" bindchange="onChange" bind:parentComponentFunction="parentComponentFunction" activeClass="tab-bar-title__selected">
 		<block wx:for="{{tabs}}" wx:key="title">
 			<view class="tab-content" slot="tab-content-{{index}}"> {{item.title}} </view>
 		</block>

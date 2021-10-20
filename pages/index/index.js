@@ -1071,6 +1071,15 @@ Page({
 			}
 		})
 	},
+	parentComponentFunction: function(e){
+		console.log("成功调用父组件的方法",e,e.detail.selected.id);
+		let year = e.detail.selected.id+''
+		this.getYearQuartePaogram(year)
+    // 可以写方法
+    // wx.navigateTo({
+    //   url : ' '
+    // })
+  },
 	onChange(e) {
 		let arr = ['weui-tabs-swiper', 'weui-tabs-swiper1', 'weui-tabs-swiper2', 'weui-tabs-swiper2', 'weui-tabs-swiper2']
 		let arr1 = [
@@ -1129,9 +1138,9 @@ Page({
 		}, 200)
 
 	},
-	getYearQuartePaogram() {
+	getYearQuartePaogram(year) {
 		util.ajax({
-			url: "data-analysis/api/sg/pms/getYearQuartePaogram",
+			url: "data-analysis/api/sg/pms/getYearQuartePaogram?year="+year,
 			method: "POST",
 			success: res => {
 				if (res.success) {
@@ -1168,7 +1177,7 @@ Page({
 		// this.getCarData1();
 		// this.getBMData();
 		this.getBMData1();
-		this.getYearQuartePaogram();
+		this.getYearQuartePaogram('2021');
 		// this.getLineDataxse(1);
 		// this.getLineData1xse(1);
 		// this.getLineData();

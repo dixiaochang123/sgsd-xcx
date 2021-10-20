@@ -313,3 +313,22 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAABpCAYAAAD1N/
   justify-content: space-around;
   align-items: center; */
 }
+.jsjsjs {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+.title text {
+	font-size: 30rpx;
+	color: #433f7b;
+}
+.ticket {
+  margin-left: 40rpx;
+}
+.select-wrap {
+  width: 300rpx;
+}
+
+.selected {
+  margin-top: 50%;
+}

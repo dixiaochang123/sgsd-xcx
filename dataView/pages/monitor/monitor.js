@@ -411,7 +411,7 @@ function initOptions5(xAxisdata,title) {
 			show:true,
 			text:title,
 			right: 22,
-			top:10,
+			top:5,
 			textStyle:{
 				fontWeight:400,
 				fontSize:12,
@@ -516,7 +516,7 @@ function initOptions6(xAxisdata,title) {
 			show:true,
 			text:title,
 			right: 22,
-			top:10,
+			top:5,
 			textStyle:{
 				fontWeight:400,
 				fontSize:12,
@@ -618,7 +618,7 @@ function initOptions7(xAxisdata,title) {
 			show:true,
 			text:title,
 			right: 105,
-			top:12,
+			top:5,
 			textStyle:{
 				fontWeight:400,
 				fontSize:12,

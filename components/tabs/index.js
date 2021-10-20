@@ -157,7 +157,15 @@ Component({
         ratio:'',//实时租金收缴率
         scrollTop:0,
 
-        flowdata1:0
+        flowdata1:0,
+        options: [{
+            city_id: '2021',
+            city_name: '2021'
+          }, {
+            city_id: '2020',
+            city_name: '2020'
+          }],
+          selected: {}
 
         //新增图表
         // ec: {
@@ -232,6 +240,16 @@ Component({
         created: function created() {}
     },
     methods: {
+        change (e) {
+            this.setData({
+              selected: { ...e.detail },
+            })
+            this.triggerEvent('parentComponentFunction', { selected:this.data.selected});
+        },
+          close () {
+            // 关闭select
+            this.selectComponent('#select').close()
+          },
         getData: function(e){
             wx.request({
                     url: app.globalData.baseUrlOP+'rest/sgsdbi/countrentcollect',

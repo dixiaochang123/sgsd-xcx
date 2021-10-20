@@ -23,7 +23,7 @@
     <!-- <swiper-item wx:for="{{tabs}}" wx:key="title">
       <slot name="tab-content-{{index}}"></slot>
     </swiper-item> -->
-    <view style="height:80rpx;"></view>
+    <view style="height:50rpx;"></view>
     <!-- <block> -->
       <swiper-item item-id="客流" wx:if="{{!!power.frontPagePassengerFlow}}" class="jinrikliu_parent">
         <image class="jinrikliu" src="../../images/jrkl.png" mode="widthFix"></image>
@@ -216,6 +216,15 @@
           <image wx:if="{{!!power.dataAnalysisRentCollectionRate}}" bindtap="handleTabClickflow" id="商管1" class="jinrikliu_text_4 jinrikliu_text_5"
             src="../../images/more1.png" mode="widthFix"></image>
 
+        </view>
+        <view class="title title11">
+          <view class="ticket" bindtap="handleticket">
+            <view class="container" bindtap="close">
+              <view class="select-wrap">
+                <select id="select" options="{{options}}" key="city_id" text="city_name" bind:change="change"></select>
+              </view>
+            </view>
+          </view>
         </view>
         <view>
           <view class="tabss tabss11" wx:for="{{rentCollectionRate}}" wx:key="quarter">
