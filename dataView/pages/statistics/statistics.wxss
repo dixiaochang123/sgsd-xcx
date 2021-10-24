@@ -59,6 +59,10 @@ sub {
 	width: 100%;
 	margin-top: 100rpx;
 }
+.banner-bottom1 {
+	width: 100%;
+	margin-top: 40rpx;
+}
 .title {
 	width: 100%;
 	display: flex;
@@ -157,4 +161,8 @@ sub {
 	/* margin-right: 15rpx; */
 	color: white;
 	font-size: 20rpx;
+}
+.seletessss {
+	width: 90%;
+	margin: 0 auto;
 }

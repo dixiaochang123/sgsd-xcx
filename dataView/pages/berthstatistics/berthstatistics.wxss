@@ -1,0 +1,149 @@
+/* pages/consumptionTop/consumptionTop.wxss */
+page {
+	width: 100%;
+	height: 100%;
+	background-color: #e3e7f5;}
+.content {
+	width: 100%;
+}
+.banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.banner-content{
+	position: absolute;
+	bottom: 70rpx;
+	left: 80rpx;
+	color: #ffffff;
+	font-size: 35rpx;
+}
+.banner-content .des{
+	margin-bottom: 10rpx;
+	font-size: 60rpx;
+	font-weight: 700;
+	letter-spacing:10rpx
+
+}
+.banner image {
+	width: 100%;
+}
+.warp {
+	width: 80%;
+	margin: 0 auto;
+}
+.list {
+	width: 100%;
+	overflow: hidden;
+}
+.list-li {
+	width: 100%;
+	height: 80rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 28rpx;
+	color: #252c44;
+	margin-top: 20rpx;
+}
+.list-li {
+	width: 100%;
+	height: 80rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 28rpx;
+	color: #252c44;
+	margin-top: 20rpx;
+	border-radius: 5rpx;
+}
+.li-bd {
+	padding-left: 20rpx;
+}
+.li-hd1 {
+	padding-right: 30rpx;
+    white-space: nowrap;
+    text-align: right;
+}
+.list-li:nth-child(odd) {
+	background-color: #c2c9dc;
+}
+.list-li:nth-child(even) {
+	background-color: #d4daea;
+}
+.list-li image {
+	width: 60rpx;
+	margin-right: 20rpx;
+}
+.li-bd {
+	/* display: flex;
+    align-items: center; */
+    width: 25%;
+    text-align: left;
+}
+.li-bd text {
+	display: flex;
+	width: 60rpx;
+	height: 60rpx;
+	align-items: center;
+	justify-content: center;
+	font-size: 30rpx;
+	color: #252c44;
+	margin-right: 20rpx;
+}
+.li-hd1 {
+	padding-right: 30rpx;
+    white-space: nowrap;
+    text-align: right;
+}
+.list-li1 {
+    background-color:#e3e7f5 !important;
+}
+.tabss {
+    width: 100%;
+    min-height: 100rpx;
+    margin:0 auto;
+    position: relative;
+  }
+  .juxing {
+    width: 100%;
+    height: 100rpx;
+    width: 100%;
+  }
+  .tabss_text {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .money {
+      width: 100%;
+      padding:0 20rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .money_img111 {
+    width: 18px !important;
+    height: 23px !important;
+  }
+  .money_text1 {
+    font-size: 28px;
+    display:table-cell; 
+    vertical-align:bottom;
+  }
+  .money_text2 {
+    display: inline-block;
+    /* padding-left: 10rpx; */
+    font-size: 10px;
+  }
+  .money_text1ftl {
+    padding-left: 10px;
+    font-size: 30rpx;
+  }

@@ -4,8 +4,9 @@
   </navBar>
 	<view class="warp">
 		<view class="revenue">
-			<view class="title">
-				<text>商铺数量占比</text>
+			<view class="title" bindtap="handleclickTab">
+				<text class="{{active=='铺位占比'?'active':''}}" data-val='铺位占比'>铺位占比</text>
+				<text class="{{active=='面积占比'?'active':''}}" data-val='面积占比'>面积占比</text>
 			</view>
 			<view class="revenue-list">
 				<view class="echarts-con">

@@ -1,0 +1,44 @@
+<!--pages/consumptionTop/consumptionTop.wxml-->
+<view class="content">
+    <view>
+        <view class="warp">
+            <view class="tabss">
+                <image class="juxing" src="../../../images/juxing.png" ></image>
+                <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
+                    <view class="money"><text>全部楼层</text> <text class="money_text1 money_text1ftl">{{'100'}}</text></view>
+                </view>
+            </view>
+            <view class="list">
+                <view class="list-li list-li1">
+                    <view class="li-bd">
+                        序号
+                    </view>
+                    <view class="li-bd">
+                        楼层
+                    </view>
+                    <view class="li-bd">
+                        铺位号
+                    </view>
+                    <view class="li-bd1" style="white-space: nowrap;padding-right: 30rpx;">
+                        数量
+                    </view>
+                </view>
+                <view class="list-li" wx:for="{{salesList}}" wx:key="index">
+                    <view class="li-bd">
+                        <text>{{index+1}}</text>
+                    </view>
+                    <view class="li-bd">
+                        <view class="bd-name">{{item.storeName}}</view>
+                    </view>
+                    <view class="li-bd">
+                        <view class="bd-name">{{item.storeName}}</view>
+                    </view>
+                    <view class="li-hd1">
+                        {{item.salesPerSquareMeter}}元
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="height:20rpx;"></view>
+    </view>
+</view>

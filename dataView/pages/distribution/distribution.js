@@ -104,7 +104,21 @@ Page({
 			},
 		},
 		operationList: [],
-		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3']
+		color: ['#35DFFF', '#FF7D4F','#288EFF', '#FF565D', '#5F45FF', '#B8E61C', '#862fb3'],
+		active:'铺位占比'
+	},
+	handleclickTab(event) {
+		var dataval = event.target.dataset.val;
+		console.log(dataval)
+		this.setData({
+			active:dataval
+		})
+		switch (dataval) {
+			case "铺位占比":
+				;
+			case "面积占比":
+				;
+		}
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();

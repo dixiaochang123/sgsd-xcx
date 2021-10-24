@@ -220,6 +220,30 @@ Page({
 		nullRate: 0,
 		rentRate: 0,
 		imgSrc:'',//饼图替代图片src
+		options: [{
+            city_id: '全部楼层',
+            city_name: '全部楼层'
+          }, {
+            city_id: '楼层1',
+            city_name: '楼层1'
+          }],
+          selected: {}
+	},
+	change (e) {
+		this.setData({
+		  selected: { ...e.detail },
+		})
+		console.log(this.data.selected)
+	},
+	handleticketarea() {
+		wx.navigateTo({
+			url: '/dataView/pages/areastatistics/areastatistics'
+		})
+	},
+	handleticketberth() {
+		wx.navigateTo({
+			url: '/dataView/pages/berthstatistics/berthstatistics'
+		})
 	},
 	handlerGobackClick(delta) {
 		const pages = getCurrentPages();

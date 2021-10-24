@@ -1,6 +1,7 @@
 {
 	"usingComponents": {
-		"ec-canvas": "../../../ec-canvas/ec-canvas"
+		"ec-canvas": "../../../ec-canvas/ec-canvas",
+		"select": "../../../components/select1/select"
 	},
 	"navigationBarTitleText": "商铺统计"
 }
