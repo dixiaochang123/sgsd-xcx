@@ -8,8 +8,7 @@
         "pages/memData/memData",
         "pages/indexinfo1/indexinfo1",
         "pages/indexinfo3/indexinfo3",
-        "pages/indexinfo4/indexinfo4",
-        "components/select1"
+        "pages/indexinfo4/indexinfo4"
     ],
     "subpackages": [
         {
