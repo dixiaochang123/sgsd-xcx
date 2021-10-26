@@ -16,13 +16,13 @@ let chartData = {
 function initOption() {
 	let num = (areaTotal - rentedAreaTotal).toFixed(2)
 	var resultData = [{
-			value: rentedAreaTotal,
-			name: "已租面积"
-		},
-		{
-			value: num,
-			name: "未租面积"
-		}
+		value: rentedAreaTotal,
+		name: "已租面积"
+	},
+	{
+		value: num,
+		name: "未租面积"
+	}
 	];
 	return {
 		// tooltip: {
@@ -34,78 +34,79 @@ function initOption() {
 		},
 		color: ['#e5004f', '#4d5063'],
 		series: [{
-				name: "",
-				type: "pie",
-				radius: ["40%", "60%"],
-				center: ['50%', '50%'] ,
-				data: resultData,
-				silent:true,
-				label: {
-					show: true
-				},
-				itemStyle : {
-					normal : {
-						label : {
-						position : 'inner',
-						formatter : function (params){
-							return params.percent + '%';},
-							textStyle: {
-										color: '#fff'
-						}
-						},
-						labelLine : {
-							show : false
-						}
-					}
-				},
+			name: "",
+			type: "pie",
+			radius: ["40%", "60%"],
+			center: ['50%', '50%'],
+			data: resultData,
+			silent: true,
+			label: {
+				show: true
 			},
-			{
-				name: "",
-				type: "pie",
-				silent:true,
-				radius: ['40%', "60%"],
-				center: ['50%', '50%'] ,
-				data: [{
-						value: rentedAreaTotal,
-						name: '已租面积',
-						itemStyle: {
-							normal: {
-								opacity: 1
-							},
-							emphasis: {
-								opacity: 1
-							}
+			itemStyle: {
+				normal: {
+					label: {
+						position: 'inner',
+						formatter: function (params) {
+							return params.percent + '%';
+						},
+						textStyle: {
+							color: '#fff'
 						}
 					},
-					{
-						value: num,
-						name: "未租面积",
-						itemStyle: {
-							normal: {
-								opacity: 1
-							},
-							emphasis: {
-								opacity: 1
-							}
-						}
-					},
-				],
-				label: {
-					textStyle: {
-						color: '#000'
-					},
-					// formatter: '{b}\n{c}m²'
-					formatter: function(pram){
-						return pram.name+'\n'+'   '+pram.value+'m²'
-				},
-				},
-				labelLine: {
-					lineStyle: {
-						color: '#2e2f39'
-					},
-					showAbove: true
+					labelLine: {
+						show: false
+					}
 				}
 			},
+		},
+		{
+			name: "",
+			type: "pie",
+			silent: true,
+			radius: ['40%', "60%"],
+			center: ['50%', '50%'],
+			data: [{
+				value: rentedAreaTotal,
+				name: '已租面积',
+				itemStyle: {
+					normal: {
+						opacity: 1
+					},
+					emphasis: {
+						opacity: 1
+					}
+				}
+			},
+			{
+				value: num,
+				name: "未租面积",
+				itemStyle: {
+					normal: {
+						opacity: 1
+					},
+					emphasis: {
+						opacity: 1
+					}
+				}
+			},
+			],
+			label: {
+				textStyle: {
+					color: '#000'
+				},
+				// formatter: '{b}\n{c}m²'
+				formatter: function (pram) {
+					return pram.name + '\n' + '   ' + pram.value + 'm²'
+				},
+			},
+			labelLine: {
+				lineStyle: {
+					color: '#2e2f39'
+				},
+				showAbove: true
+			}
+		},
 		],
 	};
 }
@@ -145,16 +146,16 @@ function initOption1() {
 				show: false,
 			},
 			itemStyle: {
-					normal: {
-							color: '#ffffff',
-					},
+				normal: {
+					color: '#ffffff',
+				},
 			},
 			data: [
-					{
-							value: 100,
-					},
+				{
+					value: 100,
+				},
 			],
-	},{
+		}, {
 			name: '总铺位',
 			type: 'pie',
 			radius: ['40%', '60%'],
@@ -163,20 +164,20 @@ function initOption1() {
 				show: false,
 			},
 			data: [{
-					value: chartData.nullCount,
-					name: '空铺位',
-					selected: true
-				},
-				{
-					value: chartData.rentCount,
-					name: '已租铺位',
+				value: chartData.nullCount,
+				name: '空铺位',
+				selected: true
+			},
+			{
+				value: chartData.rentCount,
+				name: '已租铺位',
 
-				}
+			}
 			],
 			label: {
 				textStyle: {
 					color: '#000',
-					align:'left'
+					align: 'left'
 				},
 				formatter: '{b}\n{c}户\n({d}%)'
 			},
@@ -215,25 +216,81 @@ Page({
 		leasePercent: 0.25,
 		areaTotal: 0,
 		rentedAreaTotal: 0,
+		Count:0,
 		nullCount: 0,
 		rentCount: 0,
 		nullRate: 0,
 		rentRate: 0,
-		imgSrc:'',//饼图替代图片src
+		imgSrc: '',//饼图替代图片src
 		options: [{
-            city_id: '全部楼层',
-            city_name: '全部楼层'
-          }, {
-            city_id: '楼层1',
-            city_name: '楼层1'
-          }],
-          selected: {}
+			city_id: '全部楼层',
+			city_name: '全部楼层'
+		}],
+		options2:[],
+		options1:[],
+		selected: {}
 	},
-	change (e) {
+	change(e) {
 		this.setData({
-		  selected: { ...e.detail },
+			selected: { ...e.detail },
+			imgSrc: '',
 		})
 		console.log(this.data.selected)
+		let area = this.data.options2.filter(item=>item.floorCode==this.data.selected.id);
+		let leva = this.data.options1.filter(item=>item.floorCode==this.data.selected.id);
+		console.log(area,leva)
+		this.setData({
+			selected: { ...e.detail },
+			areaTotal: area[0].rentedAreaTotal,
+			rentedAreaTotal: area[0].leasedAreaTotal
+		})
+		areaTotal = area[0].rentedAreaTotal;
+		rentedAreaTotal = area[0].leasedAreaTotal;
+		let chartSet = function () {
+			if (chart) {
+				chart.setOption(initOption())
+				// setTimeout(() => {
+				// 	this.handleCanvarToImg()
+				// }, 2000)
+				console.log('set piechart')
+			} else {
+				setTimeout(() => {
+					console.log("piechart is null")
+					chartSet();
+				}, 500)
+			}
+		}.bind(this)
+		chartSet();
+		wx.hideLoading();
+		// setTimeout(() => {
+		// 	this.handleCanvarToImg()
+		// }, 2000)
+
+		chartData.Count = leva[0].totalShopBunkCount,
+		chartData.nullCount = leva[0].unleasedShopBunkCount,
+		chartData.rentCount = leva[0].leasedShopBunkCount,
+		// chartData.nullRate = leva[0].shopBunkNullRate,
+		this.setData({
+			Count:leva[0].totalShopBunkCount,
+			nullCount: leva[0].unleasedShopBunkCount,
+			rentCount: leva[0].leasedShopBunkCount,
+			// nullRate: leva[0].shopBunkNullRate,
+			rentRate: (leva[0].leasedShopBunkCount / leva[0].shopBunkCount * 100).toFixed(2)
+		})
+		let chartSet1 = function () {
+			if (chart1) {
+				console.log(chart1)
+				chart1.setOption(initOption1())
+				console.log('set chart')
+			} else {
+				setTimeout(() => {
+					console.log("chart is null")
+					chartSet1();
+				}, 500)
+			}
+		}
+		chartSet1();
+
 	},
 	handleticketarea() {
 		wx.navigateTo({
@@ -264,23 +321,23 @@ Page({
 	onLoad: function (options) {
 		wx.showLoading();
 		this.getData();
-		this.getPieChartData();
+		// this.getPieChartData();
 		this.drawLeasePie();
 	},
 	handleCanvarToImg() {
 		let that = this;
 		this.selectComponent('#mychart-dom-bar').canvasToTempFilePath({
-      success: function (res) {
+			success: function (res) {
 				// console.log('imgSrc',res.tempFilePath);
-        that.setData({
-          imgSrc: res.tempFilePath,
-        });
+				that.setData({
+					imgSrc: res.tempFilePath,
+				});
 
-      },
-      fail:function(err){
-        console.log('canvasErr',err)
-      }
-    }, this);
+			},
+			fail: function (err) {
+				console.log('canvasErr', err)
+			}
+		}, this);
 	},
 	getData: function (e) {
 		wx.request({
@@ -295,13 +352,35 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.data.success) {
-					areaTotal = res.data.data.areaTotal,
-						rentedAreaTotal = res.data.data.rentedAreaTotal,
-						console.log(areaTotal,rentedAreaTotal)
-						this.setData({
-							areaTotal: res.data.data.areaTotal,
-							rentedAreaTotal: res.data.data.rentedAreaTotal
-						})
+					let arr = []
+					res.data.data.map((item, index) => {
+						let { floorCode, floorDesci } = item;
+						arr[index] = {
+							city_id: floorCode,
+							city_name: floorDesci
+						}
+
+					})
+					// this.setData({
+					// 	options: arr,
+					// 	selected: {
+					// 		id: arr[0].city_id,
+					// 		name: arr[0].city_name
+					// 	}
+					// })
+					areaTotal = res.data.data[0].rentedAreaTotal;
+						rentedAreaTotal = res.data.data[0].leasedAreaTotal;
+					this.setData({
+						options2:res.data.data,
+						options: arr,
+						selected: {
+							id: arr[0].city_id,
+							name: arr[0].city_name
+						},
+						areaTotal: res.data.data[0].rentedAreaTotal,
+						rentedAreaTotal: res.data.data[0].leasedAreaTotal
+					})
+					this.getPieChartData()
 				}
 				let chartSet = function () {
 					if (chart) {
@@ -317,9 +396,9 @@ Page({
 				}
 				chartSet();
 				wx.hideLoading();
-				setTimeout(()=>{
+				setTimeout(() => {
 					this.handleCanvarToImg()
-				},2000)
+				}, 2000)
 			},
 			fail: error => {
 				wx.hideLoading();
@@ -339,15 +418,19 @@ Page({
 			method: "POST",
 			success: res => {
 				if (res.data.success) {
-					chartData.Count = res.data.data.shopBunkCount,
-						chartData.nullCount = res.data.data.shopBunkNullCount,
-						chartData.rentCount = res.data.data.shopBunkRentedCount,
-						chartData.nullRate = res.data.data.shopBunkNullRate,
+					let sss = res.data.dataList.filter(item=>item.floorCode==this.data.selected.id)
+					console.log(res.data.dataList,sss)
+					chartData.Count = sss[0].totalShopBunkCount;
+						chartData.nullCount = sss[0].unleasedShopBunkCount;
+						chartData.rentCount = sss[0].leasedShopBunkCount;
+						// chartData.nullRate = sss[0].shopBunkNullRate;
 						this.setData({
-							nullCount: res.data.data.shopBunkNullCount,
-							rentCount: res.data.data.shopBunkRentedCount,
-							nullRate: res.data.data.shopBunkNullRate,
-							rentRate: (res.data.data.shopBunkRentedCount / res.data.data.shopBunkCount * 100).toFixed(2)
+							options1:res.data.dataList,
+							Count:sss[0].totalShopBunkCount,
+							nullCount: sss[0].unleasedShopBunkCount,
+							rentCount: sss[0].leasedShopBunkCount,
+							// nullRate: sss[0].shopBunkNullRate,
+							rentRate: (sss[0].leasedShopBunkCount / sss[0].shopBunkCount * 100).toFixed(2)
 						})
 				}
 				let chartSet1 = function () {

@@ -17,7 +17,7 @@
 .select-current::after {
   position: absolute;
   display: block;
-  right: 40%;
+  right: 31%;
   top: 30rpx;
   content: '';
   width: 0;
