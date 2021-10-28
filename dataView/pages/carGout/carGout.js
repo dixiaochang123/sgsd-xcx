@@ -598,11 +598,11 @@ Page({
 							date = date.substr(0, 2) + '日'
 						}
 						lineChartData.xData.push(date);
-						// lineChartData.seriesData.push(res.data[i].trafficVolume);
+						// lineChartData.seriesData.push(res.data[i].trafficVolumeName);
 						lineChartData.seriesData.push({
 								
 							name:'' ,
-							value: res.data[i].trafficVolume,
+							value: res.data[i].trafficVolumeName,
 							label:{
 								show: true,
 								position: 'top',
@@ -651,11 +651,11 @@ Page({
 							date = date.substr(0, 2) + '月'
 						}
 						lineChartData.xData.push(date);
-						// lineChartData.seriesData.push(res.data[i].trafficVolume);
+						// lineChartData.seriesData.push(res.data[i].trafficVolumeName);
 						lineChartData.seriesData.push({
 								
 							name:'' ,
-							value: res.data[i].trafficVolume,
+							value: res.data[i].trafficVolumeName,
 							label:{
 								show: true,
 								position: 'top',

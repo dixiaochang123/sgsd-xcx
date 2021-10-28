@@ -85,10 +85,10 @@
 					<image src="../../images/icon_13.png" mode="widthFix"></image>
 					<text>坪效</text>
 				</navigator>
-				<navigator wx:if="{{!!power.dataAnalysisRentCollectionRate}}" class="warp-li" url="/dataView/pages/fee/fee" hover-class="none">
+				<!-- <navigator wx:if="{{!!power.dataAnalysisRentCollectionRate}}" class="warp-li" url="/dataView/pages/fee/fee" hover-class="none">
 					<image src="../../images/icon_14.png" mode="widthFix"></image>
 					<text>租金收缴率</text>
-				</navigator>
+				</navigator> -->
 				<!-- <navigator class="warp-li" url="/dataView/pages/earlyWarning/earlyWarning" hover-class="none">
 					<image src="../../images/icon_33.png" mode="widthFix"></image>
 					<text>业态预警</text>

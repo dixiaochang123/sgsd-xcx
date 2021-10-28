@@ -47,7 +47,7 @@ function initOption() {
 		grid: {
 			left: '5%',
 			right: '5%',
-			top: 30,
+			top: 50,
 			bottom: '5%',
 			containLabel: true
 		},
@@ -790,7 +790,7 @@ Page({
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
 						lineChartData.seriesData.push({
 							name: '',
-							value: res.data[i].customerPrice,
+							value: (res.data[i].customerPrice /10000).toFixed(2),
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
@@ -853,7 +853,8 @@ Page({
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
 						lineChartData.seriesData.push({
 							name: '',
-							value: res.data[i].customerPrice,
+							// value: res.data[i].customerPrice,
+							value: (res.data[i].customerPrice /10000).toFixed(2),
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
