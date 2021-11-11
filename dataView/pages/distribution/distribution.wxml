@@ -18,7 +18,7 @@
 			<view class="number-li" wx:for="{{operationList}}" wx:key="index">
 				<view class="number-dl">
 					<view class="number-dt">{{item.operationType}}</view>
-					<view class="number-dd" style="color:#000;">{{item.storeCount}}户</view>
+					<view class="number-dd" style="color:#000;">{{active=='铺位占比'?item.storeCount:item.areaCount}}<text wx:if="{{active=='铺位占比'}}">户</text><text wx:else>㎡</text></view>
 				</view>
 				<view class="number-img" >
 					<!-- <image src="../../../images/qx_5.png" mode="widthFix" wx:if="{{index == 3}}"></image> -->

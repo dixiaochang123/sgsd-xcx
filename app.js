@@ -66,6 +66,7 @@ App({
 		userInfo: null,
     // baseUrl:"https://o2o.shuoguoshidai.net/",//正式
     baseUrl:"https://sgsd.tdcheck.cn:28000/",//测试
+    baseUrlERP:"http://erp1.shuoguoshidai.cn:8185/sgbiposservice/rest/",//测试
     baseUrlOP:"https://erp.shuoguoshidai.net:5443/sgbiposservice/",
     //baseUrlOP:"http://erp.shuoguoshidai.cn:8185/sgbiposservice/"
     power:{}

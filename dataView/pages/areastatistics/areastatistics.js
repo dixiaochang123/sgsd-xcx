@@ -8,6 +8,8 @@ Page({
 	 */
 	data: {
 		salesList:[],
+		total:0,
+		floorCode:''
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -26,26 +28,31 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
+		console.log(options)
+		this.setData({
+			floorCode:options.id
+		})
 		wx.showLoading();
 		this.getList();
 	},
 
 	getList: function(e){
-		let sendData =  JSON.stringify({
-			startTime: util.getNowDate(new Date(),'-')+" 00:00:00",
-			endTime: util.formatTime(new Date()),
-			order: "desc",
-			limit: 10,
-			groupType: 2
-		});
-		util.ajax({
-			url:"data-analysis/api/sg/cashierSystemTopStores",
+		wx.request({
+			url:app.globalData.baseUrlOP + 'rest/sgsdbi/getunleasedstore',
 			method:"POST",
-			data:sendData,
+			data:{
+				floorCode:this.data.floorCode
+			},
 			success:res=>{
-				if(res.success){
+				if(res.statusCode==200){
+					console.log(res.data.data)
+					let total = 0;
+					 res.data.data.map(item=>{
+						total+=item.area
+					})
 					this.setData({
-						salesList: res.data
+						salesList: res.data.data,
+						total:total
 					})
 				}
 				wx.hideLoading();

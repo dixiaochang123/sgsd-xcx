@@ -76,11 +76,15 @@ page {
 	width: 60rpx;
 	margin-right: 20rpx;
 }
+
 .li-bd {
 	/* display: flex;
     align-items: center; */
-    width: 25%;
+    width: 30%;
     text-align: left;
+}
+.li-bd-f {
+  width: 10%;
 }
 .li-bd text {
 	display: flex;

@@ -294,12 +294,12 @@ Page({
 	},
 	handleticketarea() {
 		wx.navigateTo({
-			url: '/dataView/pages/areastatistics/areastatistics'
+			url: '/dataView/pages/areastatistics/areastatistics?id='+this.data.selected.id
 		})
 	},
 	handleticketberth() {
 		wx.navigateTo({
-			url: '/dataView/pages/berthstatistics/berthstatistics'
+			url: '/dataView/pages/berthstatistics/berthstatistics?id='+this.data.selected.id
 		})
 	},
 	handlerGobackClick(delta) {

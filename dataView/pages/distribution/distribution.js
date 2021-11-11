@@ -113,12 +113,15 @@ Page({
 		this.setData({
 			active:dataval
 		})
-		switch (dataval) {
-			case "铺位占比":
-				;
-			case "面积占比":
-				;
-		}
+		this.getData()
+		// switch (dataval) {
+		// 	case "铺位占比":
+				
+		// 		;
+		// 	case "面积占比":
+				
+		// 		;
+		// }
 	},
 	handlerGobackClick(delta) {
     const pages = getCurrentPages();
@@ -154,8 +157,62 @@ Page({
       success:res=>{
 				if(res.data.success){
 					pieChartData.seriesData = [];
+					for(let i = 0; i<res.data.data.length; i++) {
+						if(this.data.active=='铺位占比') {
+							pieChartData.seriesData.push({
+									value:res.data.data[i].storeCount,
+									name: res.data.data[i].operationType
+								})
+
+						} else {
+							pieChartData.seriesData.push({
+								value:res.data.data[i].areaCount,
+								name: res.data.data[i].operationType
+							})
+						}
+					}
+          this.setData({
+            operationList: res.data.data
+          })
+				}
+				let chartSet = function (){
+					if(chart){
+						console.log(chart)
+						chart.setOption(initOption())
+						console.log('set chart')
+					}else{
+						setTimeout(()=>{
+							console.log("chart is null")
+							chartSet();
+						},500)
+					}
+				}
+				chartSet();
+        wx.hideLoading();
+      },
+      fail:error=>{
+			wx.hideLoading();
+			}
+		})
+	},
+	getData1: function(e){
+		wx.request({
+			url: app.globalData.baseUrlOP+'rest/sgsdbi/countlocopertype',
+			dataType: 'json',
+			data: JSON.stringify({
+				apiKey: "STANDRAD"
+			}),
+			header: {
+				"content-type":'application/json'
+			},
+      method:"POST",
+      success:res=>{
+				if(res.data.success){
+					pieChartData.seriesData = [];
 					for(let i = 0; i<res.data.data.length; i++)
 					{
+						res.data.data[i].ratio = res.data.data[i].areaRatio
+						res.data.data[i].storeCount = res.data.data[i].areaCount
 						pieChartData.seriesData.push(
 							{
 								value:res.data.data[i].storeCount,

@@ -5,15 +5,15 @@
             <view class="tabss">
                 <image class="juxing" src="../../../images/juxing.png" ></image>
                 <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-                    <view class="money"><text>全部楼层</text> <text class="money_text1 money_text1ftl">{{'100'}}</text></view>
+                    <view class="money"><text>全部楼层</text> <text class="money_text1 money_text1ftl">{{total}}</text></view>
                 </view>
             </view>
             <view class="list">
                 <view class="list-li list-li1">
-                    <view class="li-bd">
+                    <view class="li-bd li-bd-f">
                         序号
                     </view>
-                    <view class="li-bd">
+                    <view class="li-bd" style="text-align: center;">
                         楼层
                     </view>
                     <view class="li-bd">
@@ -24,17 +24,17 @@
                     </view>
                 </view>
                 <view class="list-li" wx:for="{{salesList}}" wx:key="index">
-                    <view class="li-bd">
+                    <view class="li-bd li-bd-f">
                         <text>{{index+1}}</text>
                     </view>
                     <view class="li-bd">
-                        <view class="bd-name">{{item.storeName}}</view>
+                        <view class="bd-name">{{item.floorDesci}}</view>
                     </view>
                     <view class="li-bd">
-                        <view class="bd-name">{{item.storeName}}</view>
+                        <view class="bd-name">{{item.locCode}}</view>
                     </view>
                     <view class="li-hd1">
-                        {{item.salesPerSquareMeter}}元
+                        {{'1'}}个
                     </view>
                 </view>
             </view>

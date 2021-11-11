@@ -5,6 +5,15 @@
 	<view class="number">
 		<view class="number-li">
 			<view class="number-dl">
+				<view class="number-dt">场内留存客流</view>
+				<view class="number-dd">{{onSitePassengerFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_1.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
 				<view class="number-dt">当前客流量</view>
 				<view class="number-dd">{{currentPassengerFlow}}人</view>
 			</view>

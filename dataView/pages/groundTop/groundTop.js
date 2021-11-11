@@ -86,6 +86,11 @@ Page({
       method:"POST",
       success:res=>{
 				if(res.data.success){
+          res.data.data.map(item=>{
+            if(item.salesPerSquareMeter<0 || item.salesPerSquareMeter==0) {
+              item.salesPerSquareMeter=0
+            }
+          })
           this.setData({
             groundList: res.data.data
           })
@@ -114,6 +119,11 @@ Page({
       method:"POST",
       success:res=>{
 				if(res.data.success){
+          res.data.data.map(item=>{
+            if(item.salesPerSquareMeter<0 || item.salesPerSquareMeter==0) {
+              item.salesPerSquareMeter=0
+            }
+          })
           this.setData({
             groundList: res.data.data
           })
@@ -127,6 +137,11 @@ Page({
   },
   getData2: function(e){
     this.getInfo().then(res=>{
+      res.data.data.map(item=>{
+        if(item.salesPerSquareMeter<0 || item.salesPerSquareMeter==0) {
+          item.salesPerSquareMeter=0
+        }
+      })
       let list = res.data.data;
       let list1 = this.chunk(list, 10)
       console.log('list', list, this.data.page)
