@@ -178,11 +178,23 @@ function initOption1() {
 				textStyle: {
 					color: '#000',
 					align: 'left',
-					fontSize:10
+					fontSize:9,
 				},
 				formatter: '{b}\n{c}户\n{d}%',
 				overflow: 'none'
 			},
+			itemStyle: {
+				normal:{
+					labelLine: {
+						show: true,//数据标签引导线
+						length: 2,
+						lineStyle: {
+								width: 1,
+								type: 'solid'
+						}
+				}
+				}
+			}
 		}]
 	};
 }

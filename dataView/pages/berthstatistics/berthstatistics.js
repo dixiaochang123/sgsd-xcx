@@ -51,7 +51,7 @@ Page({
 					// })
 					this.setData({
 						salesList: res.data.data,
-						total:total
+						total:total.toFixed(2)
 					})
 				}
 				wx.hideLoading();

@@ -16,10 +16,10 @@
                     <view class="li-bd" style="text-align: center;">
                         楼层
                     </view>
-                    <view class="li-bd">
+                    <view class="li-bd" style="padding-left:0;">
                         铺位号
                     </view>
-                    <view class="li-bd1" style="white-space: nowrap;padding-right: 30rpx;">
+                    <view class="li-bd1" style="white-space: nowrap;">
                         数量
                     </view>
                 </view>
@@ -31,7 +31,7 @@
                         <view class="bd-name">{{item.floorDesci}}</view>
                     </view>
                     <view class="li-bd">
-                        <view class="bd-name">{{item.locCode}}</view>
+                        <view class="bd-name" style="padding-left:12rpx;">{{item.locCode}}</view>
                     </view>
                     <view class="li-hd1">
                         {{'1'}}个

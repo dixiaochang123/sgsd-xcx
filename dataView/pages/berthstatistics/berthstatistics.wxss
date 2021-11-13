@@ -99,6 +99,9 @@ page {
 	padding-right: 30rpx;
     white-space: nowrap;
     text-align: right;
+    width: 80rpx;
+}.li-bd1 {
+  width: 80rpx;
 }
 .list-li1 {
     background-color:#e3e7f5 !important;

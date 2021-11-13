@@ -790,7 +790,8 @@ Page({
 						lineChartData.xData.push(res.data[i].time.substring(6, 8) + '日');
 						lineChartData.seriesData.push({
 							name: '',
-							value: (res.data[i].customerPrice /10000).toFixed(2),
+							// value: (res.data[i].customerPrice /10000).toFixed(2),
+							value: res.data[i].customerPrice,
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
@@ -854,7 +855,7 @@ Page({
 						lineChartData.seriesData.push({
 							name: '',
 							// value: res.data[i].customerPrice,
-							value: (res.data[i].customerPrice /10000).toFixed(2),
+							value: (res.data[i].customerPrice),
 							label: {
 								show: true,
 								position: i % 2 == 0 ? [0, -38] : [-10, -10],
@@ -895,6 +896,7 @@ Page({
 					lineChartData0.seriesData = [];
 					for (let i = 0; i < res.data.length; i++) {
 						lineChartData.xData.push(res.data[i].time.substring(4, 6) + '月');
+						console.log(res.data[i].customerPrice)
 						lineChartData.seriesData.push({
 							name: '',
 							value: res.data[i].customerPrice,
@@ -1085,6 +1087,10 @@ Page({
 	onHide: function () {
 		var that = this;
 		that.onLoad();
+		that.setData({
+			num:1,
+			num1:1,
+		})
 	},
 	/**
 	 * 生命周期函数--监听页面卸载
@@ -1096,6 +1102,12 @@ Page({
 		chart2 = null;
 		chart3 = null;
 		chart4 = null;
+		let that = this;
+		that.setData({
+			num:1,
+			num1:1,
+		})
+
 	},
 
 	/**
@@ -1107,6 +1119,11 @@ Page({
 		chart1 = null;
 		chart2 = null;
 		chart3 = null;
+		let that = this;
+		that.setData({
+			num:1,
+			num1:1,
+		})
 	},
 
 	/**

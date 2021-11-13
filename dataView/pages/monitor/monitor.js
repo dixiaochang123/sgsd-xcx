@@ -1465,18 +1465,22 @@ Page({
 	onHide: function () {
 		var that = this;
 		that.onLoad();
+		that.setData({
+			num1:1
+		})
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
 	onUnload: function () {
+		var that = this;
 		chart = null;
 		chart1 = null;
 		chart2 = null;
 		chart3 = null;
 		chart4 = null;
-		this.setData({
+		that.setData({
 			num1:1
 		})
 	},

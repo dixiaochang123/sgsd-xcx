@@ -5,7 +5,7 @@
             <view class="tabss">
                 <image class="juxing" src="../../../images/juxing.png" ></image>
                 <view class="tabss_text tabss_text_ftl" bindtap="handleclickTab">
-                    <view class="money"><text>全部楼层</text> <text class="money_text1 money_text1ftl">{{total}} <text
+                    <view class="money"><text>全部面积</text> <text class="money_text1 money_text1ftl">{{total}} <text
                         class="money_text2">㎡</text></text></view>
                 </view>
             </view>

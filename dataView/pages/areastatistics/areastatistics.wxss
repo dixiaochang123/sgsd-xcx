@@ -59,7 +59,7 @@ page {
 	border-radius: 5rpx;
 }
 .li-bd {
-	padding-left: 20rpx;
+	/* padding-left: 20rpx; */
 }
 .li-hd1 {
 	padding-right: 30rpx;
@@ -81,7 +81,7 @@ page {
 	/* display: flex;
     align-items: center; */
     width: 30%;
-    text-align: left;
+    /* text-align: left; */
 }
 .li-bd-f {
   width: 10%;
@@ -100,6 +100,7 @@ page {
 	padding-right: 30rpx;
     white-space: nowrap;
     text-align: right;
+    width: 100rpx;
 }
 .list-li1 {
     background-color:#e3e7f5 !important;
