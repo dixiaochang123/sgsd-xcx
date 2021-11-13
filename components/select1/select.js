@@ -76,18 +76,18 @@ Component({
     attached() {
       // 属性名称转换, 如果不是 { id: '', name:'' } 格式，则转为 { id: '', name:'' } 格式
       // console.log(this.data.options)
-      // let result = []
-      // if (this.data.key !== 'id' || this.data.text !== 'name') {       
-      //   for (let item of this.data.options) {
-      //     let { [this.data.key]: id, [this.data.text]: name } = item
-      //     result.push({ id, name })
-      //   }
-      // }
-      // console.log(result)
-      // this.setData({
-      //   current: Object.assign({}, this.data.defaultOption),
-      //   result: result
-      // })
+      let result = []
+      if (this.data.key !== 'id' || this.data.text !== 'name') {       
+        for (let item of this.data.options) {
+          let { [this.data.key]: id, [this.data.text]: name } = item
+          result.push({ id, name })
+        }
+      }
+      console.log(result)
+      this.setData({
+        current: result[0] || this.data.defaultOption,
+        result: result
+      })
     }
   }
 })

@@ -32,9 +32,9 @@
 			<image class="huiyuanbg" src="../../../images/huiyuanbg.png"></image>
 			<view class="banner-txt">
 				<view class="banner-top">总铺位数</view>
-				<view class="banner-num"><text>{{Count}}</text>m<sub>2</sub></view>
-				<view class="banner-bottom1">已租铺位数：{{rentCount}}m<sub>2</sub></view>
-				<view class="banner-bottom1">未租铺位数：{{nullCount}}m<sub>2</sub></view>
+				<view class="banner-num"><text>{{Count}}</text>个</view>
+				<view class="banner-bottom1">已租铺位数：{{rentCount}}个</view>
+				<view class="banner-bottom1">未租铺位数：{{nullCount}}个</view>
 			</view>
 		</view>
 		<view class="lease" style="margin-bottom: 60rpx;">
@@ -51,7 +51,7 @@
 						<view class="right_item_color1" ></view>
 						<view class="right_item_con">
 							<view>空铺位</view>
-							<view>{{nullCount}}户  {{nullRate}}</view>
+							<view>{{nullCount}}户  {{nullRate}}%</view>
 						</view>
 					</view>
 					<view class="right_item">

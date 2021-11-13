@@ -1476,6 +1476,9 @@ Page({
 		chart2 = null;
 		chart3 = null;
 		chart4 = null;
+		this.setData({
+			num1:1
+		})
 	},
 
 	/**

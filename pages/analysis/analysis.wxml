@@ -73,10 +73,10 @@
 					<image src="../../images/icon_03.png" mode="widthFix"></image>
 					<text>商铺业态分布</text>
 				</navigator>
-				<navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
+				<!-- <navigator class="warp-li" url="/dataView/pages/income/income" hover-class="none">
 					<image src="../../images/icon_04.png" mode="widthFix"></image>
 					<text>收入统计</text>
-				</navigator>
+				</navigator> -->
 				<navigator wx:if="{{!!power.dataAnalysisRentSellingRatio}}" class="warp-li" url="/dataView/pages/rentTop/rentTop" hover-class="none">
 					<image src="../../images/icon_05.png" mode="widthFix"></image>
 					<text>租售比</text>

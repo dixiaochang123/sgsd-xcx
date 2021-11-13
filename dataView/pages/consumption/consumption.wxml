@@ -60,7 +60,7 @@
 		<view class="revenue">
 			<image class="klmb" src="../../../images/klmb.png"></image>
 			<view class="title">
-				<text>客单价（万元）</text>
+				<text>客单价（元）</text>
 			</view>
 			<view class="revenue-list">
 				<view class="revenue-top">

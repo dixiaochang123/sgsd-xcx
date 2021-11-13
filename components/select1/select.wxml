@@ -3,15 +3,10 @@
     <text class="current-name">{{current.name}}</text>
   </view>
   <view class="option-list" wx:if="{{isShow}}" catchtap="optionTap">
-    <text class="option"
-      wx:if="{{!isShow}}"
-      data-id="{{defaultOption.id}}"
+    <text class="option" wx:if="{{!isShow}}" data-id="{{defaultOption.id}}"
       data-name="{{defaultOption.name}}">{{defaultOption.name}}
     </text>
-    <text class="option"
-      wx:for="{{result}}"
-      wx:key="{{item.id}}"
-      data-id="{{item.id}}"
+    <text class="option" wx:for="{{result}}" wx:key="{{item.name}}" data-id="{{item.id}}"
       data-name="{{item.name}}">{{item.name}}
     </text>
   </view>

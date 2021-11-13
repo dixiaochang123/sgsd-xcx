@@ -177,9 +177,11 @@ function initOption1() {
 			label: {
 				textStyle: {
 					color: '#000',
-					align: 'left'
+					align: 'left',
+					fontSize:10
 				},
-				formatter: '{b}\n{c}户\n({d}%)'
+				formatter: '{b}\n{c}户\n{d}%',
+				overflow: 'none'
 			},
 		}]
 	};
@@ -223,8 +225,8 @@ Page({
 		rentRate: 0,
 		imgSrc: '',//饼图替代图片src
 		options: [{
-			city_id: '全部楼层',
-			city_name: '全部楼层'
+			city_id: '所有楼层',
+			city_name: '所有楼层'
 		}],
 		options2:[],
 		options1:[],
@@ -235,10 +237,9 @@ Page({
 			selected: { ...e.detail },
 			imgSrc: '',
 		})
-		console.log(this.data.selected)
+		console.log(this.data.selected,this.data.options1,this.data.options2)
 		let area = this.data.options2.filter(item=>item.floorCode==this.data.selected.id);
 		let leva = this.data.options1.filter(item=>item.floorCode==this.data.selected.id);
-		console.log(area,leva)
 		this.setData({
 			selected: { ...e.detail },
 			areaTotal: area[0].rentedAreaTotal,
@@ -246,6 +247,7 @@ Page({
 		})
 		areaTotal = area[0].rentedAreaTotal;
 		rentedAreaTotal = area[0].leasedAreaTotal;
+		console.log(areaTotal,rentedAreaTotal)
 		let chartSet = function () {
 			if (chart) {
 				chart.setOption(initOption())
@@ -275,7 +277,8 @@ Page({
 			nullCount: leva[0].unleasedShopBunkCount,
 			rentCount: leva[0].leasedShopBunkCount,
 			// nullRate: leva[0].shopBunkNullRate,
-			rentRate: (leva[0].leasedShopBunkCount / leva[0].shopBunkCount * 100).toFixed(2)
+			nullRate:  (leva[0].unleasedShopBunkCount / leva[0].totalShopBunkCount * 100).toFixed(2),
+			rentRate: (leva[0].leasedShopBunkCount / leva[0].totalShopBunkCount * 100).toFixed(2)
 		})
 		let chartSet1 = function () {
 			if (chart1) {
@@ -353,6 +356,7 @@ Page({
 			success: res => {
 				if (res.data.success) {
 					let arr = []
+					res.data.data = res.data.data.reverse()
 					res.data.data.map((item, index) => {
 						let { floorCode, floorDesci } = item;
 						arr[index] = {
@@ -368,8 +372,10 @@ Page({
 					// 		name: arr[0].city_name
 					// 	}
 					// })
+					// arr = arr.reverse()
 					areaTotal = res.data.data[0].rentedAreaTotal;
-						rentedAreaTotal = res.data.data[0].leasedAreaTotal;
+					rentedAreaTotal = res.data.data[0].leasedAreaTotal;
+					console.log(9999,arr)
 					this.setData({
 						options2:res.data.data,
 						options: arr,
@@ -397,7 +403,7 @@ Page({
 				chartSet();
 				wx.hideLoading();
 				setTimeout(() => {
-					this.handleCanvarToImg()
+					// this.handleCanvarToImg()
 				}, 2000)
 			},
 			fail: error => {
@@ -430,7 +436,8 @@ Page({
 							nullCount: sss[0].unleasedShopBunkCount,
 							rentCount: sss[0].leasedShopBunkCount,
 							// nullRate: sss[0].shopBunkNullRate,
-							rentRate: (sss[0].leasedShopBunkCount / sss[0].shopBunkCount * 100).toFixed(2)
+							nullRate:  (sss[0].unleasedShopBunkCount / sss[0].totalShopBunkCount * 100).toFixed(2),
+							rentRate: (sss[0].leasedShopBunkCount / sss[0].totalShopBunkCount * 100).toFixed(2)
 						})
 				}
 				let chartSet1 = function () {
