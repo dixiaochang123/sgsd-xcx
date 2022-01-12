@@ -148,9 +148,9 @@
 							<view class="right_child right_child1">
 								<view>同比</view>
 								<view>
-									<image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+									<image wx:if="{{nhbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 									<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
-								<text class="right_child1_text"> {{ntb}}</text></view>
+								<text class="right_child1_text"> {{nhb}}</text></view>
 							</view>
 							<!-- <view style="width:40rpx;"></view>
 							<view class="right_child right_child2">

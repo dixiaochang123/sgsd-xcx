@@ -3,6 +3,7 @@
 import * as echarts from '../../../ec-canvas/echarts';
 const util = require('../../../utils/util');
 const app = getApp();
+let yearFit = app.globalData.yearFit-1
 var chart = null;
 var chart1 = null;
 var chart2 = null;
@@ -472,7 +473,7 @@ function initOptions6() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本月', '上月', '20年同期'],
+			data: ['本月', '上月', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},

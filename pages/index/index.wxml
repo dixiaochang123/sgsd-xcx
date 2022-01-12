@@ -10,6 +10,10 @@
 			<view class="tab-content" slot="tab-content-{{index}}"> {{item.title}} </view>
 		</block>
 	</mp-tabs>
+	<!-- <view style="color:#e3e7f5">{{idx}}</view> -->
+	<view style="color:#e3e7f5">{{idx}}--{{power.frontPagePassengerFlow}}</view>
+	<!-- <view style="height:100rpx;padding-left:80rpx;">{{idx}}--客流--{{power.frontPagePassengerFlow}}</view> -->
+	<!-- <view>----------</view> -->
 	<!-- <view hidden='{{idx!==0}}' class="warp"> -->
 	<view wx:if="{{idx==0 && !!power.frontPagePassengerFlow}}" class="warp">
 		<view class="charttext">客流环同比分析</view>

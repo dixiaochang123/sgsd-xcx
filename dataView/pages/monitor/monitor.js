@@ -2,6 +2,7 @@
 import * as echarts from '../../../ec-canvas/echarts';
 const util = require('../../../utils/util');
 const app = getApp();
+let yearFit = app.globalData.yearFit-1
 //曲线图
 var chart = null;
 //柱状图
@@ -134,7 +135,7 @@ function initOptions1(xAxisdata) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本周', '上周', '20年同期'],
+			data: xAxisdata||['本周', '上周', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -228,7 +229,7 @@ function initOptions2(xAxisdata) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本月', '上月', '20年同期'],
+			data: xAxisdata||['本月', '上月', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -319,7 +320,7 @@ function initOptions3(xAxisdata) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本年', '20年', '19年'],
+			data: xAxisdata||['本年', (yearFit)+'年', (yearFit-1)+'年'],
 			axisLine: {
 				show: false
 			},
@@ -420,7 +421,7 @@ function initOptions5(xAxisdata,title) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本周', '上周', '20年同期'],
+			data: xAxisdata||['本周', '上周', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -525,7 +526,7 @@ function initOptions6(xAxisdata,title) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本月', '上月', '20年同期'],
+			data: xAxisdata||['本月', '上月', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -627,7 +628,7 @@ function initOptions7(xAxisdata,title) {
 		},
 		xAxis: {
 			type: 'category',
-			data: xAxisdata||['本年', '20年', '19年'],
+			data: xAxisdata||['本年', '20年', (yearFit-1)+'年'],
 			axisLine: {
 				show: false
 			},
@@ -926,12 +927,16 @@ Page({
 		type: 2,
 		currentPassengerFlow: 0,
 		onSitePassengerFlow:0,
+		//三元巷当日客流
+		sanyuanLaneFlow:0,
 		hourPassengerFlow: 0,
 		dayPassengerFlow: 0,
 		weekPassengerFlow: 0,
 		weekPassengerFlow1: 0,
 		monthPassengerFlow: 0,
+		monthPassengerFlow1: 0,
 		yearPassengerFlow: 0,
+		yearPassengerFlow1: 0,
 		flowList: [],
 		zhb:'',
 		ztb:'',
@@ -1089,12 +1094,15 @@ Page({
 					if(num==3) {
 
 						seriesData.data3 = Object.values(res.data).filter(item=>typeof(item)=="number") 
+						console.log(res.data.ringRatio)
+						console.log(res.data.ringRatio.search("-") != -1)
+						console.log(res.data.ringRatio.substr(1))
 						this.setData({
 							// nhb:res.data.ringRatio,
 							// ntb:res.data.coRate,
 							// ntb:res.data.coRate.search("-") != -1?res.data.coRate.substr(1):res.data.coRate,
-							// nhb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
-							ntb:res.data.ringRatio,
+							ntb:res.data.ringRatio.search("-") != -1?res.data.ringRatio.substr(1):res.data.ringRatio,
+							// ntb:res.data.ringRatio,
 							ntbisadd:res.data.coRate.search("-") != -1?false:true,
 							nhbisadd:res.data.ringRatio.search("-") != -1?false:true,
 						})
@@ -1217,11 +1225,14 @@ Page({
 						currentPassengerFlow: res.data.currentPassengerFlow,
 						hourPassengerFlow: res.data.hourPassengerFlow,
 						dayPassengerFlow: res.data.dayPassengerFlow,
-						weekPassengerFlow: res.data.weekPassengerFlow>10000?(res.data.weekPassengerFlow/10000).toFixed(2):res.data.weekPassengerFlow,
-						onSitePassengerFlow: res.data.onSitePassengerFlow>10000?(res.data.onSitePassengerFlow/10000).toFixed(2):res.data.onSitePassengerFlow,
+						weekPassengerFlow: res.data.weekPassengerFlow>9999?(res.data.weekPassengerFlow/10000).toFixed(2):res.data.weekPassengerFlow,
+					  onSitePassengerFlow: res.data.onSitePassengerFlow,
+					  sanyuanLaneFlow:res.data.sanyuanLaneFlow,
 						weekPassengerFlow1: res.data.weekPassengerFlow,
-						monthPassengerFlow: res.data.monthPassengerFlow>10000?(res.data.monthPassengerFlow/10000).toFixed(2):res.data.monthPassengerFlow,
-						yearPassengerFlow: res.data.yearPassengerFlow>10000?(res.data.yearPassengerFlow/10000).toFixed(2):res.data.yearPassengerFlow,
+						monthPassengerFlow: res.data.monthPassengerFlow>9999?(res.data.monthPassengerFlow/10000).toFixed(2):res.data.monthPassengerFlow,
+						monthPassengerFlow1: res.data.monthPassengerFlow,
+						yearPassengerFlow: res.data.yearPassengerFlow>9999?(res.data.yearPassengerFlow/10000).toFixed(2):res.data.yearPassengerFlow,
+						yearPassengerFlow1: res.data.yearPassengerFlow,
 					})
 				}
 				wx.hideLoading();
@@ -1368,7 +1379,7 @@ Page({
 						totalMember+=res.data[i].count
 					}
 					this.setData({
-						totalMember:totalMember>10000?(totalMember/10000).toFixed(2):totalMember,
+						totalMember:totalMember>9999?(totalMember/10000).toFixed(2):totalMember,
 					})
 					console.log(999,res.data,this.data.ec4)
 					if(res.data.length>0) {
@@ -1421,7 +1432,7 @@ Page({
 						totalMember+=res.data[i].count
 					}
 					this.setData({
-						totalMember:totalMember>10000?(totalMember/10000).toFixed(2):totalMember,
+						totalMember:totalMember>9999?(totalMember/10000).toFixed(2):totalMember,
 					})
 				}
 				let chartSet = function (){

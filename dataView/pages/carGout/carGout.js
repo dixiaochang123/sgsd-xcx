@@ -2,6 +2,7 @@
 import * as echarts from '../../../ec-canvas/echarts';
 const util = require('../../../utils/util');
 const app = getApp();
+let yearFit = app.globalData.yearFit-1
 //曲线图
 var chart = null;
 var chart1 = null;
@@ -139,7 +140,7 @@ function initOptions1() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本周', '上周', '20年同期'],
+			data: ['本周', '上周', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -222,7 +223,7 @@ function initOptions2() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本月', '上月', '20年同期'],
+			data: ['本月', '上月', yearFit+'年同期'],
 			axisLine: {
 				show: false
 			},
@@ -305,7 +306,7 @@ function initOptions3() {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['本年','20年', '19年'],
+			data: ['本年',(yearFit)+'年',  (yearFit-1)+'年'],
 			axisLine: {
 				show: false
 			},
@@ -659,7 +660,7 @@ Page({
 							label:{
 								show: true,
 								position: 'top',
-								offset:i%2==0?[0,-20]:[0,0],
+								// offset:i%2==0?[0,-20]:[0,0],
 								// offset:[0,0],
 								valueAnimation: true
 							}

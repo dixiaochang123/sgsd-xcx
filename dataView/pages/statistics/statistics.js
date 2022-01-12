@@ -97,14 +97,16 @@ function initOption() {
 				},
 				// formatter: '{b}\n{c}m²'
 				formatter: function (pram) {
-					return pram.name + '\n' + '   ' + pram.value + 'm²'
+					return pram.name + '\n' + pram.value + 'm²'
 				},
+				overflow: 'none'
 			},
 			labelLine: {
 				lineStyle: {
 					color: '#2e2f39'
 				},
-				showAbove: true
+				showAbove: true,
+				length:2
 			}
 		},
 		],

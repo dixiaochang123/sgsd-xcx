@@ -94,6 +94,9 @@ module.exports =
 
 const app = getApp();
 const util = require('../../utils/util');
+let date11 = new Date();
+let yearupdate = date11.getFullYear(); //获取完整的年份(4位)
+console.log('本年年份tab',yearupdate)
 Component({
     options: {
         addGlobalClass: true,
@@ -190,6 +193,16 @@ Component({
 },
     attached() {
         
+        console.log(this.data.activeflow)
+        console.log("======================")
+        this.setData({
+            options:[{
+                city_id: yearupdate+'',
+                city_name: yearupdate+''
+            },...this.data.options]
+        })
+        console.log(this.data.options)
+        
     },
     // parseFloat(res.data.dayPassengerFlow).toLocaleString()
     observers: {
@@ -202,16 +215,57 @@ Component({
             this.setData({ currentView: currentView });
         },
         dataAllFlow: function dataAllFlow(val) {
-            this.setData({
-                flowdata:this.data.dataAllFlow.weekPassengerFlow>10000?(this.data.dataAllFlow.weekPassengerFlow/10000).toFixed(2):this.data.dataAllFlow.weekPassengerFlow,
-                flowdata1:this.data.dataAllFlow.weekPassengerFlow
-            })
+            if(!this.data.activeflow) {
+                this.setData({
+                    flowdata1:val.weekPassengerFlow,
+                    flowdata:val.weekPassengerFlow>10000?(val.weekPassengerFlow/10000).toFixed(2):val.weekPassengerFlow,
+                })
+            }
+            if(this.data.activeflow=='本周') {
+                this.setData({
+                    flowdata1:val.weekPassengerFlow,
+                    flowdata:val.weekPassengerFlow>10000?(val.weekPassengerFlow/10000).toFixed(2):val.weekPassengerFlow,
+                })
+            }
+            if(this.data.activeflow=='本月') {
+                this.setData({
+                    flowdata1:val.monthPassengerFlow,
+                    flowdata:val.monthPassengerFlow>10000?(val.monthPassengerFlow/10000).toFixed(2):val.monthPassengerFlow,
+                })
+            }
+            if(this.data.activeflow=='本年') {
+                this.setData({
+                    flowdata1:val.yearPassengerFlow,
+                    flowdata:val.yearPassengerFlow>10000?(val.yearPassengerFlow/10000).toFixed(2):val.yearPassengerFlow,
+                })
+            }
             console.log('flowdata1',this.data.flowdata1)
         },
         dataAllMember: function dataAllMember(val) {
-            this.setData({
-                memberdata:parseFloat(this.data.dataAllMember.totalNumberOfMaleMembers).toLocaleString()
-            })
+            if(!this.data.activeMember) {
+
+                this.setData({
+                    memberdata:parseFloat(this.data.dataAllMember.totalNumberOfMaleMembers).toLocaleString()
+                })
+            }
+            if(this.data.activeMember=="男性") {
+
+                this.setData({
+                    memberdata:parseFloat(this.data.dataAllMember.totalNumberOfMaleMembers).toLocaleString()
+                })
+            }
+            if(this.data.activeMember=="女性") {
+
+                this.setData({
+                    memberdata:parseFloat(this.data.dataAllMember.totalNumberOfFemaleMembers).toLocaleString()
+                })
+            }
+            if(this.data.activeMember=="其他") {
+
+                this.setData({
+                    memberdata:parseFloat(this.data.dataAllMember.totalNumberOfOtherMembers).toLocaleString()
+                })
+            }
             this.getMemberData1()
             this.getMemberData2()
             this.getCarData()
@@ -220,11 +274,32 @@ Component({
         },
         dataAllSales: function dataAllSales(val) {
             this.setData({
-                salesdata:this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
-                salesdata1:this.data.dataAllSales.weekSales,
-                // totalNewMumber:this.data.dataAllSales.totalNewMumber,
                 monthCustomerPrice:this.data.dataAllSales.monthCustomerPrice
             })
+            if(!this.data.activeSales) {
+                this.setData({
+                    salesdata:this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
+                    salesdata1:this.data.dataAllSales.weekSales
+                })
+            }
+            if(this.data.activeSales=='本周销售额') {
+                this.setData({
+                    salesdata:this.data.dataAllSales.weekSales>10000?(this.data.dataAllSales.weekSales/10000).toFixed(2):this.data.dataAllSales.weekSales,
+                    salesdata1:this.data.dataAllSales.weekSales
+                })
+            }
+            if(this.data.activeSales=='本月销售额') {
+                this.setData({
+                    salesdata:this.data.dataAllSales.monthSales>10000?(this.data.dataAllSales.monthSales/10000).toFixed(2):this.data.dataAllSales.monthSales,
+                    salesdata1:this.data.dataAllSales.monthSales
+                })
+            }
+            if(this.data.activeSales=='本年销售额') {
+                this.setData({
+                    salesdata:this.data.dataAllSales.yearSales>10000?(this.data.dataAllSales.yearSales/10000).toFixed(2):this.data.dataAllSales.yearSales,
+                    salesdata1:this.data.dataAllSales.yearSales
+                })
+            }
         },
         dataAllMarket: function dataAllMarket(val) {
             this.setData({
@@ -237,7 +312,9 @@ Component({
         },
     },
     lifetimes: {
-        created: function created() {}
+        created: function created() {
+            console.log(1111111,"dxc")
+        }
     },
     methods: {
         change (e) {

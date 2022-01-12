@@ -11,6 +11,16 @@ let chartData = {
 	couponGainRatio: 0,
 	couponUsedRatio: 0
 }
+let chartData1 = {
+	couponGivenCount: 0,
+	couponGainRatio: 0,
+	couponUsedRatio: 0
+}
+let chartData2 = {
+	couponGivenCount: 0,
+	couponGainRatio: 0,
+	couponUsedRatio: 0
+}
 function initOption() {
 	return {
     title: {
@@ -71,8 +81,8 @@ function initOption() {
             name: '访问来源',
             type: 'pie',
             hoverAnimation:false,
-            radius: ['65%', '80%'],
-            startAngle:45, //起始角度
+            radius: ['65%', '85%'],
+            startAngle:90, //起始角度
             label: {
                normal: {
                    show:false    // 外层饼图的箭头指示线和指示框  不显示
@@ -81,6 +91,180 @@ function initOption() {
             data: [
 							chartData.couponUsedRatio,
                 chartData.couponGivenCount,
+            ],
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = [ 'red', "rgba(250,250,250,0)"];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        }
+    ]
+};
+}
+function initOption1() {
+	return {
+    title: {
+        subtext: '发放数量',
+        text: chartData1.couponGivenCount,
+        textStyle: {
+             color: '#333',
+             fontSize: 10,
+             // align: 'center'
+         },
+          subtextStyle: {
+             fontSize: 10,
+             color: ['#5a5d62']
+         },
+        left: 'center',
+        top: 'center'
+    },
+    // tooltip: {
+    //     trigger: 'item'
+    // },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+    },
+    series: [
+				 {//外层
+					silent: false ,
+            name:'',
+            hoverAnimation:false,
+           type:'pie',
+           startAngle:90, //起始角度
+           radius: ['65%', '95%'],
+           label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+           data:[ 
+						chartData1.couponGainRatio,
+                chartData1.couponGivenCount
+               ],   // 外层饼图的数据来源
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = ['#4a4d60','#aeb0c5'];
+                        return colorList[params.dataIndex]
+                    }
+                },
+                shadowColor: 'rgba(0,0,0,0.3)'
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        },
+        {
+					silent: false ,
+            name: '访问来源',
+            type: 'pie',
+            hoverAnimation:false,
+            radius: ['65%', '80%'],
+            startAngle:90, //起始角度
+            label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+            data: [
+							chartData1.couponUsedRatio,
+                chartData1.couponGivenCount,
+            ],
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = [ 'red', "rgba(250,250,250,0)"];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        }
+    ]
+};
+}
+function initOption2() {
+	return {
+    title: {
+        subtext: '发放数量',
+        text: chartData2.couponGivenCount,
+        textStyle: {
+             color: '#333',
+             fontSize: 10,
+             // align: 'center'
+         },
+          subtextStyle: {
+             fontSize: 10,
+             color: ['#5a5d62']
+         },
+        left: 'center',
+        top: 'center'
+    },
+    // tooltip: {
+    //     trigger: 'item'
+    // },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+    },
+    series: [
+				 {//外层
+					silent: false ,
+            name:'',
+            hoverAnimation:false,
+           type:'pie',
+           startAngle:90, //起始角度
+           radius: ['65%', '95%'],
+           label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+           data:[ 
+						chartData2.couponGainRatio,
+                chartData2.couponGivenCount
+               ],   // 外层饼图的数据来源
+            itemStyle: {
+                normal: {
+                color: function(params) {
+                        //自定义颜色
+                        var colorList = ['#4a4d60','#aeb0c5'];
+                        return colorList[params.dataIndex]
+                    }
+                },
+                shadowColor: 'rgba(0,0,0,0.3)'
+            },
+            emphasis:{  //鼠标移入动态的时候显示的默认样式
+            　　color:'green'
+            }
+        },
+        {
+					silent: false ,
+            name: '访问来源',
+            type: 'pie',
+            hoverAnimation:false,
+            radius: ['65%', '80%'],
+            startAngle:90, //起始角度
+            label: {
+               normal: {
+                   show:false    // 外层饼图的箭头指示线和指示框  不显示
+               }
+           },
+            data: [
+							chartData2.couponUsedRatio,
+                chartData2.couponGivenCount,
             ],
             itemStyle: {
                 normal: {
@@ -272,9 +456,9 @@ Page({
 						purchaseRate: res.data.purchaseRate,
 						refundRate: res.data.refundRate,
 					})
-					chartData.couponGivenCount = res.data.couponDischarge,
+					chartData.couponGivenCount = res.data.couponDischarge,//使用数量 35858
 					chartData.couponGainRatio = res.data.couponReceive;
-					chartData.couponUsedRatio = res.data.couponUsage;
+					chartData.couponUsedRatio = res.data.couponUsage; //领取数量9393
 					let chartSet = function (){
 						if(chart){
 							console.log(chart)
@@ -315,13 +499,14 @@ Page({
 						purchaseRate1: res.data.purchaseRate,
 						refundRate1: res.data.refundRate,
 					})
-					chartData.couponGivenCount = res.data.couponDischarge,
-					chartData.couponGainRatio = res.data.couponReceive;
-					chartData.couponUsedRatio = res.data.couponUsage;
+					chartData1.couponGivenCount = res.data.couponDischarge,
+					chartData1.couponGainRatio = res.data.couponReceive;
+					chartData1.couponUsedRatio = res.data.couponUsage;
+					console.log(res.data.couponDischarge,res.data.couponUsage)
 					let chartSet = function (){
 						if(chart1){
 							console.log(chart1)
-							chart1.setOption(initOption())
+							chart1.setOption(initOption1())
 							console.log('set chart')
 						}else{
 							setTimeout(()=>{
@@ -358,13 +543,13 @@ Page({
 						purchaseRate2: res.data.purchaseRate,
 						refundRate2: res.data.refundRate,
 					})
-					chartData.couponGivenCount = res.data.couponDischarge,
-					chartData.couponGainRatio = res.data.couponReceive;
-					chartData.couponUsedRatio = res.data.couponUsage;
+					chartData2.couponGivenCount = res.data.couponDischarge,
+					chartData2.couponGainRatio = res.data.couponReceive;
+					chartData2.couponUsedRatio = res.data.couponUsage;
 					let chartSet = function (){
 						if(chart2){
 							console.log(chart2)
-							chart2.setOption(initOption())
+							chart2.setOption(initOption2())
 							console.log('set chart')
 						}else{
 							setTimeout(()=>{

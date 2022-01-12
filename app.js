@@ -13,6 +13,15 @@ App({
         success:res=>{
           console.log('获取用户权限',res)
           if(res.data.success ==true){
+
+            var date = new Date();
+            var year=date.getFullYear();
+            var yearFit=year.toString().substr(2,year.length);
+            this.globalData.yearFit = yearFit;
+
+
+
+
             this.globalData.power = res.data.data;
             // this.globalData.power.frontPageMember = false;
             // this.globalData.power.frontPagePassengerFlow = false;
@@ -64,11 +73,18 @@ App({
 	},
 	globalData: {
 		userInfo: null,
-    // baseUrl:"https://o2o.shuoguoshidai.net/",//正式
-    baseUrl:"https://sgsd.tdcheck.cn:28000/",//测试
-    baseUrlERP:"http://erp1.shuoguoshidai.cn:8185/sgbiposservice/rest/",//测试
-    baseUrlOP:"https://erp.shuoguoshidai.net:5443/sgbiposservice/",
+    //baseUrl:"https://o2o.shuoguoshidai.net/",//正式
+    //baseUrl:"https://sgsd.tdcheck.cn:28000/",//测试
+    //baseUrlERP:"http://erp1.shuoguoshidai.cn:8185/sgbiposservice/rest/",//测试
+    //baseUrlOP:"https://erp.shuoguoshidai.net:5443/sgbiposservice/",
     //baseUrlOP:"http://erp.shuoguoshidai.cn:8185/sgbiposservice/"
-    power:{}
+
+    //baseUrl:"https://show.tdcheck.cn/",//木兮里测试环境
+    //baseUrlOP:"https://show.tdcheck.cn/data-analysis/api/",//木兮里测试环境
+
+    baseUrl:"https://mxl.tdcheck.cn/",//正式环境
+    baseUrlOP:"https://mxl.tdcheck.cn/data-analysis/api/",//正式环境
+    power:{},
+    yearsstr:null
 	}
 })

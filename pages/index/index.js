@@ -2,6 +2,11 @@
 import * as echarts from '../../ec-canvas/echarts';
 const util = require('../../utils/util');
 const app = getApp();
+let date11 = new Date();
+
+let yearupdate = date11.getFullYear(); //获取完整的年份(4位)
+console.log('本年年份',yearupdate)
+
 var chart10 = null;
 var chart11 = null;
 var chart12 = null;
@@ -12,7 +17,7 @@ let lineChartData10 = {
 	currentDataList: [], //上周
 	byDataList: [], //本周
 	dataYearOnyearList: [], //去年同期
-	dataZoom: [],
+	dataZoom: []
 }
 let lineChartData11 = {
 	xData: [],
@@ -51,7 +56,6 @@ function initOption10() {
 		},
 		tooltip: {
 			trigger: "axis",
-
 			confine: true,
 		},
 		legend: {
@@ -620,7 +624,7 @@ Page({
 					lineChartData10.currentDataList = [];
 					lineChartData10.byDataList = [];
 					lineChartData10.dataYearOnyearList = [];
-					console.log(type, typeof type)
+
 					let obj = {
 						'1': '周一',
 						'2': '周二',
@@ -633,6 +637,7 @@ Page({
 					if (type == 1) {
 						// lineChartData10.legendData = ["上周", "本周", "去年同期"]
 						lineChartData10.legendData = ["本周", "上周", "去年同期"]
+						
 					}
 					if (type == 2) {
 						// lineChartData10.legendData = ["上月", "本月", "去年同期"]
@@ -707,8 +712,9 @@ Page({
 				let chartSet10 = function () {
 					if (chart10) {
 						chart10.setOption(initOption10())
-						// chart11.setOption(initOption10())
-						// chart12.setOption(initOption10())
+						chart10.dispatchAction({
+							type: 'hideTip'//隐藏tooltip
+						})
 						console.log('set chart')
 					} else {
 						setTimeout(() => {
@@ -827,6 +833,9 @@ Page({
 					if (chart11) {
 						chart11.setOption(initOption11())
 						// chart12.setOption(initOption10())
+						chart11.dispatchAction({
+							type: 'hideTip'//隐藏tooltip
+						})
 						console.log('set chart')
 					} else {
 						setTimeout(() => {
@@ -893,6 +902,9 @@ Page({
 							lineChartData12.dataZoom = []
 						}
 						if (type == 2) {
+							console.log('dxc-----------------------------------')
+							console.log(i+"="+currentDataList[i].trafficVolume)
+							console.log('dxc-----------------------------------')
 							let date = ln[i].date.substring(8, 10);
 							if(date.substr(0, 1)=='0') {
 								date = date.substr(1, 2) + '日'
@@ -901,7 +913,8 @@ Page({
 							}
 							lineChartData12.xData.push(date);
 							lineChartData12.currentDataList.push(currentDataList[i].trafficVolume);
-							lineChartData12.byDataList.push(byDataList[i].trafficVolume);
+							let hhh= byDataList[i]?byDataList[i].trafficVolume:0;
+							lineChartData12.byDataList.push(hhh);
 							// lineChartData12.dataYearOnyearList.push(dataYearOnyearList[i].trafficVolume);
 							let yea = dataYearOnyearList[i] ? dataYearOnyearList[i].trafficVolume : 0;
 							lineChartData12.dataYearOnyearList.push(yea);
@@ -940,6 +953,9 @@ Page({
 				let chartSet12 = function () {
 					if (chart12) {
 						chart12.setOption(initOption12())
+						chart12.dispatchAction({
+							type: 'hideTip'//隐藏tooltip
+						})
 						console.log('set chart')
 					} else {
 						setTimeout(() => {
@@ -1055,6 +1071,9 @@ Page({
 				let chartSet13 = function () {
 					if (chart13) {
 						chart13.setOption(initOption13())
+						chart13.dispatchAction({
+							type: 'hideTip'//隐藏tooltip
+						})
 						console.log('set chart')
 					} else {
 						setTimeout(() => {
@@ -1177,7 +1196,7 @@ Page({
 		// this.getCarData1();
 		// this.getBMData();
 		this.getBMData1();
-		this.getYearQuartePaogram('2021');
+		this.getYearQuartePaogram(yearupdate);
 		// this.getLineDataxse(1);
 		// this.getLineData1xse(1);
 		// this.getLineData();

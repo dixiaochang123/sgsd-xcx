@@ -5,7 +5,7 @@
 	<view class="number">
 		<view class="number-li">
 			<view class="number-dl">
-				<view class="number-dt">场内留存客流</view>
+				<view class="number-dt">场内留存客流量</view>
 				<view class="number-dd">{{onSitePassengerFlow}}人</view>
 			</view>
 			<view class="number-img">
@@ -32,6 +32,15 @@
 		</view>
 		<view class="number-li">
 			<view class="number-dl">
+				<view class="number-dt">今日三元巷客流量</view>
+				<view class="number-dd">{{sanyuanLaneFlow}}人</view>
+			</view>
+			<view class="number-img">
+				<image src="../../../images/qx_3.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="number-li">
+			<view class="number-dl">
 				<view class="number-dt">今日累计客流量</view>
 				<view class="number-dd">{{dayPassengerFlow}}人</view>
 			</view>
@@ -52,7 +61,8 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本月累计客流量</view>
-				<view class="number-dd">{{monthPassengerFlow}}万人</view>
+				<view wx:if="{{monthPassengerFlow1>10000}}" class="number-dd">{{monthPassengerFlow}}万人</view>
+				<view wx:else class="number-dd">{{monthPassengerFlow}}人</view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_5.png" mode="widthFix"></image>
@@ -61,7 +71,8 @@
 		<view class="number-li">
 			<view class="number-dl">
 				<view class="number-dt">本年累计客流量</view>
-				<view class="number-dd">{{yearPassengerFlow}}万人</view>
+				<view wx:if="{{yearPassengerFlow1>10000}}" class="number-dd">{{yearPassengerFlow}}万人</view>
+				<view wx:else class="number-dd">{{yearPassengerFlow}}人</view>
 			</view>
 			<view class="number-img">
 				<image src="../../../images/qx_6.png" mode="widthFix"></image>
@@ -209,7 +220,7 @@
 						<!-- <view>同比19年</view> -->
 						<view>同比</view>
 						<view>
-							<image wx:if="{{ntbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
+							<image wx:if="{{nhbisadd}}" class="rise" src="../../../images/rise.png" mode="widthFix"></image>
 							<image wx:else class="rise" src="../../../images/decline.png" mode="widthFix"></image>
 							<text class="right_child1_text"> {{ntb}}</text>
 						</view>
