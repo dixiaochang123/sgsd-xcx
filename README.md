@@ -197,3 +197,21 @@ sgsd-xcx
 minAngle: 10,  //设置扇形的最小占比
 startAngle: 10, //旋转角度
 ```
+- 小程序中echarts隐藏隐藏tooltip
+```
+let chartSet10 = function () {
+   if (chart10) {
+      chart10.setOption(initOption10())
+      chart10.dispatchAction({
+         type: 'hideTip'//隐藏tooltip
+      })
+      console.log('set chart')
+   } else {
+      setTimeout(() => {
+         console.log("chart is null")
+         chartSet10();
+      }, 500)
+   }
+}
+chartSet10();
+```
